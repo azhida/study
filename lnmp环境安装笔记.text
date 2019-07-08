@@ -1,0 +1,209 @@
+lnmp 安装教程
+
+#### 安装环境： centos7.6 + PHP7.3.7 + mysql5.5
+
+****************************** nginx 安装 开始 ************************************
+## yum 安装 nginx
+# 参考地址：https://www.cnblogs.com/songxingzhu/p/8568432.html
+# 添加 nginx源
+rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+# 安装 nginx
+yum install -y nginx
+# 启动Nginx并设置开机自动运行
+systemctl start nginx.service
+systemctl enable nginx.service
+
+# nginx 虚拟主机 配置文件
+************ nginx 配置文件 开始 ************
+user  nginx;
+worker_processes  1;
+error_log  /var/log/nginx/error.log warn;
+pid        /var/run/nginx.pid;
+events {
+    worker_connections  1024;
+}
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    include /etc/nginx/conf.d/*.conf;
+
+    server {
+        listen       80;
+        server_name hsyp.weilh.vip;
+        root   /var/www;
+        location / {
+            index  index.html index.htm index.php;
+            try_files $uri $uri/ /index.php?s=$uri&$args;
+            client_max_body_size  100m;
+        }
+        location ~ \.php(.*)$ {
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+            fastcgi_split_path_info  ^((?U).+\.php)(/?.+)$;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            fastcgi_param  PATH_INFO  $fastcgi_path_info;
+            fastcgi_param  PATH_TRANSLATED  $document_root$fastcgi_path_info;
+            include        fastcgi_params;
+        }
+    }
+
+}
+************ nginx 配置文件 结束 ************
+
+
+****************************** nginx 安装 结束 *****************************************
+
+****************************** php7.3.7 编译安装 开始 *****************************************
+## 安装php7.3.7部分，参考地址：http://www.php.cn/php-weizijiaocheng-414091.html
+
+# 新增 用户 和 用户组
+groupadd www
+useradd -g www www
+
+# 下载 PHP7.3.7
+wget https://www.php.net/distributions/php-7.3.7.tar.gz
+tar xzvf php-7.3.7.tar.gz
+cd  php-7.3.7
+
+# 安装依赖
+yum install -y libxml2-devel bzip2-devel curl-devel libjpeg-devel libpng-devel freetype-devel libxslt-devel libzip-devel openssl openssl-devel
+ln -s /usr/lib64/libssl.so /usr/lib/
+
+# 编译
+#  --with-fpm-user=www --with-fpm-group=www
+#  这里使用www www 用户、用户组
+#  编译出来的程序启动，就是归属这个用户、用户组
+./configure --prefix=/usr/local/php --with-fpm-user=www --with-fpm-group=www --with-curl --with-freetype-dir --with-gd --with-gettext --with-iconv-dir --with-kerberos --with-libdir=lib64 --with-libxml-dir --with-mysqli --with-openssl --with-pcre-regex --with-pdo-mysql --with-pdo-sqlite --with-pear --with-png-dir --with-jpeg-dir --with-xmlrpc --with-xsl --with-zlib --with-bz2 --with-mhash --enable-fpm --enable-bcmath --enable-libxml --enable-inline-optimization --enable-mbregex --enable-mbstring --enable-opcache --enable-pcntl --enable-shmop --enable-soap --enable-sockets --enable-sysvsem --enable-sysvshm --enable-xml --enable-zip --enable-fpm
+
+# 编译错误,解决依赖（更多错误，自行百度，如果安装过，则略过）
+# （1）configure: error: libxml2 not found. Please check your libxml2 installation.
+yum install -y  libxml2-devel
+# （2）configure: error: Please reinstall the BZip2 distribution
+yum install -y  bzip2-devel
+# （3）configure: error: cURL version 7.15.5 or later is required to compile php with cURL support
+yum install -y  curl-devel
+# （4）configure: error: jpeglib.h not found.
+yum install -y  libjpeg-devel
+# （5）configure: error: png.h not found.
+yum install -y libpng-devel
+# （6）configure: error: freetype-config not found.
+yum install -y freetype-devel
+# （7）configure: error: xslt-config not found. Please reinstall the libxslt >= 1.1.0 distribution
+yum install -y libxslt-devel
+# （8）configure: error: Please reinstall the libzip distribution
+yum install -y libzip-devel
+# （9）checking for libzip... configure: error: system libzip must be upgraded to version >= 0.11
+# 先删除旧版本
+yum remove -y libzip
+#下载编译安装
+wget https://nih.at/libzip/libzip-1.2.0.tar.gz
+tar -zxvf libzip-1.2.0.tar.gz
+cd libzip-1.2.0
+./configure
+make && make install
+# （10）off_t undefined 报错
+# 截图省略
+# off_t 类型是在 头文件 unistd.h中定义的，
+# 在32位系统 编程成 long int ，64位系统则编译成 long long int ，
+# 在进行编译的时候 是默认查找64位的动态链接库，
+# 但是默认情况下 centos 的动态链接库配置文件/etc/ld.so.conf里并没有加入搜索路径，
+# 这个时候需要将 /usr/local/lib64 /usr/lib64 这些针对64位的库文件路径加进去。
+#添加搜索路径到配置文件
+echo '/usr/local/lib64
+/usr/local/lib
+/usr/lib
+/usr/lib64'>>/etc/ld.so.conf
+#然后 更新配置
+ldconfig -v
+# （11）configure: error: Cannot find OpenSSL's <evp.h>
+yum install openssl openssl-devel
+ln -s /usr/lib64/libssl.so /usr/lib/
+
+# 安装
+make && make install
+
+# 安装报错：usr/local/include/zip.h:59:21: fatal error: zipconf.h: No such file or directory
+cp /usr/local/lib/libzip/include/zipconf.h /usr/local/include/zipconf.h
+
+# 配置，建立目录
+cp php.ini-production /usr/local/php/lib/php.ini
+cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
+ln -s /usr/local/php/sbin/php-fpm /usr/local/bin
+
+cd /usr/local/php/etc/php-fpm.d
+vim www.conf
+# 输入
+[www]
+listen = 127.0.0.1:9080
+listen.mode = 0666
+user = www  #php代码目录权限 需要跟这个一致，
+group = www #php代码目录权限 需要跟这个一致
+pm = dynamic
+pm.max_children = 128
+pm.start_servers = 20
+pm.min_spare_servers = 5
+pm.max_spare_servers = 35
+pm.max_requests = 10000
+rlimit_files = 1024
+slowlog = log/$pool.log.slow
+
+# 加入 systemtl 服务
+cd /home/flame/software/php-7.3.0/sapi/fpm
+cp php-fpm.service /usr/lib/systemd/system/
+
+# 启动
+systemctl start php-fpm
+
+#查看状态
+systemctl status php-fpm
+
+# php 命令环境
+# 在$HOME/.profile里新增内容为
+export PATH=$PATH:/usr/local/php/bin
+
+****************************** php7.3.7 编译安装 结束 *****************************************
+
+****************************** mariadb 安装 开始 *****************************************
+## mysql部分（安装 mariadb5.5）
+# Centos7 快速安装 MariaDB5.5
+# 原文地址：https://blog.csdn.net/junehappylove/article/details/77508932
+
+# 安装
+yum install mariadb mariadb-server
+
+# 启动
+systemctl start mariadb
+
+# 开机启动
+systemctl enable mariadb
+
+# 设置root密码
+mysql_secure_installation
+# Remove anonymous users? [Y/n] Y 删除匿名用户：是
+# Disallow root login remotely? [Y/n] n 是否禁止远程访问：否
+# Remove test database and access to it? [Y/n] n # 这里不删除测试数据库
+# Reload privilege tables now? [Y/n] Y # 这里必须Y确认才能使修改生效
+
+# 登录mysql
+mysql -u root -p
+
+# 解决 mysql 1130 远程连接失败的问题（要在 阿里云 控制台 开启 3306访问权限，否则也是无法访问）
+# 参考地址：https://blog.csdn.net/comefay2/article/details/79033452
+grant all privileges on *.* to root@"%" identified by 'mysql root用户的登录密码' with grant option;
+flush privileges;
+
+****************************** mariadb 安装 结束 *****************************************

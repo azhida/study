@@ -1,0 +1,8 @@
+# 验证用户输入的密码是否正确，接收客户端提交的密码 $submit_password = $request->password，已加密入库的密码 $saved_password = bcrypt('123456')；
+$res = \Hash::check($submit_password, $saved_password);
+If ($res == true) {
+    Echo  ‘输入密码正确’;
+} else {
+    Echo  ‘输入密码错误’;
+}
+

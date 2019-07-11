@@ -11,3 +11,13 @@ php artisan migrate:refresh --seed
 
 # 创建 failed_jobs 表。有时候队列中的任务会失败。Laravel 内置了一个方便的方式来指定任务重试的最大次数。当任务超出这个重试次数后，它就会被插入到 failed_jobs 数据表里面。
 php artisan queue:failed-table
+
+# 使用以下 Artisan 命令来生成一个新的队列任务。该命令会在 app/Jobs 目录下生成一个新的类。
+php artisan make:job TranslateSlug
+
+# 启动队列系统，队列在启动完成后会进入监听状态（安装了 Horizon 以后，我们将使用 horizon 命令来启动队列系统和任务监控，无需使用 queue:listen）：
+php artisan queue:listen
+
+# 安装了 Horizon 以后，我们将使用 horizon 命令来启动队列系统和任务监控，无需使用 queue:listen
+php artisan horizon
+# 需要注意的是，artisan horizon 队列工作的守护进程是一个常驻进程，它不会在你的代码改变时进行重启，当我们修改代码以后，需要在命令行中对其进行重启操作。

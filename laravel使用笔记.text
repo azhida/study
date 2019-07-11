@@ -37,3 +37,6 @@ php artisan horizon
 
 # 数据通知频道会在一张数据表里存储所有通知信息。包含了比如通知类型、JSON 格式数据等描述通知的信息。我们会通过查询这张表的内容在应用界面上展示通知。但是在这之前，我们需要先创建这张数据表，Laravel 自带了生成迁移表的命令，执行以下命令即可：
 php artisan notifications:table
+
+# 生成通知类。Laravel 中一条通知就是一个类（通常存在 app/Notifications 文件夹里）。
+ php artisan make:notification TopicReplied

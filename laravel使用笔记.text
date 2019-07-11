@@ -8,3 +8,6 @@ If ($res == true) {
 
 # 执行数据库迁移文件并填充数据（注意：会清除之前所有的数据）
 php artisan migrate:refresh --seed
+
+# 创建 failed_jobs 表。有时候队列中的任务会失败。Laravel 内置了一个方便的方式来指定任务重试的最大次数。当任务超出这个重试次数后，它就会被插入到 failed_jobs 数据表里面。
+php artisan queue:failed-table

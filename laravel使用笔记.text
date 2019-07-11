@@ -21,3 +21,12 @@ php artisan queue:listen
 # 安装了 Horizon 以后，我们将使用 horizon 命令来启动队列系统和任务监控，无需使用 queue:listen
 php artisan horizon
 # 需要注意的是，artisan horizon 队列工作的守护进程是一个常驻进程，它不会在你的代码改变时进行重启，当我们修改代码以后，需要在命令行中对其进行重启操作。
+
+# 队列使用
+# 参考：https://learnku.com/courses/laravel-intermediate-training/5.8/using-queues/4178，看完文章，还要特别关注评论区。
+# 参考：https://learnku.com/laravel/t/13290/excitement-first-contact-with-the-queue-take-a-look-at-your-mind-and-add-two-questions
+# 参考：https://learnku.com/laravel/t/7803/summary-points-use-queues-monitor-queues
+# 参考：https://learnku.com/laravel/t/9859/about-queue-duplication-a-problem
+
+# 解决 Windows 系统使用 Homestead 运行 Laravel 本地项目响应缓慢问题
+# 参考：https://learnku.com/articles/9009/solve-the-slow-response-problem-of-windows-system-using-homestead-to-run-laravel-local-project

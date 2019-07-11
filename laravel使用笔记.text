@@ -45,3 +45,8 @@ php artisan notifications:table
 php artisan make:controller NotificationsController
 
 # Laravel 的辅助方法 snake_case() 会 字符串格式化为下划线命名。
+
+# 中间件的使用：
+# 1、创建中间件。运行以下命令，生成中间件类文件：
+php artisan make:middleware RecordLastActivedTime
+# 2、注册中间件。想让中间件在应用的每个 HTTP 请求期间运行，我们还需要在 app/Http/Kernel.php 类中对中间件进行注册。

@@ -50,3 +50,6 @@ php artisan make:controller NotificationsController
 # 1、创建中间件。运行以下命令，生成中间件类文件：
 php artisan make:middleware RecordLastActivedTime
 # 2、注册中间件。想让中间件在应用的每个 HTTP 请求期间运行，我们还需要在 app/Http/Kernel.php 类中对中间件进行注册。
+
+# 新建 Artisan 命令。使用以下生成命令类，参数 --command 是指定 Artisan 调用的命令，一般情况下，我们推荐为命令加上命名空间，如本项目的 larabbs:
+php artisan make:command CalculateActiveUser --command=larabbs:calculate-active-user

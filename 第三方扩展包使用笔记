@@ -15,7 +15,7 @@ php artisan horizon
 # laravel/horizon 队列监控 Horizon 线上部署须知：
 # 在开发环境中，我们为了测试方便，直接在命令行里调用 artisan horizon 进行队列监控。然而在生产环境中，我们需要配置一个进程管理工具来监控 artisan horizon 命令的执行，以便在其意外退出时自动重启。当服务器部署新代码时，需要终止当前 Horizon 主进程，然后通过进程管理工具来重启，从而使用最新的代码。
 # 简而言之，生产环境下使用队列需要注意以下两个问题：
-# 1、使用 Supervisor 进程工具进行管理，配置和使用请参照 文档 进行配置；
-# 2、每一次部署代码时，需 artisan horizon:terminate 然后再 artisan horizon 重新加载代码。
-# 3、线上部署的话，还要注意一个权限控制的问题
+# 1、使用 Supervisor 进程工具进行管理，配置和使用请参照 文档 进行配置；参考地址：https://learnku.com/docs/laravel/5.8/horizon/3945；
+# 2、每一次部署代码时，需 artisan horizon:terminate 然后再 artisan horizon 重新加载代码；
+# 3、线上部署的话，还要注意一个权限控制的问题；
 

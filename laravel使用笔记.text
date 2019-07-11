@@ -40,3 +40,8 @@ php artisan notifications:table
 
 # 生成通知类。Laravel 中一条通知就是一个类（通常存在 app/Notifications 文件夹里）。
  php artisan make:notification TopicReplied
+
+# 生成消息通知控制器
+php artisan make:controller NotificationsController
+
+# Laravel 的辅助方法 snake_case() 会 字符串格式化为下划线命名。

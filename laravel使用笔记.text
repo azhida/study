@@ -53,3 +53,16 @@ php artisan make:middleware RecordLastActivedTime
 
 # 新建 Artisan 命令。使用以下生成命令类，参数 --command 是指定 Artisan 调用的命令，一般情况下，我们推荐为命令加上命名空间，如本项目的 larabbs:
 php artisan make:command CalculateActiveUser --command=larabbs:calculate-active-user
+
+# laravel 模型监控器的使用（或称 Eloquent 观察者）
+# 1、创建 模型监控器
+php artisan make:observer UserObserver
+# 2、编写 模型监控器的方法 retrieved、creating、created、updating、updated、saving、saved、deleting、deleted、restoring、restored
+public function creating(User $user) {
+    // to do something
+}
+# 3、注册监控器。在服务提供者 AppServiceProvider 中的 boot() 方法里注册监控器（注册观察者）
+public function boot()
+{
+    \App\Models\User::observe(\App\Observers\UserObserver::class);
+}

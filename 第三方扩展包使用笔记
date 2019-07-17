@@ -21,3 +21,7 @@ php artisan horizon
 
 # viacreative/sudo-su：用户切换工具 sudo-su。当需要切换多个用户来测试，频繁地退出和登录用户是一个费时的事情，可以使用 sudo-su 用户切换工具，来提高效率。
 
+# dingo/api：dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。
+
+# overtrue/easy-sms：easy-sms 是安正超写的一个短信发送组件，利用这个组件，我们可以快速的实现短信发送功能。
+

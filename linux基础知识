@@ -5,7 +5,7 @@ groupadd www
 # 添加用户www 并加入 用户组www
 useradd -g www www
 # 将用户 user1 加入到 users组中，
-usermod –g users user1
+usermod -g users user1
 
 # 修改 www用户的密码
 passwd www

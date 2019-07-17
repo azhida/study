@@ -1,0 +1,6 @@
+
+# HTTP 提交数据有两种方式：
+# 1、application/x-www-form-urlencoded (默认值)
+# 2、multipart/form-data
+# form 表单提交文件的时候，需要增加 enctype="multipart/form-data"，才能正确传输文件，因为默认的 enctype 是 enctype="application/x-www-form-urlencoded"。
+# 只有当 POST 配合 multipart/form-data 时才能正确传输文件。

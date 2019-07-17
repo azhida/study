@@ -3,3 +3,6 @@ git config --global core.quotepath false
 
 # 清理项目，命令 git clean 作用是清理项目，-f 是强制清理文件的设置，-d 选项命令连文件夹一并清除。
 git clean -f -d
+
+# 合并分支。将 dev分支 合并到当前分支上。
+git merge dev

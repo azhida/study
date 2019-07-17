@@ -25,3 +25,6 @@ php artisan horizon
 
 # overtrue/easy-sms：easy-sms 是安正超写的一个短信发送组件，利用这个组件，我们可以快速的实现短信发送功能。
 
+# doctrine/dbal：修改数据表字段的属性时可能会用到该组件。
+
+# gregwar/captcha：在 API 的开发中，我们将选择使用 gregwar/captcha 来完成图片验证码的功能。

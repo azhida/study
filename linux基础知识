@@ -1,0 +1,5 @@
+# 添加用户，用户名www
+adduser www
+
+# 修改 www用户的密码
+passwd www

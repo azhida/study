@@ -108,7 +108,7 @@ yum --enablerepo=remi-php73 install php
 php -v
 
 # 安装php7.3系列的附属组件模块
-yum --enablerepo=remi-php73 install php-xml php-soap php-xmlrpc php-mbstring php-json php-gd php-mcrypt php-mysqlnd
+yum --enablerepo=remi-php73 install php-xml php-soap php-xmlrpc php-mbstring php-json php-gd php-mcrypt php-mysqlnd php-process
 
 # 通过下列命令查看还可以安装哪些组件
 yum --enablerepo=remi-php73 search php | grep php73

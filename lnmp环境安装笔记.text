@@ -109,7 +109,7 @@ yum --enablerepo=remi-php73 install php
 php -v
 
 # 安装php7.3系列的附属组件模块
-yum --enablerepo=remi-php73 install php-xml php-soap php-xmlrpc php-mbstring php-json php-gd php-mcrypt php-mysqlnd php-process php-intl
+yum --enablerepo=remi-php73 install php-xml php-soap php-xmlrpc php-mbstring php-json php-gd php-mcrypt php-mysqlnd php-process php-intl php-redis
 
 # 通过下列命令查看还可以安装哪些组件
 yum --enablerepo=remi-php73 search php | grep php73
@@ -197,3 +197,29 @@ yum install npm
 # 安装 yarn （注意要先安装 npm）
 curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
 sudo yum install yarn
+
+
+********************* 安装 redis 开始 *********************************
+
+# 由于CentOS官方yum源里面没有Redis,这里需要安装一个第三方的yum源,这里用了Fedora的epel仓库
+yum install epel-release
+# yum 安装 redis
+yum install redis
+# 启动redis
+systemctl start redis
+# 开机启动redis
+systemctl enable redis
+
+# 修改端口号/密码等配置
+vim /etc/redis.conf
+
+# 注释掉ip绑定，大概在 line:61（bind 127.0.0.1 只允许本地调试，不注释掉的话，远程连接redis的时候会提示：redis.clients.jedis.exceptions.JedisConnectionException: java.net.ConnectException: Connection refused: connect）
+# bind 127.0.0.1
+
+# 关闭保护模式，大概在 line:80（不关闭的话远程这个redis会提示：redis.clients.jedis.exceptions.JedisDataException: DENIED Redis is running in protected mode ）
+protected-mode no
+
+# 重启redis
+systemctl restart redis
+
+********************* 安装 redis 结束 *********************************

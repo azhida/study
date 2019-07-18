@@ -140,12 +140,13 @@ group = www       （默认为apache，以后的PHP项目都用www来运行）
 listen.owner = nobody
 listen.group = nobody
 
-# 保存后重启php-fpm服务
-systemctl restart php-fpm
-
 # 添加 www:www 用户组:用户名（因为我们的 php-fpm 是 用 www:www 来运行的，不添加的话，启动php-fpm会报错）
 groupadd www
 useradd -g www www
+
+# 重启php-fpm服务
+systemctl restart php-fpm
+
 
 # 再次测试info.php页面是否可以打开，访问地址：http://服务器ip/info.php
 

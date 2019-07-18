@@ -149,6 +149,11 @@ useradd -g www www
 # 重启php-fpm服务
 systemctl restart php-fpm
 
+# 如果项目运行中报错：Non-static method Redis::hGet() cannot be called statically，说明 我们安装的redis扩展 和 laravel自带的扩展 predis/predis 发生冲突了
+# 两种解决办法：
+# 1、删除我们安装的 php-redis 扩展
+yum --enablerepo=remi-php73 remove php-redis
+# 2、删除 laravel项目 composer.json 中的 predis/predis
 
 # 再次测试info.php页面是否可以打开，访问地址：http://服务器ip/info.php
 

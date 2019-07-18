@@ -8,6 +8,7 @@ lnmp 安装教程
 ## yum 安装 nginx
 
 yum update
+yum remove nginx
 yum install nginx
 
 # 设定防火墙，允许 http与https封包通过
@@ -181,3 +182,10 @@ grant all privileges on *.* to root@"%" identified by 'mysql root用户的登录
 flush privileges;
 
 ****************************** mariadb 安装 结束 *****************************************
+
+# 安装git
+yum install git
+
+# 全局安装composer（需要PHP执行，所以要先安装php）
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer

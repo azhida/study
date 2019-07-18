@@ -135,8 +135,8 @@ date.timezone = PRC
 # 修改php-fpm 的配置文件  /etc/php-fpm.d/www.conf
 vim /etc/php-fpm.d/www.conf
 # 修改配置项和内容
-user = nginx        （默认为apache）
-group = nginx       （默认为apache）
+user = www        （默认为apache，以后的PHP项目都用www来运行）
+group = www       （默认为apache，以后的PHP项目都用www来运行）
 listen.owner = nobody
 listen.group = nobody
 

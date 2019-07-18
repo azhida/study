@@ -189,3 +189,10 @@ yum install git
 # 全局安装composer（需要PHP执行，所以要先安装php）
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
+
+# 安装 npm
+yum install npm
+
+# 安装 yarn （注意要先安装 npm）
+curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+sudo yum install yarn

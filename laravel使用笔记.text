@@ -6,6 +6,19 @@ If ($res == true) {
     Echo  ‘输入密码错误’;
 }
 
+# 创建model并生成迁移文件和数据工厂
+php artisan make:model Models/User -mf
+
+# 创建数据填充类
+php artisan make:seeder UsersTableSeeder
+# 完成 seeder 类的编写之后，需要使用 dump-autoload 命令重新生成 Composer 的自动加载器：
+composer dump-autoload
+# 运行 Seeders 进行数据填充
+# db:seed 命令将运行 DatabaseSeeder 类，这个类可以用来调用其它 Seed 类
+php artisan db:seed
+# 使用 --class 选项来指定一个特定的 seeder 类
+php artisan db:seed --class=UsersTableSeeder
+
 # 生成迁移文件
 php artisan make:migration create_users_table --create=users
 php artisan make:migration add_votes_to_users_table --table=users
@@ -139,3 +152,8 @@ class UserTransformer extends TransformerAbstract
         ];
     }
 }
+
+# 实现数据读取的接口，大部分时候遵循以下流程：
+# 1、增加路由，
+# 2、创建 transformer，
+# 3、controller 处理数据，使用 transformer 转换后返回。

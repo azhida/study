@@ -37,3 +37,5 @@ php artisan jwt:secret
 
 # liyu/dingo-serializer-switch：可以方便的切换 DataArraySerializer 和 ArraySerializer 两种数据结构，保证响应数据的结构统一。配合 dingo/api 扩展包使用。
 
+# overtrue/laravel-query-logger：laravel-query-logger 是一个查询日志组件，可以输出 sql 查询日志。安装方法如下：
+composer require overtrue/laravel-query-logger --dev

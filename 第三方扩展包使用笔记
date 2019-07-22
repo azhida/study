@@ -39,3 +39,6 @@ php artisan jwt:secret
 
 # overtrue/laravel-query-logger：laravel-query-logger 是一个查询日志组件，可以输出 sql 查询日志。安装方法如下：
 composer require overtrue/laravel-query-logger --dev
+
+# barryvdh/laravel-cors：laravel跨域请求神器。文档：https://github.com/barryvdh/laravel-cors
+

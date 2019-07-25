@@ -42,3 +42,4 @@ composer require overtrue/laravel-query-logger --dev
 
 # barryvdh/laravel-cors：laravel跨域请求神器。文档：https://github.com/barryvdh/laravel-cors
 
+# jpush/jpush：极光推送。

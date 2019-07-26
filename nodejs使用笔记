@@ -1,0 +1,4 @@
+# windows 通过 npm安装yarn
+npm install -g yarn
+# 查看 yarn 版本
+yarn --version

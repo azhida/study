@@ -188,3 +188,7 @@ public function destroy(UserAddress $user_address)
     // 其他逻辑处理
     ...
 }
+
+# Homestead 在 Windows 下软链接报错的解决办法
+# 问题示例：symlink(): Input/output error
+# 解决参考：https://learnku.com/articles/18976

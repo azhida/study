@@ -43,3 +43,6 @@ composer require overtrue/laravel-query-logger --dev
 # barryvdh/laravel-cors：laravel跨域请求神器。文档：https://github.com/barryvdh/laravel-cors
 
 # jpush/jpush：极光推送。
+
+# encore/laravel-admin：一个可以快速构建后台管理的扩展包，它提供了页面组件和表单元素等功能，只需要使用很少的代码就实现功能完善的后台管理功能。
+# 使用手册：http://laravel-admin.org/docs/zh

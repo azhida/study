@@ -160,3 +160,31 @@ class UserTransformer extends TransformerAbstract
 
 # 创建 服务提供商类
 php artisan make:provider JpushServiceProvider
+
+# 使用授权策略类检查用户权限（比如 只允许地址的拥有者来修改和删除地址）：
+# 1、创建授权策略类
+php artisan make:policy UserAddressPolicy
+# 2、编写授权策略，文件 app/Policies/UserAddressPolicy.php，当 own() 方法返回 true 时代表当前登录用户可以修改对应的地址
+public function own(App\Models\User $user, App\Models\UserAddress $address)
+{
+    return $address->user_id == $user->id;
+}
+# 3、在 app/Providers/AuthServiceProvider.php 注册这个授权策略，从 Laravel 5.8 起，我们可以定义一个回调函数来让 Laravel 自己去寻找模型所对应的授权策略文件
+public function boot()
+{
+    $this->registerPolicies();
+
+    // 使用 Gate::guessPolicyNamesUsing 方法来自定义策略文件的寻找逻辑
+    Gate::guessPolicyNamesUsing(function ($class) {
+        // class_basename 是 Laravel 提供的一个辅助函数，可以获取类的简短名称
+        // 例如传入 \App\Models\User 会返回 User
+        return '\\App\\Policies\\'.class_basename($class).'Policy';
+    });
+}
+# 4、在控制器中使用授权策略检查用户权限，控制器 app/Http/Controllers/UserAddressesController.php
+public function destroy(UserAddress $user_address)
+{
+    $this->authorize('own', $user_address);
+    // 其他逻辑处理
+    ...
+}

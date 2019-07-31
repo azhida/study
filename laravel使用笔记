@@ -62,6 +62,15 @@ php artisan notifications:table
 # 生成消息通知控制器
 php artisan make:controller NotificationsController
 
+# 创建监听器。订单支付之后对应的商品销量会对应地增加，所以创建一个更新商品销量的监听器。
+php artisan make:listener UpdateProductSoldCount --event=OrderPaid
+# 别忘了在 EventServiceProvider 的 $listen 中将事件和监听器关联起来。
+protected $listen = [
+    \App\Events\OrderPaid::class => [
+        \App\Listeners\UpdateProductSoldCount::class,
+    ],
+];
+
 # Laravel 的辅助方法 snake_case() 会 字符串格式化为下划线命名。
 
 # 中间件的使用：
@@ -193,5 +202,7 @@ public function destroy(UserAddress $user_address)
 # 问题示例：symlink(): Input/output error
 # 解决参考：https://learnku.com/articles/18976
 
-# 启动队列任务处理器
+# 启动队列任务处理器（如果定义了事件监听器，则需要开启）
 php artisan queue:work
+
+

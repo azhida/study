@@ -52,3 +52,7 @@ php artisan admin:make UsersController --model=App\\Models\\User
 # 新增角色时要注意，权限 要点击选择 Login / User setting / Dashboard / 用户管理，前两个权限是必须的，否则该用户将无法登录后台和修改资料，第三个权限是管理后台的首页，如果没有这个权限，在登录的时候会报错。
 
 # overtrue/laravel-lang：中文语言包。
+
+# yansongda/pay：这个库封装了支付宝和微信支付的接口，通过这个库我们就不需要去关注不同支付平台的接口差异，使用相同的方法、参数来完成支付功能，节省开发时间。
+
+# endroid/qr-code：生成二维码。

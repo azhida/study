@@ -71,6 +71,9 @@ protected $listen = [
     ],
 ];
 
+# 创建一个支付成功的事件
+php artisan make:event OrderPaid
+
 # Laravel 的辅助方法 snake_case() 会 字符串格式化为下划线命名。
 
 # 中间件的使用：
@@ -228,5 +231,7 @@ if ($response instanceof $SymfonyResopnse) {
 }
 return $response;
 
-
+# 进入 laravel tinker 调试环境，可以执行代码。
+# Laravel artisan 的 tinker 是一个 REPL (read-eval-print-loop)，REPL 是指 交互式命令行界面，它可以让你输入一段代码去执行，并把执行结果直接打印到命令行界面里。
+php artisan tinker
 

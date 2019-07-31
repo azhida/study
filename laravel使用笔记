@@ -205,4 +205,28 @@ public function destroy(UserAddress $user_address)
 # 启动队列任务处理器（如果定义了事件监听器，则需要开启）
 php artisan queue:work
 
+# 解决Call to undefined method Symfony\Component\HttpFoundation\Response::header()的方法，原文地址：https://www.jianshu.com/p/70ad53fd6dc6
+$response = $next($request);
+$IlluminateResponse = 'Illuminate\Http\Response';
+$SymfonyResopnse = 'Symfony\Component\HttpFoundation\Response';
+$headers = [
+    'Access-Control-Allow-Origin' => '*',
+    'Access-Control-Allow-Methods' => 'POST, GET, OPTIONS, PUT, PATCH, DELETE',
+    'Access-Control-Allow-Headers' => 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Authorization , Access-Control-Request-Headers, X-CSRF-TOKEN'
+];
+if ($response instanceof $IlluminateResponse) {
+    foreach ($headers as $key => $value) {
+        $response->header($key, $value);
+    }
+    return $response;
+}
+if ($response instanceof $SymfonyResopnse) {
+    foreach ($headers as $key => $value) {
+        $response->headers->set($key, $value);
+    }
+    return $response;
+}
+return $response;
+
+
 

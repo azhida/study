@@ -35,3 +35,16 @@ revoke all privileges on testDB.*  from 'test'@'%';
 
 # 删除账户及权限（drop user 用户名@'%';）
 drop user 'test'@'%';
+
+# 查询语句
+SELECT column_name,column_name
+FROM table_name
+[WHERE Clause]
+[LIMIT N][ OFFSET M]
+
+# 更新语句
+UPDATE table_name SET field1=new-value1, field2=new-value2
+[WHERE Clause]
+
+# 删除语句
+DELETE FROM table_name [WHERE Clause]

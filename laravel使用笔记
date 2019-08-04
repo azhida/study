@@ -235,3 +235,8 @@ return $response;
 # Laravel artisan 的 tinker 是一个 REPL (read-eval-print-loop)，REPL 是指 交互式命令行界面，它可以让你输入一段代码去执行，并把执行结果直接打印到命令行界面里。
 php artisan tinker
 
+# 创建符号链接。命令执行完毕后，就会在项目里多出一个 public/storage。
+# 这个 storage 就是一个软链接，它指向 storage/app/public 目录。public/storage（软连接） → storage/app/public。
+# 然后就可以用地址直接访问public里面的照片了！
+php artisan storage:link
+

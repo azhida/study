@@ -17,3 +17,46 @@ less storage/logs/laravel.log
 
 # vim 编辑状态下，按 shift + g 可以跳转到日志文件的末尾
 
+############################# scp 使用说明 开始 ####################################
+
+# scp 使用参考地址：https://www.cnblogs.com/peida/archive/2013/03/15/2960802.html。
+
+# scp是 secure copy的缩写, scp是linux系统下基于ssh登陆进行安全的远程文件拷贝命令。linux的scp命令可以在linux服务器之间复制文件和目录。
+# scp 是secure copy的简写，用于在Linux下进行远程拷贝文件的命令，和它类似的命令有cp，不过cp只是在本机进行拷贝不能跨服务器，而且 scp传输是加密的。可能会稍微影响一下速度。
+# 当你服务器硬盘变为只读 read only system时，用scp可以帮你把文件移出来。
+# 另外，scp还非常不占资源，不会提高多少系统负荷，在这一点上，rsync就远远不及它了。
+# 虽然 rsync比scp会快一点，但当小文件众多的情况 下，rsync会导致硬盘I/O非常高，而scp基本不影响系统正常使用。
+
+# scp 命令格式
+scp [参数] [原路径] [目标路径]
+
+# 从远处复制到本地 -- 文件：
+# 从192.168.120.204机器上的/opt/soft/的目录中下载nginx-0.5.38.tar.gz 文件到本地/opt/soft/目录中
+scp root@192.168.120.204:/opt/soft/nginx-0.5.38.tar.gz /opt/soft/
+
+# 从远处复制到本地 -- 文件夹：
+# 从192.168.120.204机器上的/opt/soft/中下载mongodb 目录到本地的/opt/soft/目录来
+scp -r root@192.168.120.204:/opt/soft/mongodb /opt/soft/
+
+# 上传本地文件到远程机器指定目录
+# 复制本地opt/soft/目录下的文件nginx-0.5.38.tar.gz 到远程机器192.168.120.204的opt/soft/scptest目录
+scp /opt/soft/nginx-0.5.38.tar.gz root@192.168.120.204:/opt/soft/scptest
+
+# 上传本地目录到远程机器指定目录
+# 上传本地目录 /opt/soft/mongodb到远程机器192.168.120.204上/opt/soft/scptest的目录中去
+scp -r /opt/soft/mongodb root@192.168.120.204:/opt/soft/scptest
+
+############################# scp 使用说明 结束 ####################################
+
+############################# zip、unzip 压缩和解压 使用说明 开始 #############################
+
+# 参考地址：https://blog.csdn.net/lcathm/article/details/11721751
+
+# zip 命令压缩文件或文件夹。
+# 将当前目录下的所有文件和文件夹全部压缩成myfile.zip文件,－r表示递归压缩子目录下所有文件.
+zip -r myfile.zip ./*
+
+# unzip 命令，解压文件或文件夹。
+unzip file.zip
+
+############################# zip、unzip 压缩和解压 使用说明 结束 #############################

@@ -6,3 +6,6 @@ git clean -f -d
 
 # 合并分支。将 dev分支 合并到当前分支上。
 git merge dev
+
+# https永久记住用户名和密码
+git config --global credential.helper store

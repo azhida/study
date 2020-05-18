@@ -12,6 +12,7 @@ yum remove nginx
 yum install nginx
 
 # 设定防火墙，允许 http与https封包通过
+systemctl restart firewalld.service
 firewall-cmd --permanent --zone=public --add-service=http
 firewall-cmd --permanent --zone=public --add-service=https
 firewall-cmd --reload

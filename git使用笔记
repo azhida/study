@@ -9,3 +9,14 @@ git merge dev
 
 # https永久记住用户名和密码
 git config --global credential.helper store
+
+# 查看提交的历史版本
+git log
+# 查看提交的历史版本【单文件】
+git log filename
+# 查看提交的历史版本【单文件】【变动内容】
+git log -p filename
+# 查看提交的历史版本【单版本】【变动内容】
+git show commit_id
+# 查看提交的历史版本【单版本】【变动内容】【单文件】
+git show commit_id filename

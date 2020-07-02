@@ -1,2 +1,5 @@
 # 移动应用上架应用宝市场报错：安装包的API等级（targetSdkVersion）必须等于或高于26
 # 解决办法 参考地址：https://community.apicloud.com/bbs/thread-110959-1-1.html
+
+# 访问ios设备说明：
+# 访问ios相机：需要调用您的相机进行扫描二维码付款或上传图片

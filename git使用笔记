@@ -12,6 +12,10 @@ git config --global credential.helper store
 
 # 查看提交的历史版本
 git log
+# 查看提交的历史版本【列出修改的文件】
+git log --stat
+# 查看提交的历史版本【列出最后3个历史版本】【列出修改的文件】
+git log -3 --stat
 # 查看提交的历史版本【单文件】
 git log filename
 # 查看提交的历史版本【单文件】【变动内容】

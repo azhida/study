@@ -32,3 +32,6 @@ git reset --mixed HEAD^ 或者 git reset --mixed commit_id
 git reset --soft HEAD^ 或者 git reset --soft commit_id
 3、删除工作空间提交的代码，撤销 commit，并且撤销 git add . 操作。注意：就是说即撤回后，本地提交的代码也不保留。就等于恢复到了上一次的 commit 状态。
 git reset --hard HEAD^ 或者 git reset --hard commit_id
+
+# 修改本地最后一个版本的注释
+git commit --amend

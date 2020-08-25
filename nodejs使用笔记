@@ -5,5 +5,5 @@ yarn --version
 
 # 默认情况下，我们在执行npm install -g XXXX下载全局包时，这个包的默认存放路径位C:\Users\用户名\AppData\Roaming\npm\node_modules下，可以通过CMD指令npm root -g查看
 # 修改全局依赖包下载路径
-npm config set prefix "D:\node\node_global"
-npm config set cache "D:\node\node_cache"
+npm config set prefix "D:\nodejs\node_global"
+npm config set cache "D:\nodejs\node_cache"

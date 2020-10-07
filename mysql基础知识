@@ -1,5 +1,7 @@
 # 登录mysql服务器
 mysql -u root -p
+# win系统下使用 git bash 终端登录MySQL服务器【在使用git bash登录mysql时会卡死，加上winpty就好了】
+winpty mysql -uroot -p
 
 # 允许远程访问
 grant all privileges on *.* to root@"%" identified by 'mysql root用户的登录密码' with grant option;

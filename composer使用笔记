@@ -5,3 +5,10 @@ composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
 # 更新composer依赖和自动加载
 composer dump-autoload
+
+# composer 更新到指定版本 1.8.5
+composer self-update -- 1.8.5
+
+
+
+

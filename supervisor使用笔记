@@ -87,3 +87,43 @@ kill ***进程号
 supervisord -c /etc/supervisord.conf
 
 ------------------------------------------- centos7 安装 Supervisor 结束  ----------------------------------------------------------
+
+------------------------------------------- centos6.4 安装 Supervisor 开始  ----------------------------------------------------------
+
+# 参考：https://tsov.net/home/view/1593/ （centos 6.4安装supervisor守护golang进程）。感谢！
+
+# 安装supervisor （基于centos 6.4。）
+## supervisor使用python编写的，可以用easy_install安装。centos上默认有python的运行环境，安装起来就非常简单了。
+sudo yum install python-setuptools
+sudo easy_install supervisor
+
+## 如果没有看到什么报错，那么就安装成功了，可以使用echo_supervisord_conf查看配置详情，而后生成配置文件。
+sudo echo_supervisord_conf > /etc/supervisord.conf
+
+# supervisor配置
+vim /etc/supervisord.conf
+## /etc/supervisord.conf 文件最后面添加如下内容
+
+[program:horizon]
+process_name=%(program_name)s
+command=php /var/www/hsyp-laravel/artisan horizon
+autostart=true
+autorestart=true
+user=www
+redirect_stderr=true
+stdout_logfile=/var/www/hsyp-laravel/horizon.log
+stopwaitsecs=3600
+
+# 启动supervisor
+sudo /usr/bin/supervisord -c /etc/supervisord.conf
+
+# 说明：
+## 如果出现什么问题，可以查看日志进行分析，日志文件路径/tmp/supervisord.log
+## 如果修改了配置文件，可以用kill -HUP重新加载配置文件
+cat /tmp/supervisord.pid | xargs sudo kill -HUP
+## 查看supervisor运行状态
+supervisorctl
+
+
+------------------------------------------- centos6.4 安装 Supervisor 结束  ----------------------------------------------------------
+

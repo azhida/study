@@ -1,0 +1,5 @@
+var ele = document.getElementById('element'); // 获取 dom节点
+
+window.getComputedStyle(ele).width/height  // 获取 ele实时style
+
+ele.getBoundingClientRect() // 获取 ele 位置

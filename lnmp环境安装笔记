@@ -189,6 +189,8 @@ mysql -u root -p
 grant all privileges on *.* to root@"%" identified by 'mysql root用户的登录密码' with grant option;
 flush privileges;
 
+# 如果 阿里云/腾讯云 控制台 已经开启了 3306权限，root用户远程访问权限也给了，还是无法连接，可以尝试重启服务器
+
 ****************************** mariadb 安装 结束 *****************************************
 
 # 安装git

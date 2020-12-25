@@ -117,6 +117,7 @@ yum --enablerepo=remi-php73 search php | grep php73
 
  # 测试php脚本是否可以运行
  # 在nginx的内容存放目录  /usr/share/nginx/html 内建立 info.php文件，通过浏览器访问该文件（访问地址：http://服务器ip/info.php），若能运行说明，则无法运行，则需安装php-fpm
+ vim /usr/share/nginx/html/info.php
  # info.php 文件内容
  <?php
  phpinfo();

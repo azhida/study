@@ -19,3 +19,25 @@
 ```
 创建菜单时，可以指定权限，也可以同时指定角色
 ```
+
+#### since v1.7.16 内置数据导出功能，导出 csv 乱码解决办法：
+
+```
+$grid->export(function ($export) {
+
+    print(chr(0xEF).chr(0xBB).chr(0xBF)); // 添加这一行，可以解决导出的csv文件乱码问题
+
+    $export->filename('Filename.csv');
+
+    $export->except(['column1', 'column2' ...]);
+
+    $export->only(['column3', 'column4' ...]);
+
+    $export->originalValue(['column1', 'column2' ...]);
+
+    $export->column('column_5', function ($value, $original) {
+        return $value;
+    });
+
+});
+```

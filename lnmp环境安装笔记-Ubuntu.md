@@ -24,7 +24,7 @@ vim /etc/nginx/conf.d/default.conf
 server {
     listen 80;
     server_name localhost;
-    access_log /var/log/nginx/default.access.log main;
+    access_log /var/log/nginx/default.access.log;
     error_log /var/log/nginx/default.error.log;
     root /var/www/html;
     index index.php index.html index.htm;
@@ -87,3 +87,8 @@ systemctl stop php7.4-fpm
 sudo netstat -nlp | grep 9000
 ```
 
+##### 安装 Git 和 composer
+```
+apt install git
+apt install composer
+```

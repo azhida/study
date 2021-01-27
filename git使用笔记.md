@@ -42,4 +42,13 @@ git remote #查看远端仓库名
 git remote set-url origin https://gitee.com/xx/xx.git (新地址 -- 更新)
 git remote add origin https://gitee.com/xx/xx.git (新地址 -- 添加)
 
+# 彻底删除某一文件及其提交历史【对于错误提交机密文件有用】
+```
+# 删除包括历史
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch 文件相对路径' --prune-empty --tag-name-filter cat -- --all
+# 同步到远程
+git push origin master --force
+# 注意：如果设置了忽略文件，一定在提交之前就设置好，提交后的同样会被git管理
+```
+
 

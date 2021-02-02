@@ -69,7 +69,7 @@ git remote add origin https://gitee.com/xx/xx.git (新地址 -- 添加)
 ```
 
 
-# 彻底删除某一文件及其提交历史【对于错误提交机密文件有用】
+###### 彻底删除某一文件及其提交历史【对于错误提交机密文件有用】
 ```
 # 删除包括历史
 git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch 文件相对路径' --prune-empty --tag-name-filter cat -- --all

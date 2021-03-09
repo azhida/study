@@ -18,6 +18,18 @@ git merge dev
 ```
 git config --global credential.helper store
 ```
+###### credential.helper store 命令不生效的解决办法
+```
+# 查看 credential.helper=manager 命令是否生效，credential.helper=manager 说明未生效
+git config --list
+
+# 执行命令 去掉 manager 参数【任选其一即可】
+git config --system --unset credential.helper
+git config --global --unset credential.helper
+
+# 执行 git config –global credential.helper store
+git config --global credential.helper store
+```
 ###### 查看提交的历史版本
 ```
 # 查看全部历史版本

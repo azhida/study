@@ -1,5 +1,0 @@
-# 进入本机redis
-redis-cli
-
-# 列出所有key
-keys *

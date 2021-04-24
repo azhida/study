@@ -1,3 +1,8 @@
+###### 初始化项目
+```
+git init
+```
+
 ###### git status 显示中文乱码：
 ```
 git config --global core.quotepath false

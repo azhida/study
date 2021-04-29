@@ -41,3 +41,16 @@ $grid->export(function ($export) {
 
 });
 ```
+
+#### 备份和导入管理后台菜单数据
+```
+# 导出数据，生成文件 database/seeders/AdminTablesSeeder.php 
+# 备份5个数据表：admin_menus、admin_permissions、admin_roles、admin_role_menu、admin_role_permissions
+php artisan admin:export-seed
+
+# 导入数据
+php artisan db:seed --class=AdminTablesSeeder
+
+# 额外：如果管理后台没有超级管理员，则创建一个管理员用户
+php artisan admin:create-user
+```

@@ -46,7 +46,11 @@ $grid->export(function ($export) {
 ```
 # 导出数据，生成文件 database/seeders/AdminTablesSeeder.php 
 # 备份5个数据表：admin_menus、admin_permissions、admin_roles、admin_role_menu、admin_role_permissions
-php artisan admin:export-seed --except-fields=created_at,updated_at
+php artisan admin:export-seed
+# 备份包括管理员在内的所有后台数据
+php artisan admin:export-seed --users
+# 备份除created_at,updated_at外的全部字段
+php artisan admin:export-seed --users --except-fields=created_at,updated_at
 
 # 导入数据
 php artisan db:seed --class=AdminTablesSeeder

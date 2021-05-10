@@ -4,13 +4,13 @@
 ###### nginx部署方法：在 server 里配置
 ```
     location ^~ /pc/ {
-	    alias /var/www/laravel/public/pc/;
+        alias /var/www/laravel/public/pc/;
         index index.html index.htm;
         try_files $uri $uri/ /pc/index.html;
     }
 
     location ^~ /web/ {
-	    alias /var/www/laravel/public/web/;
+        alias /var/www/laravel/public/web/;
         index index.html index.htm;
         try_files $uri $uri/ /web/index.html;
     }

@@ -55,3 +55,23 @@ mysqld --install
 net start mysql
 # Navicat连接MySQL并修其密码，安装完成
 ```
+
+#### 卸载已安装的MySQL
+```
+# 管理员模式下 CMD命令
+# 停止MySQL服务
+net stop mysql
+# 删除MySQL服务
+sc delete mysql
+```
+#### 安装MySQL并指定服务名称为 MySQL8_NDB
+```
+# 安装 MySQL8_NDB
+mysqld --install mysql8_ndb
+# 启动 服务 mysql8_ndb
+net start mysql8_ndb
+# 停止服务
+net stop mysql8_ndb
+```
+
+###### Linux参考 [第一篇：mysqlcluster数据库集群的搭建和配置](https://blog.csdn.net/csolo/article/details/87086086)

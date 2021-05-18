@@ -7,7 +7,11 @@ git init
 ```
 git config --global core.quotepath false
 ```
-
+###### 修改用户名和提交的邮箱
+```
+git config  --global user.name 'test_user_name'；
+git config  --global user.email 'test@test.com';
+```
 
 ###### 清理项目，命令 git clean 作用是清理项目，-f 是强制清理文件的设置，-d 选项命令连文件夹一并清除。
 ```

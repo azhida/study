@@ -20,7 +20,7 @@ class ApiException extends \Exception
         $this->meta = $meta;
     }
 
-    // 方便获取data数据
+    // 方便获取 data数据
     public function getData()
     {
         return $this->data;
@@ -85,5 +85,35 @@ class Handler extends ExceptionHandler
             //
         });
     }
+}
+```
+###### 使用方法 1
+```
+$msg = '错误信息';
+$data = [
+    'data_a' => 'data_a',
+    'data_b' => 'data_b',
+];
+$meta = [
+    'meta_a' => 'meta_a',
+    'meta_b' => 'meta_b',
+];
+throw new ApiException($msg, $data, $meta);
+```
+###### 使用方法 2
+```
+$msg = '错误信息';
+$data = [
+    'data_a' => 'data_a',
+    'data_b' => 'data_b',
+];
+$meta = [
+    'meta_a' => 'meta_a',
+    'meta_b' => 'meta_b',
+];
+try {
+    throw new ApiException($msg, $data, $meta);
+} catch (ApiException $exception) {
+    dd($exception->getMessage(), $exception->getData(), $exception->getMeta());
 }
 ```

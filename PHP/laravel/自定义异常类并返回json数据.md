@@ -15,22 +15,33 @@ class ApiException extends \Exception
     public function __construct(string $message, $data = [], $meta = [], string $code = '1')
     {
         $this->code = $code;
-        $this->message  = $message ?: self::ERROR_MSG;
+        $this->message = __($message ?: self::ERROR_MSG); // 支持多语言
         $this->data = $data;
         $this->meta = $meta;
+    }
+
+    // 方便获取data数据
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    // 方便获取 meta数据
+    public function getMeta()
+    {
+        return $this->meta;
     }
 
     public function render()
     {
         return response()->json([
             'code' => $this->code,
-            'msg' => __($this->message),
-            'meta' => $this->meta,
-            'data' => $this->data,
+            'msg' => $this->getMessage(),
+            'meta' => $this->getMeta(),
+            'data' => $this->getData(),
         ], 200);
     }
 }
-
 ```
 ###### 修改文件 app\Exceptions\Handler.php
 在 $dontReport 数组中，添加刚刚新建的异常类 ApiException::class 即可

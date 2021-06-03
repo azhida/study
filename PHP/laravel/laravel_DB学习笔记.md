@@ -9,3 +9,9 @@ $column = Schema::getColumnListing('table_name');
 # 拼接 字段
 join($column, '","');
 ```
+###### 查询时添加不存在的列并赋值
+```
+SELECT '888' as add_column, id from table_name;
+
+DB::table('table_name')->selectRaw("id, {$value} as add_column")->get();
+```

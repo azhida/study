@@ -12,3 +12,7 @@
 "draw_white_space": "all",
 # 保存
 ```
+###### 怎么打开显示左侧目录
+```
+# 菜单栏 view ——> Side Bar ——> shaw side bar
+```

@@ -15,3 +15,7 @@ SELECT '888' as add_column, id from table_name;
 
 DB::table('table_name')->selectRaw("id, {$value} as add_column")->get();
 ```
+###### increment时实现对两个字段同时加1
+```
+DB::table(test)->increment('num',1,['vote'=>DB::raw('`vote`+1')]);
+```

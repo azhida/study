@@ -19,3 +19,10 @@ export LANG="zh_CN.UTF-8"
 export LC_ALL="zh_CN.UTF-8"
 # 2、添加以后重启 IDEA，重新打开 Terminal 查看中文内容，就成功显示中文啦
 ```
+###### 退出控制台的编辑模式并保存编辑的内容
+```
+# 退出编辑模式
+Ctrl+C
+# 保存内容
+:wq
+```

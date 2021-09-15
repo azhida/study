@@ -3,9 +3,18 @@
 git init
 ```
 
-###### git status 显示中文乱码：
+###### 解决中文乱码：
 ```
+# git status 乱码
 git config --global core.quotepath false
+
+# git commit 乱码
+git config --global i18n.commitencoding utf-8
+
+# git status 乱码
+git config --global i18n.logoutputencoding utf-8
+
+# 注：如果是Linux系统，需要设置环境变量 export LESSCHARSET=utf-8
 ```
 ###### 修改用户名和提交的邮箱
 ```

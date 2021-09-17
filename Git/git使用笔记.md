@@ -127,5 +127,11 @@ git log
 
 # 恢复被删除文件 -- git checkout -f 的作用是将在暂存区的更改文件进行强制撤销
 git checkout -f
+
+# 从远程master分支拉取代码
+git pull origin master
+
+# 将本地代码推送远程master分支
+git push origin master
 ```
 

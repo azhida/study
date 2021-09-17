@@ -108,4 +108,24 @@ git push origin master --force
 # 注意：如果设置了忽略文件，一定在提交之前就设置好，提交后的同样会被git管理
 ```
 
+#### 常用命令
+```shell
+# 初始化
+git init
+
+# 将项目所有文件纳入到 Git 中
+git add -A
+
+# 检查 Git 状态
+git status
+
+# 保留改动并提交 -- 该命令会将暂存区的文件都提交到 Git，-m 选项后面带的参数表示本次提交的简单描述。
+git commit -m "Initial commit"
+
+# 查看历史提交记录，按 q 可退出查看
+git log
+
+# 恢复被删除文件 -- git checkout -f 的作用是将在暂存区的更改文件进行强制撤销
+git checkout -f
+```
 

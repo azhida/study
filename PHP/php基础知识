@@ -1,2 +1,0 @@
-
-# json_encode 保持中文不转义的方法：json_encode('我是中文！', JSON_UNESCAPED_UNICODE)；

@@ -19,7 +19,7 @@ firewall-cmd --reload
 systemctl restart nginx
 systemctl enable nginx
 ```
-测试 nginx安装是否成功：直接访问IP地址，出现 nginx页面，说明安装成功
+- 测试 nginx安装是否成功：直接访问IP地址，出现 nginx页面，说明安装成功
 
 - 配置nginx  
 将 /etc/nginx/nginx.conf 配置文件内的 server模块 全部删除（不做此操作，有可能无法解析php脚本，运行PHP脚本时可能会变成下载文件）  
@@ -27,7 +27,7 @@ systemctl enable nginx
 # 修改nginx的配置文件 
 vim /etc/nginx/nginx.conf
 ```
-- 删除以下代码段  
+- 删除代码段  
 /etc/nginx/nginx.conf
     ```shell
         server {
@@ -52,10 +52,10 @@ vim /etc/nginx/nginx.conf
         }
     ```
 ```shell
-# 添加 新的 server段代码
+# 添加段代码
 vim /etc/nginx/conf.d/default.conf
 ```
-- 代码段如下  
+- 添加代码段  
 /etc/nginx/conf.d/default.conf
     ```shell
     server {
@@ -116,18 +116,18 @@ yum --enablerepo=remi-php73 install php-xml php-soap php-xmlrpc php-mbstring php
 # 通过下列命令查看还可以安装哪些组件
 yum --enablerepo=remi-php73 search php | grep php73
 ```
-- 测试php脚本是否可以运行  
-  - 在nginx的内容存放目录  /usr/share/nginx/html 内建立 phpinfo.php文件  
-    通过浏览器访问该文件（访问地址：http://服务器ip/phpinfo.php）  
-    若能运行说明成功，否则需安装php-fpm
+- 测试运行php脚本  
+```shell
+vim /usr/share/nginx/html/phpinfo.php
+```
+- 
     ```shell
-    vim /usr/share/nginx/html/phpinfo.php
-    ```
-  - phpinfo.php 文件内容
-    ```php
     <?php
     phpinfo();
     ```
+  - 注：在nginx的内容存放目录  /usr/share/nginx/html 内建立 phpinfo.php文件，通过浏览器访问该文件（访问地址：http://服务器ip/phpinfo.php），若能运行说明成功，否则需安装php-fpm  
+  
+
 - 安装php-fpm，并对nginx进行配置，使得nginx可以通过php-fpm来处理php的任务
 ```shell
 # 安装php-fpm并设置为开机启动
@@ -139,26 +139,23 @@ systemctl enable php-fpm
 # 配置PHP运行环境
 vim /etc/php.ini
 ```
-- 修改配置项的内容  
-  /etc/php.ini
+- 
     ```
     cgi.fix_pathinfo = 1
     date.timezone = PRC
     ```
 ```shell
-# 修改php-fpm 的配置文件  /etc/php-fpm.d/www.conf
+# 修改php-fpm 的配置文件
 vim /etc/php-fpm.d/www.conf
 ```
-- 修改配置项和内容  
-/etc/php-fpm.d/www.conf
+- 
     ```shell
     user = www        #（默认为apache，以后的PHP项目都用www来运行）
     group = www       #（默认为apache，以后的PHP项目都用www来运行）
     listen.owner = nobody
     listen.group = nobody
     ```
-- 添加 www:www 用户组:用户名（因为我们的 php-fpm 是 用 www:www 来运行的，不添加的话，启动php-fpm会报错）  
-/etc/php-fpm.d/www.conf
+- 添加 www:www 用户组:用户名（因为我们的 php-fpm 是 用 www:www 来运行的，不添加的话，启动php-fpm会报错）
 ```shell
 groupadd www
 useradd -g www www
@@ -167,7 +164,7 @@ useradd -g www www
 # 重启php-fpm服务
 systemctl restart php-fpm
 ```
-注：如果项目运行中报错：Non-static method Redis::hGet() cannot be called statically，说明 我们安装的redis扩展 和 laravel自带的扩展 predis/predis 发生冲突了
+- 注：如果项目运行中报错：Non-static method Redis::hGet() cannot be called statically，说明 我们安装的redis扩展 和 laravel自带的扩展 predis/predis 发生冲突了
 - redis扩展冲突的两种解决办法：
   - 删除我们安装的 php-redis 扩展
   ```shell
@@ -187,7 +184,7 @@ yum install mariadb mariadb-server
 systemctl start mariadb
 systemctl enable mariadb
 ```
-设置root密码
+- 设置root密码
 ```shell
 mysql_secure_installation
 # Remove anonymous users? [Y/n] Y 删除匿名用户：是
@@ -199,13 +196,13 @@ mysql_secure_installation
 # 登录 MySQL
 mysql -u root -p
 ```
-注：解决 mysql 1130 远程连接失败的问题（要在 阿里云 控制台 开启 3306访问权限，否则也是无法访问）
+- 注：解决 mysql 1130 远程连接失败的问题（要在 阿里云 控制台 开启 3306访问权限，否则也是无法访问）
 ```shell
 # 赋予并刷新MySQL权限
 grant all privileges on *.* to root@"%" identified by 'mysql root用户的登录密码' with grant option;
 flush privileges;
 ```
-注：如果 阿里云/腾讯云 控制台 已经开启了 3306权限，root用户远程访问权限也给了，还是无法连接，可以尝试重启服务器
+- 注：如果 阿里云/腾讯云 控制台 已经开启了 3306权限，root用户远程访问权限也给了，还是无法连接，可以尝试重启服务器
 ```shell
 # 重启 MySQL 服务器 - mariadb
 systemctl start mariadb

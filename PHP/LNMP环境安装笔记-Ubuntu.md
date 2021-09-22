@@ -92,3 +92,8 @@ sudo netstat -nlp | grep 9000
 apt install git
 apt install composer
 ```
+
+
+<br>
+
+#### 返回 [PHP基础知识](./PHP基础知识.md)

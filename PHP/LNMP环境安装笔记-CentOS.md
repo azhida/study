@@ -27,8 +27,7 @@ systemctl enable nginx
 # 修改nginx的配置文件 
 vim /etc/nginx/nginx.conf
 ```
-- 删除代码段  
-/etc/nginx/nginx.conf
+- 
     ```shell
         server {
             listen       80 default_server;
@@ -55,8 +54,7 @@ vim /etc/nginx/nginx.conf
 # 添加段代码
 vim /etc/nginx/conf.d/default.conf
 ```
-- 添加代码段  
-/etc/nginx/conf.d/default.conf
+- 
     ```shell
     server {
         listen 80;

@@ -135,3 +135,8 @@ git pull origin master
 git push origin master
 ```
 
+###### github 开启 页面访问
+- 访问 https://github.com/azhida/study
+- 点击 Settings
+- 选择 Pages
+- 配置相关信息保存即可

@@ -34,7 +34,7 @@ x.innerHTML="Hello JavaScript";    //改变内容
 ```
 
 ###### JavaScript：改变 HTML 图像
-- demo：【<a href="https://azhida.github.io/study/JavaScript/demos/demo-0.html" target="_blank">点亮灯泡</a>】
+- demo：【[点亮灯泡]( https://azhida.github.io/study/JavaScript/demos/demo-0.html )】
 
 
 <br>

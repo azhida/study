@@ -1,5 +1,5 @@
 ## MySQL 安装
-#### 返回 [MySQL基础知识](../MySQL基础知识.md)
+#### 返回 [MySQL基础知识](../MySQL基础知识.md) <br><br>
 
 所有平台的 MySQL 下载地址为： [MySQL 下载]( https://dev.mysql.com/downloads/mysql/ ) 。 挑选你需要的 MySQL Community Server 版本及对应的平台。  
 注意：安装过程我们需要通过开启管理员权限来安装，否则会由于权限不足导致无法安装。

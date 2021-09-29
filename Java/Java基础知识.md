@@ -1,5 +1,6 @@
-# Python 基础知识
-#### [Python简介](./基础知识/Python简介.md)
+## Java基础知识
+
+###### todo
 
 <br>
 

@@ -1,5 +1,6 @@
 # MySQL 基础知识
 #### [MySQL简介](./基础知识/MySQL简介.md)
+#### [MySQL安装](./基础知识/MySQL安装.md)
 
 <br>
 

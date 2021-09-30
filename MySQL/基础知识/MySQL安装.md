@@ -176,9 +176,48 @@ mysql -u root -p
 > Enter password:
 
 若密码存在, 输入密码登录, 不存在则直接按回车登录。登录成功后你将会看到 Welcome to the MySQL monitor... 的提示语。  
-然后命令提示符会一直以 mysq> 加一个闪烁的光标等待命令的输入, 输入 exit 或 quit 退出登录。
+然后命令提示符会一直以 `mysq>` 加一个闪烁的光标等待命令的输入, 输入 `exit` 或 `quit` 退出登录。
 
 
-<br>
+#### 读者笔记
+
+***
+
+
+**MySQL 重置密码**
+
+如果你忘记 MySQL 密码，可以通过修改 my.cnf 文件添加 skip-grant-tables 来重置密码，步骤如下：
+
+- 打开 my.cnf 配置文件，找到 `[mysqld]` 模块，然后在模块下面添加以下参数 `skip-grant-tables` ：
+```shell
+vim /etc/my.cnf
+```
+> [mysqld]  
+> skip-grant-tables # 添加这行
+>
+- 重启 MySQL 服务：
+```
+service mysql restart
+或
+systemctl restart mysql
+```
+- 登录 MySQL，此时不需要密码，直接回车:
+```shell
+mysql -u root -p
+```
+
+- 更改 root 密码 为 123456：
+```
+mysql> use mysql;
+mysql> update user set authentication_string = password("123456") where user='root';
+mysql> alter user 'root'@'localhost' identified by '123456';
+mysql> flush privileges;  # 刷新权限
+```
+
+注意密码字段名 5.7 版本的是 `authentication_string`，之前的为 `password`。  
+修改完后，记得注释掉 my.cnf 中的 `skip-grant-tables` 参数，重启 MySQL 服务，就可以用你设置的密码登录了。
+
+
+***
 
 #### 返回 [MySQL基础知识](../MySQL基础知识.md)

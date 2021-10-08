@@ -4,6 +4,7 @@
 
 #### [MySQL简介](./基础知识/MySQL简介.md)
 #### [MySQL安装](./基础知识/MySQL安装.md)
+#### [MySQL管理](./基础知识/MySQL管理.md)
 
 <br>
 

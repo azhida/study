@@ -183,6 +183,44 @@ mysql -u root -p
 
 ***
 
+**win10 mysql8.0以上 重置密码**
+
+1. 关闭MySQL服务
+   ```
+   net stop mysqld
+   ```
+2. 以管理员身份打开cmd，并执行以下命令，此时窗口会卡住；
+   ```
+   mysqld --console --skip-grant-tables --shared-memory
+   ```
+3. 以管理员身份打开一个新的cmd窗口，连接并进入 MySQL命令行，密码为空；
+   ```
+   mysql -u root -p
+   ```
+4. 清空root用户密码
+   ```
+   use mysql;
+   UPDATE user SET authentication_string="" WHERE user='root';
+   select host, user, authentication_string, plugin from user;
+   FLUSH PRIVILEGES;
+   ```
+5. 退出mysql命令行 `quit;` ，并结束运行mysqld的cmd ` Ctrl+C `
+6. 启动MySQL服务
+   ```
+   net start mysql
+   ```
+7. 登录MySQL，密码为空
+   ```
+   mysql -u root -p
+   ```
+8. 修改密码
+   ```
+   alter user 'root'@'localhost' identified with mysql_native_password by '1234';
+   ```
+
+
+***
+
 
 **MySQL 重置密码**
 

@@ -366,11 +366,13 @@ struct Student
     double grade;
 } ST;
 
-struct Student ST = {{"zhangsan", 0001, 86},
-      {"lisi", 0002, 72.5}, 
-      {"wangwu", 0003, 60}, 
-      {"chenliu", 0004, 23}, 
-      {"cuihua", 0005, 92}};
+struct Student ST = {
+    {"zhangsan", 0001, 86},
+    {"lisi", 0002, 72.5},
+    {"wangwu", 0003, 60},
+    {"chenliu", 0004, 23},
+    {"cuihua", 0005, 92}
+};
 enum ST_INDEX
 {
     zhangsan  = 0,

@@ -28,6 +28,9 @@
   - [C 指针详解](./基础知识/C指针详解.md)
 - [C 函数指针与回调函数](./基础知识/C函数指针与回调函数.md)
   - [C 回调函数详解]( ./基础知识/C回调函数详解.md )
+- [C 字符串]( ./基础知识/C字符串.md )
+  - [C 利用 strlen 和 sizeof 求取字符串长度注意事项]( ./基础知识/利用strlen和sizeof求取字符串长度注意事项.md )
+  - [C++ sizeof 与 strlen的区别]( https://www.runoob.com/note/27755 )
 
 
 

@@ -515,9 +515,11 @@ struct student
     int age;
     float score;
     char addr[30];
-}stu[3] = {{10101,"Li Lin", 'M', 18, 87.5, "103 Beijing Road"},
-{10101,"Li Lin", 'M', 18, 87.5, "103 Beijing Road"},
-{10101,"Li Lin", 'M', 18, 87.5, "103 Beijing Road"}};
+}stu[3] = {
+    {10101,"Li Lin", 'M', 18, 87.5, "103 Beijing Road"},
+    {10101,"Li Lin", 'M', 18, 87.5, "103 Beijing Road"},
+    {10101,"Li Lin", 'M', 18, 87.5, "103 Beijing Road"}
+};
 ```
 定义数组 stu 时，元素个数可以不指定，即写成以下形式：
 ```

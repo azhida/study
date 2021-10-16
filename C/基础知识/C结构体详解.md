@@ -206,13 +206,17 @@ struct student
     int age;
     float score;
     char addr[30];
-}stu[3] = {{10101,"Li Lin", 'M', 18, 87.5, "103 Beijing Road"},
-            {10101,"Li Lin", 'M', 18, 87.5, "103 Beijing Road"},
-            {10101,"Li Lin", 'M', 18, 87.5, "103 Beijing Road"}};
+}stu[3] = {
+  {10101,"Li Lin", 'M', 18, 87.5, "103 Beijing Road"},
+  {10101,"Li Lin", 'M', 18, 87.5, "103 Beijing Road"},
+  {10101,"Li Lin", 'M', 18, 87.5, "103 Beijing Road"}
+};
 ```
 定义数组 stu 时，元素个数可以不指定，即写成以下形式：
 ```
-stu[] = {{...},{...},{...}};
+stu[] = {
+  {...},{...},{...}
+};
 ```
 编译时，系统会根据给出初值的结构体常量的个数来确定数组元素的个数。  
 当然，数组的初始化也可以用以下形式：  
@@ -222,7 +226,9 @@ struct student
     int num;
     ...
 };
-struct student stu[] = {{...},{...},{...}};
+struct student stu[] = {
+  {...},{...},{...}
+};
 ```
 即先声明结构体类型，然后定义数组为该结构体类型，在定义数组时初始化。  
 从以上可以看到，结构体数组初始化的一般形式是在定义数组的后面加上初始值。
@@ -240,7 +246,9 @@ struct person
     char name[20];
     int count;
  
-}leader[3] = {{"Li", 0}, {"Zhang", 0}, {"Fun", 0}};
+}leader[3] = {
+  {"Li", 0}, {"Zhang", 0}, {"Fun", 0}
+};
 
 void main()
 {

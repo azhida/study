@@ -140,6 +140,9 @@ git log
 # 恢复被删除文件 -- git checkout -f 的作用是将在暂存区的更改文件进行强制撤销
 git checkout -f
 
+# 基于当前所在分支新建一个赤裸裸的 new_branch分支，没有任何的提交历史，但是当前分支的内容一一俱全。
+git checkout --orphan  new_branch
+
 # 从远程master分支拉取代码
 git pull origin master
 

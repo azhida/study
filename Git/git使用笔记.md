@@ -108,6 +108,18 @@ git push origin master --force
 # 注意：如果设置了忽略文件，一定在提交之前就设置好，提交后的同样会被git管理
 ```
 
+###### 删除 dev 分支 【任何时候，都要慎用】
+```
+# 先切换到master分支【不要在dev分支下，否则无法删除】
+git checkout master
+
+# 删除本地 dev分支
+git branch -D dev
+
+# 删除远程 dev分支【一旦执行，就找不回来了】
+git push origin --delete dev
+```
+
 #### 常用命令
 ```shell
 # 初始化

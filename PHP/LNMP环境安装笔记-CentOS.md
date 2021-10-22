@@ -1,8 +1,8 @@
-## LNMP 安装教程 CentOS
+# LNMP 安装教程 CentOS
 安装环境： centos7.6 + nginx + PHP7.3.* + mysql5.5
 
 
-###### 安装 nginx
+## 安装 nginx
 ```shell
 # yum 安装 nginx
 yum update
@@ -94,7 +94,7 @@ systemctl restart nginx
 ```
 
 
-###### yum 安装 php7.3.*
+## yum 安装 php7.3.*
 ```shell
 # 采用 Remi和EPEL仓库 内的7.3.1的安装资源
 # 安装EPEL
@@ -174,7 +174,7 @@ systemctl restart php-fpm
 - 再次测试info.php页面是否可以打开，访问地址：http://服务器ip/phpinfo.php
 
 
-###### 安装 MySQL - Centos7 快速安装 MariaDB5.5
+## 安装 MySQL - Centos7 快速安装 MariaDB5.5
 ```shell
 # 安装
 yum install mariadb mariadb-server
@@ -208,29 +208,29 @@ systemctl start mariadb
 ```
 
 
-###### 安装git
+## 安装git
 ```shell
 yum install git
 ```
-###### 全局安装composer（需要PHP执行，所以要先安装php）
+## 全局安装composer（需要PHP执行，所以要先安装php）
 ```shell
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 ```
 
 
-###### 安装 npm
+## 安装 npm
 ```shell
 yum install npm
 ```
-###### 安装 yarn （注意要先安装 npm）
+## 安装 yarn （注意要先安装 npm）
 ```shell
 curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
 sudo yum install yarn
 ```
 
 
-###### 安装 Redis
+## 安装 Redis
 ```shell
 # 由于CentOS官方yum源里面没有Redis,这里需要安装一个第三方的yum源,这里用了Fedora的epel仓库
 yum install epel-release

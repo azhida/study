@@ -201,6 +201,14 @@ whereis php
 #链接php文件
 ln -s /usr/bin/php74 /usr/bin/php
 ```
+修改配置文件 /etc/opt/remi/php74/php-fpm.d/www.conf
+```
+# user = apache
+# group = apache
+user = www
+group = www
+listen = 127.0.0.1:9000
+```
 
 
 ## 安装 MySQL - Centos7 快速安装 MariaDB5.5

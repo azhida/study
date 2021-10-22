@@ -150,6 +150,7 @@ vim /etc/php-fpm.d/www.conf
     ```shell
     user = www        #（默认为apache，以后的PHP项目都用www来运行）
     group = www       #（默认为apache，以后的PHP项目都用www来运行）
+    listen = 127.0.0.1:9000  # 监听 9000端口，与 nginx配置文件 /etc/nginx/conf.d/default.conf 的 fastcgi_pass 127.0.0.1:9000; 保持一致
     listen.owner = nobody
     listen.group = nobody
     ```

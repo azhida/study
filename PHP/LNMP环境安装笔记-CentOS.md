@@ -174,6 +174,35 @@ systemctl restart php-fpm
 - 再次测试info.php页面是否可以打开，访问地址：http://服务器ip/phpinfo.php
 
 
+## yum 安装 php7.4.*
+```
+# 采用 Remi和EPEL仓库内的安装资源
+# 安装EPEL
+yum install epel-release
+# 安装remi
+rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-8.rpm
+
+# 安装php7.4
+yum --enablerepo=remi install php74-php
+
+# 安装所需要php扩展模块，注：扩展安装格式php74-php-扩展模块名，缺什么扩展只要按照格式安装相应模块即可
+yum --enablerepo=remi install php74-php php74-php-gd php74-php-xml php74-php-sockets php74-php-session php74-php-snmp php74-php-mysql
+
+#运行并查看版本
+php74 -v
+
+#重启命令php-fpm
+systemctl restart php74-php-fpm
+#添加自动启动
+systemctl enable php74-php-fpm
+
+#查看php7.4的安装路径
+whereis php
+#链接php文件
+ln -s /usr/bin/php74 /usr/bin/php
+```
+
+
 ## 安装 MySQL - Centos7 快速安装 MariaDB5.5
 ```shell
 # 安装

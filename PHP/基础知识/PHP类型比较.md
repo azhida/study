@@ -106,9 +106,7 @@ false === null: bool(false)
 | array | 任何其他类型 | array总是更大 |
 
 ![](./images/PHP类型比较/比较多种类型.png)  
-![](./images/PHP类型比较/使用PHP函数对变量$x进行比较.png)  
-![](./images/PHP类型比较/松散比较.png)  
-![](./images/PHP类型比较/严格比较.png)  
+![](./images/PHP类型比较/使用PHP函数对变量$x进行比较.png)
 
 
 

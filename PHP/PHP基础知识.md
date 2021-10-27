@@ -23,6 +23,7 @@
 - [PHP While 循环](./基础知识/PHP的While循环.md)
 - [PHP For 循环](./基础知识/PHP的For循环.md)
 - [PHP 函数](./基础知识/PHP函数.md)
+- [PHP 魔术常量](./基础知识/PHP魔术常量.md)
 
 
 ***

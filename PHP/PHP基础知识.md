@@ -21,6 +21,7 @@
 - [PHP 数组排序](./基础知识/PHP数组排序.md)
 - [PHP 超级全局变量](./基础知识/PHP超级全局变量.md)
 - [PHP While 循环](./基础知识/PHP的While循环.md)
+- [PHP For 循环](./基础知识/PHP的For循环.md)
 
 
 ***

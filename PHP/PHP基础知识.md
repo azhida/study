@@ -19,6 +19,7 @@
 - [PHP Switch 语句](./基础知识/PHP的Switch语句.md)
 - [PHP 数组](./基础知识/PHP数组.md)
 - [PHP 数组排序](./基础知识/PHP数组排序.md)
+- [PHP 超级全局变量](./基础知识/PHP超级全局变量.md)
 
 
 ***

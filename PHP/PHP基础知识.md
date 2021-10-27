@@ -13,6 +13,7 @@
 - [PHP EOF(heredoc) 使用说明](./基础知识/PHP的EOF(heredoc)使用说明.md)
 - [PHP 数据类型](./基础知识/PHP数据类型.md)
 - [PHP 类型比较](./基础知识/PHP类型比较.md)
+- [PHP 常量](./基础知识/PHP常量.md)
 
 
 ***

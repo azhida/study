@@ -61,11 +61,11 @@ $$
 有时候要用 `\left.` 或 `\right.` 进行匹配而不显示本身。
 
 ```
-$$ \left. \frac{{\rm d}u}{{\rm d}x} \right| _{x=0} $$
+$$ \left. \frac{ {\rm d}u }{ {\rm d}x } \right| _{x=0} $$
 ```
 
 $$
-\left. \frac{{\rm d}u}{{\rm d}x} \right| _{x=0}
+\left. \frac{ {\rm d}u }{ {\rm d}x } \right| _{x=0}
 $$
 
 ### 输入分数

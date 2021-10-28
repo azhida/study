@@ -292,7 +292,7 @@ $ \sum_{i=1}^n \frac{1}{i^2} \quad and \quad \prod_{i=1}^n \frac{1}{i^2} \quad a
 - 其它可用符号：
 
 |输入|显示|输入|显示|
-|:--:|:--:|:--:|:--:|
+|:---:|:---:|:---:|:---:|
 |\uparrow|![\uparrow](https://math.jianshu.com/math?formula=%5Cuparrow)|\Uparrow|![\Uparrow](https://math.jianshu.com/math?formula=%5CUparrow)|
 |\downarrow|![\downarrow](https://math.jianshu.com/math?formula=%5Cdownarrow)|\Downarrow|![\Downarrow](https://math.jianshu.com/math?formula=%5CDownarrow)|
 |\leftarrow|![\leftarrow](https://math.jianshu.com/math?formula=%5Cleftarrow)|\Leftarrow|![\Leftarrow](https://math.jianshu.com/math?formula=%5CLeftarrow)|
@@ -308,7 +308,7 @@ $ \sum_{i=1}^n \frac{1}{i^2} \quad and \quad \prod_{i=1}^n \frac{1}{i^2} \quad a
 示例中 **全部大写** 的字体仅大写可用。
 
 |输入|说明|显示|输入|说明|显示|
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|:---:|:---:|:---:|:---:|:---:|:---:|
 |\rm|罗马体|![\rm{Sample}](https://math.jianshu.com/math?formula=%5Crm%7BSample%7D)|\cal|花体|![\cal{SAMPLE}](https://math.jianshu.com/math?formula=%5Ccal%7BSAMPLE%7D)|
 |\it|意大利体|![\it{Sample}](https://math.jianshu.com/math?formula=%5Cit%7BSample%7D)|\Bbb|黑板粗体|![\Bbb{SAMPLE}](https://math.jianshu.com/math?formula=%5CBbb%7BSAMPLE%7D)|
 |\bf|粗体|![\bf{Sample}](https://math.jianshu.com/math?formula=%5Cbf%7BSample%7D)|\mit|数学斜体|![\mit{SAMPLE}](https://math.jianshu.com/math?formula=%5Cmit%7BSAMPLE%7D)|

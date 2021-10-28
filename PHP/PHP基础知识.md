@@ -25,7 +25,7 @@
 - [PHP 函数](./基础知识/PHP函数.md)
 - [PHP 魔术常量](./基础知识/PHP魔术常量.md)
 - [PHP 命名空间](./基础知识/PHP命名空间.md)
-  - [PHP 命名空间(Namespace)的使用详解](./基础知识/PHP命名空间(Namespace)的使用详解.md)
+  - [PHP 命名空间(Namespace)的使用详解](./基础知识/PHP命名空间的使用详解.md)
 
 
 ***

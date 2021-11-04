@@ -106,7 +106,7 @@ Unix 或 Windows 中路径变量为 PATH（UNIX 区分大小写，Windows 不区
   
   按下 Enter。
 
-**注意: ** /usr/local/bin/python 是 Python 的安装目录。
+**注意:** /usr/local/bin/python 是 Python 的安装目录。
 
 ### 在 Windows 设置环境变量
 

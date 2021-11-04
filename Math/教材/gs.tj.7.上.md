@@ -173,7 +173,10 @@ $$
 例9 函数
 
 $$
-y=f(x) = \begin{cases} 2 \sqrt[]{x}, 0 \leq x \leq 1 \\ 1+x , x > 1 \end{cases}
+y=f(x) = \begin{cases}
+2 \sqrt[]{x}, & 0 \leq x \leq 1 \\
+1+x , & x > 1
+\end{cases}
 $$
 
 是一个分段函数。它的定义域 $D = [0, +\infty)$ 。当 $x \in [0,1]$ 时，对应的函数值 $f(x) = 2 \sqrt[]{x}$ ；当 $x \in (1, +\infty)$ 时，对应的函数值 $f(x) = 1+x$ 。例如，$\frac{1}{2} \in [0,1]$ ，所以 $ f \left(\frac{1}{2} \right) = 2 \sqrt[]{\frac{1}{2}} = \sqrt[]{2}； 1 \in [0,1]$，所以 $f(1)=2 \sqrt[]{1} = 2; 3 \in (1, +\infty)$ ，所以 $f(3) = 1+3=4$ 。这函数的图形如图 1-6 所示。

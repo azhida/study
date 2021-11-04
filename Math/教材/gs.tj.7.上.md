@@ -150,7 +150,10 @@ $$
 例7 函数
 
 $$
-y = sgn \, x = \begin{cases} -1 , x < 0 \\ 0, x = 0 \\ 1, x > 0 \end{cases}
+y = sgn \, x = \begin{cases}
+ -1 , & x < 0 \\ 
+0, & x = 0 \\ 
+1, & x > 0 \end{cases}
 $$
 
 称为符号函数，它的定义域 $D=(- \infty, +\infty)$ ，值域 $ R_f = \lbrace -1, 0, 1 \rbrace $ ，它的图形如图 1-4 所示。对于任何实数 $x$ ，下列关系成立：
@@ -190,7 +193,9 @@ $$
 用几个式子来表示一个（不是几个！）函数，不仅与函数定义并无矛盾，而且有现实意义。在自然科学和工程技术中，经常会遇到分段函数的情形。例如在等温过程中，气体压强 $p$ 与 体积 $V$ 的函数关系，当 $V$ 不太小时依从玻意耳（Boyle）定律；当 $V$ 相当小时，函数关系就要用范德瓦尔斯（van der Waals）方程来表示，即
 
 $$
-p = \begin{cases} \frac{\gamma}{V- \beta} - \frac{a}{V^2} , \beta < V < V_0 , \\ \frac{k}{V}, V \geq V_0, \end{cases}
+p = \begin{cases} 
+\frac{\gamma}{V- \beta} - \frac{a}{V^2} , & \beta < V < V_0 , \\
+\frac{k}{V}, & V \geq V_0, \end{cases}
 $$
 
 其中 $k, a, \beta, \gamma $ 都是常量。

@@ -174,7 +174,8 @@ $$
 
 $$
 y=f(x) = \begin{cases}
-2 \sqrt[]{x}, & 0 \leq x \leq 1 \\
+2 \sqrt[]{x}, & 0 \leq x \leq 1
+\\
 1+x , & x > 1
 \end{cases}
 $$

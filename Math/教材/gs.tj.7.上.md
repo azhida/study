@@ -130,9 +130,33 @@ $$
 y=2
 $$
 
-的定义域 $D=(- \infty, \infty)$ ，值域 $ W = \lbrace 2 \rbrace$，它的图形是一条平行于 $x$ 轴的直线，如 图 1-2 所示。
+的定义域 $D=(- \infty, +\infty)$ ，值域 $ W = \lbrace 2 \rbrace$，它的图形是一条平行于 $x$ 轴的直线，如 图 1-2 所示。
 
 ![](./images/1-2.png)
+
+例6 函数
+
+$$
+y=|x| = \begin{cases} -x, x < 0 \\ x, x \geq 0 \end{cases}
+$$
+
+的定义域 $D=(- \infty, +\infty)$ ，值域 $R_f = [0, +\infty)$ ，它的图形如图 1-3 所示。这函数称为绝对值函数。
+
+![](./images/1-3.png)
+
+例7 函数
+
+$$
+y = sgn \, x = \begin{cases} -1 , x < 0 \\ 0, x = 0 \\ 1, x > 0 \end{cases}
+$$
+
+称为符号函数，它的定义域 $D=(- \infty, +\infty)$ ，值域 $ R_f = \lbrace -1, 0, 1 \rbrace $ ，它的图形如图 1-4 所示。对于任何实数 $x$ ，下列关系成立：
+
+$$
+x = sgn \, x \cdot |x| .
+$$
+
+![](./images/1-4.png)
 
 
 

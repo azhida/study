@@ -2,7 +2,7 @@
 
 参考： [Markdown 数学公式语法](https://www.jianshu.com/p/4460692eece4#14%E5%A4%A7%E6%8B%AC%E5%8F%B7%E5%92%8C%E8%A1%8C%E6%A0%87%E7%9A%84%E4%BD%BF%E7%94%A8) 和 [Cmd Markdown 公式指导手册](https://www.zybuluo.com/codeep/note/163962) 等处所做笔记。感谢大神。
 
-> 注意：github需要安装插件 `GitHub Math Display` 才能正常显示数学公式
+> 注意：github需要安装插件 `GitHub Math Display` 才能正常显示数学公式  
 > `GitHub Math Display`插件地址：[https://chrome.google.com/webstore/detail/github-math-display/cgolaobglebjonjiblcjagnpmdmlgmda/related](https://chrome.google.com/webstore/detail/github-math-display/cgolaobglebjonjiblcjagnpmdmlgmda/related)
 
 # 公式使用

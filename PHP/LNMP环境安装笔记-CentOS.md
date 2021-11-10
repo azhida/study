@@ -200,7 +200,7 @@ rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-8.rpm
 yum --enablerepo=remi install php74-php
 
 # 安装所需要php扩展模块，注：扩展安装格式php74-php-扩展模块名，缺什么扩展只要按照格式安装相应模块即可
-yum --enablerepo=remi install php74-php php74-php-gd php74-php-xml php74-php-sockets php74-php-session php74-php-snmp php74-php-mysql
+yum --enablerepo=remi install php74-php php74-php-fpm php74-php-mbstring php74-php-gd php74-php-xml php74-php-sockets php74-php-session php74-php-snmp php74-php-mysql
 
 #运行并查看版本
 php74 -v
@@ -246,6 +246,10 @@ rpm -qa | grep php
 ```
 # 卸载对应安装包：yum remove 安装包
 yum remove php-common-7.3.25-1.el7.remi.x86_64
+```
+## 卸载 php7.4
+```
+yum remove php74-php*
 ```
 
 ## 安装 MySQL - Centos7 快速安装 MariaDB5.5

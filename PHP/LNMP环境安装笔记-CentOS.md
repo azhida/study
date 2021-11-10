@@ -205,10 +205,14 @@ yum --enablerepo=remi install php74-php php74-php-gd php74-php-xml php74-php-soc
 #运行并查看版本
 php74 -v
 
-#重启命令php-fpm
+# 操作 php-fpm 命令
+systemctl start php74-php-fpm
 systemctl restart php74-php-fpm
-#添加自动启动
+systemctl stop php74-php-fpm
+# 添加自动启动
 systemctl enable php74-php-fpm
+# 查看 php-fpm 运行状态
+systemctl status php74-php-fpm
 
 #查看php7.4的安装路径
 whereis php
@@ -216,8 +220,10 @@ whereis php
 ln -s /usr/bin/php74 /usr/bin/php
 ```
 
-修改配置文件 /etc/opt/remi/php74/php-fpm.d/www.conf
-
+修改配置文件 
+```
+vim /etc/opt/remi/php74/php-fpm.d/www.conf
+```
 ```
 # user = apache
 # group = apache

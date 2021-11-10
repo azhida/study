@@ -192,7 +192,8 @@ systemctl restart php-fpm
 # 采用 Remi和EPEL仓库内的安装资源
 # 安装EPEL
 yum install epel-release
-# 安装remi
+# 安装remi (下面 remi-release-7.rpm 或 remi-release-8.rpm 任选一个)
+rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
 rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-8.rpm
 
 # 安装php7.4

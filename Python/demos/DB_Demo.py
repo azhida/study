@@ -2,12 +2,15 @@ import pandas as pd
 import pymysql
 import time
 import sys
+import os
 
 # 先安装扩展库 pandas pymysql
 # pip install pandas pymysql
+
 # 调用示例：
-# python DB_Demo.py MySQL主机地址 用户名 用户密码 数据库名称 数据表名称 csv文件绝对路径
-# python DB_Demo.py 127.0.0.1 root root db_test table_test csv_file_path
+# python DB_Demo.py MySQL主机地址 用户名 用户密码 数据库名称 数据表名称 动作名称 csv文件绝对路径
+# python DB_Demo.py 127.0.0.1 root root db_test table_test action_name csv_file_path
+
 
 class DB:
 
@@ -32,7 +35,11 @@ class DB:
         self.cur.execute('set names utf8')
         self.cur.execute('set character_set_connection=utf8;')
 
-    def csvToDb(self):
+    def __del__(self):
+        db.cur.close()
+        db.con.close()
+
+    def csv_to_mysql(self):
 
         try:
             print(self.table_name, '执行开始')
@@ -93,6 +100,48 @@ class DB:
         except Exception as e:
             exit(e)
 
+    def mysql_to_csv(self):
+
+        try:
+
+            print(self.table_name, '执行开始')
+            start_time_1 = time.time()
+
+            # print(os.getcwd()) # 获取当前工作目录路径
+            # print(os.path.abspath('.')) # 获取当前工作目录路径
+
+            # 当前文件所在的目录
+            current_file_dir = os.path.dirname(__file__)
+            print('current_file_dir', current_file_dir)
+
+            # 年月日
+            datetime_str = time.strftime("%Y%m%d%H%M%S", time.localtime())
+            print(datetime_str)
+
+            # 文件保存路径[动态生成绝对路径]
+            save_path = os.path.join(current_file_dir, 'csvs/' + datetime_str)
+            print('save_path', save_path)
+
+            # 判断文件夹是否存在，不存在则创建文件夹
+            if not os.path.exists(save_path):
+                os.makedirs(save_path)
+
+            sql = 'select * from %s' % self.table_name
+            print('sql', sql)
+
+            # 参数encoding="utf_8_sig"编码后，可以防止写入csv的中文出现乱码
+            df = pd.read_sql(sql, self.con)
+            print('df.head(2)', df.head(2))
+
+            df.to_csv(save_path + '/%s.csv' % self.table_name, index=None, encoding="utf_8_sig")
+
+            end_time_1 = time.time()
+            used_time_1 = end_time_1 - start_time_1
+            print(self.table_name, '执行结束 used_time_1 = ', used_time_1)
+
+        except Exception as e:
+            exit(e)
+
 
 # 接收命令行参数
 print(f'命令行参数：{sys.argv}')
@@ -101,17 +150,21 @@ user = sys.argv[2]
 password = sys.argv[3]
 db_name = sys.argv[4]
 table_name = sys.argv[5]
-file_path = sys.argv[6]
+action_name = sys.argv[6]  # 动作名称： csv_to_mysql || mysql_to_csv
+file_path = sys.argv[7]
 
 # host = input('MySQL host： ')
 # user = input('MySQL user：')
 # password = input('MySQL password：')
 # db_name = input('MySQL db_name：')
 # table_name = input('MySQL table_name：')
-# file_path = input('MySQL file_path：')
+# action_name = input('action_name：')
+# file_path = input('file_path：')
 
 db = DB(host, user, password, db_name, table_name, file_path)
-db.csvToDb()
+if action_name == 'csv_to_mysql':
+    db.csv_to_mysql()
+else:
+    db.mysql_to_csv()
 
-db.cur.close()
-db.con.close()
+print('操作结束')

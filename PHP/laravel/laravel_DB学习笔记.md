@@ -19,3 +19,10 @@ DB::table('table_name')->selectRaw("id, {$value} as add_column")->get();
 ```
 DB::table(test)->increment('num',1,['vote'=>DB::raw('`vote`+1')]);
 ```
+###### 获取所有表信息
+```
+# 包含表结构信息
+$tables = \DB::connection()->getDoctrineSchemaManager()->listTables();
+# 只有表名称
+$tables = DB::connection()->getDoctrineSchemaManager()->listTableNames();
+```

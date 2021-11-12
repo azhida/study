@@ -3,6 +3,7 @@
 import time
 import logging
 import inspect
+import os
 
 
 def datetime():
@@ -12,13 +13,15 @@ def datetime():
 
 # 自定义日志
 def log(message, **params):
-    log_file_name = './logs/demo.log'
+    log_file_name = 'demo.log'
     if 'log_file_name' in params:
         log_file_name = params['log_file_name']
 
     # 日志文件名： demo-2020-01-01.log
     rq = time.strftime('%Y-%m-%d', time.localtime(time.time()))
-    log_file_name = log_file_name.replace('.log', f'-{rq}.log')
+    log_file_name = log_file_name.replace('.log', '')
+    current_file_dir = os.path.dirname(__file__)
+    log_file_name = current_file_dir + f'/logs/{log_file_name}-{rq}.log'
 
     logger = logging.getLogger(__name__)
     handler = logging.FileHandler(log_file_name)

@@ -45,7 +45,7 @@ class DB:
         self.cur.close()
         self.con.close()
 
-    def log(self, message, log_file_name='./logs/db.log'):
+    def log(self, message, log_file_name='db.log'):
         # 获取调用者的方法名
         curframe = inspect.currentframe()
         calframe = inspect.getouterframes(curframe, 2)
@@ -162,8 +162,8 @@ class DB:
 
 if __name__ == '__main__':
     # 接收命令行参数
-    tool.log('', log_file_name='./logs/db.log')
-    tool.log(f'命令行参数：{sys.argv}', log_file_name='./logs/db.log')
+    tool.log('', log_file_name='db.log')
+    tool.log(f'命令行参数：{sys.argv}', log_file_name='db.log')
     host = sys.argv[1]
     user = sys.argv[2]
     password = sys.argv[3]

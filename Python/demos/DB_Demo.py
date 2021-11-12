@@ -5,6 +5,7 @@ import sys
 import os
 import logging
 import inspect
+import tool
 
 # 先安装扩展库 pandas pymysql
 # pip install pandas pymysql
@@ -14,7 +15,6 @@ import inspect
 # python DB_Demo.py 127.0.0.1 root root db_test table_test action_name csv_file_path
 
 # 使用日志模块要确保存在 logs 目录，否则报错
-logging.basicConfig(filename='./logs/db.log')
 
 
 class DB:
@@ -41,36 +41,21 @@ class DB:
         self.cur.execute('set character_set_connection=utf8;')
 
     def __del__(self):
-        db.cur.close()
-        db.con.close()
+        self.cur.close()
+        self.con.close()
 
     def log(self, message, log_file_name='./logs/db.log'):
         # 获取调用者的方法名
         curframe = inspect.currentframe()
         calframe = inspect.getouterframes(curframe, 2)
         caller_name = calframe[1][3]
-        logging.basicConfig(filename=log_file_name)
-        logging.log(logging.ERROR, f'{self.datetime()} , {__class__.__name__}::{caller_name}() => {message}')
-
-    def datetime(self):
-        # 时间日期格式 2000-01-01 00:00:00
-        return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-
-    # 返回 调用者的方法名
-    def get_function_name(self):
-        curframe = inspect.currentframe()
-        calframe = inspect.getouterframes(curframe, 2)
-        caller_name = calframe[1][3]
-        # print('caller name:', caller_name)
-        return caller_name
+        tool.log(message, log_file_name=log_file_name, class_name=__class__.__name__, caller_name=caller_name)
 
     def csv_to_mysql(self):
 
         try:
             start_time_1 = time.time()
-
             self.log(f'{self.table_name} 执行开始 count : 0')
-
             chunksize = 1000
             count = 1
             for df in pd.read_csv(self.file_path, chunksize=chunksize):
@@ -123,7 +108,6 @@ class DB:
 
             end_time_1 = time.time()
             used_time_1 = end_time_1 - start_time_1
-            print(self.table_name, '执行结束 used_time_1 = ', used_time_1)
             self.log(f'{self.table_name} 执行结束，used_time_1 = {used_time_1}')
 
         except Exception as e:
@@ -175,29 +159,30 @@ class DB:
             exit(e)
 
 
-# 接收命令行参数
-logging.log(logging.ERROR, f'\r命令行参数：{sys.argv}')
+if __name__ == '__main__':
+    # 接收命令行参数
+    tool.log('', log_file_name='./logs/db.log')
+    tool.log(f'命令行参数：{sys.argv}', log_file_name='./logs/db.log')
+    host = sys.argv[1]
+    user = sys.argv[2]
+    password = sys.argv[3]
+    db_name = sys.argv[4]
+    table_name = sys.argv[5]
+    action_name = sys.argv[6]  # 动作名称： csv_to_mysql || mysql_to_csv
+    file_path = sys.argv[7]
 
-host = sys.argv[1]
-user = sys.argv[2]
-password = sys.argv[3]
-db_name = sys.argv[4]
-table_name = sys.argv[5]
-action_name = sys.argv[6]  # 动作名称： csv_to_mysql || mysql_to_csv
-file_path = sys.argv[7]
+    # host = input('MySQL host： ')
+    # user = input('MySQL user：')
+    # password = input('MySQL password：')
+    # db_name = input('MySQL db_name：')
+    # table_name = input('MySQL table_name：')
+    # action_name = input('action_name：')
+    # file_path = input('file_path：')
 
-# host = input('MySQL host： ')
-# user = input('MySQL user：')
-# password = input('MySQL password：')
-# db_name = input('MySQL db_name：')
-# table_name = input('MySQL table_name：')
-# action_name = input('action_name：')
-# file_path = input('file_path：')
+    db = DB(host, user, password, db_name, table_name, file_path)
+    if action_name == 'csv_to_mysql':
+        db.csv_to_mysql()
+    else:
+        db.mysql_to_csv()
 
-db = DB(host, user, password, db_name, table_name, file_path)
-if action_name == 'csv_to_mysql':
-    db.csv_to_mysql()
-else:
-    db.mysql_to_csv()
-
-print('操作结束')
+    print('操作结束')

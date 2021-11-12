@@ -1,9 +1,10 @@
+# -*- coding: utf-8 -*-
+
 import pandas as pd
 import pymysql
 import time
 import sys
 import os
-import logging
 import inspect
 import tool
 

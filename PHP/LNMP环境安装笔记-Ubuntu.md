@@ -16,16 +16,10 @@ sudo apt-get update
 sudo apt-get install nginx
 ```
 
-- NGINX默认站点配置文件为
-  
-  ```
-  /etc/nginx/sites-enabled/default
-  ```
 - 测试NGINX是否安装成功
   
   - 浏览器直接访问 ip:80 ，是否出现 nginx 信息，出现说明安装成功，否则未成功
   - NGINX默认站点配置文件为 `/etc/nginx/sites-enabled/default`
-
 - Nginx 站点配置
 
 ```
@@ -101,12 +95,68 @@ sudo vim /etc/php/7.4/fpm/pool.d/www.conf
 systemctl start php7.4-fpm
 systemctl restart php7.4-fpm
 systemctl stop php7.4-fpm
+systemctl status php7.4-fpm
 
 # 查看监听状态
 sudo netstat -nlp | grep 9000
 ```
 
-###### 安装 Git 和 composer
+- 测试nginx站点是否可以正确解析php文件
+  - nginx默认站点配置文件为 `/etc/nginx/sites-enabled/default`
+    
+    ```
+    # 修改 配置文件，以支持 php文件解析
+    vim /etc/nginx/sites-enabled/default
+    ```
+    
+    ```
+    server {
+      listen 80 default_server;
+      listen [::]:80 default_server;
+    
+      root /var/www/html;
+    
+      # Add index.php to the list if you are using PHP
+      index index.html index.htm index.nginx-debian.html;
+    
+      server_name _;
+    
+      location / {
+          try_files $uri $uri/ =404;
+      }
+    
+      # pass PHP scripts to FastCGI server
+      #
+      location ~ \.php$ {
+          # 开启这一行
+          include snippets/fastcgi-php.conf;
+      #
+      #	# With php-fpm (or other unix sockets):
+      #	fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+      #	# With php-cgi (or other tcp sockets):
+          # 开启这一行
+          fastcgi_pass 127.0.0.1:9000;
+      }
+    }
+    ```
+  - 创建 `phpinfo.php` 文件
+    
+    ```
+    vim /var/www/html/phpinfo.php
+    ```
+    
+    ```
+    <?php
+    phpinfo();
+    ```
+  - 重启 nginx 服务
+    
+    ```
+    systemctl restart nginx
+    ```
+  - 浏览器访问地址 `http://ip:80/phpinfo.php` ，检查是否正常解析
+
+##### 安装 Git 和 composer
 
 ```
 apt install git

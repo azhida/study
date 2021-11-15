@@ -19,6 +19,7 @@ sudo apt-get install nginx
 - 测试NGINX是否安装成功
   
   - 浏览器直接访问 ip:80 ，是否出现 nginx 信息，出现说明安装成功，否则未成功
+  - 创建 a.txt 文件 `vim /var/www/html/d.txt`, 文件内容随意 , 并访问 `http://ip:80/d.txt` , 看是否正确输出文件内容
   - NGINX默认站点配置文件为 `/etc/nginx/sites-enabled/default`
 - Nginx 站点配置
 
@@ -53,6 +54,7 @@ vim /etc/nginx/conf.d/default.conf
 systemctl start nginx
 systemctl restart nginx
 systemctl stop nginx
+systemctl status nginx
 ```
 
 ##### 安装 PHP7.4 -- 使用 第三方库 software-properties-common
@@ -154,7 +156,7 @@ sudo netstat -nlp | grep 9000
     ```
     systemctl restart nginx
     ```
-  - 浏览器访问地址 `http://ip:80/phpinfo.php` ，检查是否正常解析
+  - 浏览器访问地址 `http://ip:80/phpinfo.php` ，检查是否正常解析【注意浏览器缓存，正常来说，配置到这里，已经可以正常解析php文件了】
 
 ##### 安装 Git 和 composer
 

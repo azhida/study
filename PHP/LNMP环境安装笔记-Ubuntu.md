@@ -70,6 +70,8 @@ sudo add-apt-repository ppa:ondrej/php
 # 安装 php7.4 及其扩展
 sudo apt-get install php7.4 php7.4-fpm php7.4-mysql php7.4-gd php7.4-mbstring php7.4-bcmath 
 sudo apt-get install php7.4-dom php7.4-zip php7.4-sqlite3 php7.4-cli php7.4-soap
+# 安装 phpize7.4
+sudo apt-get install php7.4-dev
 ```
 
 - 配置 PHP

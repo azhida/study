@@ -257,7 +257,7 @@ user = www
 group = www
 listen = 127.0.0.1:9000
 ```
-
+配置文件 `php.ini` 位置： `/etc/opt/remi/php74/php.ini`
 ## 卸载 PHP
 
 ```

@@ -204,6 +204,8 @@ yum --enablerepo=remi install php74-php
 
 # 安装所需要php扩展模块，注：扩展安装格式php74-php-扩展模块名，缺什么扩展只要按照格式安装相应模块即可
 yum --enablerepo=remi install php74-php php74-php-fpm php74-php-mbstring php74-php-gd php74-php-xml php74-php-sockets php74-php-session php74-php-snmp php74-php-mysql
+# 安装 phpize （php74-php-fpm-devel）
+yum --enablerepo=remi install php74-php php74-php-devel
 
 #运行并查看版本
 php74 -v
@@ -217,10 +219,27 @@ systemctl enable php74-php-fpm
 # 查看 php-fpm 运行状态
 systemctl status php74-php-fpm
 
-#查看php7.4的安装路径
-whereis php
 #链接php文件
 ln -s /usr/bin/php74 /usr/bin/php
+# 查看php7.4的安装路径
+whereis php74
+# 看到 /usr/bin/php74
+cd /usr/bin/ && ll
+# 查看 /usr/bin/php74 具体指向路径为：php74 -> /opt/remi/php74/root/usr/bin/php，说明 php7.4安装在了 /opt/remi/php74/ 下
+# 查看 phpize 是否安装
+cd /opt/remi/php74/root/usr/bin && ll
+# 链接 phpize 文件
+ln -s /opt/remi/php74/root/usr/bin/phpize /usr/bin/phpize
+```
+如果报错如下，说明扩展包未安装
+```
+Can't find PHP headers in /opt/remi/php74/root/usr/include/php
+The php74-php-devel package is required for use of this command.
+```
+报错解决办法
+```
+# 安装 phpize （php74-php-fpm-devel）
+yum --enablerepo=remi install php74-php php74-php-devel
 ```
 
 修改配置文件

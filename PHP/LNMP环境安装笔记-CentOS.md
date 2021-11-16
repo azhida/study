@@ -23,74 +23,77 @@ systemctl enable nginx
 
 - 测试 nginx安装是否成功：直接访问IP地址，出现 nginx页面，说明安装成功
 - 配置nginx
-  将 /etc/nginx/nginx.conf 配置文件内的 server模块 全部删除（不做此操作，有可能无法解析php脚本，运行PHP脚本时可能会变成下载文件）
+  将 `/etc/nginx/nginx.conf` 配置文件内的 默认server模块 监听 8080端口，后面用 `/etc/nginx/conf.d/default.conf` 监听 80端口
 
 ```shell
 # 修改nginx的配置文件 
 vim /etc/nginx/nginx.conf
 ```
 
-- ```shell
-      server {
-          listen       80 default_server;
-          listen       [::]:80 default_server;
-          server_name  _;
-          root         /usr/share/nginx/html;
+```shell
+server {
+    # listen       80 default_server;
+    # listen       [::]:80 default_server;
+    listen       8080 default_server;
+    listen       [::]:8080 default_server;  
 
-          # Load configuration files for the default server block.
-          include /etc/nginx/default.d/*.conf;
+    server_name  _;
+    root         /usr/share/nginx/html;
 
-          location / {
-          }
+    # Load configuration files for the default server block.
+    include /etc/nginx/default.d/*.conf;
 
-          error_page 404 /404.html;
-              location = /40x.html {
-          }
+    location / {
+    }
 
-          error_page 500 502 503 504 /50x.html;
-              location = /50x.html {
-          }
-      }
-  ```
+    error_page 404 /404.html;
+        location = /40x.html {
+    }
+
+    error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+    }
+}
+```
 
 ```shell
 # 添加段代码
 vim /etc/nginx/conf.d/default.conf
 ```
 
-- ```shell
-  server {
-      listen 80;
-      server_name localhost;
-      root /usr/share/nginx/html;
-      index index.php index.html index.htm;
-      #charset koi8-r;
-      #access_log /var/log/nginx/log/host.access.log main;
-      location / {
-          try_files $uri $uri/ /index.php?$query_string;
-      }
-      #error_page 404 /404.html;
-      # redirect server error pages to the static page /50x.html
-      #
-      error_page 500 502 503 504 /50x.html;
-      location = /50x.html {
-      }
-      # proxy the PHP scripts to Apache listening on 127.0.0.1:80
-      #
-      #location ~ \.php$ {
-      # proxy_pass http://127.0.0.1;
-      #}
-      # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
-      #
-      location ~ \.php$ {
-          fastcgi_pass 127.0.0.1:9000;
-          fastcgi_index index.php;
-          fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-          include fastcgi_params;
-          try_files $uri $uri/ /index.php?$query_string;
-      }
-  }
-  ```
+```shell
+server {
+    listen 80;
+    server_name localhost;
+    root /usr/share/nginx/html;
+    index index.php index.html index.htm;
+    #charset koi8-r;
+    #access_log /var/log/nginx/log/host.access.log main;
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+    #error_page 404 /404.html;
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page 500 502 503 504 /50x.html;
+    location = /50x.html {
+    }
+    # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+    #
+    #location ~ \.php$ {
+    # proxy_pass http://127.0.0.1;
+    #}
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    #
+    location ~ \.php$ {
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+}
+```
 
 ```shell
 # 重启nginx服务
@@ -129,7 +132,7 @@ vim /usr/share/nginx/html/phpinfo.php
   <?php
   phpinfo();
   ```
-
+  
   - 注：在nginx的内容存放目录  /usr/share/nginx/html 内建立 phpinfo.php文件，通过浏览器访问该文件（访问地址：http://服务器ip/phpinfo.php），若能运行说明成功，否则需安装php-fpm
 - 安装php-fpm，并对nginx进行配置，使得nginx可以通过php-fpm来处理php的任务
 
@@ -176,13 +179,13 @@ systemctl restart php-fpm
 
 - 注：如果项目运行中报错：Non-static method Redis::hGet() cannot be called statically，说明 我们安装的redis扩展 和 laravel自带的扩展 predis/predis 发生冲突了
 - redis扩展冲突的两种解决办法：
-
+  
   - 删除我们安装的 php-redis 扩展
-
+  
   ```shell
-    yum --enablerepo=remi-php73 remove php-redis
+  yum --enablerepo=remi-php73 remove php-redis
   ```
-
+  
   - 删除 laravel项目 composer.json 中的 predis/predis
 - 再次测试info.php页面是否可以打开，访问地址：http://服务器ip/phpinfo.php
 
@@ -220,10 +223,12 @@ whereis php
 ln -s /usr/bin/php74 /usr/bin/php
 ```
 
-修改配置文件 
+修改配置文件
+
 ```
 vim /etc/opt/remi/php74/php-fpm.d/www.conf
 ```
+
 ```
 # user = apache
 # group = apache
@@ -247,7 +252,9 @@ rpm -qa | grep php
 # 卸载对应安装包：yum remove 安装包
 yum remove php-common-7.3.25-1.el7.remi.x86_64
 ```
+
 ## 卸载 php7.4
+
 ```
 yum remove php74-php*
 ```
@@ -356,3 +363,4 @@ systemctl restart redis
 <br>
 
 #### 返回 [PHP基础知识](./PHP基础知识.md)
+

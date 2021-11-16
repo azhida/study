@@ -230,6 +230,8 @@ cd /usr/bin/ && ll
 cd /opt/remi/php74/root/usr/bin && ll
 # 链接 phpize 文件
 ln -s /opt/remi/php74/root/usr/bin/phpize /usr/bin/phpize
+# 链接 php-config 文件
+ln -s /opt/remi/php74/root/usr/bin/php-config /usr/bin/php-config
 ```
 如果报错如下，说明扩展包未安装
 ```

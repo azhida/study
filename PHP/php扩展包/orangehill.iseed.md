@@ -1,4 +1,9 @@
-#### [文档](https://learnku.com/laravel/t/1929/extension-will-be-the-data-inside-and-outside-the-data-into-a-seeder-file)
+# [orangehill/iseed](https://packagist.org/packages/orangehill/iseed)
+
+## 介绍
+将数据表里的数据导出成 Seeder文件
+
+文档：[https://learnku.com/laravel/t/1929/extension-will-be-the-data-inside-and-outside-the-data-into-a-seeder-file](https://learnku.com/laravel/t/1929/extension-will-be-the-data-inside-and-outside-the-data-into-a-seeder-file)
 
 ###### 安装
 ```

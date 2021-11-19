@@ -155,3 +155,10 @@ git push origin master
 - 点击 Settings
 - 选择 Pages
 - 配置相关信息保存即可
+
+###### github 拉取代码时所用 token 配置方法
+- 访问 https://github.com/settings/profile
+- 选择 Developer settings
+- 选择 Personal access tokens
+- 点击 generate new token 【也可以选择原来已经生成但失效或者忘记token的重新刷新并保存即可】
+- 按提示选择并生成即可

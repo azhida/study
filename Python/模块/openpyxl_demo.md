@@ -81,6 +81,36 @@ copy_sheet.title = 'I am new sheet'
 file.save(file_name)
 ```
 
+###### 获取一个单元格的值
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name)
+sheet = file['Sheet1']
+cell = sheet['A1'].value
+print(cell)
+
+cell = file['sheet_name']['A1'].value
+print(cell)
+
+cell = sheet.cell(row=1,column=1).value
+print(cell)
+
+sheet = file.worksheet[0]
+```
+
+###### 获取di2列1、3、5、7行的数据
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name)
+sheet = file['Sheet1']
+for i in range(1,8,2):
+    print(i, sheet.cell(row=i,column=2).value)
+```
+
 ###### 示例
 ```
 

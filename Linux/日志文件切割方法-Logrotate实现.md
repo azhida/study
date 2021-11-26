@@ -6,7 +6,7 @@
 vim /etc/logrotate.d/laravel
 ```
 /var/www/laravel/storage/logs/*.log {
-    su root
+    su root root
     size=5M
     rotate=100
     notifempty
@@ -14,7 +14,7 @@ vim /etc/logrotate.d/laravel
 
 # 脚本说明：
 # /var/www/laravel/storage/logs/*.log ：待切割的日志文件
-# su root ： 让 root 用户去执行
+# su root root： 让 root 用户去执行 ，第一个 root 是用户名，第二个root是用户组
 # size=5M ：当日志文件大于等于 5M时，对文件进行切割
 # rotate=100 ： 保留的切割日志数量【保留 100 份】
 # notifempty  ： 当日志文件为空时，不进行轮转

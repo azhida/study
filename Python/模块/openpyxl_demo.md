@@ -237,7 +237,30 @@ for row in sheet.rows:
         values.append(cell.value)
 print(values)              
 ```
+## 写入数据
+```
+import openpyxl as vb
 
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name)
+sheet = file['Sheet1']
+
+# 一、向一个单元格写入数据
+sheet.cell(1,5,value='写入的值')
+sheet['E2'] = '写入E2的值'
+file.save(file_name)
+
+# 二、在最后一行写入数据
+sheet.append([1,2,3,4,5,6,6])
+
+# 三、向一个区域内写入数据
+for row in sheet['A1:B4']:
+    for cell in row:
+        cell.value = 520
+        
+
+file.save(file_name)        
+```
 ###### 示例
 ```
 

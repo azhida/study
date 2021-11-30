@@ -261,7 +261,24 @@ for row in sheet['A1:B4']:
 
 file.save(file_name)        
 ```
-###### 示例
-```
 
+## 行、列的插入与删除
+- 插入列：sheet.insert_cols(位置,列数)，其中位置是指在工作表的第几列前插入多少列
+- 插入行：sheet.insert_rows(位置,行数)，其中位置是指在工作表的第几行前插入多少行
+- 删除列：sheet.delete_cols(位置,列数)，从指定位置开始向后删除指定的列数
+- 删除列：sheet.delete_rows(位置,行数)，从指定位置开始向下删除指定的行数
+
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name)
+sheet = file['Sheet1']
+
+sheet.insert_cols(idx=2,amount=5)
+sheet.insert_rows(idx=2,amount=5)
+sheet.delete_cols(idx=2,amount=5)
+sheet.delete_rows(idx=2,amount=5)
+
+file.save(file_name)
 ```

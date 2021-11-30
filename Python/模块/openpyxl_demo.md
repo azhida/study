@@ -294,3 +294,14 @@ sheet = file['Sheet1']
 sheet.move_range("A1:C3",rows=10,cols=10)
 file.save(file_name)
 ```
+## 冻结单元格
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name)
+sheet = file['Sheet1']
+
+sheet.freeze_panes = 'C3'
+file.save(file_name)
+```

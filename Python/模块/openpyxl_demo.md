@@ -202,6 +202,42 @@ res2 = vb.utils.column_index_from_string('D')
 print(res2)
 ```
 > 使用这些函数时，不必加载一个工作簿
+
+## 读取数据
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name)
+sheet = file['Sheet1']
+
+max_row = sheet.max_row
+max_column = sheet.max_column
+
+A1_value = sheet['A1'].value
+A1_value = sheet.cell(1,1).value
+
+A1_row = sheet['A1'].row
+A1_column = sheet['A1'].column
+
+# 获取 C列 所有数据
+values_C = []
+for i in sheet['C']:
+    values_C.append(i.value)
+    
+# 获取 1行 所有数据
+values_1 = []
+for i in sheet[1]:
+    values_1.append(i.value)  
+    
+# 获取所有数据
+values = []
+for row in sheet.rows:
+    for cell in row:
+        values.append(cell.value)
+print(values)              
+```
+
 ###### 示例
 ```
 

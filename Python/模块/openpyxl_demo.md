@@ -282,3 +282,15 @@ sheet.delete_rows(idx=2,amount=5)
 
 file.save(file_name)
 ```
+## 移动单元格
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name)
+sheet = file['Sheet1']
+
+# rows 和 cols 正数 为 向下或向右，负数 为 向左或向上
+sheet.move_range("A1:C3",rows=10,cols=10)
+file.save(file_name)
+```

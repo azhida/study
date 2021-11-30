@@ -305,3 +305,23 @@ sheet = file['Sheet1']
 sheet.freeze_panes = 'C3'
 file.save(file_name)
 ```
+## 单元格操作练习
+### 练习1：每张工作表的固定单元格求和
+- 例1：将每张工作表中指定单元格的值汇总
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name)
+
+values = []
+for sheet in file.worksheets:
+    values.append(sheet['D6'].value)
+print(sum(values))
+
+# 或者如下
+res = sum([sheet['D6'].value for sheet in file.worksheets])
+print(res)    
+```
+> 知识点：列表推导式[for循环简写]  
+> 列表名 = [变量名 for 变量名 in range(0,11)]

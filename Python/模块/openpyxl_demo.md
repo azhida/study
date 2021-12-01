@@ -325,3 +325,44 @@ print(res)
 ```
 > 知识点：列表推导式[for循环简写]  
 > 列表名 = [变量名 for 变量名 in range(0,11)]
+
+### 练习2：按行或列求和
+- 例1：按行求和
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name)
+sheet = file['Sheet1']
+
+for row in list(sheet.rows)[1:]:
+    values = [cell.value for cell in row]
+    print(values[0], sum(values[1:]))
+```
+- 例2：按列求和
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name)
+sheet = file['Sheet1']
+
+for column in list(sheet.columns)[1:]:
+    values = [cell.value for cell in column]
+    print(values[0], sum(values[1:]))
+```
+### 练习3：成绩为空的标记缺考
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name)
+sheet = file['Sheet1']
+
+for row in sheet.iter_rows(min_row=2,min_col=2):
+    for cell in row:
+        if cell.value == None:
+            cell.value = '缺考'
+            
+file.save(file_name)            
+```

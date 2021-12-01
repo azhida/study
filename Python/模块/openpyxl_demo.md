@@ -366,3 +366,63 @@ for row in sheet.iter_rows(min_row=2,min_col=2):
             
 file.save(file_name)            
 ```
+### 练习4：总分大于270分是优秀
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name)
+sheet = file['Sheet1']
+
+sheet['E1'] = '评价'
+area = sheet.iter_rows(min_row=2,min_col=2)
+for row in area:
+    总分 = sum([cell.value for cell in row][:-1])
+    if 总分 >= 270:
+        row[-1].value = '优秀'
+        
+file.save(file_name)
+```
+### 练习5：帅选总分大于270分
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name)
+sheet = file['Sheet1']
+
+for row_num in range(sheet.max_row,1,-1):
+    总分 = sum([cell.value for cell in sheet[row_num][1:]])
+    if 总分 <= 270:
+        sheet.delete_rows(row_num)
+        
+file.save(file_name)        
+```
+### 练习6：按指定列拆分成多个工作表
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name)
+sheet = file['Sheet1']
+
+area = sheet.iter_rows(min_row=2)
+# 字典
+dict = {}
+for row in area:
+    # 每行的数据
+    row_values = [cell.value for cell in row]
+    if row_values[1] in dict.keys():
+        dict[row_values[1]] += [row_values]
+    else:
+        dict[row_values[1]] = [row_values]
+        
+for key,value in sorted(dict.items()):
+    nws = file.create_sheet(key)
+    nws.append(['姓名','班级','分数'])
+    for v in value:
+        nws.append(v)
+        
+file.remove(file['Sheet1'])
+file.save(file_name)
+```

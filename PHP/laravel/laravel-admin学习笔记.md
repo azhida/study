@@ -58,3 +58,15 @@ php artisan db:seed --class=AdminTablesSeeder
 # 额外：如果管理后台没有超级管理员，则创建一个管理员用户
 php artisan admin:create-user
 ```
+
+#### 模型关联 驼峰显示 关联的模型名
+在主模型加上属性
+```
+public static $snakeAttributes = false;
+```
+如：
+```
+$order = Order::query()->with([orderItems])->first();
+
+要在 Order模型添加 $snakeAttributes 属性
+```

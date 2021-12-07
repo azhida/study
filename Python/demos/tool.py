@@ -24,7 +24,7 @@ def log(message, **params):
     log_file_name = current_file_dir + f'/logs/{log_file_name}-{rq}.log'
 
     logger = logging.getLogger(__name__)
-    handler = logging.FileHandler(log_file_name)
+    handler = logging.FileHandler(log_file_name, encoding="utf-8", mode='a')
     formatter = logging.Formatter('%(asctime)s - %(name)s-%(levelname)s - %(message)s')
     handler.setFormatter(formatter)
     logger.addHandler(handler)

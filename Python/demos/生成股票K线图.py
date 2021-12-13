@@ -10,7 +10,7 @@ pd.set_option('expand_frame_repr', False)#True就是可以换行显示。设置�
 pd.set_option('display.max_columns', None)# 显示所有列
 pd.set_option('colheader_justify', 'centre')# 显示居中
 
-# token 自己到官网注册查看
+# token 自己到官网注册查看，https://tushare.pro/
 pro = ts.pro_api('token')
 
 mpl.rcParams['axes.unicode_minus'] = False  # 解决保存图像是负号'-'显示为方块的问题

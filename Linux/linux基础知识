@@ -46,6 +46,9 @@ scp /opt/soft/nginx-0.5.38.tar.gz root@192.168.120.204:/opt/soft/scptest
 # 上传本地目录 /opt/soft/mongodb到远程机器192.168.120.204上/opt/soft/scptest的目录中去
 scp -r /opt/soft/mongodb root@192.168.120.204:/opt/soft/scptest
 
+# 如果出现报错 The authenticity of host 192.168.xx.xx can't be established. 则在当前机器执行以下命令登陆 远程机器 192.168.xx.xx ，并输入密码，成功登陆远程机器192.168.xx.xx 后 退出，重新在当前机器执行 scp 命令即可
+ssh -o StrictHostKeyChecking=no 192.168.xx.xx
+
 ############################# scp 使用说明 结束 ####################################
 
 ############################# zip、unzip 压缩和解压 使用说明 开始 #############################

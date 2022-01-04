@@ -503,3 +503,37 @@ sheet['F21'].comment = comments
 
 file.save(file_name)
 ```
+
+# 装饰部分
+
+## 字体 Font
+```
+Font(name='Calibri', size=11, bold=False,italic=False,vertAlign=None, underline='none',strike=False, color='FF000000')
+
+参数解读：
+name：字体名称，注意中文字体前面加u
+size：字号大小
+bold：True（加粗）/ False（不加粗）
+italic：True（倾斜）/ False（不倾斜）
+vertAlign：'None'（默认）/ 'superscript'（上标）/ 'subscript'（下标）
+underline：'None'（默认）/ 'single'（单下划线）/ 'double'（双下划线）/ 'singleAccounting'（会计用单下划线）/ 'doubleAccounting'（会计用双下划线）
+strike：'True'（显示删除线）/ 'False'（不显示删除线）
+color：字体的颜色 RGB转HEX
+```
+
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name)
+sheet = file['Sheet1']
+
+# 字体对象1
+font_obj_1 = vb.styles.Font(name=u'微软雅黑', bold=True, italic=True, size=72)
+sheet['A1'].font = font_obj_1
+# 字体对象2
+font_obj_2 = vb.styles.Font(name=u'隶书', bold=False, italic=False, size=48)
+sheet['A2'].font = font_obj_2
+
+file.save(file_name)
+```

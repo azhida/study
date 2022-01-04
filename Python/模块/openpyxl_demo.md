@@ -614,3 +614,19 @@ sheet.column_dimensions['B'].width = 100
 
 file.save(file_name)
 ```
+
+# 图表操作
+## 插入图片
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name, data_only=True)
+sheet = file['Sheet1']
+
+image = vb.drawing.image.Image('./img.png')
+image.height = 100
+image.width = 70
+shhet.add_image(image,"F19")
+file.save(file_name)
+```

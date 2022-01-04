@@ -537,3 +537,80 @@ sheet['A2'].font = font_obj_2
 
 file.save(file_name)
 ```
+
+## 对齐 Alignment
+
+```
+Alignment(horizontal='general',vertical='bottom', text_rotation=0, wrap_text=False, shrink_to_fit=False, indent=0)
+
+参数说明：
+horizontal：'general'（常规）/ 'justify'（两端对齐）/ 'right'（靠右）/ 'centerContinuous'（跨列居中）/ 'distributed'（分散对齐）/ 'fill'（填充）/ 'center'（居中）/ 'left'（靠左）
+vertical：'center'（垂直居中）/ 'top'（靠上）/ 'bottom'（靠下）/ 'justify'（两端对齐）/ 'distributed'（分散对齐）
+text_rotation：指定文本旋转角度
+wrap_text：是否自动换行
+shrink_to_fit：是否缩小字体填充
+indent：指定缩进
+```
+
+## 边框 Side
+```
+Side(style=连线样式,color=边线颜色)
+Border(left=左边线样式,right=右连线样式,top=上边线样式,bottom=下边线样式)
+style参数的种类： 'double, ‘mediumDashDotDot’, ‘slantDashDot’,‘dashDotDot’,‘dotted’,‘hair’, 'mediumDashed, ‘dashed’, ‘dashDot’, ‘thin’,‘mediumDashDot’,‘medium’, 'thick’
+```
+
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name)
+sheet = file['Sheet1']
+
+side = vb.styles.Side(style='thin',color='FF0000')
+border = vb.styles.Border(left=side,right=side,top=side,bottom=side)
+sheet['A1'].border = border
+file.save(file_name)
+```
+
+## 填充 PatternFill
+
+```
+PatternFill(fill_type=None, start_color='FFFFFF', end_color='FF0000')
+fill_type：'None'（不填充）/ 'solid'（实心填充）/ 'darkGray'（75%灰色）'mediumGray'（50%灰色）/ 'lightGray'（25%灰色）/ 'gray125'（12.5%灰色）/ 'gray0625'（6.25%灰色）/ 'darkHorizontal'（水平条纹）/ 'darkVertical'（垂直条纹）/ 'darkDown'（逆对角线条纹）/ 'darkUp'（对角线条纹）/ 'darkGrid'（对角线剖面线）/ 'darkTrellis'（粗对角线剖面线）/ 'lightHorizontal'（细水平条纹）/ 'lightVertical'（细垂直条纹）/ 'lightDown'（细逆对角线条纹）/ 'lightUp'（细对角线条纹）/ 'lightGrid'（细水平剖面线）/ 'lightTrellis'（细对角线剖面线）
+start_color / fgColor：背景颜色 RGB转HEX
+end_color / bgColor：图案颜色 RGB转HEX
+```
+
+## 渐变填充 GradientFill
+```
+GradientFill(stop=(渐变颜色1, 渐变颜色2, ….))
+
+fill_type：'linear'（线性渐变）/ 'path'（中心扩散）
+degree：旋转角度
+stop：一个元组 (OO, XX)，OO 为起始颜色，XX 为结束颜色
+```
+
+## 锁定单元格和隐藏公式
+```
+Protection(locked=True,  hidden=False) 
+
+locked：指定是否锁定单元格
+hidden：指定是否隐藏公式
+
+只有在开启 “保护工作表” 之后，“锁定单元格” 和 “隐藏公式” 才生效。
+在工作表处点击右键，即可开启 “保护工作表”：
+```
+
+## 行高和列宽
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name, data_only=True)
+sheet = file['Sheet1']
+
+sheet.row_dimensions[1].height = 200
+sheet.column_dimensions['B'].width = 100
+
+file.save(file_name)
+```

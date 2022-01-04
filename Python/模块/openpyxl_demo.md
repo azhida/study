@@ -442,3 +442,31 @@ sheet.meege_cells('B3:F5')
 sheet.unmeege_cells('B3:F5')
 file.save(file_name)
 ```
+> ```
+> sheet.merge_cells(start_row=起始行号, start_column=起始列号, end_row=结束行号, end_column=结束列号)
+> ```
+
+## 使用公式以及注意事项
+
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name)
+sheet = file['Sheet1']
+
+sheet['F1'] = '=sum(C1:E1)'
+
+file.save(file_name)
+```
+> 注意：读取时会直接读取公式，所以要进行如下设置
+
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name, data_only=True)
+sheet = file['Sheet1']
+
+print(sheet['F1'].value)
+```

@@ -630,3 +630,47 @@ image.width = 70
 shhet.add_image(image,"F19")
 file.save(file_name)
 ```
+## 柱状图
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name, data_only=True)
+sheet = file['Sheet1']
+
+# 新建一个柱状图
+chart = vb.chart.BarChart()
+# 设定数据引用范围
+data = vb.chart.Reference(sheet,min_row=1,max_row=5,min_col=2,max_col=3)
+# X轴项目名称
+name_x = vb.chart.Reference(sheet,min_row=2,max_row=5,min_col=1)
+# 给柱状图添加数据，数据源中有标题，因为数据中有标题行，这里为True
+chart.add_data(data,titles_from_data=True)
+# 设定X轴的项目
+chart.set_categories(name_x)
+sheet.add_chart(chart,"F1")
+
+file.save(file_name)
+```
+
+## 折线图
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name, data_only=True)
+sheet = file['Sheet1']
+
+# 新建一个折线图
+chart = vb.chart.LineChart()
+# 设定数据引用范围
+data = vb.chart.Reference(sheet,min_row=2,max_row=3,min_col=1,max_col=13)
+# 分类的项目
+project = vb.chart.Reference(sheet,min_row=1,min_col=2,max_col=13)
+# 给柱状图添加数据，数据源中有标题，from_rows=True因为数据是横项
+chart.add_data(data,from_rows=True,titles_from_data=True)
+# 设定X轴的项目
+chart.set_categories(project)
+sheet.add_chart(chart,"A8")
+file.save(file_name)
+```

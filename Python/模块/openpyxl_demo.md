@@ -487,3 +487,19 @@ sheet.column_dimensions.group(1, 5, hidden=True)
 
 file.save(file_name)
 ```
+
+## 给单元格添加批注
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name, data_only=True)
+sheet = file['Sheet1']
+
+comments = vb.comments.Comment('这里写批注', '批注人姓名：张三')
+
+sheet['F20'].comment = comments
+sheet['F21'].comment = comments
+
+file.save(file_name)
+```

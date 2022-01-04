@@ -426,3 +426,19 @@ for key,value in sorted(dict.items()):
 file.remove(file['Sheet1'])
 file.save(file_name)
 ```
+
+## 合并与取消合并单元格
+
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name)
+sheet = file['Sheet1']
+
+# 合并单元格
+sheet.meege_cells('B3:F5')
+# 取消合并单元格
+sheet.unmeege_cells('B3:F5')
+file.save(file_name)
+```

@@ -470,3 +470,20 @@ sheet = file['Sheet1']
 
 print(sheet['F1'].value)
 ```
+
+## 对行和列进行分组
+
+```
+import openpyxl as vb
+
+file_name = 'test.xlsx'
+file = vb.load_workbook(file_name, data_only=True)
+sheet = file['Sheet1']
+
+# 对行分组
+sheet.column_dimensions.group('A', 'D', hidden=True)
+# 对列分组
+sheet.column_dimensions.group(1, 5, hidden=True)
+
+file.save(file_name)
+```

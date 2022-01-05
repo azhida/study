@@ -108,6 +108,15 @@ $ cnpm run dev
 在浏览器访问 出现的 地址即可
 
 
+# Vue 打包
+执行打包命令
+```
+cnpm run build
+```
+看到 `Build complete` 说明打包成功。  
+执行完成后，会在 Vue 项目下会生成一个 dist 目录，该目录一般包含 index.html 文件及 static 目录，static 目录包含了静态文件 js、css 以及图片目录 images（如果有图片的话）。
+
+
 # 读者笔记
 
 ---

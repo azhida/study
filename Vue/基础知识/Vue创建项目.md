@@ -40,7 +40,7 @@ cd vue3-app2
 ```
 npm run serve
 ```
-然后打开 http://localhost:8080/，就可以看到应用界面了
+然后打开 http://localhost:8080/， 就可以看到应用界面了
 
 ## vue ui 命令
 

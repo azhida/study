@@ -8,7 +8,7 @@ Vue 的目标是通过尽可能简单的 API 实现响应的数据绑定和组�
 Vue 学习起来非常简单，本教程基于 Vue 3.0.5 版本测试。
 
 官方网站：[https://v3.vuejs.org/](https://v3.vuejs.org/)
-中文文档: [https://v3.cn.vuejs.org/guide/introduction.html](https://v3.cn.vuejs.org/guide/introduction.html)
+中文文档: [https://v3.cn.vuejs.org/guide/introduction.html](https://v3.cn.vuejs.org/guide/introduction.html)  
 Webpack 入门教程：[https://www.runoob.com/w3cnote/webpack-tutorial.html](https://www.runoob.com/w3cnote/webpack-tutorial.html)
 
 

@@ -20,6 +20,7 @@
 - [Vue自定义指令](./基础知识/Vue自定义指令.md)
 - [Vue路由](./基础知识/Vue路由.md)
 - [Vue混入](./基础知识/Vue混入.md)
+- [Vue Ajax(axios)](./基础知识/Vue的Ajax(axios).md)
 
 ---
 

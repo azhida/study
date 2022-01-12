@@ -162,3 +162,10 @@ git push origin master
 - 选择 Personal access tokens
 - 点击 generate new token 【也可以选择原来已经生成但失效或者忘记token的重新刷新并保存即可】
 - 按提示选择并生成即可
+
+
+###### 利用 `git subtree` 将 `master` 分支指定目录 `dist` 推送到远程 `dist` 分支上
+```
+git subtree push --prefix=dist origin dist
+```
+todo 如果推送发生冲突，我也还不知道怎么解决，目前我只是把 dist 分支删除了重新推送

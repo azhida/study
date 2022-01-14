@@ -1,0 +1,38 @@
+# VSCode 编辑器
+
+## 优势
+- 简单轻便
+  > 相比 IDE 来讲，内存占用较少，且没有太多的 Magic。
+- 跨平台
+  > 对编辑器熟练程度很大程度上决定了你的编码速度，使用跨平台的编辑器是比较明智的选择；
+- 易用性
+  > 社区强大表现在插件和主题的丰富多样。且 VSCode 插件安装便捷，且网络连接稳定，使其在同类竞争对手中脱颖而出。
+- 适用性
+  > VSCode 是大部分流行编程语言的最佳编辑器，这很重要。因为在你往后的编程生涯中，肯定会遇到别的语言，VSCode 都能胜任，你就不用再去花费时间熟悉另一个编辑器。
+   
+## 安装
+
+直接前往 [code.visualstudio.com/download](https://code.visualstudio.com/download) 下载安装包。
+
+## VSCode 插件
+### 必装
+
+| 插件名称                     | 	说明          |
+|:-------------------------|:-------------|
+| EditorConfig for VS Code | 	代码制表符统一     |
+| advanced-new-file        | 	快速新建文件      |
+| Duplicate action         | 	右键快速创建文件副本  |
+| Laravel Blade Snippets   | Blade 模板语法高亮 |
+
+### 选装
+
+| 插件名称                                      | 	说明               |
+|:------------------------------------------|:------------------|
+| Community Material Theme                  | 	编辑器主题            |
+| Material Icon Theme                       | 	与上面主题搭配使用的 icon  |
+| Sublime Text Keymap and Settings Importer | 	Sublime 用户的快捷键同步 |
+
+### 怎样安装插件
+1. 进入『安装插件』选项卡里；
+2. 复制以上 完成的插件名称 进行搜索，一般排名第一位的就是；
+3. 选中插件后，点击安装。

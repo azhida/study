@@ -32,6 +32,7 @@
 | Material Icon Theme                       | 	与上面主题搭配使用的 icon  |
 | Sublime Text Keymap and Settings Importer | 	Sublime 用户的快捷键同步 |
 | Vutur | 开发Vue必备插件|
+| any-rule | 正则表达式插件|
 
 ### 怎样安装插件
 1. 进入『安装插件』选项卡里；
@@ -54,3 +55,7 @@ settings.json
 语法高亮、智能感知、Emmet等  
 
 包含格式化功能， Alt+Shift+F （格式化全文），Ctrl+K Ctrl+F（格式化选中代码，两个Ctrl需要同时按着）
+
+### any-rule 正则表达式插件
+
+使用方法：在代码处任意地方输入 `@zz` 即可。

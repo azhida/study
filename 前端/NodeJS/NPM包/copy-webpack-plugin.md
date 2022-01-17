@@ -14,15 +14,16 @@ npm install copy-webpack-plugin@5.1.2 --save-dev
 ```
 
 vue.config.js
+
 ```js
-const CopyPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require('前端/NodeJS/NPM包/copy-webpack-plugin');
 
 module.exports = {
     configureWebpack: config => {
         config.plugins = [
             ...config.plugins,
             new CopyPlugin([
-                { from: 'src/CNAME', to: '' }
+                {from: 'src/CNAME', to: ''}
             ]),
         ]
     },

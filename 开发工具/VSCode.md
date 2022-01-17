@@ -17,25 +17,25 @@
 ## VSCode 插件
 ### 必装
 
-| 插件名称                      | 	说明          |
-|:--------------------------|:-------------|
-| EditorConfig for VS Code  | 	代码制表符统一     |
-| advanced-new-file         | 	快速新建文件      |
-| Duplicate action          | 	右键快速创建文件副本  |
-| Laravel Blade Snippets    | Blade 模板语法高亮 |
-     | 
+| 插件名称                 | 说明                 |
+| :----------------------- | :------------------- |
+| EditorConfig for VS Code | 代码制表符统一       |
+| advanced-new-file        | 快速新建文件         |
+| Duplicate action         | 右键快速创建文件副本 |
+| Laravel Blade Snippets   | Blade 模板语法高亮   |
+|                          |
 
 ### 选装
 
-| 插件名称                                      | 	说明               |
-|:------------------------------------------|:------------------|
-| Community Material Theme                  | 	编辑器主题            |
-| Material Icon Theme                       | 	与上面主题搭配使用的 icon  |
-| Sublime Text Keymap and Settings Importer | 	Sublime 用户的快捷键同步 |
-| Vutur                                     | 开发Vue必备插件         |
-| any-rule                                  | 正则表达式插件           |
-| Markdown Preview Enhanced                 | md 预览插件           |
-| Markdown All in One                       | md 编辑器            |
+| 插件名称                                  | 说明                      |
+| :---------------------------------------- | :------------------------ |
+| Community Material Theme                  | 编辑器主题                |
+| Material Icon Theme                       | 与上面主题搭配使用的 icon |
+| Sublime Text Keymap and Settings Importer | Sublime 用户的快捷键同步  |
+| Vutur                                     | 开发Vue必备插件           |
+| any-rule                                  | 正则表达式插件            |
+| Markdown Preview Enhanced                 | md 预览插件               |
+| Markdown All in One                       | md 编辑器                 |
 
 ### 怎样安装插件
 1. 进入『安装插件』选项卡里；
@@ -58,6 +58,22 @@ settings.json
 语法高亮、智能感知、Emmet等  
 
 包含格式化功能， Alt+Shift+F （格式化全文），Ctrl+K Ctrl+F（格式化选中代码，两个Ctrl需要同时按着）
+
+在配置文件 `settings.json` 中配置如下项：
+```
+  // 更改vue的html格式，根据需求设置
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  // 更改vue的js格式
+  "vetur.format.defaultFormatter.js": "vscode-typescript",
+  // 保存时自动格式化
+  "editor.formatOnSave": true,
+  // 取消html标签属性强制换行
+  "vetur.format.defaultFormatterOptions": {
+      "js-beautify-html": {
+          "wrap_attributes": "auto",
+      }
+  },
+```
 
 ### any-rule 正则表达式插件
 

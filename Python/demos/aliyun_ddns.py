@@ -2,6 +2,12 @@
 #coding=utf-8
 
 # 本文来源：域名是如何绑定动态IP的？ https://mp.weixin.qq.com/s/JbdcL9LHtALdqz4O-RqfeQ
+# 阿里云核心SDK库
+# pip install aliyun-python-sdk-core
+# 阿里云域名SDK库
+# pip install aliyun-python-sdk-domain
+# 阿里云DNSSDK库
+# pip install aliyun-python-sdk-alidns
 
 # 加载核心SDK
 from aliyunsdkcore.client import AcsClient

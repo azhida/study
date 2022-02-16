@@ -323,6 +323,18 @@ flush privileges;
 systemctl start mariadb
 ```
 
+### 使用代理服务器访问报错的解决办法
+错误：
+```
+ERROR 1698 (28000): Access denied for user 'root'@'localhost'
+```
+解决：
+```
+use mysql;
+update user set password = password('123456) where user = 'root';
+flush privileges;
+```
+
 ## 安装git
 
 ```shell

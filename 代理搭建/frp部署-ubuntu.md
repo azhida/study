@@ -72,7 +72,7 @@ log_max_days = 3
 ## 调试
 
 ### 访问客户端主机
-通过第三方计算机终端访问 `ssh -p 7022 root@www.domain.cc` ，输入密码后即可通过 ssh 方式访问linux主机。 
+通过第三方计算机终端访问 `ssh -p 7022 root@x.x.x.x` ，输入密码后即可通过 ssh 方式访问linux主机。 
 
 访问成功说明代理成功
 

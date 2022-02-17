@@ -5,7 +5,7 @@
 ## 下载安装
 ```
 # 下载压缩包，注：这里已提供压缩包
-# wget https://github.com/fatedier/frp/releases/download/v0.39.1/frp_0.39.1_linux_arm64.tar.gz
+wget https://github.com/fatedier/frp/releases/download/v0.39.1/frp_0.39.1_linux_arm64.tar.gz
 # 解压安装包
 tar -xvf frp_0.39.1_linux_amd64.tar.gz
 

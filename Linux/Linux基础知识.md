@@ -6,6 +6,7 @@
 - [Linux 教程](./基础知识/Linux教程.md)
 - [Linux 简介](./基础知识/Linux简介.md)
 - [Linux 安装](./基础知识/Linux安装.md)
+- [Linux 系统启动过程](./基础知识/Linux系统启动过程.md)
 
 ---
 

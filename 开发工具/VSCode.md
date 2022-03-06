@@ -36,6 +36,7 @@
 | any-rule                                  | 正则表达式插件            |
 | Markdown Preview Enhanced                 | md 预览插件               |
 | Markdown All in One                       | md 编辑器                 |
+| vscode-mindmap                       | mind 脑图编辑器，文件扩展 km                 |
 
 ### 怎样安装插件
 1. 进入『安装插件』选项卡里；

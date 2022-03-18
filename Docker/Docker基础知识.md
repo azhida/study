@@ -10,6 +10,7 @@
     - Debian Docker 安装
     - [CentOS Docker 安装](./基础知识/CentOS-Docker安装.md)
     - [Windows Docker 安装](./基础知识/Windows-Docker安装.md)
+    - [Docker 镜像加速](./基础知识/Docker镜像加速.md)
 - [Docker 架构](./基础知识/Docker架构.md)
 
 

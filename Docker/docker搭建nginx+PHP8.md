@@ -25,6 +25,27 @@ php:8.0-fpm
 > `/var/www` 这个目录，在 nginx 站点配置 php解析 的时候，路径要与 这个目录一直，否则可能无法解析。  
 > `fastcgi_param SCRIPT_FILENAME /var/www$fastcgi_script_name;` 里边的 `/var/www` 就是 php-fpm 挂载的路径。
 
+### 在容器 php8 内 安装 php扩展
+```
+# 登录 php8 容器
+docker exec -it php8 bash
+
+# 创建 /usr/src/php/ 并解压
+docker-php-source extract
+
+# 安装 php 扩展
+docker-php-ext-install bcmath
+
+# 查看 bcmath 扩展是否安装成功，安装成功 会出现 bcmath
+php -m | grep bcmath
+
+# 退出容器
+exit
+
+# 重启容器
+docker restart php8
+```
+
 ## 创建 nginx-php8 容器
 
 - 拉取官方最新nginx镜像

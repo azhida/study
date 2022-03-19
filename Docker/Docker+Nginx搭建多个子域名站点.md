@@ -5,14 +5,15 @@
 域名：  
 - aa.test
 - bb.test
+- laravel9.test
 
 
 ## 架构
 - docker 创建 3个 nginx 容器：nginx_proxy、nginx_1、nginx_2、nginx_3
 - nginx_proxy ： 反向代理，80:80
 - nginx_1 ：站点1，输出 nginx_1，8081:80 ，配置域名 `aa.test`
-- nginx_2 ：站点1，输出 nginx_2，8082:80 ，配置域名 `bb.test`
-- nginx_3 ：站点1，输出 nginx_3，8083:80
+- nginx_2 ：站点2，输出 nginx_2，8082:80 ，配置域名 `bb.test`
+- nginx-php8-laravel9.test ：站点3，输出 laravel9 首页，8084:80，配置域名 `laravel9.test`
 
 ## 安装 docker
 自行百度 docker 安装方法。
@@ -219,6 +220,28 @@ vim /mydockerdata/nginx_proxy/conf.d/bb.test.conf
 server {
     listen       80;         #监听的端口
     server_name  bb.test;    #监听的URL
+    location / {
+        proxy_redirect off;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        # IP地址：请自行查看要代理的 IP地址，linux 可以用 ifconfig 命令查看
+        proxy_pass http://[IP地址]:8082;
+    }
+}
+```
+> 注意：记得开启 [IP地址]:8082 端口访问权限，否则无法访问
+
+- laravel9.test
+新建 `laravel9.test.conf`
+```
+vim /mydockerdata/nginx_proxy/conf.d/laravel9.test.conf
+```
+内容
+```
+server {
+    listen       80;         #监听的端口
+    server_name  laravel9.test;    #监听的URL
     location / {
         proxy_redirect off;
         proxy_set_header Host $host;

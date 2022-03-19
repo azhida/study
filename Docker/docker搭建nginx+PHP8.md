@@ -46,6 +46,26 @@ exit
 docker restart php8
 ```
 
+#### 安装 redis 扩展
+```
+# 进入 php8 容器
+docker exec -it php8 bash
+# 下载 redis 扩展
+curl -L -o /tmp/redis.tar.gz https://pecl.php.net/get/redis-5.3.7.tgz
+# 解压
+tar -xzf /tmp/redis.tar.gz
+rm -r /tmp/redis.tar.gz
+mkdir -p /usr/src/php/ext
+mv redis-5.3.7 /usr/src/php/ext/redis
+# 安装 redis 扩展并启动
+docker-php-ext-install redis
+php -m | grep redis
+# 退出容器
+exit
+# 重启 php8 容器
+docker restart php8
+```
+
 ## 创建 nginx-php8 容器
 
 - 拉取官方最新nginx镜像

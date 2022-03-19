@@ -1,0 +1,171 @@
+# Docker 构建 nginx + PHP8 + laravel9
+
+> 注：以下操作是在 windows 的子系统 ubuntu20.04 环境中进行
+
+## 创建 php8 容器
+
+- 拉取官方php8.0镜像
+```
+docker pull php:8.0-fpm
+```
+
+- 创建容器 php8
+```
+# --name php8 将 php 的容器命名为 php8
+# /mnt/e/www/:/var/www 本地 /mnt/e/www/ 目录映射至容器 /var/www 目录
+# -d 后台运行
+
+docker run -d \
+--name php8 \
+-v /mnt/e/www/:/var/www \
+php:8.0-fpm
+```
+
+> 注意：  
+> `/var/www` 这个目录，在 nginx 站点配置 php解析 的时候，路径要与 这个目录一直，否则可能无法解析。  
+> `fastcgi_param SCRIPT_FILENAME /var/www$fastcgi_script_name;` 里边的 `/var/www` 就是 php-fpm 挂载的路径。
+
+## 创建 nginx-php8 容器
+
+- 拉取官方最新nginx镜像
+```
+docker pull nginx:latest
+```
+
+- 创建本地站点 nginx-php8 的配置管理目录
+```
+mkdir -p /mydockerdata/nginx-php8/{log,code,conf.d}/
+
+# 写站点内容
+echo 'nginx-php8' > /mydockerdata/nginx-php8/code/a.txt
+```
+新建 `phpinfo.php` 文件，
+```
+vim /mydockerdata/nginx-php8/code/phpinfo.php
+```
+写入内容
+```
+<?php
+phpinfo();
+```
+- 编辑 nginx-php8 的站点默认配置文件
+```
+vim /mydockerdata/nginx-php8/conf.d/default.conf
+```
+内容
+```
+server {
+    listen       80;
+    server_name  localhost;
+ 
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm index.php;
+    }
+ 
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+ 
+    location ~ \.php$ {
+        fastcgi_pass   php:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME  /var/www$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+}
+```
+- 创建容器 nginx-php8 并启动
+```
+# docker run 创建容器
+# -d # 后台运行
+# -p 8083:80 # 映射端口本机8083到容器80
+# --name nginx-php8 # container 的名字 nginx-php8
+# -v /mydockerdata/nginx-php8/log/:/var/log/nginx # 映射log文件目录
+# -v /mydockerdata/nginx-php8/code/:/usr/share/nginx/html # 映射网页存放目录【网页代码】
+# -v /mydockerdata/nginx-php8/conf.d/:/etc/nginx/conf.d # 映射配置文件夹
+// --link php8:php: 把 php8 的网络并入 nginx，并通过修改 nginx 的 /etc/hosts，把域名 php 映射成 127.0.0.1，让 nginx 通过 php:9000 访问 php-fpm。
+# nginx # 镜像
+
+docker run -d \
+-p 8083:80 \
+--name nginx-php8 \
+-v /mydockerdata/nginx-php8/log/:/var/log/nginx \
+-v /mydockerdata/nginx-php8/code/:/usr/share/nginx/html \
+-v /mydockerdata/nginx-php8/conf.d/:/etc/nginx/conf.d:ro \
+--link php8:php \
+nginx
+```
+
+## 创建 nginx-php8-laravel9.test 容器
+
+> 注： laravel9 的代码路径 `/mnt/e/www/laravel9/`
+
+- 创建本地站点 nginx-php8-laravel9.test 的配置管理目录
+```
+mkdir -p /mydockerdata/nginx-php8-laravel9.test/{log,code,conf.d}/
+```
+
+- 编辑 nginx-php8-laravel9.test 的站点默认配置文件
+```
+vim /mydockerdata/nginx-php8-laravel9.test/conf.d/default.conf
+```
+内容
+```
+server {
+    listen 80;
+    listen [::]:80;
+    server_name  laravel9.test;
+    root   /var/www/laravel9/public;
+
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-Content-Type-Options "nosniff";
+
+    index index.php;
+
+    charset utf-8;
+ 
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+
+    error_page 404 /index.php;
+ 
+    location ~ \.php$ {
+        fastcgi_pass   php:9000;
+        fastcgi_param  SCRIPT_FILENAME  /var/www/laravel9/public$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+
+    location ~ /\.(?!well-known).* {
+        deny all;
+    }
+}
+```
+- 创建容器 nginx-php8 并启动
+```
+# docker run 创建容器
+# -d # 后台运行
+# -p 8084:80 # 映射端口本机8084到容器80
+# --name nginx-php8-laravel9.test # container 的名字 nginx-php8-laravel9.test
+# -v /mydockerdata/nginx-php8-laravel9.test/log/:/var/log/nginx # 映射log文件目录
+# -v /mnt/e/www/:/var/www # 映射网页存放目录【网页代码】
+# -v /mydockerdata/nginx-php8-laravel9.test/conf.d/:/etc/nginx/conf.d # 映射配置文件夹
+// --link php8:php: 把 php8 的网络并入 nginx，并通过修改 nginx 的 /etc/hosts，把域名 php 映射成 127.0.0.1，让 nginx 通过 php:9000 访问 php-fpm。
+# nginx # 镜像
+
+docker run -d \
+-p 8084:80 \
+--name nginx-php8-laravel9.test \
+-v /mydockerdata/nginx-php8-laravel9.test/log/:/var/log/nginx \
+-v /mnt/e/www/:/var/www \
+-v /mydockerdata/nginx-php8-laravel9.test/conf.d/:/etc/nginx/conf.d:ro \
+--link php8:php \
+nginx
+```
+
+- 访问 [127.0.0.1:8084](http://127.0.0.1:8084) ，就可以看到 laravel 首页了

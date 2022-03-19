@@ -230,3 +230,8 @@ server {
 }
 ```
 > 注意：记得开启 [IP地址]:8082 端口访问权限，否则无法访问
+
+- 重启 nginx_proxy 容器
+```
+docker restart nginx_proxy
+```

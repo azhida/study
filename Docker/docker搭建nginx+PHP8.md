@@ -33,8 +33,8 @@ docker exec -it php8 bash
 # 创建 /usr/src/php/ 并解压
 docker-php-source extract
 
-# 安装 php 扩展
-docker-php-ext-install bcmath
+# 安装 php 扩展，注：laravel连接mysql时用到 pdo_mysql 和 mysqli
+docker-php-ext-install bcmath pdo_mysql
 
 # 查看 bcmath 扩展是否安装成功，安装成功 会出现 bcmath
 php -m | grep bcmath

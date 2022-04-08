@@ -66,6 +66,29 @@ exit
 docker restart php8
 ```
 
+#### 安装 gd 扩展
+```
+# 进入 php8 容器
+docker exec -it php8 bash
+# 更新软件源
+apt update
+# 安装各种库
+apt install -y libwebp-dev libjpeg-dev libpng-dev libfreetype6-dev
+# 解压源码
+docker-php-source extract
+# gd源码文件夹
+cd /usr/src/php/ext/gd
+# 准备编译
+docker-php-ext-configure gd --with-webp=/usr/include/webp --with-jpeg=/usr/include --with-png=/usr/include --with-freetype=/usr/include/freetype2
+# 编译安装
+docker-php-ext-install gd
+php -m | grep gd
+# 退出容器
+exit
+# 重启 php8 容器
+docker restart php8
+```
+
 ## 创建 nginx-php8 容器
 
 - 拉取官方最新nginx镜像

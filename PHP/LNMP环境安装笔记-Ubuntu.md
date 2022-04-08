@@ -159,6 +159,10 @@ sudo netstat -nlp | grep 9000
     systemctl restart nginx
     ```
   - 浏览器访问地址 `http://ip:80/phpinfo.php` ，检查是否正常解析【注意浏览器缓存，正常来说，配置到这里，已经可以正常解析php文件了】
+###### 卸载 php7
+```
+sudo apt-get autoremove php7*
+```
 
 ##### 安装 Git 和 composer
 
@@ -166,6 +170,7 @@ sudo netstat -nlp | grep 9000
 apt install git
 apt install composer
 ```
+> 执行 `composer install` 提示安装PHP扩展时，根据提示安装对应扩展，命令为 `apt-get install php8.1-gd`
 
 <br>
 

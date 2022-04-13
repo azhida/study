@@ -99,6 +99,49 @@ server {
 # 重启nginx服务
 systemctl restart nginx
 ```
+### 配置 https
+```
+# 先备份，便于出错恢复
+mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf-bak
+# 编辑配置信息
+vim /etc/nginx/conf.d/default.conf
+```
+监听 443 端口 , 并 将 80端口 转发 到 443
+```
+server {
+    # 监听443端口
+    listen 443;
+    #你的域名
+    server_name demo.test; 
+    ssl on;
+    # ssl证书的pem文件路径
+    ssl_certificate  /root/card/demo.test.pem;
+    # ssl证书的key文件路径
+    ssl_certificate_key /root/card/demo.test.key;
+
+    root /usr/share/nginx/html;
+    index index.php index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+}
+
+server {
+    listen 80;
+    server_name demo.test;
+    #将请求转成https
+    rewrite ^(.*)$ https://$host$1 permanent;
+}
+```
 
 ## yum 安装 php7.3.*
 

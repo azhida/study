@@ -1,23 +1,70 @@
-# Docker 构建 nginx + PHP8 + laravel9
+# Docker 构建 Nginx + PHP8 + Laravel9
 
 > 注：以下操作是在 windows 的子系统 ubuntu20.04 环境中进行
+
+## 安装 docker
+自行百度 docker 安装方法。
+- centos 安装
+```
+curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+```
+- 检测是否安装成功
+```
+docker info
+```
+
+- docker 镜像加速
+> 注：阿里云的 docker 镜像加速器看 [这里](https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors)
+```
+sudo vim /etc/docker/daemon.json
+```
+内容
+```
+{
+    "registry-mirrors":[
+        "https://docker.mirrors.ustc.edu.cn/",
+        "https://hub-mirror.c.163.com/",
+        "https://reg-mirror.qiniu.com/"
+    ],
+    "dns": ["8.8.8.8", "114.114.114.114"]
+}
+```
+重启 docker 服务
+```
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+> 特别注意：重启 docker 会导致已经运行的 容器全部停止，请谨慎操作重启
+
+- 检查加速器是否生效
+```
+sudo docker info
+```
+看到如下内容，说明已生效
+```
+ Registry Mirrors:
+  https://docker.mirrors.ustc.edu.cn/
+  https://hub-mirror.c.163.com/
+  https://reg-mirror.qiniu.com/
+```
+
 
 ## 创建 php8 容器
 
 - 拉取官方php8.0镜像
 ```
-docker pull php:8.0-fpm
+sudo docker pull php:8.0-fpm
 ```
 
 - 创建容器 php8
 ```
 # --name php8 将 php 的容器命名为 php8
-# /mnt/e/www/:/var/www 本地 /mnt/e/www/ 目录映射至容器 /var/www 目录
+# /var/www/:/var/www 本地 /var/www/ 目录映射至容器 /var/www 目录
 # -d 后台运行
 
 docker run -d \
 --name php8 \
--v /mnt/e/www/:/var/www \
+-v /var/www/:/var/www \
 php:8.0-fpm
 ```
 
@@ -30,11 +77,20 @@ php:8.0-fpm
 # 登录 php8 容器
 docker exec -it php8 bash
 
+# 切换 apt 源，解决 apt update 慢的问题
+mv /etc/apt/sources.list /etc/apt/sources.list.bak
+
+cat <<EOF >/etc/apt/sources.list
+deb http://mirrors.ustc.edu.cn/debian stable main contrib non-free
+deb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free
+EOF
+
 # 创建 /usr/src/php/ 并解压
 docker-php-source extract
 
 # 安装 php 扩展，注：laravel连接mysql时用到 pdo_mysql 和 mysqli
 docker-php-ext-install bcmath pdo_mysql
+docker-php-ext-install zip
 
 # 查看 bcmath 扩展是否安装成功，安装成功 会出现 bcmath
 php -m | grep bcmath
@@ -79,10 +135,31 @@ docker-php-source extract
 # gd源码文件夹
 cd /usr/src/php/ext/gd
 # 准备编译
-docker-php-ext-configure gd --with-webp=/usr/include/webp --with-jpeg=/usr/include --with-png=/usr/include --with-freetype=/usr/include/freetype2
+docker-php-ext-configure gd \
+--with-webp=/usr/include/webp \
+--with-jpeg=/usr/include \
+--with-freetype=/usr/include/freetype2 \
+--with-png=/usr/include
 # 编译安装
 docker-php-ext-install gd
 php -m | grep gd
+# 退出容器
+exit
+# 重启 php8 容器
+docker restart php8
+```
+
+#### 安装 composer 和 zip、unzip
+```
+# 进入 php8 容器
+docker exec -it php8 bash
+# 更新软件源
+apt update
+# 下载安装 composer
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+# 安装 zip、unzip
+apt-get install -y zip unzip
 # 退出容器
 exit
 # 重启 php8 容器

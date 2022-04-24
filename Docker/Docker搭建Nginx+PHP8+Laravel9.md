@@ -142,12 +142,11 @@ apt update
 # 下载安装 composer
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
+# 配置 全局镜像地址【可选操作】
+composer config -g repo.packagist composer https://packagist.phpcomposer.com
+
 # 安装 zip、unzip , composer install 时需要用到 zip 和 unzip
 apt-get install -y zip unzip
-# 退出容器
-exit
-# 重启 php8 容器
-docker restart php8
 ```
 > 参考：[安装 composer](https://gitee.com/link?target=https%3A%2F%2Fpkg.phpcomposer.com%2F%23how-to-install-composer)
 
@@ -216,8 +215,8 @@ sudo docker ps -a
 # -p 8080:80 # 映射端口本机8080到容器80
 # --name nginx-php8-test # docker 容器的名字 nginx-php8-test
 # -v /mydockerdata/nginx-php8/log/:/var/log/nginx # 映射log文件目录
-# -v /mydockerdata/nginx-php8/code/:/usr/share/nginx/html # 映射网页存放目录【网页代码】
 # -v /mydockerdata/nginx-php8/conf.d/:/etc/nginx/conf.d # 映射配置文件夹
+# -v /var/www/:/var/www # 映射网页存放目录【网页代码】
 // --link php8:php: 把 php8 的网络并入 nginx，并通过修改 nginx 的 /etc/hosts，把域名 php 映射成 127.0.0.1，让 nginx 通过 php:9000 访问 php-fpm。
 # nginx # 镜像
 
@@ -304,6 +303,15 @@ sudo docker run -d \
 --link php8:php \
 nginx
 ```
+- 下载 laravel9 代码
+```
+# 要进入容器 php8 ，因为 php8 里面安装了 composer 和 laravel9 所需要的其他环境，否则下载会报错
+sudo docker exec -it php8 bash
+cd /var/www
+composer create-project laravel/laravel laravel9
+exit
+```
 
 - 访问 [http://ip:8081](http://ip:8081) ，就可以看到 laravel 首页了
-> 注意：ip 对应的 8081 端口需要开放外部访问权限，否则访问失败
+> 注意：ip 对应的 8081 端口需要开放外部访问权限，否则访问失败  
+> 至于 页面报错，就是 laravel 相关的配置了，具体去看 laravel 的文档

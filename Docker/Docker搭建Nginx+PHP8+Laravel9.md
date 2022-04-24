@@ -174,9 +174,9 @@ sudo mkdir -p /mydockerdata/nginx-php8/{log,code,conf.d}/
 # 写站点内容
 sudo echo 'nginx-php8' > /mydockerdata/nginx-php8/code/a.txt
 ```
-新建 `phpinfo.php` 文件，
+新建 `phpinfo.php` 文件，`.php` 文件要放到 `/var/www/` 目录下才可以被解析，因为 容器 php8 挂载的目录是 `/var/www/`
 ```
-sudo vim /mydockerdata/nginx-php8/code/phpinfo.php
+sudo vim /var/www/test-code/phpinfo.php
 ```
 写入内容
 ```
@@ -194,19 +194,14 @@ server {
     server_name  localhost;
  
     location / {
-        root   /usr/share/nginx/html;
+        root   /var/www/test-code/;
         index  index.html index.htm index.php;
-    }
- 
-    error_page   500 502 503 504  /50x.html;
-    location = /50x.html {
-        root   /usr/share/nginx/html;
     }
  
     location ~ \.php$ {
         fastcgi_pass   php:9000;
         fastcgi_index  index.php;
-        fastcgi_param  SCRIPT_FILENAME  /var/www$fastcgi_script_name;
+        fastcgi_param  SCRIPT_FILENAME  /var/www/test-code$fastcgi_script_name;
         include        fastcgi_params;
     }
 }
@@ -236,7 +231,9 @@ sudo docker run -d \
 --link php8:php \
 nginx
 ```
-- 访问 [http://ip:8080](http://ip:8080) 就可以看到网页内容了
+- 访问 [http://ip:8080](http://ip:8080) 站点内容
+    - 访问 [http://ip:8080/phpinfo.php](http://ip:8080/phpinfo.php) 就可以看到网页内容了
+    - 访问 [http://ip:8080/a.txtp](http://ip:8080/a.txt) 就可以看到网页内容了
 > 注意：8080 端口号需要开放外部访问权限，否则访问失败
 
 ## 创建 Laravel9 站点：容器名称 nginx-php8-laravel9

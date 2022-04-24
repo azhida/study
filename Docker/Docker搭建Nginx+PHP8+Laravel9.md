@@ -170,12 +170,10 @@ sudo docker pull nginx:latest
 - 创建本地站点 nginx-php8 的配置管理目录
 ```
 sudo mkdir -p /mydockerdata/nginx-php8/{log,code,conf.d}/
-
-# 写站点内容
-sudo echo 'nginx-php8' > /mydockerdata/nginx-php8/code/a.txt
 ```
 新建 `phpinfo.php` 文件，`.php` 文件要放到 `/var/www/` 目录下才可以被解析，因为 容器 php8 挂载的目录是 `/var/www/`
 ```
+sudo mkdir -p /var/www/test-code/
 sudo vim /var/www/test-code/phpinfo.php
 ```
 写入内容

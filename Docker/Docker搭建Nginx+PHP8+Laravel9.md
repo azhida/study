@@ -160,17 +160,18 @@ exit
 docker restart php8
 ```
 
-## 创建普通 PHP 站点：容器名称 nginx-php8
-
+## 创建普通 PHP 站点：容器名称 nginx-php8-test
 - 拉取官方最新nginx镜像
 ```
 sudo docker pull nginx:latest
 ```
 
-- 创建本地站点 nginx-php8 的配置管理目录
+- 创建本地站点 nginx-php8-test 的配置管理目录
 ```
-sudo mkdir -p /mydockerdata/nginx-php8/{log,code,conf.d}/
+sudo mkdir -p /mydockerdata/nginx-php8-test/{log,code,conf.d}/
 ```
+> 注： `nginx-php8-test` 的代码路径 `/var/www/test-code/`
+
 新建 `phpinfo.php` 文件，`.php` 文件要放到 `/var/www/` 目录下才可以被解析，因为 容器 php8 挂载的目录是 `/var/www/`
 ```
 sudo mkdir -p /var/www/test-code/
@@ -181,9 +182,9 @@ sudo vim /var/www/test-code/phpinfo.php
 <?php
 phpinfo();
 ```
-- 编辑 nginx-php8 的站点默认配置文件
+- 编辑 nginx-php8-test 的站点默认配置文件
 ```
-sudo vim /mydockerdata/nginx-php8/conf.d/default.conf
+sudo vim /mydockerdata/nginx-php8-test/conf.d/default.conf
 ```
 内容
 ```
@@ -208,12 +209,12 @@ server {
 ```
 sudo docker ps -a
 ```
-- 创建容器 nginx-php8 并启动
+- 创建容器 nginx-php8-test 并启动
 ```
 # docker run 创建容器
 # -d # 后台运行
 # -p 8080:80 # 映射端口本机8080到容器80
-# --name nginx-php8 # docker 容器的名字 nginx-php8
+# --name nginx-php8-test # docker 容器的名字 nginx-php8-test
 # -v /mydockerdata/nginx-php8/log/:/var/log/nginx # 映射log文件目录
 # -v /mydockerdata/nginx-php8/code/:/usr/share/nginx/html # 映射网页存放目录【网页代码】
 # -v /mydockerdata/nginx-php8/conf.d/:/etc/nginx/conf.d # 映射配置文件夹
@@ -222,10 +223,10 @@ sudo docker ps -a
 
 sudo docker run -d \
 -p 8080:80 \
---name nginx-php8 \
--v /mydockerdata/nginx-php8/log/:/var/log/nginx \
--v /mydockerdata/nginx-php8/code/:/usr/share/nginx/html \
--v /mydockerdata/nginx-php8/conf.d/:/etc/nginx/conf.d:ro \
+--name nginx-php8-test \
+-v /mydockerdata/nginx-php8-test/log/:/var/log/nginx \
+-v /mydockerdata/nginx-php8-test/conf.d/:/etc/nginx/conf.d:ro \
+-v /var/www/:/var/www \
 --link php8:php \
 nginx
 ```
@@ -282,7 +283,7 @@ server {
     }
 }
 ```
-- 创建容器 nginx-php8 并启动
+- 创建容器 nginx-php8-laravel9 并启动
 ```
 # docker run 创建容器
 # -d # 后台运行
@@ -298,8 +299,8 @@ sudo docker run -d \
 -p 8081:80 \
 --name nginx-php8-laravel9 \
 -v /mydockerdata/nginx-php8-laravel9/log/:/var/log/nginx \
--v /mnt/e/www/:/var/www \
 -v /mydockerdata/nginx-php8-laravel9/conf.d/:/etc/nginx/conf.d:ro \
+-v /var/www/:/var/www \
 --link php8:php \
 nginx
 ```

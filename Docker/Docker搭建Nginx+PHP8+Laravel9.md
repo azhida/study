@@ -73,39 +73,36 @@ php:8.0-fpm
 > `fastcgi_param SCRIPT_FILENAME /var/www$fastcgi_script_name;` 里边的 `/var/www` 就是 php-fpm 挂载的路径。
 
 ### 在容器 php8 内 安装 php扩展
-```
-# 登录 php8 容器
-docker exec -it php8 bash
+> 注意：所有的 PHP扩展 都需要 登录 到 php8 容器内安装操作
 
-# 切换 apt 源，解决 apt update 慢的问题
+- 登录 php8 容器
+```
+sudo docker exec -it php8 bash
+```
+- 切换 apt 源，解决 apt update 慢的问题
+```
 mv /etc/apt/sources.list /etc/apt/sources.list.bak
 
 cat <<EOF >/etc/apt/sources.list
 deb http://mirrors.ustc.edu.cn/debian stable main contrib non-free
 deb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free
 EOF
-
+```
+- 安装常规扩展
+```
 # 创建 /usr/src/php/ 并解压
 docker-php-source extract
 
-# 安装 php 扩展，注：laravel连接mysql时用到 pdo_mysql 和 mysqli
-docker-php-ext-install bcmath pdo_mysql
-docker-php-ext-install zip
-
+# 安装 php 扩展，注：laravel连接mysql时用到 pdo_mysql 和 mysqli ，pcntl 等
+docker-php-ext-install bcmath pdo_mysql pcntl
 # 查看 bcmath 扩展是否安装成功，安装成功 会出现 bcmath
 php -m | grep bcmath
 
-# 退出容器
-exit
-
-# 重启容器
-docker restart php8
+# 待确认
+docker-php-ext-install zip
 ```
-
-#### 安装 redis 扩展
+- 安装 redis 扩展
 ```
-# 进入 php8 容器
-docker exec -it php8 bash
 # 下载 redis 扩展
 curl -L -o /tmp/redis.tar.gz https://pecl.php.net/get/redis-5.3.7.tgz
 # 解压
@@ -116,16 +113,10 @@ mv redis-5.3.7 /usr/src/php/ext/redis
 # 安装 redis 扩展并启动
 docker-php-ext-install redis
 php -m | grep redis
-# 退出容器
-exit
-# 重启 php8 容器
-docker restart php8
 ```
 
-#### 安装 gd 扩展
+- 安装 gd 扩展
 ```
-# 进入 php8 容器
-docker exec -it php8 bash
 # 更新软件源
 apt update
 # 安装各种库
@@ -138,31 +129,34 @@ cd /usr/src/php/ext/gd
 docker-php-ext-configure gd \
 --with-webp=/usr/include/webp \
 --with-jpeg=/usr/include \
---with-freetype=/usr/include/freetype2 \
---with-png=/usr/include
+--with-freetype=/usr/include/freetype2
 # 编译安装
 docker-php-ext-install gd
 php -m | grep gd
-# 退出容器
-exit
-# 重启 php8 容器
-docker restart php8
 ```
 
-#### 安装 composer 和 zip、unzip
+- 安装 composer 和 zip、unzip
 ```
-# 进入 php8 容器
-docker exec -it php8 bash
 # 更新软件源
 apt update
 # 下载安装 composer
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
-# 安装 zip、unzip
+# 安装 zip、unzip , composer install 时需要用到 zip 和 unzip
 apt-get install -y zip unzip
 # 退出容器
 exit
 # 重启 php8 容器
+docker restart php8
+```
+> 参考：[安装 composer](https://gitee.com/link?target=https%3A%2F%2Fpkg.phpcomposer.com%2F%23how-to-install-composer)
+
+- 退出 php8 容器
+```
+exit
+```
+- 重启 php8 容器
+```
 docker restart php8
 ```
 

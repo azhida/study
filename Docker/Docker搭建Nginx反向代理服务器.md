@@ -68,6 +68,7 @@ server {
 # -v /mydockerdata/nginx_proxy/log/:/var/log/nginx # 映射log文件目录
 # -v /mydockerdata/nginx_proxy/code/:/usr/share/nginx/html # 映射网页存放目录【网页代码】
 # -v /mydockerdata/nginx_proxy/conf.d/:/etc/nginx/conf.d # 映射配置文件夹
+# -v /root/ssl/:/root/ssl # 可以配置 ssl 证书
 # nginx # 镜像
 
 sudo docker run -d \
@@ -77,6 +78,7 @@ sudo docker run -d \
 -v /mydockerdata/nginx_proxy/log/:/var/log/nginx \
 -v /mydockerdata/nginx_proxy/code/:/usr/share/nginx/html \
 -v /mydockerdata/nginx_proxy/conf.d/:/etc/nginx/conf.d \
+-v /root/ssl/:/root/ssl \
 nginx
 ```
 - 查看容器列表状态，确保容器正常运行

@@ -3,3 +3,7 @@
 ```
 sudo docker rename old_name new_name
 ```
+- 查看容器列表
+```
+sudo docker ps -a
+```

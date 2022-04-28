@@ -11,8 +11,7 @@ sudo docker pull mysql:5.5
 sudo docker run -itd \
 -p 3306:3306 \
 -e MYSQL_ROOT_PASSWORD=123456 \
---name mysql5.5
--v /etc/mysql5.5/:/etc/mysql/conf.d \
+--name mysql5.5 \
 -v /data/mysql5.5/:/data/mysql5.5 \
 mysql:5.5
 ```
@@ -29,4 +28,11 @@ mysql -u root -p
 
 # 退出容器
 exit
+```
+
+
+## 其他命令
+- Linux 下解压 .tar.gz
+```
+tar -zxvf filename.tar.gz
 ```

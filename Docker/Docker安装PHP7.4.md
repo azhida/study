@@ -1,6 +1,6 @@
 # Docker 构建 PHP7.4
 
-## 创建 php8 容器
+## 创建 php7.4 容器
 
 - 拉取官方php7.4镜像
 ```
@@ -14,6 +14,7 @@ sudo docker pull php:7.4-fpm
 # -d 后台运行
 
 sudo docker run -d \
+-p 9000:9000 \
 --name php7.4 \
 -v /var/www/:/var/www \
 php:7.4-fpm

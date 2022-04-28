@@ -53,7 +53,7 @@ docker-php-ext-install bcmath pdo_mysql pcntl
 # 查看 bcmath 扩展是否安装成功，安装成功 会出现 bcmath
 php -m | grep bcmath
 
-# 待确认
+# php7.4 必须要执行，否则 composer install 会报错，php8 可以不执行
 docker-php-ext-install zip
 ```
 - 安装 redis 扩展

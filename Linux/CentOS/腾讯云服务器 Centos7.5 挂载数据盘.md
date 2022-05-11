@@ -2,7 +2,8 @@
 
 [腾讯云服务器 Centos7.5 挂载数据盘](https://blog.csdn.net/u010227042/article/details/123129187)  
 [云主机(Centos7)磁盘挂载](https://cloud.tencent.com/developer/article/1343954?from=15425)  
-[CentOS7 硬盘分区，删除分区，格式化分区硬盘，支持 4T 盘，fdisk，parted 简单用法](https://wenku.baidu.com/view/14f23558a16925c52cc58bd63186bceb19e8ed22.html)
+[CentOS7 硬盘分区，删除分区，格式化分区硬盘，支持 4T 盘，fdisk，parted 简单用法](https://wenku.baidu.com/view/14f23558a16925c52cc58bd63186bceb19e8ed22.html)  
+[linux 挂载新磁盘给 /home](https://www.codenong.com/cs106153146/)
 
 - 第一、检查硬盘设备是否有数据盘
 ```

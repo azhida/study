@@ -251,6 +251,7 @@ yum --enablerepo=remi install php74-php php74-php-fpm php74-php-mbstring php74-p
 yum --enablerepo=remi install php74-php php74-php-devel
 # 安装扩展 bcmath
 yum --enablerepo=remi install php74-php-bcmath
+yum --enablerepo=remi install php74-php-posix
 
 #运行并查看版本
 php74 -v

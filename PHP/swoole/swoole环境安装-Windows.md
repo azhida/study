@@ -74,3 +74,8 @@ phpize
 # 添加
 extension=swoole.so
 ```
+
+## swoole 的使用
+看官网，有详细的文档
+
+swoole 官网[https://www.swoole.com/](https://www.swoole.com/)

@@ -100,3 +100,7 @@ exit
 - 访问 [http://ip:8081](http://ip:8081) ，就可以看到 laravel 首页了
 > 注意：ip 对应的 8081 端口需要开放外部访问权限，否则访问失败  
 > 至于 页面报错，就是 laravel 相关的配置了，具体去看 laravel 的文档
+
+
+## 配置 nginx 反向代理支持 域名访问
+看这里： [Docker搭建Nginx反向代理服务器](Docker搭建Nginx反向代理服务器.md)

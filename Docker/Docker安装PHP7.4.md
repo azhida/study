@@ -119,14 +119,6 @@ apt-get install -y zip unzip
 # docker-php-ext-install zip
 ```
 
-- 安装 event  sockets 扩展
-
-```
-apt-get install -y libevent-dev
-# websocket , workerman 用到
-docker-php-ext-install event sockets
-```
-
 > 参考：[安装 composer](https://gitee.com/link?target=https%3A%2F%2Fpkg.phpcomposer.com%2F%23how-to-install-composer)
 
 - 退出 php7.4 容器
@@ -137,4 +129,3 @@ exit
 ```
 docker restart php7.4
 ```
-

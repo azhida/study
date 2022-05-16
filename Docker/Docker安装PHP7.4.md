@@ -121,6 +121,37 @@ apt-get install -y zip unzip
 
 > 参考：[安装 composer](https://gitee.com/link?target=https%3A%2F%2Fpkg.phpcomposer.com%2F%23how-to-install-composer)
 
+- 安装 swoole 扩展
+
+[官方文档](https://wiki.swoole.com/#/environment)  
+[常见问题](https://wiki.swoole.com/#/question/install)
+
+
+```
+# fatal error: 'openssl/ssl.h' file not found
+# 安装 openssl 库
+apt-get install openssl
+apt-get install libssl-dev
+whereis openssl
+# 拿到 openssl 库的安装位置： /usr/include/openssl
+
+# fatal error: curl/curl.h: No such file or directory
+apt-get install libcurl4-openssl-dev
+
+# 解决了问题，然后 安装 swoole 扩展
+pecl install -D 'enable-sockets="no" enable-openssl="yes --with-openssl-dir=/usr/include/openssl/" enable-http2="yes" enable-mysqlnd="yes" enable-swoole-json="no" enable-swoole-curl="yes" enable-cares="yes"' swoole
+```
+php.ini 开启 swoole 扩展
+```
+cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
+vim /usr/local/etc/php/php.ini
+```
+内容
+```
+# 大概在 line：950
+extension=swoole.so
+```
+
 - 退出 php7.4 容器
 ```
 exit

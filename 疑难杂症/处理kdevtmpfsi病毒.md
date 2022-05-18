@@ -1,7 +1,10 @@
 # 处理kdevtmpfsi病毒
 
-原文：[处理kdevtmpfsi病毒](https://www.jianshu.com/p/9699251ad1d7)  
-原文：[kdevtmpfsi 挖矿病毒清除（亲测）](https://blog.csdn.net/qq_41259576/article/details/107191691)
+- 原文：[处理kdevtmpfsi病毒](https://www.jianshu.com/p/9699251ad1d7)  
+- 原文：[kdevtmpfsi 挖矿病毒清除（亲测）](https://blog.csdn.net/qq_41259576/article/details/107191691)  
+- 原文：[记一次docker容器中被植入kdevtmpfsi挖矿程序](https://juejin.cn/post/6890524854941843469)
+- [docker镜像中存在kdevtmpfsi挖矿程序](https://fleey.cn/archives/76.html)
+- [docker镜像中存在kdevtmpfsi挖矿程序](https://www.yoyoask.com/?p=1490)
 
 kdevtmpfsi进程解决办法：
 kdevtmpfsi有守护进程，单独kill掉 kdevtmpfsi 进程会不断恢复占用。守护进程名称为 kinsing，需要kill后才能解决问题。

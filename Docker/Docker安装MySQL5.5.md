@@ -12,6 +12,7 @@ sudo docker run -itd \
 -p 3306:3306 \
 -e MYSQL_ROOT_PASSWORD=123456 \
 --name mysql5.5 \
+-v /etc/localtime:/etc/localtime:ro \
 -v /data/mysql5.5/:/data/mysql5.5 \
 mysql:5.5
 ```

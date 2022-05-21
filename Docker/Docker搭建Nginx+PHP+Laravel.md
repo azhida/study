@@ -72,6 +72,7 @@ server {
 # -d # 后台运行
 # -p 8081:80 # 映射端口本机8081到容器80
 # --name nginx-php8-laravel9 # docker 容器名字 nginx-php8-laravel9
+# -v /etc/localtime:/etc/localtime:ro 容器时间与宿主机时间一致
 # -v /mydockerdata/nginx-php8-laravel9/log/:/var/log/nginx # 映射log文件目录
 # -v /mydockerdata/nginx-php8-laravel9/conf.d/:/etc/nginx/conf.d # 映射配置文件夹
 # -v /var/www/:/var/www # 映射网页存放目录【网页代码】
@@ -81,6 +82,7 @@ server {
 sudo docker run -d \
 -p 8081:80 \
 --name nginx-php8-laravel9 \
+-v /etc/localtime:/etc/localtime:ro \
 -v /mydockerdata/nginx-php8-laravel9/log/:/var/log/nginx \
 -v /mydockerdata/nginx-php8-laravel9/conf.d/:/etc/nginx/conf.d:ro \
 -v /var/www/:/var/www \

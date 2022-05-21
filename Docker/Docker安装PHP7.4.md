@@ -12,12 +12,14 @@ sudo docker pull php:7.4-fpm
 
 ```
 # --name php7.4 将 php 的容器命名为 php7.4
+# -v /etc/localtime:/etc/localtime:ro 容器时间与宿主机时间一致
 # /var/www/:/var/www 本地 /var/www/ 目录映射至容器 /var/www 目录
 # -d 后台运行
 
 sudo docker run -d \
 -p 9001:9000 \
 --name php7.4 \
+-v /etc/localtime:/etc/localtime:ro \
 -v /var/www/:/var/www \
 php:7.4-fpm
 ```

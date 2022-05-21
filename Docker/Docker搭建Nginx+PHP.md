@@ -74,6 +74,7 @@ sudo docker ps -a
 # -d # 后台运行
 # -p 8080:80 # 映射端口本机8080到容器80
 # --name nginx-php8-test # docker 容器的名字 nginx-php8-test
+# -v /etc/localtime:/etc/localtime:ro 容器时间与宿主机时间一致
 # -v /mydockerdata/nginx-php8-test/log/:/var/log/nginx # 映射log文件目录
 # -v /mydockerdata/nginx-php8-test/conf.d/:/etc/nginx/conf.d # 映射配置文件夹
 # -v /var/www/:/var/www # 映射网页存放目录【网页代码】
@@ -83,6 +84,7 @@ sudo docker ps -a
 sudo docker run -d \
 -p 8080:80 \
 --name nginx-php8-test \
+-v /etc/localtime:/etc/localtime:ro \
 -v /mydockerdata/nginx-php8-test/log/:/var/log/nginx \
 -v /mydockerdata/nginx-php8-test/conf.d/:/etc/nginx/conf.d:ro \
 -v /var/www/:/var/www \

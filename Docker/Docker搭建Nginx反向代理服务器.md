@@ -72,6 +72,7 @@ server{
 # -p 80:80 # 映射端口本机80到容器80
 # -p 443:443 # 映射端口本机 443到容器443，配置 https 访问需要
 # --name nginx_proxy # docker 容器的名字 nginx_proxy
+# -v /etc/localtime:/etc/localtime:ro 容器时间与宿主机时间一致
 # -v /mydockerdata/nginx_proxy/log/:/var/log/nginx # 映射log文件目录
 # -v /mydockerdata/nginx_proxy/code/:/usr/share/nginx/html # 映射网页存放目录【网页代码】
 # -v /mydockerdata/nginx_proxy/conf.d/:/etc/nginx/conf.d # 映射配置文件夹
@@ -82,6 +83,7 @@ sudo docker run -d \
 -p 80:80 \
 -p 443:443 \
 --name nginx_proxy \
+-v /etc/localtime:/etc/localtime:ro \
 -v /mydockerdata/nginx_proxy/log/:/var/log/nginx \
 -v /mydockerdata/nginx_proxy/code/:/usr/share/nginx/html \
 -v /mydockerdata/nginx_proxy/conf.d/:/etc/nginx/conf.d \

@@ -44,4 +44,5 @@ macOS10.13 不支持 xcode10.1，安装时 xcode10.1 会报错：要在 macos10.
 
 [设置 VMware 中的 Mac OS 虚拟机进入 Recovery 模式](./%E8%AE%BE%E7%BD%AE%20VMware%20%E4%B8%AD%E7%9A%84%20Mac%20OS%20%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BF%9B%E5%85%A5%20Recovery%20%E6%A8%A1%E5%BC%8F.md)
 
+将文件 `/System/Library/CoreServices/SystemVersion.plist` 复制到桌面修改后进行替换。
 

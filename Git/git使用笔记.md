@@ -2,6 +2,10 @@
 ```
 git init
 ```
+###### 克隆 指定分支 dev分支
+```
+git clone -b dev https://xxx.git
+```
 
 ###### 解决中文乱码：
 ```
@@ -122,6 +126,9 @@ git push origin --delete dev
 
 #### 常用命令
 ```shell
+# 克隆 指定分支 dev分支
+git clone -b dev https://xxx.git
+
 # 初始化
 git init
 

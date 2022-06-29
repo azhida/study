@@ -26,3 +26,7 @@ Ctrl+C
 # 保存内容
 :wq
 ```
+
+## c常用快捷键
+- `win + L` ：跳转 指定行【max 下】
+- `Ctrl + G` ：跳转 指定行【windows 下】

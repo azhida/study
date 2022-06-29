@@ -11,6 +11,8 @@ fn键+左方向键是HOME
 fn键+右方向键是END
 fn+上方向键是page up
 fn+下方向键是page down
+F11 : 回到桌面
+win + Shift + 4 : 自定义截屏，截图会保存到桌面
 ```
 
 ## 切换输入法

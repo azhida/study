@@ -19,3 +19,14 @@ win + Shift + 4 : 自定义截屏，截图会保存到桌面
 ```
 Ctrl + Shift + 空格键
 ```
+
+## 关闭指定端口
+```
+# 先查看占用端口的 进程ID
+lsof -i:8080
+COMMAND  PID USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+node    1563 a123   24u  IPv4 0x50a3c2bc555911ab      0t0  TCP 192.168.200.111:8080 (LISTEN)
+
+# 杀掉 PID
+kill -9 1563
+```

@@ -14,3 +14,13 @@ sudo docker ps -a
 > 注意：以上命令要在 宿主机内 执行；  
 > `php7.4` : 容器名称；  
 > `php /var/test.php` : 要执行的命令；
+> 
+
+- 文件复制
+```
+# 宿主机到容器
+docker cp /opt/test/file.txt mycontainer:/opt/testnew/
+# 容器到宿主机
+docker cp mycontainer:/opt/testnew/file.txt /opt/test/
+```
+> 需要注意的是，不管容器有没有启动，拷贝命令都会生效。

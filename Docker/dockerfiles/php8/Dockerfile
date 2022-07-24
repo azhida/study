@@ -3,7 +3,7 @@ COPY /etc/localtime /etc/localtime
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak \
     && cat <<EOF >/etc/apt/sources.list \
     deb http://mirrors.ustc.edu.cn/debian stable main contrib non-free \
-    deb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free \s
+    deb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free \
     EOF \
     && apt update \
     # 安装常规扩展

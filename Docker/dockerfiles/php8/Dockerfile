@@ -41,4 +41,4 @@ RUN echo 'deb http://mirrors.ustc.edu.cn/debian stable main contrib non-free' > 
 # 创建镜像
 # sudo docker build -f ./Dockerfile.php8 -t php8 .
 # 创建容器 php8
-# docker run -d --name php8 -v /etc/localtime:/etc/localtime:ro -v /var/www/:/var/www php:8.0-fpm
+# sudo docker run -d --name php8 -v /etc/localtime:/etc/localtime:ro -v /var/www/:/var/www php8

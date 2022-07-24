@@ -1,9 +1,6 @@
 FROM php:8.0-fpm
-RUN vi /etc/apt/sources.list \
-    && cat <<EOF >/etc/apt/sources.list \
-    deb http://mirrors.ustc.edu.cn/debian stable main contrib non-free \
-    deb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free \
-    EOF \
+RUN echo 'deb http://mirrors.ustc.edu.cn/debian stable main contrib non-free' > /etc/apt/sources.list \
+    && echo 'deb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free' >> /etc/apt/sources.list \
     && apt update \
     # 安装常规扩展
     && docker-php-source extract \
@@ -42,6 +39,6 @@ RUN vi /etc/apt/sources.list \
 
 
 # 创建镜像
-# sudo docker build -t php8 .
+# sudo docker build -f ./Dockerfile.php8 -t php8 .
 # 创建容器 php8
 # docker run -d --name php8 -v /etc/localtime:/etc/localtime:ro -v /var/www/:/var/www php:8.0-fpm

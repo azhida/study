@@ -46,6 +46,12 @@ cat <<EOF >/etc/apt/sources.list
 deb http://mirrors.ustc.edu.cn/debian stable main contrib non-free
 deb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free
 EOF
+
+# 或者
+echo 'deb http://mirrors.ustc.edu.cn/debian stable main contrib non-free' > /etc/apt/sources.list
+echo 'deb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free' >> /etc/apt/sources.list
+# > 覆盖写入，会覆盖之前的内容
+# >> 追加写入，不会覆盖之前的内容
 ```
 - 安装常规扩展
 ```

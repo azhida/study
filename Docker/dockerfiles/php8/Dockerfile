@@ -1,5 +1,5 @@
 FROM php:8.0-fpm
-RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak \
+RUN vi /etc/apt/sources.list \
     && cat <<EOF >/etc/apt/sources.list \
     deb http://mirrors.ustc.edu.cn/debian stable main contrib non-free \
     deb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free \

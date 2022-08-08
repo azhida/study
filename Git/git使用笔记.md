@@ -26,6 +26,26 @@ git config  --global user.name 'test_user_name'；
 git config  --global user.email 'test@test.com';
 ```
 
+###### 本地存储的账号密码（凭据）
+```
+# 查看凭据
+cat ~/.git-credentials
+# 修改本地存储的账号密码（凭据）
+vim ~/.git-credentials
+
+# 将凭证用明文的形式存放在磁盘中
+git config --global credential.helper store
+#配置到缓存 默认15分钟
+git config --global credential.helper cache
+#修改缓存时间
+git config --global credential.helper 'cache --timeout=3600'
+# 删除保存的凭证
+vim ~/.git-credentials
+# 禁止使用缓存凭据
+git config --global --unset credential.helper
+git config --unset credential.helper
+```
+
 ###### 清理项目，命令 git clean 作用是清理项目，-f 是强制清理文件的设置，-d 选项命令连文件夹一并清除。
 ```
 git clean -f -d

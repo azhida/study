@@ -19,4 +19,7 @@ bypy upload filename
 
 # 上传文件或文件夹到指定目录 ab
 bypy upload filename ab/
+
+# 关闭连接，退出授权
+bypy -c
 ```

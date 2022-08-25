@@ -4,6 +4,7 @@
 docker pull ubuntu:latest
 
 # 在运行容器的时候，给容器加特权，及加上 --privileged=true 参数， 否则 挂载目录时会提示无权限
+# 挂载目录要注意： ~/www:/www 会与宝塔安装脚本冲突导致宝塔安装失败，所以要挂到 :/www1 去，TODO：后续优化
 docker run -itd \
 --name ubuntu-test \
 -p 888:888 \

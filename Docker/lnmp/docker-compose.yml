@@ -1,0 +1,79 @@
+version: '3'
+
+services:
+
+  nginx:
+    container_name: "lnmp-nginx"
+    image: "nginx:alpine"
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/log:/var/log/nginx
+      - ./code:/var/www/html
+    environment:
+      TZ: "Asia/Shanghai"
+    networks:
+      extnetwork:
+        ipv4_address: "172.20.0.2"
+    links:
+      - php
+    restart: unless-stopped
+
+  mysql:
+    container_name: 'lnmp-mysql'
+    image: 'mysql:5.5'
+    ports:
+      - 33061:3306
+    volumes:
+      - ./mysql/conf.d:/etc/mysql/conf.d
+      - ./mysql/data:/var/lib/mysql
+    environment:
+      TZ: "Asia/Shanghai"
+      MYSQL_PREFIX: "demo_"
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "demo"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "password"
+    networks:
+      extnetwork:
+        ipv4_address: "172.20.0.3"
+    restart: unless-stopped
+
+  redis:
+    container_name: "lnmp-redis"
+    image: "redis:alpine"
+    ports:
+      - 63790:6379
+    environment:
+      TZ: "Asia/Shanghai"
+    networks:
+      extnetwork:
+        ipv4_address: "172.20.0.4"
+    restart: unless-stopped
+
+  php:
+    container_name: "lnmp-php"
+    image: "php:8.0-fpm"
+    shm_size: "1024m"
+    volumes:
+      - ./php:/usr/local/etc/php
+      - ./code:/var/www/html
+    environment:
+      TZ: "Asia/Shanghai"
+      LANG: "C.UTF-8"
+    networks:
+      extnetwork:
+        ipv4_address: "172.20.0.5"
+    depends_on:
+      - redis
+      - mysql
+    restart: unless-stopped
+
+networks:
+  extnetwork:
+    name: "networks"
+    ipam:
+      config:
+        - subnet: "172.20.0.0/24"
+          gateway: "172.20.0.1"

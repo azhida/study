@@ -8,6 +8,8 @@ docker network create network-common
 docker network ls
 # 查看网络 - network-common
 docker network inspect network-common
+# 清除无用网络
+docker network prune
 ```
 
 ## 在 docker-compose.yml 配置使用

@@ -72,7 +72,7 @@ services:
 
 networks:
   extnetwork:
-    name: "networks"
+    name: "lnmp-network"
     ipam:
       config:
         - subnet: "172.20.0.0/24"

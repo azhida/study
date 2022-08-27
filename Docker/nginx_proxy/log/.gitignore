@@ -1,4 +1,2 @@
-.idea
-.hbuilderx
-__pycache__
-test*
+*
+!.gitignore

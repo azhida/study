@@ -30,3 +30,14 @@ Ctrl+C
 ## c常用快捷键
 - `win + L` ：跳转 指定行【max 下】
 - `Ctrl + G` ：跳转 指定行【windows 下】
+
+## phpstorm设置编码格式，默认 utf-8
+```
+file 
+-> settings 
+-> Editor 
+-> file encodng 
+-> project encding(选择编码格式) 
+-> apply 
+->OK
+```

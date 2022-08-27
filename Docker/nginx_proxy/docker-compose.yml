@@ -15,3 +15,9 @@ services:
       - ./ssl:/root/ssl
     environment:
       TZ: "Asia/Shanghai"
+    networks:
+      lnmp-network:
+
+networks:
+  lnmp-network: # 使用网络lnmp-network，目的是与该网络内其他服务互通
+    external: true

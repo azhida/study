@@ -12,6 +12,6 @@ services:
       - ./conf.d:/etc/nginx/conf.d
       - ./code:/usr/share/nginx/html
       - ./log:/var/log/nginx
-      - ./ssl/:/root/ssl
+      - ./ssl:/root/ssl
     environment:
       TZ: "Asia/Shanghai"

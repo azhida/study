@@ -217,11 +217,8 @@ server {
 
 ```
 # 进入 nginx_proxy 容器
-sudo docker exec -it nginx_proxy bash
+sudo docker exec -it nginx_proxy nginx -t
 # 检测配置文件 （看到检测结果 ok 说明配置文件没问题，否则就要排查）
-nginx -t
-# 检测结果 OK 则 退出容器
-exit
 ```
 
 - 重启 nginx_proxy 容器（注意：重启前对 容器 nginx_proxy 的配置文件进行检测 ）

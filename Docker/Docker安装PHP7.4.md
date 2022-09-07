@@ -59,6 +59,7 @@ The following signatures couldn't be verified because the public key is not avai
 ```
 # 公钥直接从错误提示中取
 apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 648ACFD622F3D138 
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138 
 ```
 
 - 安装常规扩展

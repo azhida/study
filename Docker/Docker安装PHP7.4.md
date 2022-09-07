@@ -51,6 +51,16 @@ deb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free
 EOF
 ```
 
+如果提示 GPG 公钥错误，则执行以下命令
+```
+GPG error: http://mirrors.ustc.edu.cn/debian stable-updates InRelease: 
+The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 648ACFD622F3D138 NO_PUBKEY 0E98404D386FA1D9
+```
+```
+# 公钥直接从错误提示中取
+apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 648ACFD622F3D138 
+```
+
 - 安装常规扩展
 
 ```

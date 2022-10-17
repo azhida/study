@@ -2,6 +2,13 @@
 ```
 git init
 ```
+
+###### 克隆 指定账户密码
+```
+# https://gitee.com/wghzhida/study.git 为例
+git clone https://账户:密码@gitee.com/wghzhida/study.git
+git clone https://username:password@gitee.com/username/test.git
+```
 ###### 克隆 指定分支 dev分支
 ```
 git clone -b dev https://xxx.git

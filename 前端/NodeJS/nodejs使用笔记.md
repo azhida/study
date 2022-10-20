@@ -6,6 +6,7 @@ tar xf node-v14.19.2-linux-x64.tar.xz
 # 建立软连接（注意一定要用绝对路径）
 ln -s /root/node-v14.19.2-linux-x64/bin/node /usr/bin/node
 ln -s /root/node-v14.19.2-linux-x64/bin/npm /usr/bin/npm
+ln -s /root/node-v14.19.2-linux-x64/bin/npx /usr/bin/npx
 
 # npm 升级到指定版本
 npm install npm@8.19.1 -g

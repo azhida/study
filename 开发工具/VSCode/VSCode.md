@@ -39,6 +39,7 @@
 | vscode-mindmap                       | mind 脑图编辑器，文件扩展 km                 |
 | markmap                       | markdown 脑图编辑器，文件扩展 mm.md                 |
 | Draw.io Integration   | 绘图工具，如 流程图等，文件扩展 .drawio  |
+|Angular Files| 快速创建 Angular 模板文件 html，css 和 ts |
 
 ### 怎样安装插件
 1. 进入『安装插件』选项卡里；

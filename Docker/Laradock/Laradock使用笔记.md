@@ -46,3 +46,26 @@ docker-compose up -d nginx mysql redis
 RUN find /etc/apt/sources.list.d/ -type f -name "*.list" -exec sed -i.bak -r 's#deb(-src)?\s*http(s)?://ppa.launchpad.net#deb\1 https://launchpad.proxy.ustclug.org#ig' {} \;
 ```
 
+- nginx 站点配置
+
+```
+cp nginx/sites/laravel.conf.example nginx/sites/laravel.conf
+```
+
+/nginx/sites/laravel.conf
+
+```
+server {
+.
+.
+.
+    server_name laravel.test;
+    root /var/www/laravel/public;
+.
+.
+.
+    error_log /var/log/nginx/laravel_error.log;
+    access_log /var/log/nginx/laravel_access.log;
+}
+```
+

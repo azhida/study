@@ -24,3 +24,20 @@ docker cp /opt/test/file.txt mycontainer:/opt/testnew/
 docker cp mycontainer:/opt/testnew/file.txt /opt/test/
 ```
 > 需要注意的是，不管容器有没有启动，拷贝命令都会生效。
+
+
+## 容器操作
+
+- 批量删除容器
+
+```
+docker rm `docker ps -aq`
+```
+
+## 镜像操作
+
+- 批量删除镜像
+
+```
+docker rmi `docker images -aq`
+```

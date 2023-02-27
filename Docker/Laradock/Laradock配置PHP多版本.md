@@ -27,6 +27,11 @@ cp -r php-fpm php-fpm-74
           # 修改为指定的 PHP 版本
           - LARADOCK_PHP_VERSION=7.4
           # 其他项...
+      volumes:
+        - ./php-fpm-74/php${PHP_VERSION}.ini:/usr/local/etc/php/php.ini
+        # 其他项...
+      ports:
+        - "9001"
 ```
 
 - nginx 添加 php-fpm-74 链接

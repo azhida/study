@@ -48,3 +48,11 @@ yarn config get registry
 yarn config set registry http://registry.npm.taobao.org/
 ```
 
+```
+# Scss--版本的对应关系(sass, sass-loader, dart-sass, node-sass等）
+# 一组可用的组合
+node: v14.19.0;
+node-sass: ^4.14.1;
+sass-loader: ^7.3.1;
+```
+

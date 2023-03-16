@@ -11,6 +11,17 @@
 
 下载地址：https://github.com/coreybutler/nvm-windows/releases
 
+- 配置路径和下载源
+
+nvm 安装目录下  
+`settings.txt` 添加如下内容
+```
+node_mirror: https://npm.taobao.org/mirrors/node/
+npm_mirror: https://npm.taobao.org/mirrors/npm/
+```
+
+
+
 安装完成要打开新的 cmd 窗口，否则看不到 nvm 信息
 
 ### NVM 常用命令

@@ -14,14 +14,13 @@ services:
     environment:
       TZ: "Asia/Shanghai"
     networks:
-      extnetwork:
-        ipv4_address: "172.20.0.2"
+      - lnmp-network
     links:
-      - php
+      - php-80
     restart: unless-stopped
 
-  mysql:
-    container_name: 'lnmp-mysql'
+  mysql5.5:
+    container_name: 'lnmp-mysql5.5'
     image: 'mysql:5.5'
     ports:
       - 33061:3306
@@ -36,8 +35,7 @@ services:
       MYSQL_USER: "user"
       MYSQL_PASSWORD: "password"
     networks:
-      extnetwork:
-        ipv4_address: "172.20.0.3"
+      - lnmp-network
     restart: unless-stopped
 
   redis:
@@ -48,12 +46,11 @@ services:
     environment:
       TZ: "Asia/Shanghai"
     networks:
-      extnetwork:
-        ipv4_address: "172.20.0.4"
+      - lnmp-network
     restart: unless-stopped
 
-  php:
-    container_name: "lnmp-php"
+  php-80:
+    container_name: "lnmp-php-80"
     image: "php:8.0-fpm"
     shm_size: "1024m"
     volumes:
@@ -63,17 +60,12 @@ services:
       TZ: "Asia/Shanghai"
       LANG: "C.UTF-8"
     networks:
-      extnetwork:
-        ipv4_address: "172.20.0.5"
+      - lnmp-network
     depends_on:
       - redis
-      - mysql
+      - mysql5.5
     restart: unless-stopped
 
 networks:
-  extnetwork:
-    name: "lnmp-network"
-    ipam:
-      config:
-        - subnet: "172.20.0.0/24"
-          gateway: "172.20.0.1"
+  lnmp-network: # 网络名称
+    external: false # 外部网络：true 不存在则报错，false 不存在则创建 lnmp-network

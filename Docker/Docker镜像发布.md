@@ -2,7 +2,7 @@
 
 ## 创建 Docker 仓库
 
-- 登录https://hub.docker.com/
+- 登录: https://hub.docker.com/
 - 先注册申请一个自己的账号
 - 创建自己的Docker仓库【如：docker-test】
 

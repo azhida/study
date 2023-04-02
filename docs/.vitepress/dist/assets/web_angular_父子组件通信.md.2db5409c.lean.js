@@ -1,0 +1,1 @@
+import{_ as s,o as n,c as a,N as l}from"./chunks/framework.34eade80.js";const h=JSON.parse('{"title":"父子组件通信","description":"","frontmatter":{},"headers":[],"relativePath":"web/angular/父子组件通信.md"}'),p={name:"web/angular/父子组件通信.md"},e=l("",11),t=[e];function o(c,i,C,r,A,y){return n(),a("div",null,t)}const d=s(p,[["render",o]]);export{h as __pageData,d as default};

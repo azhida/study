@@ -41,6 +41,10 @@ const sidebarItems = [
     { text: 'Shell', link: '/server/shell/' },
 ];
 
+sidebarItems.sort(function(a,b){
+    return (a.text + '').localeCompare(b.text + '')
+})
+
 export default {
     navItems,
     sidebarItems

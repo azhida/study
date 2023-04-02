@@ -46,6 +46,10 @@ const sidebarItems = [
     { text: 'UniApp', link: '/web/uniapp' },
 ];
 
+sidebarItems.sort(function(a,b){
+    return (a.text + '').localeCompare(b.text + '')
+})
+
 export default {
     navItems,
     sidebarItems

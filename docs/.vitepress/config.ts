@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 
 import WebConfig from './configs/web'
 import serverConfig from './configs/server'
+import databaseConfig from './configs/database'
 
 
 
@@ -24,12 +25,7 @@ export default defineConfig({
       },
       {
         text: '数据库',
-        items: [
-          { text: 'HTML', link: '/item-1' },
-          { text: 'CSS', link: '/item-2' },
-          { text: 'JavaScript', link: '/item-3' },
-          { text: 'VUE', link: '/item-3' },
-        ]
+        items: databaseConfig.navItems
       },
       {
         text: '开发工具',
@@ -47,6 +43,7 @@ export default defineConfig({
     sidebar: {
       '/web': WebConfig.sidebarItems,
       '/server': serverConfig.sidebarItems,
+      '/database': databaseConfig.sidebarItems,
     },
 
     socialLinks: [

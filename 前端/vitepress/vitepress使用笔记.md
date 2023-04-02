@@ -4,6 +4,7 @@ Vitepress是使用Vue3+Vite来快速搭建一个个人网站的工具，网站�
 
 官方地址：https://vitejs.cn/vitepress/
 
+> 我自己翻译的地址【完善中】：https://wghzhida.gitee.io/vitepress
 
 ## 安装
 

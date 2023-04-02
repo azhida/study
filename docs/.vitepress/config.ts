@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 import WebConfig from './configs/web'
+import serverConfig from './configs/server'
 
 
 
@@ -19,16 +20,7 @@ export default defineConfig({
       },
       {
         text: '服务端',
-        items: [
-          { text: 'PHP', link: '/' },
-          { text: 'Python', link: '/' },
-          { text: 'Composer', link: '/' },
-          { text: 'Docker', link: '/' },
-          { text: 'Nginx', link: '/' },
-          { text: 'HTTP', link: '/' },
-          { text: 'Linux', link: '/' },
-          { text: 'Shell', link: '/' },
-        ]
+        items: serverConfig.navItems
       },
       {
         text: '数据库',
@@ -53,7 +45,8 @@ export default defineConfig({
     ],
 
     sidebar: {
-      '/web': WebConfig.sidebarItems
+      '/web': WebConfig.sidebarItems,
+      '/server': serverConfig.sidebarItems,
     },
 
     socialLinks: [

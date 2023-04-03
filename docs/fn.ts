@@ -54,14 +54,14 @@ function getNavItemsByDir(dir, prefix){
 }
 
 // 获取左侧文章目录 - 根据 dir 获取所有子目录
-function getSidebarItemsByDir(dir){
+function getSidebarItemsByDir(dir, title:string|null = null){
     // 获取指定目录 /docs/web 下所有一级子目录，拿来做顶部导航
     const srcDir = dirTree(dir, {
         extensions: /\.md$/,
         normalizePath: true,
     });
     return {
-        text: srcDir.name,
+        text: title ? title : srcDir.name,
         collapsible: true,
         collapsed: true,
         items: toSidebarOption(srcDir.children),

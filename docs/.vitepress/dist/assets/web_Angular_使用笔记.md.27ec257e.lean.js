@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as n,Q as l}from"./chunks/framework.92222dd1.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"web/Angular/使用笔记.md","lastUpdated":null}'),e={name:"web/Angular/使用笔记.md"},p=l("",5),o=[p];function c(t,r,i,A,C,d){return a(),n("div",null,o)}const u=s(e,[["render",c]]);export{_ as __pageData,u as default};

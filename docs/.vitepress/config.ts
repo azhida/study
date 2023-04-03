@@ -1,9 +1,9 @@
 import { defineConfig } from 'vitepress'
+import { getNavAndSidebarByDir } from '../fn';
 
-import WebConfig from './configs/web'
-import serverConfig from './configs/server'
-import databaseConfig from './configs/database'
-
+const webConfig = getNavAndSidebarByDir('./docs/web'); // 前端
+const serverConfig = getNavAndSidebarByDir('./docs/server'); // 服务端
+const databaseConfig = getNavAndSidebarByDir('./docs/database'); // 数据库
 
 
 // https://vitepress.dev/reference/site-config
@@ -23,7 +23,7 @@ export default defineConfig({
       { text: '首页', link: '/' },
       {
         text: '前端',
-        items: WebConfig.navItems,
+        items: webConfig.navItems,
       },
       {
         text: '服务端',
@@ -47,7 +47,7 @@ export default defineConfig({
     ],
 
     sidebar: {
-      '/web': WebConfig.sidebarItems,
+      '/web': webConfig.sidebarItems,
       '/server': serverConfig.sidebarItems,
       '/database': databaseConfig.sidebarItems,
     },

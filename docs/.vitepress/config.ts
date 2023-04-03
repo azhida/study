@@ -11,8 +11,14 @@ export default defineConfig({
   title: "学习笔记",
   description: "积硅步至千里，积小流成江海！好记性不如烂笔头！",
   base: '/study/',
+  lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+
+    // 右侧导航栏显示多级目录
+    outline: 'deep',
+    lastUpdatedText: '最后更新',
+
     nav: [
       { text: '首页', link: '/' },
       {
@@ -49,6 +55,12 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/azhida/study' },
       { icon: 'github', link: 'https://gitee.com/wghzhida/study' },
-    ]
+    ],
+    // 全站搜索
+    algolia: {
+      appId: 'T06JYMHQKY',
+      apiKey: '0bb53f5e8f4b553a889e621029704e00',
+      indexName: 'study'
+    }
   }
 })

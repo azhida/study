@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as r}from"./chunks/framework.92222dd1.js";const p=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/Python/函数库/readlines()按行读取.md","lastUpdated":null}'),a={name:"server/Python/函数库/readlines()按行读取.md"};function s(n,o,_,c,d,i){return t(),r("div")}const m=e(a,[["render",s]]);export{p as __pageData,m as default};

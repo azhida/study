@@ -1,0 +1,10 @@
+import{_ as a,o as s,c as e,Q as t}from"./chunks/framework.92222dd1.js";const C=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/PHP/laravel/jwt使用笔记.md","lastUpdated":null}'),n={name:"server/PHP/laravel/jwt使用笔记.md"},l=t(`<h6 id="参考文章-jwt-完整使用详解" tabindex="-1">参考文章：<a href="https://learnku.com/articles/10885/full-use-of-jwt" target="_blank" rel="noreferrer">JWT 完整使用详解</a> <a class="header-anchor" href="#参考文章-jwt-完整使用详解" aria-label="Permalink to &quot;参考文章：[JWT 完整使用详解](https://learnku.com/articles/10885/full-use-of-jwt)&quot;">​</a></h6><h6 id="自定义字段" tabindex="-1">自定义字段 <a class="header-anchor" href="#自定义字段" aria-label="Permalink to &quot;自定义字段&quot;">​</a></h6><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#A6ACCD;">$customClaims = [&#39;foo&#39; =&gt; &#39;bar&#39;, &#39;baz&#39; =&gt; &#39;bob&#39;];</span></span>
+<span class="line"><span style="color:#A6ACCD;">// 辅助函数</span></span>
+<span class="line"><span style="color:#A6ACCD;">$token = auth()-&gt;claims($customClaims)-&gt;attempt($credentials);</span></span>
+<span class="line"><span style="color:#A6ACCD;">// Facade - 1</span></span>
+<span class="line"><span style="color:#A6ACCD;">$token = JWTAuth::claims($customClaims)-&gt;attempt($credentials);</span></span>
+<span class="line"><span style="color:#A6ACCD;">$token = \\Auth::guard(&#39;api&#39;)-&gt;claims($customClaims)-&gt;fromUser($user);</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span>
+<span class="line"><span style="color:#A6ACCD;">// 获取自定义字段的值</span></span>
+<span class="line"><span style="color:#A6ACCD;">$foo = JWTAuth::parseToken()-&gt;getClaim(&#39;is_kefu&#39;);</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span></code></pre></div>`,3),o=[l];function r(p,c,i,_,u,d){return s(),e("div",null,o)}const A=a(n,[["render",r]]);export{C as __pageData,A as default};

@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as r}from"./chunks/framework.92222dd1.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/Python/函数库/len()统计列表数据的个数.md","lastUpdated":null}'),_={name:"server/Python/函数库/len()统计列表数据的个数.md"};function a(n,o,s,c,l,p){return t(),r("div")}const m=e(_,[["render",a]]);export{i as __pageData,m as default};

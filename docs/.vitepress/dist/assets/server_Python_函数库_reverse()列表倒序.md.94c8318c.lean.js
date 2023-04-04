@@ -1,0 +1,1 @@
+import{_ as e,o as r,c as t}from"./chunks/framework.92222dd1.js";const l=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/Python/函数库/reverse()列表倒序.md","lastUpdated":null}'),s={name:"server/Python/函数库/reverse()列表倒序.md"};function a(o,n,_,c,p,d){return r(),t("div")}const m=e(s,[["render",a]]);export{l as __pageData,m as default};

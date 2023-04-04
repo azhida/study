@@ -1,0 +1,1 @@
+import{_ as a,o as s,c as e,Q as n}from"./chunks/framework.92222dd1.js";const u=JSON.parse('{"title":"发布npm包","description":"","frontmatter":{},"headers":[],"relativePath":"web/NodeJS/发布npm包.md","lastUpdated":null}'),t={name:"web/NodeJS/发布npm包.md"},l=n("",9),p=[l];function o(c,i,r,d,h,m){return s(),e("div",null,p)}const C=a(t,[["render",o]]);export{u as __pageData,C as default};

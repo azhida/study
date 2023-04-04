@@ -1,0 +1,8 @@
+import{_ as s,o as a,c as e,Q as n}from"./chunks/framework.92222dd1.js";const h=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/Python/模块/redis.md","lastUpdated":null}'),t={name:"server/Python/模块/redis.md"},l=n(`<h2 id="安装-redis-模块" tabindex="-1">安装 redis 模块 <a class="header-anchor" href="#安装-redis-模块" aria-label="Permalink to &quot;安装 redis 模块&quot;">​</a></h2><p>Python 要使用 redis，需要先安装 redis 模块：</p><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#A6ACCD;">sudo pip3 install redis</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span></code></pre></div><p>测试是否安装成功：</p><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#A6ACCD;">&gt;&gt;&gt; import redis</span></span>
+<span class="line"><span style="color:#A6ACCD;">&gt;&gt;&gt; r = redis.StrictRedis(host=&#39;localhost&#39;, port=6379, db=0)</span></span>
+<span class="line"><span style="color:#A6ACCD;">&gt;&gt;&gt; r.set(&#39;foo&#39;, &#39;bar&#39;)</span></span>
+<span class="line"><span style="color:#A6ACCD;">True</span></span>
+<span class="line"><span style="color:#A6ACCD;">&gt;&gt;&gt; r.get(&#39;foo&#39;)</span></span>
+<span class="line"><span style="color:#A6ACCD;">&#39;bar&#39;</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span></code></pre></div>`,5),o=[l];function p(r,i,c,d,_,C){return a(),e("div",null,o)}const A=s(t,[["render",p]]);export{h as __pageData,A as default};

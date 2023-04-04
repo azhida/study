@@ -1,0 +1,22 @@
+import{_ as a,o as s,c as l,Q as e}from"./chunks/framework.92222dd1.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/Linux/日志文件切割方法-Logrotate实现.md","lastUpdated":null}'),n={name:"server/Linux/日志文件切割方法-Logrotate实现.md"},o=e(`<h2 id="利用linux自带的logrotate管理日志" tabindex="-1">利用Linux自带的logrotate管理日志 <a class="header-anchor" href="#利用linux自带的logrotate管理日志" aria-label="Permalink to &quot;利用Linux自带的logrotate管理日志&quot;">​</a></h2><h4 id="按大小切割日志" tabindex="-1">按大小切割日志 <a class="header-anchor" href="#按大小切割日志" aria-label="Permalink to &quot;按大小切割日志&quot;">​</a></h4><h6 id="创建-logrotate-配置文件" tabindex="-1">创建 logrotate 配置文件 <a class="header-anchor" href="#创建-logrotate-配置文件" aria-label="Permalink to &quot;创建 logrotate 配置文件&quot;">​</a></h6><p>vim /etc/logrotate.d/laravel</p><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#A6ACCD;">/var/www/laravel/storage/logs/*.log {</span></span>
+<span class="line"><span style="color:#A6ACCD;">    su root root</span></span>
+<span class="line"><span style="color:#A6ACCD;">    size=5M</span></span>
+<span class="line"><span style="color:#A6ACCD;">    rotate=100</span></span>
+<span class="line"><span style="color:#A6ACCD;">    notifempty</span></span>
+<span class="line"><span style="color:#A6ACCD;">}</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span>
+<span class="line"><span style="color:#A6ACCD;"># 脚本说明：</span></span>
+<span class="line"><span style="color:#A6ACCD;"># /var/www/laravel/storage/logs/*.log ：待切割的日志文件</span></span>
+<span class="line"><span style="color:#A6ACCD;"># su root root： 让 root 用户去执行 ，第一个 root 是用户名，第二个root是用户组</span></span>
+<span class="line"><span style="color:#A6ACCD;"># size=5M ：当日志文件大于等于 5M时，对文件进行切割</span></span>
+<span class="line"><span style="color:#A6ACCD;"># rotate=100 ： 保留的切割日志数量【保留 100 份】</span></span>
+<span class="line"><span style="color:#A6ACCD;"># notifempty  ： 当日志文件为空时，不进行轮转</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span></code></pre></div><h6 id="laravel日志-循环切割【循环执行logrotate切割命令60次-间隔为1秒】" tabindex="-1">laravel日志 循环切割【循环执行logrotate切割命令60次，间隔为1秒】 <a class="header-anchor" href="#laravel日志-循环切割【循环执行logrotate切割命令60次-间隔为1秒】" aria-label="Permalink to &quot;laravel日志 循环切割【循环执行logrotate切割命令60次，间隔为1秒】&quot;">​</a></h6><p>vim /var/www/laravel/logrotate_laravel_crontab.sh</p><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#A6ACCD;">#!/bin/bash</span></span>
+<span class="line"><span style="color:#A6ACCD;">for (( i = 0; i &lt; 60; i++ )); </span></span>
+<span class="line"><span style="color:#A6ACCD;">do</span></span>
+<span class="line"><span style="color:#A6ACCD;">    /usr/sbin/logrotate /etc/logrotate.d/laravel</span></span>
+<span class="line"><span style="color:#A6ACCD;">    sleep 1</span></span>
+<span class="line"><span style="color:#A6ACCD;">done</span></span>
+<span class="line"><span style="color:#A6ACCD;">exit 0</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span></code></pre></div><h6 id="定时任务-每分钟执行一次-循环切割脚本-var-www-laravel-logrotate-laravel-crontab-sh" tabindex="-1">定时任务 每分钟执行一次 循环切割脚本 /var/www/laravel/logrotate_laravel_crontab.sh <a class="header-anchor" href="#定时任务-每分钟执行一次-循环切割脚本-var-www-laravel-logrotate-laravel-crontab-sh" aria-label="Permalink to &quot;定时任务 每分钟执行一次 循环切割脚本 /var/www/laravel/logrotate_laravel_crontab.sh&quot;">​</a></h6><p>sudo crontab -e</p><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#A6ACCD;">* * * * * bash /var/www/laravel/logrotate_laravel_crontab.sh</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span></code></pre></div><h2 id="更多参考" tabindex="-1">更多参考 <a class="header-anchor" href="#更多参考" aria-label="Permalink to &quot;更多参考&quot;">​</a></h2><blockquote><p>更多知识可参考：<a href="https://blog.csdn.net/qq_31183727/article/details/90236112" target="_blank" rel="noreferrer">Linux日志切割（Logrotate/python/shell脚本实现）超详细</a></p></blockquote>`,13),t=[o];function r(p,c,i,h,C,d){return s(),l("div",null,t)}const g=a(n,[["render",r]]);export{_ as __pageData,g as default};

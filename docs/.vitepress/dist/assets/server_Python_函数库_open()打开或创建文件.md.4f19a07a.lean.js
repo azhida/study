@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as o}from"./chunks/framework.92222dd1.js";const l=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/Python/函数库/open()打开或创建文件.md","lastUpdated":null}'),r={name:"server/Python/函数库/open()打开或创建文件.md"};function a(n,_,s,c,p,d){return t(),o("div")}const m=e(r,[["render",a]]);export{l as __pageData,m as default};

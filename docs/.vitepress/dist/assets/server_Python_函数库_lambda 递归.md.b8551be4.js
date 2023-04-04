@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as a}from"./chunks/framework.92222dd1.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/Python/函数库/lambda 递归.md","lastUpdated":null}'),r={name:"server/Python/函数库/lambda 递归.md"};function o(s,n,c,d,_,l){return t(),a("div")}const i=e(r,[["render",o]]);export{m as __pageData,i as default};

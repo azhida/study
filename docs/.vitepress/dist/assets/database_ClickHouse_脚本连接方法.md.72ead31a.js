@@ -1,0 +1,10 @@
+import{_ as s,o as a,c as e,Q as n}from"./chunks/framework.92222dd1.js";const u=JSON.parse('{"title":"脚本连接方法","description":"","frontmatter":{},"headers":[],"relativePath":"database/ClickHouse/脚本连接方法.md","lastUpdated":1680584985000}'),l={name:"database/ClickHouse/脚本连接方法.md"},t=n(`<h1 id="脚本连接方法" tabindex="-1">脚本连接方法 <a class="header-anchor" href="#脚本连接方法" aria-label="Permalink to &quot;脚本连接方法&quot;">​</a></h1><h2 id="python" tabindex="-1">Python <a class="header-anchor" href="#python" aria-label="Permalink to &quot;Python&quot;">​</a></h2><h3 id="clickhouse-driver" tabindex="-1">clickhouse-driver <a class="header-anchor" href="#clickhouse-driver" aria-label="Permalink to &quot;clickhouse-driver&quot;">​</a></h3><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#A6ACCD;">pip install clickhouse-driver</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span></code></pre></div><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#A6ACCD;"># -*- coding: utf-8 -*-</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span>
+<span class="line"><span style="color:#A6ACCD;">from clickhouse_driver import Client</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span>
+<span class="line"><span style="color:#A6ACCD;">client = Client(host=&#39;127.0.0.1&#39;,port=&#39;9000&#39;,user=clickhouse_user ,password=clickhouse_pwd)</span></span>
+<span class="line"><span style="color:#A6ACCD;">sql = &#39;SHOW DATABASES&#39;</span></span>
+<span class="line"><span style="color:#A6ACCD;">res = client.execute(sql)</span></span>
+<span class="line"><span style="color:#A6ACCD;">print(res)</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span></code></pre></div>`,5),o=[t];function c(p,i,r,d,h,_){return a(),e("div",null,o)}const A=s(l,[["render",c]]);export{u as __pageData,A as default};

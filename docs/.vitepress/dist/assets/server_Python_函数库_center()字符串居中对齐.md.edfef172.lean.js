@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as r}from"./chunks/framework.92222dd1.js";const l=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/Python/函数库/center()字符串居中对齐.md","lastUpdated":null}'),a={name:"server/Python/函数库/center()字符串居中对齐.md"};function n(_,o,s,c,p,d){return t(),r("div")}const m=e(a,[["render",n]]);export{l as __pageData,m as default};

@@ -172,7 +172,3 @@ apt install composer
 ```
 > 执行 `composer install` 提示安装PHP扩展时，根据提示安装对应扩展，命令为 `apt-get install php8.1-gd`
 
-<br>
-
-#### 返回 [PHP基础知识](./PHP基础知识.md)
-

@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as r}from"./chunks/framework.92222dd1.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/Python/函数库/tuple()将序列转换成元组.md","lastUpdated":null}'),a={name:"server/Python/函数库/tuple()将序列转换成元组.md"};function _(o,s,n,c,p,l){return t(),r("div")}const m=e(a,[["render",_]]);export{i as __pageData,m as default};

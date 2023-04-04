@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as e,Q as n}from"./chunks/framework.92222dd1.js";const u=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/Nginx/配置下载目录.md","lastUpdated":null}'),t={name:"server/Nginx/配置下载目录.md"},o=n("",1),l=[o];function p(c,r,_,i,d,C){return a(),e("div",null,l)}const m=s(t,[["render",p]]);export{u as __pageData,m as default};

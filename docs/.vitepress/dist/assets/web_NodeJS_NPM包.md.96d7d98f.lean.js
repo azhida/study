@@ -1,0 +1,1 @@
+import{_ as e,o as a,c as s,Q as t}from"./chunks/framework.92222dd1.js";const u=JSON.parse('{"title":"NPM 包","description":"","frontmatter":{},"headers":[],"relativePath":"web/NodeJS/NPM包.md","lastUpdated":null}'),o={name:"web/NodeJS/NPM包.md"},l=t("",2),r=[l];function d(i,n,c,_,h,m){return a(),s("div",null,r)}const N=e(o,[["render",d]]);export{u as __pageData,N as default};

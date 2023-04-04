@@ -36,7 +36,3 @@ x.innerHTML="Hello JavaScript";    //改变内容
 ###### JavaScript：改变 HTML 图像
 - demo：【[点亮灯泡]( https://azhida.github.io/study/JavaScript/demos/demo-0.html )】
 
-
-<br>
-
-#### 返回 [JavaScript基础知识](../JavaScript基础知识.md)

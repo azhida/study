@@ -1,0 +1,1 @@
+[ Windows下mysql集群搭建](https://www.cnblogs.com/chenyixun/p/13618612.html)

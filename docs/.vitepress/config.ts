@@ -1,10 +1,10 @@
 import { defineConfig } from 'vitepress'
 import { getNavAndSidebarByDir, getSidebarItemsByDir } from '../fn';
 
-const webConfig = getNavAndSidebarByDir('./docs/web'); // 前端
-const serverConfig = getNavAndSidebarByDir('./docs/server'); // 服务端
-const databaseConfig = getNavAndSidebarByDir('./docs/database'); // 数据库
-const devToolConfig = getNavAndSidebarByDir('./docs/dev-tool'); // 开发工具
+const webConfig = getNavAndSidebarByDir('./docs/web', '前端'); // 前端
+const serverConfig = getNavAndSidebarByDir('./docs/server', '服务端'); // 服务端
+const databaseConfig = getNavAndSidebarByDir('./docs/database', '数据库'); // 数据库
+const devToolConfig = getNavAndSidebarByDir('./docs/dev-tool', '开发工具'); // 开发工具
 const demosSidebarItems = getSidebarItemsByDir('./docs/demos', '项目案例'); // 案例
 const otherSidebarItems = getSidebarItemsByDir('./docs/other', '其他'); // 其他
 

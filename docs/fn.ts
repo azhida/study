@@ -9,31 +9,41 @@ interface NavItem {
 interface SidebarItem {
     text: string,
     collapsed?: boolean,
-    items: object[]
+    items?: object[]
 }
 
 function toSidebarOption(tree = []) {
     if (!Array.isArray(tree)) return [];
-    return tree.map((v:any) => {
+    let newArr:any = [];
+    let item:any = {};
+    const newTree = tree.map((v:any) => {
+        let isIndex = false;
         if (v.children !== undefined) {
-            return {
+            item = {
                 text: v.name,
                 collapsible: true,
                 collapsed: true,
                 items: toSidebarOption(v.children),
             };
         } else {
-            let item = {
+            item = {
                 text: v.name.replace(".md", ""),
                 link: v.path.split("docs")[1].replace(".md", ""),
             };
             if (item.text == 'index') {
+                isIndex = true;
                 item.text = '简介';
                 item.link = item.link.replace('/index', '/')
             }
-            return item;
         }
+        if (isIndex) {
+            newArr.unshift(item);
+        } else {
+            newArr.push(item);
+        }
+        return item;
     });
+    return newArr;
 }
 
 // 获取顶部导航 - 根据 dir 获取一级子目录
@@ -48,6 +58,7 @@ function getNavItemsByDir(dir, prefix){
         navItems.push({
             text: i.name,
             link: prefix + i.name + '/'
+            // link: prefix + i.name + '/' + i.children[0].name
         })
     });
     return navItems;
@@ -55,8 +66,8 @@ function getNavItemsByDir(dir, prefix){
 
 // 获取左侧文章目录 - 根据 dir 获取所有子目录
 function getSidebarItemsByDir(dir, title:string|null = null){
-    // 获取指定目录 /docs/web 下所有一级子目录，拿来做顶部导航
     const srcDir = dirTree(dir, {
+        exclude: /\/images$/, // 忽略 images 文件夹
         extensions: /\.md$/,
         normalizePath: true,
     });
@@ -69,7 +80,7 @@ function getSidebarItemsByDir(dir, title:string|null = null){
 }
 
 // 获取 顶部导航 和 左侧文章目录
-function getNavAndSidebarByDir(dir) {
+function getNavAndSidebarByDir(dir, title?:string|null) {
     const srcDir = dirTree(dir, {
         extensions: /\.md$/,
         normalizePath: true,
@@ -81,7 +92,9 @@ function getNavAndSidebarByDir(dir) {
         return (a.text + '').localeCompare(b.text + '')
     })
 
-    let sidebarItems:SidebarItem[] = [];
+    let sidebarItems:SidebarItem[] = [{
+        text: title ? title : srcDir.name
+    }];
     navItems.forEach((i) => {
         sidebarItems.push(getSidebarItemsByDir('./docs' + i.link))
     });

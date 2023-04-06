@@ -12,7 +12,7 @@ interface SidebarItem {
     items?: object[]
 }
 
-function toSidebarOption(tree = []) {
+function toSidebarOption(tree = [], father_name = '') {
     if (!Array.isArray(tree)) return [];
     let newArr:any = [];
     let item:any = {};
@@ -23,7 +23,7 @@ function toSidebarOption(tree = []) {
                 text: v.name,
                 collapsible: true,
                 collapsed: true,
-                items: toSidebarOption(v.children),
+                items: toSidebarOption(v.children, v.name),
             };
         } else {
             item = {
@@ -32,8 +32,8 @@ function toSidebarOption(tree = []) {
             };
             if (item.text == 'index') {
                 isIndex = true;
-                item.text = '简介';
-                item.link = item.link.replace('/index', '/')
+                item.text = father_name + ' 简介';
+                item.link = item.link.replace('/index', '/');
             }
         }
         if (isIndex) {
@@ -75,7 +75,7 @@ function getSidebarItemsByDir(dir, title:string|null = null){
         text: title ? title : srcDir.name,
         collapsible: true,
         collapsed: true,
-        items: toSidebarOption(srcDir.children),
+        items: toSidebarOption(srcDir.children, srcDir.name),
     };
 }
 

@@ -1,1 +1,0 @@
-import{_ as t,o as d,c as r,Q as e}from"./chunks/framework.92222dd1.js";const u=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/Python/名词解释.md","lastUpdated":null}'),n={name:"server/Python/名词解释.md"},i=e("",1),a=[i];function s(o,l,p,c,_,m){return d(),r("div",null,a)}const x=t(n,[["render",s]]);export{u as __pageData,x as default};

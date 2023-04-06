@@ -1,1 +1,0 @@
-import{_ as s,o as a,c as n,Q as e}from"./chunks/framework.92222dd1.js";const y=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"database/MySQL/报错.md","lastUpdated":null}'),t={name:"database/MySQL/报错.md"},l=e("",1),p=[l];function o(c,r,i,_,d,A){return a(),n("div",null,p)}const D=s(t,[["render",o]]);export{y as __pageData,D as default};

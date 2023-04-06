@@ -1,1 +1,0 @@
-import{_ as s,o as a,c as n,Q as l}from"./chunks/framework.92222dd1.js";const _=JSON.parse('{"title":"ls 命令","description":"","frontmatter":{},"headers":[],"relativePath":"server/Linux/命令/ls.md","lastUpdated":null}'),e={name:"server/Linux/命令/ls.md"},o=l("",7),p=[o];function t(c,r,i,d,u,C){return a(),n("div",null,p)}const h=s(e,[["render",t]]);export{_ as __pageData,h as default};

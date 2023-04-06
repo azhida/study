@@ -1,1 +1,0 @@
-import{_ as e,o as t,c as r}from"./chunks/framework.92222dd1.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/Python/函数库/clear()清空.md","lastUpdated":null}'),a={name:"server/Python/函数库/clear()清空.md"};function o(s,c,n,_,l,p){return t(),r("div")}const m=e(a,[["render",o]]);export{i as __pageData,m as default};

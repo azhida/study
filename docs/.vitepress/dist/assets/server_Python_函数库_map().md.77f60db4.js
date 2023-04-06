@@ -1,1 +1,0 @@
-import{_ as e,o as t,c as a}from"./chunks/framework.92222dd1.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/Python/函数库/map().md","lastUpdated":null}'),r={name:"server/Python/函数库/map().md"};function o(s,n,c,p,_,d){return t(),a("div")}const l=e(r,[["render",o]]);export{i as __pageData,l as default};

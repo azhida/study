@@ -1,1 +1,0 @@
-import{_ as t,o as e,c as r}from"./chunks/framework.92222dd1.js";const l=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/Python/函数库/rjust()字符串右对齐.md","lastUpdated":null}'),s={name:"server/Python/函数库/rjust()字符串右对齐.md"};function a(o,_,n,c,p,d){return e(),r("div")}const m=t(s,[["render",a]]);export{l as __pageData,m as default};

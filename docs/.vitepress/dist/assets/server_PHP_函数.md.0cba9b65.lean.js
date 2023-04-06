@@ -1,1 +1,0 @@
-import{_ as a,o as s,c as n,Q as l}from"./chunks/framework.92222dd1.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/PHP/函数.md","lastUpdated":null}'),e={name:"server/PHP/函数.md"},p=l("",6),t=[p];function o(r,c,i,C,y,A){return s(),n("div",null,t)}const u=a(e,[["render",o]]);export{_ as __pageData,u as default};

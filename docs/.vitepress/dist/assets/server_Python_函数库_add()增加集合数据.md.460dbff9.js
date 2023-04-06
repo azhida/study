@@ -1,1 +1,0 @@
-import{_ as e,o as t,c as a}from"./chunks/framework.92222dd1.js";const l=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/Python/函数库/add()增加集合数据.md","lastUpdated":null}'),r={name:"server/Python/函数库/add()增加集合数据.md"};function o(s,_,n,d,c,p){return t(),a("div")}const m=e(r,[["render",o]]);export{l as __pageData,m as default};

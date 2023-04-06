@@ -1,1 +1,0 @@
-import{_ as e,o as t,c as o}from"./chunks/framework.92222dd1.js";const l=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/Python/函数库/pop()删除.md","lastUpdated":null}'),r={name:"server/Python/函数库/pop()删除.md"};function a(s,n,p,c,_,d){return t(),o("div")}const m=e(r,[["render",a]]);export{l as __pageData,m as default};

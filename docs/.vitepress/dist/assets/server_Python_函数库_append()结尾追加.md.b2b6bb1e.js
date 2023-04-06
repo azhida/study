@@ -1,1 +1,0 @@
-import{_ as e,o as t,c as a}from"./chunks/framework.92222dd1.js";const l=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/Python/函数库/append()结尾追加.md","lastUpdated":null}'),r={name:"server/Python/函数库/append()结尾追加.md"};function n(o,s,p,_,c,d){return t(),a("div")}const m=e(r,[["render",n]]);export{l as __pageData,m as default};

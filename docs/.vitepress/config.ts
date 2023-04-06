@@ -64,6 +64,6 @@ export default defineConfig({
     }
   },
   markdown: {
-    lineNumbers: true, // 代码块显示行号
+    lineNumbers: false, // 代码块显示行号：true|false
   }
 })

@@ -22,3 +22,6 @@ git push -f git@gitee.com:wghzhida/study.git master:gh-pages
 cd ../../../
 
 # rm -rf docs/.vitepress/dist  #删除dist文件夹
+
+# 或者直接
+# git subtree push --force --prefix=docs/.vitepress/dist origin gh-pages

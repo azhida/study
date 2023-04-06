@@ -27,7 +27,7 @@ function toSidebarOption(tree = [], father_name = '') {
             };
         } else {
             item = {
-                text: v.name.replace(".md", ""),
+                text: v.name.replace(".md", "").replace(/^\d*\./, ''), // 替换 .md , 替换 数字和小数点 开头【为了实现文章排序】
                 link: v.path.split("docs")[1].replace(".md", ""),
             };
             if (item.text == 'index') {

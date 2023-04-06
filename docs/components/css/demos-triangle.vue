@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-  <style>
+<template>
+    <div class="triangle"></div>
+</template>
+<style scoped>
     .triangle{
       width: 0;
       height: 0;
@@ -11,10 +9,4 @@
       border-top: 200px solid transparent; /* transparent 表示透明 */
       border-bottom: 200px solid transparent;
     }
-  </style>
-</head>
-<body>
-<div class="triangle"></div>
-<a href="https://blog.csdn.net/weixin_36270908/article/details/98947183">参考学习</a>
-</body>
-</html>
+</style>

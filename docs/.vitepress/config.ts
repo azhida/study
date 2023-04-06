@@ -62,5 +62,8 @@ export default defineConfig({
       apiKey: '0bb53f5e8f4b553a889e621029704e00',
       indexName: 'study'
     }
+  },
+  markdown: {
+    lineNumbers: true, // 代码块显示行号
   }
 })

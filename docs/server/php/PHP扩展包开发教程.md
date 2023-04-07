@@ -294,9 +294,9 @@ composer.json
 {
     "autoload": {
         "psr-4": {
-            "Overtrue\\Weather\\": "./src/"
+            "Azhida\\Weather\\": "./src/"
         }
-    },
+    }
 }
 ```
 
@@ -307,5 +307,70 @@ composer.json
 ```sh
 cd weather/
 composer require guzzlehttp/guzzle                      
+```
+
+## 从接口获取天气数据
+
+根据之前设计的功能，结合 [天气查询接口文档](https://lbs.amap.com/api/webservice/guide/api/weatherinfo/) 的参数说明，我们添加几个方法：
+
+::: info
+注意：方法名通常是 动名词 形式，比如： `getUsers` ， `updateProfile` ， `deleteOrder` ， `revertAction` 等。
+:::
+
+
+### 创建 `Weather` 类
+
+src/Weather.php
+
+```php
+<?php
+
+namespace Azhida\Weather;
+
+class Weather
+{
+    protected $key;
+    protected $guzzleOptions = [];
+
+    public function __construct(string $key)
+    {
+        $this->key = $key;
+    }
+
+    // 获取实例
+    public function getHttpClient()
+    {
+        return new Client($this->guzzleOptions);
+    }
+
+    // 配置参数
+    public function setGuzzleOptions(array $options)
+    {
+        $this->guzzleOptions = $options;
+    }
+
+    /**
+     * $city - 城市名 / 高德地址位置 adcode，比如：“深圳” 或者（adcode：440300）；
+     * $type - 返回内容类型：base: 返回实况天气 / all: 返回预报天气；
+     * $format - 输出的数据格式，默认为 json 格式，当 output 设置为 “xml” 时，输出的为 XML 格式的数据。
+     */
+    public function getWeather($city, string $type = 'base', string $format = 'json')
+    {
+        $url = 'https://restapi.amap.com/v3/weather/weatherInfo';
+
+        $query = array_filter([
+            'key' => $this->key,
+            'city' => $city,
+            'output' => $format,
+            'extensions' =>  $type,
+        ]);
+
+        $response = $this->getHttpClient()->get($url, [
+            'query' => $query,
+        ])->getBody()->getContents();
+
+        return 'json' === $format ? \json_decode($response, true) : $response;
+    }
+}
 ```
 

@@ -374,3 +374,154 @@ class Weather
 }
 ```
 
+## 异常与错误处理
+
+### 什么时候应该抛出异常？
+
+按照单一职责原则，一个类只应该关心自己的逻辑，当出现问题的时候，**如果不是当前类该处理的，我们就应该抛出而不是消化**。怎么理解呢？比如，请求天气接口的时候，网络出现问题，Guzzle 抛出了异常，这时候应该抛出异常。可是为啥不是 catch 异常然后返回 `false` 呢？这就涉及到边界问题了，**业务异常**与**运行时异常** 要区分开，对方接口说你要查询的城市不存在，返回错误，这属于业务异常，这时候是不会抛出异常的。而你请求的 API 不存在，或者对方服务器宕机，或者你的服务器网络出问题，这属于运行时异常，就应该以异常抛出来告知调用方，而不是自主处理该异常并返回 `false` 来结束逻辑。
+
+当然了，可能刚开始你是不太好理解这部分的，当你有更多的应用设计与代码实践经验后你会慢慢感受到这个边界。
+
+### 异常的分类与命名
+
+异常通常分为几个种类，按名称来命名：
+
+- **参数错误**，当传入的参数不合法时，我们通常抛出异常；
+- **HTTP 异常**，在请求 API 时异常终止时抛出的异常；
+- **其它异常**，模块其它部分异常。
+
+当然还有其它的，你可以命名非常细，比如 `InvalidGatewayNameException` 、 `ErrorResponseException` 等等，你可以自由发挥，只要做到合理命名即可。
+
+当扩展出现问题时，为了方便上层调用方更准确的定位问题，我们通常会为模块设计一个根异常类，在 `src/Exceptions` 创建类 `Azhida\Weather\Exceptions\Exception` 类。
+
+### 异常类定义
+
+#### 根异常类
+
+
+src/Exceptions/Exception.php
+
+```php
+<?php
+
+namespace Azhida\Weather\Exceptions;
+
+class Exception extends \Exception
+{
+
+}
+```
+
+
+#### HTTP 网络请求异常类
+
+src/Exceptions/HttpException.php
+
+```php
+<?php
+
+namespace Azhida\Weather\Exceptions;
+
+/**
+ * HTTP 请求异常类
+ */
+class HttpException extends Exception
+{
+
+}
+```
+
+#### 参数异常类
+
+src/Exceptions/InvalidArgumentException.php
+
+```php
+<?php
+
+namespace Azhida\Weather\Exceptions;
+
+/**
+ * 参数异常类
+ */
+class InvalidArgumentException extends Exception
+{
+
+}
+```
+
+### 异常类的使用
+
+src/Weather.php
+
+```php
+<?php
+
+namespace Azhida\Weather;
+use Azhida\Weather\Exceptions\HttpException;
+use Azhida\Weather\Exceptions\InvalidArgumentException;
+
+class Weather
+{
+    protected $key;
+    protected $guzzleOptions = [];
+
+    public function __construct(string $key)
+    {
+        $this->key = $key;
+    }
+
+    // 获取实例
+    public function getHttpClient()
+    {
+        return new Client($this->guzzleOptions);
+    }
+
+    // 配置参数
+    public function setGuzzleOptions(array $options)
+    {
+        $this->guzzleOptions = $options;
+    }
+
+    /**
+     * $city - 城市名 / 高德地址位置 adcode，比如：“深圳” 或者（adcode：440300）；
+     * $type - 返回内容类型：base: 返回实况天气 / all: 返回预报天气；
+     * $format - 输出的数据格式，默认为 json 格式，当 output 设置为 “xml” 时，输出的为 XML 格式的数据。
+     */
+    public function getWeather($city, string $type = 'base', string $format = 'json')
+    {
+        $url = 'https://restapi.amap.com/v3/weather/weatherInfo';
+
+        if (!\in_array(\strtolower($format), ['xml', 'json'])) {
+            // 参数异常
+            throw new InvalidArgumentException('Invalid response format: '.$format);
+        }
+
+        if (!\in_array(\strtolower($type), ['base', 'all'])) {
+            // 参数异常
+            throw new InvalidArgumentException('Invalid type value(base/all): '.$type);
+        }
+
+        $query = array_filter([
+            'key' => $this->key,
+            'city' => $city,
+            'output' => \strtolower($format),
+            'extensions' =>  \strtolower($type),
+        ]);
+
+        try {
+            $response = $this->getHttpClient()->get($url, [
+                'query' => $query,
+            ])->getBody()->getContents();
+
+            return 'json' === $format ? \json_decode($response, true) : $response;
+        } catch (\Exception $e) {
+            // HTTP 网络请求异常
+            throw new HttpException($e->getMessage(), $e->getCode(), $e);
+        }
+    }
+}
+```
+
+
+
+

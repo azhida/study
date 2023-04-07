@@ -642,9 +642,200 @@ composer.json
     .
 ```
 
-这样我们在安装的时候 composer 会创建一个软链接 `vendor/overtrue/weather` 到包所在目录 `../weather`，这样一来，你可以直接在测试项目的 `vendor/overtrue/weather` 下修改文件，包里的文件也会跟着变了，是不是对于开发过程中来讲非常的方便？
+这样我们在安装的时候 composer 会创建一个软链接 `vendor/azhida/weather` 到包所在目录 `../weather`，这样一来，你可以直接在测试项目的 `vendor/azhida/weather` 下修改文件，包里的文件也会跟着变了，是不是对于开发过程中来讲非常的方便？
 
 ::: tip
 🚨注意：如果在包的原目录创建了新文件，你可能需要刷新一下目录树才能看到新的文件哦。
 :::
 
+
+## 为 Laravel 集成优化
+
+为了方便 Laravel 应用集成我们的扩展包，我们需要做一个 Laravel Service Provider，这里由于需要考虑到一个配置问题，因为调用接口需要用到高德开放平台应用 API Key，所以我们设计将它放置到 Laravel 应用的 `config/services.php` 中：
+
+在扩展包 `weather` 目录下
+
+config/services.php
+
+```php
+<?php
+
+return [
+    'weather' => [
+        'key' => env('WEATHER_API_KEY'),
+    ],
+];
+```
+
+src/ServiceProvider.php
+
+```php
+<?php
+
+namespace Azhida\Weather;
+
+class ServiceProvider extends \Illuminate\Support\ServiceProvider
+{
+    protected $defer = true;
+
+    public function register()
+    {
+        $this->app->singleton(Weather::class, function(){
+            return new Weather(config('services.weather.key'));
+        });
+
+        $this->app->alias(Weather::class, 'weather');
+    }
+
+    public function provides()
+    {
+        return [Weather::class, 'weather'];
+    }
+}
+```
+
+其中我们设置了 `$defer` 属性为 `true` ，并且添加了方法 `provides` ，这是 [Laravel 扩展包的延迟注册方式](https://learnku.com/docs/laravel/5.6/providers/1360#deferred-providers)，它不会在框架启动就注册，而是当你调用到它的时候才会注册。
+
+
+### 配置 Laravel Auto Discovery
+
+我们需要在 `composer.json` 中添加如下部分：
+
+composer.json
+
+```json
+.
+.
+.
+"extra": {
+    "laravel": {
+        "providers": [
+            "Azhida\\Weather\\ServiceProvider"
+        ]
+    }
+}
+```
+
+这样一来我们 Laravel 应用安装后无需手动注册服务提供器即可使用。
+
+### 在 Laravel 项目中测试
+
+在扩展包的同级目录下，先创建一个 Laravel 项目：
+
+```sh
+composer create-project laravel/laravel laravel-weather-test
+cd laravel-weather-test
+
+# 配置包路径，注意，这里 `../weather` 为相对路径，不要弄错了
+composer config repositories.weather path ../weather 
+
+# 安装扩展包
+composer require azhida/weather @dev
+```
+
+在 `laravel-weather-test` 项目下添加配置项：
+
+laravel-weather-test/config/services.php
+
+```php
+    .
+    .
+    .
+    'weather' => [
+        'key' => env('WEATHER_API_KEY'),
+    ],
+```
+
+另外还需要配置一个 `.env` 变量：
+
+::: tip
+WEATHER_API_KEY 为我们前面准备工作时申请的应用 API Key , 即 高德开放平台应用的 API_KEY
+:::
+
+```
+WEATHER_API_KEY=7d54670aa0f9395bf6c82bc5359b3bef
+```
+
+创建 控制器
+
+app/Http/Controllers/WeatherController.php
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Azhida\Weather\Weather;
+
+class WeatherController extends Controller
+{
+    public function show(Request $request, Weather $weather, $city)
+    {
+        return $weather->getWeather($city);
+    }
+}
+```
+
+laravel 根目录生成命令控制文件
+
+```sh
+php artisan make:command Test
+```
+会生成文件 `laravel-weather-test\app\Console\Commands\Test.php`
+
+laravel-weather-test\app\Console\Commands\Test.php
+
+```php
+<?php
+
+namespace App\Console\Commands;
+
+use Azhida\Weather\Weather;
+use Illuminate\Console\Command;
+
+class Test extends Command
+{
+    protected $signature = 'test';
+
+    protected $description = '测试';
+
+    public function handle(Weather $weather)
+    {
+        $res = $weather->getWeather('深圳');
+        dd($res);
+    }
+}
+```
+
+laravel 根目录执行该方法就能看到结果了
+```sh
+php artisan test
+```
+::: details 结果
+```
+[
+  "status" => "1"
+  "count" => "1"
+  "info" => "OK"
+  "infocode" => "10000"
+  "lives" => array:1 [
+    0 => array:11 [
+      "province" => "广东"
+      "city" => "深圳市"
+      "adcode" => "440300"
+      "weather" => "晴"
+      "temperature" => "24"
+      "winddirection" => "东南"
+      "windpower" => "≤3"
+      "humidity" => "54"
+      "reporttime" => "2023-04-07 15:47:17"
+      "temperature_float" => "24.0"
+      "humidity_float" => "54.0"
+    ]
+  ]
+]
+```
+:::
+
+测试通过

@@ -859,3 +859,122 @@ php artisan test
 - 其它特有的信息
 
 如果 使用 docs 目录存放项目文档，可以选择 前端框架 [VitePress](/web/VitePress/) , 也可以选择其他自己熟悉的方式，不限编程语言。
+
+
+## 发布上线
+
+### 创建 GitHub 代码仓库
+
+- 填写名称与描述
+  
+  名称： `weather`  
+  描述：天气 SDK
+
+- 提交扩展包代码
+
+  ```
+  git init                                                    # 初始化 git 项目
+  git add -A                                                  # 添加全部文件到 git 
+  git commit -am "first commit"                               # 提交添加的文件
+  git remote add origin git@github.com:azhida/weather.git     # 设置远程地址
+  git push -u origin master                                   # 将提交推送到远程仓库
+  ```
+
+### 提交到 Packagist
+
+Composer 安装包都是从 Packagist 源读取信息的，所以我们需要去注册我们的扩展包，别人才能安装，如果你还没有 Packagist 账号，先注册一个，建议使用 GitHub 登录：
+
+地址：https://packagist.org/
+
+
+登录以后，点击顶部菜单栏 “Submit” 开始提交项目，填入我们 **代码所在的 GitHub 的仓库 URL**，然后点 "Check"，然后提交即可：
+
+我的代码仓库地址： https://github.com/azhida/weather.git
+
+接着会到达项目主页，你会看到一条提示：
+
+::: info
+“This package is not auto-updated. Please set up the GitHub Service Hook for Packagist so that it gets updated whenever you push!”：
+
+**更新**  
+新版 GitHub 已经不需要手动像下面这样注册 webhook 了，当然前提是你在 packgist.org 登录时授权即可。
+:::
+
+这条提示的意思是说你的项目不会自动抓取更新，怎么理解呢？下面是原理说明：
+::: info 💡原理说明：
+当我们在 Packagist 提交项目的时候，它会抓取一遍项目信息，但是后续我们在修改代码的时候（包括推送代码、发布版本等操作），Packagist 不会知道这个变更，所以我们需要使用 GitHub 提供的通知服务，在我们对代码库做修改的时候，向 Packagist 发出一条通知，通知 Packagist 这个项目发生了更新，这时候 Packagist 才会触发更新任务，抓取新的版本信息，我们才能在最短时间内安装到刚发的版本。
+:::
+
+### 启用项目的 Packagist 通知服务
+
+#### 获取 Packagist 的 API Token
+
+访问你在 Packagist 的个人主页：[packagist.org/profile/](https://packagist.org/profile/) ，点击 "**Show API Token**"，复制 token 备用。
+
+#### 给项目代码库启用 Packagist 通知服务
+
+回到我们的 GitHub 项目，点击项目的 **Settings** 菜单：
+
+进到设置页以后选择左边的 “**Webhooks**” 菜单，点击 “**Add webhook**”，如图：
+
+填写对应的内容：
+
+- Payload URL: `https://packagist.org/api/github?username=Packagist 的用户名`
+- Content type 选择为 `application/json`
+- Secret 填写为您刚刚复制的 token
+
+然后提交即可。
+
+我们再次有代码提交动作后，刷新 Packagist 的包页面就已经没有那条提示了。
+
+那包已经上线成功了，如果你的网络没问题，过几分钟，应该就可以安装开发版了。
+
+::: tip 
+没有发布正式版之前，只能安装开发版，像下面这样在包名后面加上 dev-master。
+:::
+
+```sh
+composer require azhida/weather::dev-master -vvv
+```
+
+正式包安装
+```sh
+composer require azhida/weather -vvv
+```
+
+## 发布第一个版本
+
+我们刚才安装了开发版，开发版意味着不稳定与不安全，线上项目肯定是要用稳定版的，所以，在我们测试完整后，我们将会发布一个正式版本，测试期间你可以发布 `0.0.x` 版本，小于 1 的版本在 Composer 中是有特殊处理的哦，这个要弄清楚，具体我就不介绍了，自己去看 [Composer 文档](https://learnku.com/docs/composer/2018)。
+
+### 什么是版本号
+
+我们的版本号通常建议遵循 [语言化版本](https://semver.org/lang/zh-CN/) ，语义化版本的规范在前面链接里有详细说明，主要为：
+
+::: info 版本说明
+版本格式：主版本号。次版本号。修订号，版本号递增规则如下：  
+主版本号：当你做了不兼容的 API 修改，  
+次版本号：当你做了向下兼容的功能性新增，  
+修订号：当你做了向下兼容的问题修正。  
+先行版本号及版本编译信息可以加到 “主版本号。次版本号。修订号” 的后面，作为延伸。
+:::
+
+简单介绍就是，如果你现在的最新版本是 `1.0.0` ，下面的动作的区别是：
+
+- 打补丁，修了一些小 bug，没做 API 修改，那么你应该发布 1.0.1，同理以后也是递增第三位。
+- 有一天网友在你的基础上提交了新功能，原来的 API 调用方式也没改变，这时候你应该发布 1.1.0 。
+- 一段时间以后，你心血来潮重构了你的扩展包，调用方式也发生了变化，也就是说安装了以前版本的是无法直接升级的，这时候你需要发布 2.0.0 了。
+
+
+### 发布第一个版本
+
+在 [GitHub](https://github.com/) 项目主页点击 "releases" 进入到版本管理页面；
+
+然后点击 "Create new release" 创建一个新的版本：
+
+填写版本号、这次发版的标题、以及这次版本变化的内容描述，点击提交。
+
+我们的第一个版本就发布完成了，过几分钟你就可以安装刚刚发布的 0.0.1 版本了：
+
+```sh
+composer require azhida/weather -vvv
+```

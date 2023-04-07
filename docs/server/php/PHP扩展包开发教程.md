@@ -522,6 +522,129 @@ class Weather
 }
 ```
 
+## 编写单元测试
+
+### 准备工作
+
+首先需要安装两个包：单元测试框架 [PHPUnit](https://github.com/sebastianbergmann/phpunit) 、依赖模拟 [Mockery](https://github.com/mockery/mockery) ：
+
+项目根目录下执行
+
+```sh
+composer require phpunit/phpunit mockery/mockery --dev
+```
+
+在开始写测试之前我们先大致了解一下 PHPUnit 的使用：
+
+- 测试用例与类名对应，以 Test.php 结尾，比如 WeatherTest.php，类名与文件名一致；
+- 测试用例需要继承 `PHPUnit\Framework\TestCase` 基类；
+- 测试用例的目录结构与源码一致；
+- 测试用例的方法名格式为 `test源方法名`，比如：`testGetWeather`。
+
+以上这些规约虽然有一些不是强制的，但是也建议你按照这样子来写，以保证代码清晰与可读性。
 
 
+### 未完待续
+
+todo ...
+
+
+## 本地测试扩展包
+
+### 创建测试项目
+
+::: tip
+在开发好的扩展包同级目录下创建空项目
+:::
+
+```sh
+mkdir weather-test
+cd weather-test
+```
+
+根目录使用 composer 引入开发好的扩展包 `azhida/weather` ：
+
+```sh
+# 需要先初始化 composer.json, 一路回车即可
+composer init
+
+# 配置包路径，注意，这里 `../weather` 为相对路径，不要弄错了
+composer config repositories.weather path ../weather
+
+# 安装扩展包  这里  `dev-master`  中的 dev 指该分支下最新的提交，master 是指定的包中的分支名
+composer require azhida/weather:dev-master
+# 或者
+composer require azhida/weather:dev-main
+# 或者
+composer require azhida/weather @dev
+# 如果提示版本号找不到，就在扩展包的 composer.json 文件加上版本号
+# "version": "dev-master",
+```
+
+`weather-test` 根目录新建文件 `index.php`
+
+index.php
+
+```php
+<?php
+
+require __DIR__ .'/vendor/autoload.php';
+
+use Azhida\Weather\Weather;
+
+// 高德开放平台应用 API Key
+$key = '7d54670aa0f9395bf6c82bc5359b3bef';
+$w = new Weather($key);
+
+echo "获取实时天气：\n";
+
+$response = $w->getWeather('南宁');
+echo json_encode($response, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+
+echo "\n\n获取天气预报：\n";
+
+$response = $w->getWeather('南宁', 'all');
+echo json_encode($response, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+
+
+echo "\n\n获取实时天气(XML)：\n";
+
+echo $w->getWeather('南宁', 'base', 'xml');
+```
+
+运行 `index.php` 文件就有数据了
+```sh
+php index.php
+```
+
+### 原理说明
+
+```sh
+composer config repositories.weather path ../weather 
+```
+
+它在 `composer.json` 中添加了如下部分：
+
+composer.json
+
+```json
+    .
+    .
+    .
+     "repositories": {
+        "weather": {
+            "type": "path",
+            "url": "../weather"
+        }
+      }
+    .
+    .
+    .
+```
+
+这样我们在安装的时候 composer 会创建一个软链接 `vendor/overtrue/weather` 到包所在目录 `../weather`，这样一来，你可以直接在测试项目的 `vendor/overtrue/weather` 下修改文件，包里的文件也会跟着变了，是不是对于开发过程中来讲非常的方便？
+
+::: tip
+🚨注意：如果在包的原目录创建了新文件，你可能需要刷新一下目录树才能看到新的文件哦。
+:::
 

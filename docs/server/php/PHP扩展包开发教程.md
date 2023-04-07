@@ -978,3 +978,110 @@ composer require azhida/weather -vvv
 ```sh
 composer require azhida/weather -vvv
 ```
+
+## 代码重构实践
+
+todo ...
+
+## 使用 GitHub Actions 做自动化测试
+
+todo ...
+
+## 使用 StyleCI 自动修复代码格式
+
+[StyleCI](https://styleci.io/) 它是一个自动检查并修复代码规范的工具，目前支持 PHP、JS、CSS。
+
+原理与 Travis CI 一样，都是利用 webhook 代码变更通知来创建检查任务，然后检查代码规范生成报告，可选创建 PR 到你的代码仓库以修复格式。
+
+### 登录 StyleCI
+
+同样是支持 GitHub 登录的，所以在首页点击 Login 进入登录页，然后选择 GitHub 或者你的账号账号方式登录即可。
+
+### 启用项目
+
+登录成功以后，会进到列表页面。
+
+同样在搜索框输入包名来启用，如果没有看到你的扩展包，则你需要按以下步骤同步一下：
+- `Settings` 按钮
+- `Repos` 按钮
+
+然后应该可以看到仓库列表了，在点击按钮 `ENABLE STYLECI`
+
+### 配置项目
+
+启用后点击 “**SHOW ANALYSES**” 查看检查状态。
+
+由于我们还没有配置过规范，所以没有检查报告，如下图点击设置按钮进入设置页。
+
+### 代码规范
+
+在配置框里输入 `preset: symfony` 简单的内置规范即可，symfony 是 StyleCI 按照 [Symfony](https://symfony.com/) 框架规范配置的规则，我们也推荐你使用该规范：
+
+记得点击保存。
+
+### 文件头注释
+
+文件头注释就是我们源代码里的头部注释，我们可以在配置里的 “**Header Comment**” 框里填写我们的文件头注释，一旦某文件缺少与其匹配的头注释检查将不能通过：
+
+示例内容如下（请根据你的需求自行配置）：
+
+```
+This file is part of the azhida/weather.
+
+(c) azhida <i@azhida.me>
+
+This source file is subject to the MIT license that is bundled
+with this source code in the file LICENSE.
+```
+
+### 自动化模式
+
+你可以根据你的喜好选择代码格式修复的自动化级别，默认级别为手动模式，也就是说你在查看完检查报告页点击 “**CREATE FIX PR**” 时才会向你的代码库创建 PR，各级别说明如下：
+
+> 此项修改勾选即保存，不需要另外操作。
+
+因为考虑到有的时候有特殊场景下它处理得不是很完美，我会选择第二档 “**自动创建 PR**”，然后我查看后再决定是否合并，请根据你的喜好来选择就好。
+
+然后我们回到项目主页，点击 “**ANALYZE NOW**”，手动触发一个检查任务。
+
+稍等一会儿，我们会看到检查报告。
+
+可以看到检查并没通过，我们点击 “**SHOW DETAILS**” 查看报告。
+
+原来是头注释不匹配，这时候可以点击 “**CREATE FIX PR**” 来向我们的代码库提交一个 PR，然后回到 GitHub 代码库，就会发现存在一条 PR 了，合并即可。
+
+点击 “**Merge pull request**” 合并即可修复代码格式。
+
+### 测试自动化触发 PR
+
+我们现在故意将代码改得不规范，以测试刚才我们的自动化级别选择（**自动创建 PR**）是否生效：
+
+src/Weather.php
+
+```php
+    .
+    .
+    .
+    // 我们将参数间的空格去掉，并且将 $url 定义放到了 } 同一行
+    public function getWeather($location,$format = 'json',$coordType = null)
+    {$url = 'http://api.map.baidu.com/telematics/v3/weather';  
+    .
+    .
+    .
+```
+
+提交代码：
+
+```sh
+git commit -am "Test StyleCI."
+git pull -r  # 拉取并合并远程修改（刚才合并了一个 PR）
+git push
+```
+
+点击 “**Merge pull request**” 合并即可。
+
+StyleCI 是按照我们指定的规范来检查的，那这些规范我从哪里知道呢？所有你的疑问都可以从 [官方文档](https://docs.styleci.io/) 找到答案。
+
+
+
+todo ...

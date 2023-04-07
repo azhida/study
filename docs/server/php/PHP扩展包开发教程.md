@@ -244,3 +244,68 @@ weather/
 接下来让我们一起来实现这些功能吧。
 
 
+## 准备工作 - 创建高德开放平台应用
+
+[高德开放平台](https://lbs.amap.com/api/webservice/guide/api/weatherinfo/)
+
+- 注册登录
+- 创建应用
+- 获取 API Key
+
+::: tip
+服务平台：选择 `Web服务`
+:::
+
+## 创建项目并安装依赖包
+
+### Composer 加速
+
+```sh
+composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+```
+
+### 安装 Package Builder 包结构创建工具
+
+```sh
+composer global require overtrue/package-builder 
+```
+
+::: tip
+记得配置全局变量，否则无法使用命令 `package-builder build weather ` 。  
+记得重新打开 CMD 工具，否则命令还未生效。
+
+- windows 下 ，用 `Git Bash` 工具执行 `composer global require overtrue/package-builder` 就能看到 安装的路径了，然后把路径复制到 环境变量中。
+:::
+
+### 创建目录结构
+
+```sh
+package-builder build weather 
+```
+按提示操作即可
+
+### 声明自动加载
+
+接下来我们需要在 `composer.json` 中声明包自动加载的命名空间。如果已存在，则可跳过。
+
+composer.json
+
+```json
+{
+    "autoload": {
+        "psr-4": {
+            "Overtrue\\Weather\\": "./src/"
+        }
+    },
+}
+```
+
+### 安装依赖
+
+我们的项目需要请求接口，所以我们选择 [guzzle/guzzle](https://github.com/guzzle/guzzle) 来做为 http client， 其它暂时用不到，后面用到的时候再安装即可：
+
+```sh
+cd weather/
+composer require guzzlehttp/guzzle                      
+```
+

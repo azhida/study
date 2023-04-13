@@ -18,7 +18,7 @@ cd demo
 npm i
 npm run dev
 ```
-访问 http://localhost:5173/ 即可看到组件库主页了。
+访问 `http://localhost:5173/` 即可看到组件库主页了。
 
 
 ## 参考

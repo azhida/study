@@ -1,6 +1,6 @@
 <?php
 
-public function tree($array){
+function tree($array){
     //第一步 构造数据
     $items = [];
     foreach($array as $value){

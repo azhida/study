@@ -26,3 +26,51 @@ mklink /j "C:\Program Files\Docker" "D:\Docker"
 ```
 mklink /j "C:\Program Files\Docker" "D:\Docker"
 ```
+
+## docker镜像从c盘转移到E盘
+
+以下所命令行操作都要注意：  
+搜索 cmd 并以管理员身份运行，注意：不要用 `Windows PowerShell` ，可能有坑
+
+- 停止运行 docker desktop
+
+- 查看 wsl 发行版
+
+```
+# 查看发行版，会看到 docker-desktop 和 docker-desktop-data ，安装了 ubuntu 则还会有 Ubuntu-22.04
+# docker-desktop-data 用于存储镜像，用的越多越占空间
+wsl -l -v
+```
+
+- 停止 wsl
+
+```
+wsl --shutdown
+```
+
+- 导出 wsl
+
+```
+mkdir E:\docker-desktop
+wsl --export docker-desktop-data E:\docker-desktop\docker-desktop-data.tar
+```
+
+- 注销 wsl
+
+```
+wsl --unregister docker-desktop-data
+```
+
+- 导入 wsl
+
+```
+wsl --import docker-desktop-data E:\docker-desktop\data E:\docker-desktop\docker-desktop-data.tar --version 2
+```
+
+- 重新启动Docker
+
+- 确认一切没有问题，则可删除 `E:\docker-desktop\docker-desktop-data.tar` 文件
+
+
+
+

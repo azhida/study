@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import { getNavAndSidebarByDir, getSidebarItemsByDir } from '../fn';
 
+const interviewConfig = getNavAndSidebarByDir('./docs/就业', '就业'); // 面试
 const webConfig = getNavAndSidebarByDir('./docs/web', '前端'); // 前端
 const serverConfig = getNavAndSidebarByDir('./docs/server', '服务端'); // 服务端
 const databaseConfig = getNavAndSidebarByDir('./docs/database', '数据库'); // 数据库
@@ -23,6 +24,10 @@ export default defineConfig({
 
     nav: [
       { text: '首页', link: '/' },
+      // {
+      //   text: '就业',
+      //   items: interviewConfig.navItems,
+      // },
       {
         text: '前端',
         items: webConfig.navItems,
@@ -44,6 +49,7 @@ export default defineConfig({
     ],
 
     sidebar: {
+      '/就业': interviewConfig.sidebarItems,
       '/web': webConfig.sidebarItems,
       '/server': serverConfig.sidebarItems,
       '/database': databaseConfig.sidebarItems,

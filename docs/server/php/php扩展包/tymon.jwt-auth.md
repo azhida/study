@@ -18,3 +18,11 @@ Could not create token: Using integers for registered date claims is deprecated,
 ```
 composer require lcobucci/jwt:3.3.3
 ```
+
+## 根据 token 获取用户信息
+```
+use Tymon\JWTAuth\Facades\JWTAuth;
+
+$token = 'aaaaaaaaa';
+$user = JWTAuth::setToken($token)->authenticate();
+```

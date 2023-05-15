@@ -2,8 +2,8 @@
   <h4>标题</h4>
   <div id="main"></div>
   <button class="button" @click="refresh()">刷新</button>  
+  <button class="button" @click="init()">初始化</button>  
   <div id="main1"></div>
-  <button class="button" @click="makeChart1()">刷新</button>  
 </template>
 
 <script>
@@ -20,17 +20,25 @@ export default{
         {name:'B+',value:4, startColor:'#251571',endColor:'#926710'},
         {name:'C',value:5, startColor:'#251571',endColor:'#5a41dd'},
         {name:'C+',value:61, startColor:'#251571',endColor:'#5a41dd'},
-      ]
+      ],
+      bubbleItemsTemp:[]
     }
   },
   mounted() {
-      this.makeChart()
-      this.makeChart1()
+    this.bubbleItemsTemp = this.bubbleItems
+    this.makeChart()
+    this.makeChart1()
   },
   methods: {
     refresh(){
-      this.bubbleItems = _.sampleSize(this.bubbleItems, _.random(1, this.bubbleItems.length))
+      this.bubbleItemsTemp = _.sampleSize(this.bubbleItems, _.random(1, this.bubbleItems.length))
       this.makeChart()
+      this.makeChart1()
+    },
+    init(){
+      this.bubbleItemsTemp = this.bubbleItems
+      this.makeChart()
+      this.makeChart1()
     },
     makeChart(){
       // 初始化 echarts
@@ -39,7 +47,7 @@ export default{
       var option;   
 
       // 拿原始数据 - 请求API获取
-      var data = this.bubbleItems;
+      var data = this.bubbleItemsTemp;
       let valueArr = data.map(function(i) {return i.value});
       // 拿到 value 的和，用于计算气泡要显示的百分比
       var sumValue = valueArr.reduce(function (total, value) {
@@ -140,7 +148,7 @@ export default{
     makeChart1(){
 
       // 拿原始数据 - 请求API获取
-      var data = this.bubbleItems;
+      var data = this.bubbleItemsTemp;
       let valueArr = data.map(function(i) {return i.value});
       // 拿到 value 的和，用于计算气泡要显示的百分比
       var sumValue = valueArr.reduce(function (total, value) {
@@ -256,7 +264,7 @@ export default{
   }
 
   .button{
-    margin: 10px 0;
+    margin: 10px ;
     padding: 10px 20px;
     border-radius: 5px;
     background-color: #10b981;

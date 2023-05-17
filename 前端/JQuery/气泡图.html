@@ -84,7 +84,7 @@
         this.data = [
             { name: 'A', value: 100, startColor: '#251571', endColor: '#5a41dd' },
             { name: 'A+', value: 200, startColor: '#251571', endColor: '#24ac82' },
-            { name: 'B', value: 3000, startColor: '#251571', endColor: '#0173e4' },
+            { name: 'B', value: 300, startColor: '#251571', endColor: '#0173e4' },
             { name: 'B+', value: 400, startColor: '#251571', endColor: '#926710' },
             { name: 'C',value:50, startColor:'#251571',endColor:'#5a41dd'},
             { name: 'C+',value:60, startColor:'#251571',endColor:'#5a41dd'},
@@ -114,8 +114,9 @@
         this.update = function () {
             // 请求返回的数据： [{name:'专业名称',num:10}]
 
+            this.colors = randomSort(this.colors)
             this.data = randomSort(this.data)
-            var calculateValuesRes = this.calculateValues();  
+            this.calculateValues();  
             
             var boxDom = $('.box').clone(true);
             $('.box').hide();
@@ -154,8 +155,6 @@
             
             var domWight = $('#' + this.domId).width();
             var domHeight = $('#' + this.domId).height();
-            console.log(domWight, 'domWight');
-            console.log(domHeight, 'domHeight');
 
             // 先用x轴计算
             var baseRate = (domWight - (this.data.length + 1) * 5) / sumValue;
@@ -170,15 +169,14 @@
                 var diff = domHeight - e.symbolSize;
                 e.translateY = getRandomNumber(-diff, diff) / 2; // 计算圆的上下偏移量
                 e.labelScale = this.getLabelScale(e.symbolSize); // 文字的缩放比例
+                var colorIndex = i;
+                if (i >= this.colors.length) {
+                    colorIndex = getRandomNumber(0, this.colors.length);
+                }
+                var colors = this.colors[colorIndex];
+                e.startColor = colors.startColor;
+                e.endColor = colors.endColor;
             })
-
-            console.log(this.data, 'this.data');
-
-            return {
-                minValue: minValue,
-                maxValue: maxValue,
-                sumValue: sumValue,
-            }
         };
 
         this.getLabelScale = function (width) {

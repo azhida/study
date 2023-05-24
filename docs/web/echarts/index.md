@@ -15,3 +15,7 @@ https://echarts.apache.org/zh/index.html
 [www.isqqw.com](https://www.isqqw.com/)
 
 [analysis.datains.cn](http://analysis.datains.cn/finance-admin/index.html#/chartLib/all)
+
+- 阿里云数据可视化平台
+
+http://datav.aliyun.com/portal/school/atlas/area_selector

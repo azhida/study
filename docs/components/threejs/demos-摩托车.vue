@@ -6,6 +6,9 @@
 	import {
 		onMounted
 	} from 'vue';
+	import {
+		withBase
+	} from 'vitepress'
 	import * as THREE from 'three' //导入three.js核心库
 	import {
 		OrbitControls
@@ -175,7 +178,7 @@
 		// 加载模型
 		addGLTFModel(modelName) {
 			return new Promise((resolve, reject) => {
-				const loader = new GLTFLoader().setPath('/asset/threejs/3dModels/')
+				const loader = new GLTFLoader().setPath(withBase('/asset/threejs/3dModels/'))
 				// const loader = new GLTFLoader();
 				loader.load(modelName, (gltf) => {
 					const motorModel = gltf.scene

@@ -15,6 +15,12 @@ export default defineConfig({
 	description: "积硅步至千里，积小流成江海！好记性不如烂笔头！",
 	base: '/study/',
 	lastUpdated: true,
+	head: [
+		// 设置 favor.ico，.vuepress/public 下
+		[
+			'link', { rel: 'icon', href: '/favicon.ico' }
+		]
+	],
 	themeConfig: {
 		// https://vitepress.dev/reference/default-theme-config
 

@@ -203,6 +203,7 @@ git add -A
 
 # 检查 Git 状态
 git status
+git status -s
 
 # 保留改动并提交 
 # 该命令会将暂存区的文件都提交到 Git

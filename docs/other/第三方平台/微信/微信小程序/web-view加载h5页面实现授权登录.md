@@ -10,8 +10,8 @@ https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html#%E5%8A%
 
 ## 目的描述
 
-- 在 h5 页面中获取 小程序openid；
-- 在 h5 页面通过 小程序openid 或者 小程序code 请求后端登录接口，拿到token
+- 在 h5 页面中获取 小程序临时登录凭证 cdoe；
+- 在 h5 页面通过 小程序code 请求后端登录接口，拿到token
 
 ## 遇到的问题
 
@@ -26,14 +26,14 @@ https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html#%E5%8A%
 
 1. 小程序向 h5 页面传递数据，通过 url 携带参数；
 2. h5 页面向小程序传递数据，通过 `bindmessage="onPostMessage"` ，后面有详细代码；
-3. 小程序定义全局变量 openid ，目的是 当用户在 h5 页面点击登录按钮时，跳转小程序页面，相当于重新加载了小程序当前页面，此时会触发 小程序的方法 `postMessage()`
-4. 小程序定义全局变量 openidChange ，以变量的形式 存储 方法；
-5. 小程序定义全局方法 triggerOpenidChange ，
-6. 小程序 `web-view` 组件页面，`onLoad()` 生命周期中注册监听函数： `getApp().globalData.openidChange = this.onOpenidChange.bind(this)` ;
+3. 小程序定义全局变量 code ，目的是 当用户在 h5 页面点击登录按钮时，跳转小程序页面，相当于重新加载了小程序当前页面，此时会触发 小程序的方法 `postMessage()`
+4. 小程序定义全局变量 codeChange ，以变量的形式 存储 方法；
+5. 小程序定义全局方法 triggerCodeChange ，
+6. 小程序 `web-view` 组件页面，`onLoad()` 生命周期中注册监听函数： `getApp().globalData.codeChange = this.onCodeChange.bind(this)` ;
 7. h5 页面点击登录按钮，执行 `wx.miniProgram.postMessage()` 函数，同时需要 跳转小程序当前页，以触发小程序 `postMessage()` ;
-8. 小程序 `web-view` 组件页面执行函数 `postMessage()` ，行进小程序授权，拿到 openid 并全局储存，然后 触发监听函数 `triggerOpenidChange()` , 
-9. 小程序监听函数 `triggerOpenidChange()` 会执行之前注册的函数 `onOpenidChange()` , 函数内 将 openid 更新到 `web-view` 的 url 链接，从而达到刷新的目的；
-10. 此时在 h5 页面，通过 jQuery 就可以拿到路由参数 openid 了，至于其他操作，则根据自己的需求去开发了。
+8. 小程序 `web-view` 组件页面执行函数 `postMessage()` ，行进小程序授权，拿到 code 并全局储存，然后 触发监听函数 `triggerCodeChange()` , 
+9. 小程序监听函数 `triggerCodeChange()` 会执行之前注册的函数 `onCodeChange()` , 函数内 将 code 更新到 `web-view` 的 url 链接，从而达到刷新的目的；
+10. 此时在 h5 页面，通过 jQuery 就可以拿到路由参数 code 了，至于其他操作，则根据自己的需求去开发了。
 
 
 ::: tip
@@ -43,13 +43,13 @@ https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html#%E5%8A%
 ```
 // /pages/login/login
 // 登录页
-<web-view src="http://127.0.0.1:8080/login.html?openid=123456" bindmessage="onPostMessage" />
+<web-view src="http://127.0.0.1:8080/login.html?code=123456" bindmessage="onPostMessage" />
 ```
 
 ```
 // /pages/index/index
 // 首页
-<web-view src="http://127.0.0.1:8080/index.html?openid=123456" bindmessage="onPostMessage" />
+<web-view src="http://127.0.0.1:8080/index.html?code=123456" bindmessage="onPostMessage" />
 ```
 
 :::
@@ -66,12 +66,12 @@ https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html#%E5%8A%
 // app.ts
 App<IAppOption|any>({
   globalData: {
-    openid:'',
-    openidChange: () => {},
+    code:'',
+    codeChange: () => {},
   },
   // 触发监听器函数的方法
-  triggerOpenidChange: function () {
-    this.globalData.openidChange()
+  triggerCodeChange: function () {
+    this.globalData.codeChange()
   }
 })
 ```
@@ -88,12 +88,12 @@ Page({
   },
   onLoad() {
     // 注册监听器函数
-    getApp().globalData.openidChange = this.onOpenidChange.bind(this)
+    getApp().globalData.codeChange = this.onCodeChange.bind(this)
   },
-  onOpenidChange: function() {
-    // 全局变量 openid 的值发生改变时，调用该函数
+  onCodeChange: function() {
+    // 全局变量 code 的值发生改变时，调用该函数
     this.setData({
-      url: this.data.url + '?openid=' + getApp().globalData.openid
+      url: this.data.url + '?code=' + getApp().globalData.code
     })
   },
   onPostMessage(e:any){
@@ -103,25 +103,12 @@ Page({
     wx.login({
       success: (res) => {
         if (res.code) {
-          var wxspAppid = '';
-          var wxspSecret = '';
-          wx.request({
-            //这里填你自己的appid 和 wxspSecret 
-              url: "https://api.weixin.qq.com/sns/jscode2session?appid=" + wxspAppid+"&secret=" + wxspSecret + "&js_code=" + res.code + "&grant_type=authorization_code",
-              method: "POST",
-              success:(res2:any)=>{
-                //获取成功要执行的动作
-                console.log(res2, '授权')
-                // 全局储存 openid
-                getApp().globalData.openid = res2.data.openid
-                // 触发监听函数
-                getApp().triggerOpenidChange()
-              },
-              fail(data){
-                //失败要执行的动作 
-                console.log(data, 'data 失败要执行的动作')
-              }
-            })
+          // 拿到 code 后，重载 h5 ，携带 code 在 h5 请求后端登录接口
+
+          // 全局储存 code
+          getApp().globalData.code = res.code
+          // 触发监听函数
+          getApp().triggerOpenidChange()
         }
       }
     })
@@ -172,23 +159,12 @@ https://res.wx.qq.com/open/js/jweixin-1.3.1.js
 <script>
 $(function(){
 	var uriObj = getSearch();
-	if (uriObj.openid) {
-		alert(uriObj.openid)
-		// todo 拿到了 openid 后，用 ajax 向后端请求登录接口
+	if (uriObj.code) {
+		alert(uriObj.code)
+		// todo 拿到了 code 后，用 ajax 向后端请求登录接口
 		// ...
 	}
 })
-
-function login(){
-  console.log('login');
-	wx.miniProgram.postMessage({
-	  data: 'abcd'
-	})
-	// 利用页面跳转 触发 小程序的方法 bindmessage=onPostMessage()
-  wx.miniProgram.reLaunch({
-    url: '/pages/test/test'
-  })
-}
 
 function login(){
   console.log('login');

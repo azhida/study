@@ -36,6 +36,12 @@ https://developer.android.google.cn
 
 ## 常用命令
 
+### 安装apk
+
+```
+adb install D:\ruanjian\apps\dgms.apk
+```
+
 ### 列出包名
 
 - 进入手机命令行界面
@@ -53,6 +59,29 @@ ll
 # 或者
 ls | grep PackageName
 ```
+
+- 卸载 app
+
+```
+adb shell pm uninstall --user 0 <packages>
+adb shell pm uninstall --user 0 com.douguo.recipe
+```
+
+- 运行 app
+```
+adb shell monkey -p 包名 -v -v -v 1 | findstr "cmp="
+# 先找到app的启动页
+adb shell monkey -p com.douguo.recipe -v -v -v 1 | findstr "cmp="
+# com.douguo.recipe/.MainActivity
+
+#键入activity启动应用（格式为包名 + activity）
+adb shell am start com.douguo.recipe/.MainActivity
+```
+
+- 参考
+
+[使用adb命令启动app](https://blog.csdn.net/m0_46151559/article/details/126461868)
+
 
 ## 参考
 

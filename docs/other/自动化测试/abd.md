@@ -59,3 +59,9 @@ ls | grep PackageName
 [adb概介](https://blog.csdn.net/weixin_54280625/article/details/112862918?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168618396716800225551728%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=168618396716800225551728&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-2-112862918-null-null.142^v88^koosearch_v1,239^v2^insert_chatgpt&utm_term=adb&spm=1018.2226.3001.4187)
 
 [ADB 操作命令详解及用法大全](https://blog.csdn.net/lb245557472/article/details/84068519?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168618396716800225551728%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=168618396716800225551728&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-84068519-null-null.142^v88^koosearch_v1,239^v2^insert_chatgpt&utm_term=adb&spm=1018.2226.3001.4187)
+
+[adb连接夜神模拟器和连接夜神多开的方法](https://blog.csdn.net/qq_40558166/article/details/124497404)
+
+[自动化 | 聊聊 ADB](http://www.360doc.com/content/21/1028/11/77509131_1001637303.shtml)
+
+[Android adb 常用命令](https://blog.csdn.net/qq_42069296/article/details/128660317?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-1-128660317-blog-122584545.235^v38^pc_relevant_anti_t3_base&spm=1001.2101.3001.4242.2&utm_relevant_index=4)

@@ -40,3 +40,4 @@ todo 待完善
 
 - [【Python】如何将写好的Python代码打包成exe文件？](https://blog.csdn.net/WWWQQQEEECCC/article/details/127487095)
 - [Python程序打包成exe](https://zhuanlan.zhihu.com/p/444647750)
+- [python打包exe最清楚的教程来了](http://www.360doc.com/content/23/0530/15/541242_1082728808.shtml)

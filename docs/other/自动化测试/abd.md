@@ -45,9 +45,10 @@ adb install D:\ruanjian\apps\dgms.apk
 ### 列出包名
 
 - 进入手机命令行界面
-
 ```cmd
 adb shell
+# adb -s 指定设备 进行连接
+adb -s 127.0.0.1:62001 shell
 ```
 
 - 列出所有包名称
@@ -61,7 +62,6 @@ ls | grep PackageName
 ```
 
 - 卸载 app
-
 ```
 adb shell pm uninstall --user 0 <packages>
 adb shell pm uninstall --user 0 com.douguo.recipe

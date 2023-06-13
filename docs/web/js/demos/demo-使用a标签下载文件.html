@@ -106,5 +106,27 @@
 				fileReader.readAsText(err.data);
 			})
 		}
+
+		function downPager(url, filename) {
+			const xhr = new XMLHttpRequest();
+			console.log(xhr)
+			xhr.open('GET', url, true);
+			xhr.responseType = "blob"; //web-portal
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState === 4) {
+					if (xhr.status === 200) {
+						const blod = this.response;
+						console.log(blod)
+						// var src = URL.createObjectURL(blod);
+						const eleLink = document.createElement("a");
+						eleLink.download = filename || new Date().getTime() + ".pdf";
+						eleLink.href = URL.createObjectURL(blod);
+						document.body.appendChild(eleLink);
+						eleLink.click();
+					}
+				}
+			};
+			xhr.send()
+		};
 	</script>
 </html>

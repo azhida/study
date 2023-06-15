@@ -9,3 +9,14 @@ md ./a/b/c/d/
 # 将 0 写入文件 `./a/b/c/d/test.txt`
 echo 0 > ./a/b/c/d/test.txt
 ```
+
+## 打开 host 文件
+```
+cd C:\Windows\System32\drivers\etc
+notepad hosts
+```
+
+## 刷新 DNS
+```
+ipconfig /flushdns
+```

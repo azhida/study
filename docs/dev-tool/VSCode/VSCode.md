@@ -17,29 +17,30 @@
 ## VSCode 插件
 ### 必装
 
-| 插件名称                 | 说明                 |
-| :----------------------- | :------------------- |
-| EditorConfig for VS Code | 代码制表符统一       |
-| advanced-new-file        | 快速新建文件         |
-| Duplicate action         | 右键快速创建文件副本 |
-| Laravel Blade Snippets   | Blade 模板语法高亮   |
-|                          |
+| 插件名称					| 说明					|
+| :-----------------------	| :-------------------	|
+| EditorConfig for VS Code	| 代码制表符统一		|
+| advanced-new-file			| 快速新建文件			|
+| Duplicate action			| 右键快速创建文件副本	|
+| Laravel Blade Snippets	| Blade 模板语法高亮	|
+
 
 ### 选装
 
-| 插件名称                                  | 说明                      |
-| :---------------------------------------- | :------------------------ |
-| Community Material Theme                  | 编辑器主题                |
-| Material Icon Theme                       | 与上面主题搭配使用的 icon |
-| Sublime Text Keymap and Settings Importer | Sublime 用户的快捷键同步  |
-| Vutur                                     | 开发Vue必备插件           |
-| any-rule                                  | 正则表达式插件            |
-| Markdown Preview Enhanced                 | md 预览插件               |
-| Markdown All in One                       | md 编辑器                 |
-| vscode-mindmap                       | mind 脑图编辑器，文件扩展 km                 |
-| markmap                       | markdown 脑图编辑器，文件扩展 mm.md                 |
-| Draw.io Integration   | 绘图工具，如 流程图等，文件扩展 .drawio  |
-|Angular Files| 快速创建 Angular 模板文件 html，css 和 ts |
+| 插件名称									| 说明										|
+| :----------------------------------------	| :------------------------					|
+| Community Material Theme					| 编辑器主题								|
+| Material Icon Theme						| 与上面主题搭配使用的 icon					|
+| Sublime Text Keymap and Settings Importer	| Sublime 用户的快捷键同步					|
+| Vutur										| 开发Vue必备插件							|
+| any-rule									| 正则表达式插件							|
+| Markdown Preview Enhanced					| md 预览插件								|
+| Markdown All in One						| md 编辑器									|
+| vscode-mindmap							| mind 脑图编辑器，文件扩展 km				|
+| markmap									| markdown 脑图编辑器，文件扩展 mm.md		|
+| Draw.io Integration						| 绘图工具，如 流程图等，文件扩展 .drawio	|
+|Angular Files								| 快速创建 Angular 模板文件 html，css 和 ts	|
+| Remote Development						| 远程开发环境								|
 
 ### 怎样安装插件
 1. 进入『安装插件』选项卡里；

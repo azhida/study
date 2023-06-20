@@ -151,6 +151,51 @@ export default ({ mode }) => {
 };
 ```
 
+- 配置 路由
+
+/src/routes/index.ts
+
+```ts
+import { createRouter, createWebHistory } from "vue-router";
+
+let routes = [
+	{
+		path: '/',
+		//使用import可以路由懒加载，如果不使用，太多组件一起加载会造成白屏
+		component: () => import("../view/Layout.vue"),
+		children: [
+			{
+					path: '',
+					component: () => import("../view/Home.vue"),
+			},
+			{
+					path: 'my',
+					component: () => import("../view/My.vue"),
+			},
+		],
+	},
+	{
+		path: '/login',
+		component: () => import("../view/Login.vue")
+	},
+	//{
+	//配置404页面
+	//path: '/:catchAll(.*)',
+	//name: '404',
+	//component: () => import(''),
+	//}
+]
+
+// 路由
+const router = createRouter({
+	// 这里要 加上 `/app/` ，否则 打包后 部署无法匹配路由，页面空白
+	history: createWebHistory('/app/'),
+	routes
+})
+
+export default router 
+```
+
 ### 注意
 
 - Laravel 路由名称与 `/public/` 文件夹下的 文件同名时，访问会报 403 错误；

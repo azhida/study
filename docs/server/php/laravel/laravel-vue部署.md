@@ -1,20 +1,27 @@
 # Laravel + Vue 部署
 
-后端 Laravel 提供数据接口服务，前端使用 vue3 + ts 单开项目。
-
-前端和后端使用同一个域名，以二级目录区分子项目。
+- 开发环境下，前端后端都是独立的目录
+- 后端 `Laravel` 提供数据接口服务，前端使用 `vue3 + vite + ts` 单开项目
+- 部署到生产环境时，将编译好的前端项目文件包和后端代码部署到同一个域名下
+- 前端和后端使用同一个域名，以二级目录区分子项目
 
 ## Nginx 方式转发
 
-### laravel项目，public目录下，部署两个vue子项目，并去掉vue路由中的#号
+### 项目目录
 
-- app 端目录：  /var/www/laravel/public/app/
-- pc 端目录：  /var/www/laravel/public/pc/
-- admin 端目录： /var/www/laravel/public/admin/
+laravel项目，public目录下，部署两个vue子项目，并去掉vue路由中的#号
 
-### nginx部署方法：在 server 里配置
+- Laravel 后端目录：  `/var/www/laravel/`
+- app 端目录：  `/var/www/laravel/public/app/`
+- pc 端目录：  `/var/www/laravel/public/pc/`
+- admin 端目录： `/var/www/laravel/public/admin/`
 
-```
+### Nginx 配置
+
+nginx 配置文件，在 server 里配置。
+
+laravel.test.conf
+```conf
 location ^~ /app/ {
 	alias /var/www/laravel/public/app/;
 	index index.html index.htm;
@@ -36,10 +43,21 @@ location ^~ /admin/ {
 
 ## Laravel 路由文件转发
 
-### 后端路由设置
+开发环境下，前后端两个项目目录为同级目录。
+
+```md
+/var/www/laravel
+/var/www/vite-project
+```
+
+### 后端
+
+- 项目名称： laravel
+
+- 路由设置
 
 /routes/web.php
-```
+```php
 Route::get('/app/{any}', function () {
     $path = public_path('app/index.html');
     abort_unless(file_exists($path), 400, 'Page is not Found!');
@@ -58,3 +76,51 @@ Route::get('/admin/{any}', function () {
     return file_get_contents($path);
 })->name('admin');
 ```
+
+### 前端
+
+前端编译打包，需要配置二级目录。
+
+- 安装 vue3 项目
+
+```sh
+yarn create vite
+# 项目名称： vite-project
+# 选 Vue
+# 选 TS
+
+cd vite-project
+yarn
+yarn dev
+```
+
+- 配置 Vite
+
+vite.config.ts
+
+```ts
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+
+export default ({ mode }) => {
+    // 检查是否开发
+    const isDevelopment = mode === "development";
+
+    return defineConfig({
+        server: {
+            port: 3000,
+        },
+        build: {
+            // 生成的文件将添加到 `laravel/public/app` 下
+            outDir: "./laravel/public/app",
+        },
+        // 也将更改基于模式的基础
+        base: isDevelopment ? "/" : "/app/",
+        plugins: [vue()],
+    });
+};
+```
+
+### 参考
+
+[Laravel + Vue 3（Vite、TypeScript）SPA 设置](https://blog.csdn.net/qq_44273429/article/details/128628428)

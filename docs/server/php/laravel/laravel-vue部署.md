@@ -59,23 +59,51 @@ location ^~ /admin/ {
 /routes/web.php
 ```php
 Route::get('/app/{any}', function () {
-    $path = public_path('app/index.html');
+    $path = public_path('appDir/index.html');
     abort_unless(file_exists($path), 400, 'Page is not Found!');
     return file_get_contents($path);
 })->name('app');
 
 Route::get('/pc/{any}', function () {
-    $path = public_path('pc/index.html');
+    $path = public_path('pcDir/index.html');
     abort_unless(file_exists($path), 400, 'Page is not Found!');
     return file_get_contents($path);
 })->name('pc');
 
 Route::get('/admin/{any}', function () {
-    $path = public_path('admin/index.html');
+    $path = public_path('adminDir/index.html');
     abort_unless(file_exists($path), 400, 'Page is not Found!');
     return file_get_contents($path);
 })->name('admin');
 ```
+
+::: danger 注意
+目录名称不能和路由名称相同。
+
+如下报 403 错误： 
+
+```
+Route::get('/app/{any}', function () {
+    $path = public_path('app/index.html');
+    abort_unless(file_exists($path), 400, 'Page is not Found!');
+    return file_get_contents($path);
+})->name('app');
+```
+:::
+
+
+::: tip 正确写法
+目录名称不能和路由名称相同，正确写法如下： 
+
+```
+Route::get('/app/{any}', function () {
+    $path = public_path('appDir/index.html');
+    abort_unless(file_exists($path), 400, 'Page is not Found!');
+    return file_get_contents($path);
+})->name('app');
+```
+:::
+
 
 ### 前端
 
@@ -111,15 +139,21 @@ export default ({ mode }) => {
             port: 3000,
         },
         build: {
-            // 生成的文件将添加到 `laravel/public/app` 下
-            outDir: "./laravel/public/app",
+            // 生成的文件将添加到 `laravel/public/appDir` 下
+            outDir: "../laravel/public/appDir",
         },
-        // 也将更改基于模式的基础
-        base: isDevelopment ? "/" : "/app/",
+        // 也将更改基于模式的基础， appDir 要一致，否则编译后找不到静态资源
+        base: isDevelopment ? "/" : "/appDir/",
         plugins: [vue()],
     });
 };
 ```
+
+### 注意
+
+- Laravel 路由名称与 `/public/` 文件夹下的 文件同名时，访问会报 403 错误；
+- 解决办法：路由名称与文件名称不一致即可；
+
 
 ### 参考
 

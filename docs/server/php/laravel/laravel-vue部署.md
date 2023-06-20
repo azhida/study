@@ -120,6 +120,8 @@ yarn create vite
 cd vite-project
 yarn
 yarn dev
+# 或 指定端口号
+yarn dev --port 5555
 ```
 
 - 配置 Vite

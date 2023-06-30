@@ -24,7 +24,8 @@ npm i --save lodash lodash-es
 
 ### 数组
 
-- concat：创建一个新数组，将array与任何数组 或 值连接在一起。
+#### concat - 数组拼接
+
 ```
 // 可对concat设置别名lodashConcat
 import { concat as lodashConcat } from 'lodash-es'
@@ -41,7 +42,7 @@ console.log(resultArr) // [1, 2, 3, 5, 6, 7, 11]
 ```
 
 
-- findIndex：返回检索的数组第一个匹配元素的 索引值（index），否则返回 -1。
+#### findIndex - 数组搜索
 
 ```
 import { findIndex as lodashFindIndex } from 'lodash-es'
@@ -124,6 +125,15 @@ import { head, last } from 'lodash-es'
 const arr = [1, 2, 3]
 const lastItem = last(arr) // 3
 
+```
+
+### 集合
+
+#### sample - 获得一个随机元素
+
+```js
+_.sample([1, 2, 3, 4]);
+// => 2
 ```
 
 

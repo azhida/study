@@ -27,10 +27,12 @@
 		methods: {
 			init() {
 				this.createChart()
+				this.createChart1()
 			},
 			refresh() {
 				// todo 生成随机数据...
 				this.createChart()
+				this.createChart1()
 			},
 			createChart() {
 

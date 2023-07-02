@@ -21,6 +21,7 @@
   "devDependencies": {
     "@types/node": "^18.15.11",
     "directory-tree": "^3.5.1",
+    "markdown-it-mathjax3": "^4.3.2",
     "sass": "^1.62.1",
     "vitepress": "^1.0.0-alpha.64",
     "vue": "^3.2.47"

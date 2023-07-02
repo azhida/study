@@ -1,5 +1,96 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from 'vitepress';
+import mathjax3 from 'markdown-it-mathjax3';
 import { getNavAndSidebarByDir, getSidebarItemsByDir } from '../fn';
+
+const customElements = [
+	'math',
+	'maction',
+	'maligngroup',
+	'malignmark',
+	'menclose',
+	'merror',
+	'mfenced',
+	'mfrac',
+	'mi',
+	'mlongdiv',
+	'mmultiscripts',
+	'mn',
+	'mo',
+	'mover',
+	'mpadded',
+	'mphantom',
+	'mroot',
+	'mrow',
+	'ms',
+	'mscarries',
+	'mscarry',
+	'mscarries',
+	'msgroup',
+	'mstack',
+	'mlongdiv',
+	'msline',
+	'mstack',
+	'mspace',
+	'msqrt',
+	'msrow',
+	'mstack',
+	'mstack',
+	'mstyle',
+	'msub',
+	'msup',
+	'msubsup',
+	'mtable',
+	'mtd',
+	'mtext',
+	'mtr',
+	'munder',
+	'munderover',
+	'semantics',
+	'math',
+	'mi',
+	'mn',
+	'mo',
+	'ms',
+	'mspace',
+	'mtext',
+	'menclose',
+	'merror',
+	'mfenced',
+	'mfrac',
+	'mpadded',
+	'mphantom',
+	'mroot',
+	'mrow',
+	'msqrt',
+	'mstyle',
+	'mmultiscripts',
+	'mover',
+	'mprescripts',
+	'msub',
+	'msubsup',
+	'msup',
+	'munder',
+	'munderover',
+	'none',
+	'maligngroup',
+	'malignmark',
+	'mtable',
+	'mtd',
+	'mtr',
+	'mlongdiv',
+	'mscarries',
+	'mscarry',
+	'msgroup',
+	'msline',
+	'msrow',
+	'mstack',
+	'maction',
+	'semantics',
+	'annotation',
+	'annotation-xml',
+	'mjx-container',
+	'mjx-assistive-mml',
+];
 
 const interviewConfig = getNavAndSidebarByDir('./docs/问答', '问答'); // 面试
 const webConfig = getNavAndSidebarByDir('./docs/web', '前端'); // 前端
@@ -17,9 +108,7 @@ export default defineConfig({
 	lastUpdated: true,
 	head: [
 		// 设置 favor.ico，.vuepress/public 下
-		[
-			'link', { rel: 'icon', href: '/favicon.ico' }
-		]
+		['link', { rel: 'icon', href: '/favicon.ico' }],
 	],
 	themeConfig: {
 		// https://vitepress.dev/reference/default-theme-config
@@ -77,5 +166,16 @@ export default defineConfig({
 	},
 	markdown: {
 		lineNumbers: false, // 代码块显示行号：true|false
+		config: (md) => {
+			md.use(mathjax3);
+		}
+	},
+	// 由于vitepress编译生成静态html文件时，无法识别插件生成的特殊标签，故需在编译时进行处理，将特殊标签定位自定义标签，防止编译报错
+	vue: {
+		template: {
+			compilerOptions: {
+				isCustomElement: (tag) => customElements.includes(tag),
+			},
+		}
 	}
 })

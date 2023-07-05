@@ -54,7 +54,7 @@ console.log(str);
 // {"a":11,"b":22}
 ```
 
-## json 转 string
+## string 转 json
 
 ```js
 var str = '{"a":11,"b":22}';
@@ -63,3 +63,20 @@ console.log(obj);
 // {"a":11,"b":22}
 ```
 
+## 数组操作
+
+### 添加元素
+
+- push() : 尾部添加
+- unshift() : 头部添加
+- splice() : 指定位置添加【该函数有更多的用法自行百度】
+
+```js
+var arr = ['a'];
+arr.push('b');
+console.log(arr); // ["a", "b"]
+arr.unshift('c');
+console.log(arr); // ["c", "a", "b"]
+arr.splice(2, 0, 'd');
+console.log(arr); // ["c", "a", "d", "b"]
+```

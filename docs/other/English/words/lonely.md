@@ -1,4 +1,4 @@
-# 示例
+# lonely
 
 ## 释义
 
@@ -7,23 +7,22 @@
 - vt. ：   
 - n. ： 
 - v. ： 
-- adj. ： 
+- adj. ： 孤独的
 - 复数：  
 - 第三人称单数：  
 - 现在分词：  
 - 过去式：  
 - 过去分词：  
-- 名词：  
-- 形容词： 
-- 副词：  
-- 比较级：  
-- 最高级：  
+- 名词：  loneliness
+- 比较级： lonelier
+- 最高级： loneliest
+
 
 
 
 ## 例句
 
-English sentence.
+The girl felt so lonely in this empty house.
 
 中文句子。
 

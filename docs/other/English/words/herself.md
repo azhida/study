@@ -1,9 +1,8 @@
-# 示例
+# herself
 
 ## 释义
 
-- conj. ：   
-- pron. ：  
+- pron. ：  她自己
 - vt. ：   
 - n. ： 
 - v. ： 
@@ -14,24 +13,21 @@
 - 过去式：  
 - 过去分词：  
 - 名词：  
-- 形容词： 
-- 副词：  
-- 比较级：  
-- 最高级：  
+
 
 
 
 ## 例句
 
-English sentence.
+She can do everything all by herself.
 
-中文句子。
+她能自己搞定所有事情。
 
 ## 词根词缀
 
-separ 分离
+her 她
 
-ate 形容词后缀具有...的
+self 自己
 
 
 

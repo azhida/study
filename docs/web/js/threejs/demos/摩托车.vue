@@ -178,8 +178,8 @@
 		// 加载模型
 		addGLTFModel(modelName) {
 			return new Promise((resolve, reject) => {
-				const loader = new GLTFLoader().setPath(withBase('/asset/threejs/3dModels/'))
-				// const loader = new GLTFLoader();
+				// const loader = new GLTFLoader().setPath(withBase('/asset/threejs/3dModels/'))
+				const loader = new GLTFLoader();
 				loader.load(modelName, (gltf) => {
 					const motorModel = gltf.scene
 					motorModel.traverse(obj => {
@@ -216,7 +216,10 @@
 		}
 
 		initMesh() {
-			this.addGLTFModel('motor03.gltf')
+			// this.addGLTFModel('motor03.gltf')
+			this.addGLTFModel(
+				'http://qiniuyun.study.weilh.vip/motor03.gltf?e=1688871319&token=qC25CW34IueoAxDrlAZjTkvoY2ihcSW3Kj6EpDPp:3aogZ6Rx6zRvjo5aoIS3OcBEiUo='
+			)
 		}
 
 		initFloor() {

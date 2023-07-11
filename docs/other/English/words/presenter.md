@@ -1,15 +1,14 @@
-# 示例
+# presenter
 
 ## 释义
 
 - conj. ：   
 - pron. ：  
 - vt. ：   
-- n. ： 
+- n. ： 主持人
 - v. ： 
-- adv. ：  
 - adj. ： 
-- 复数：  
+- 复数：  presenters
 - 第三人称单数：  
 - 现在分词：  
 - 过去式：  
@@ -24,15 +23,15 @@
 
 ## 例句
 
-English sentence.
+The presenters are talking about the latest news stories.
 
-中文句子。
+主持人们正在聊最新的新闻。
 
 ## 词根词缀
 
-separ 分离
+present 展示
 
-ate 形容词后缀具有...的
+er 名词后缀
 
 
 

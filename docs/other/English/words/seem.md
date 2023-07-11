@@ -1,4 +1,4 @@
-# 示例
+# seem
 
 ## 释义
 
@@ -6,14 +6,13 @@
 - pron. ：  
 - vt. ：   
 - n. ： 
-- v. ： 
-- adv. ：  
+- v. ： 似乎
 - adj. ： 
 - 复数：  
-- 第三人称单数：  
-- 现在分词：  
-- 过去式：  
-- 过去分词：  
+- 第三人称单数：  seems
+- 现在分词：  seeming
+- 过去式：  seemed
+- 过去分词：  seemed
 - 名词：  
 - 形容词： 
 - 副词：  
@@ -24,15 +23,14 @@
 
 ## 例句
 
-English sentence.
+It seems that it is going to rain.
 
-中文句子。
+好像快要下雨了。
+
 
 ## 词根词缀
 
-separ 分离
 
-ate 形容词后缀具有...的
 
 
 

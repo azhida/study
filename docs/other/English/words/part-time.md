@@ -1,4 +1,4 @@
-# 示例
+# part-time
 
 ## 释义
 
@@ -7,8 +7,8 @@
 - vt. ：   
 - n. ： 
 - v. ： 
-- adv. ：  
-- adj. ： 
+- adv. ： 作为兼职
+- adj. ： 部分时间的
 - 复数：  
 - 第三人称单数：  
 - 现在分词：  
@@ -24,19 +24,16 @@
 
 ## 例句
 
-English sentence.
+I'm a student but I work part-time as a waiter.
 
-中文句子。
+我是个学生，但兼职做服务生。
+
 
 ## 词根词缀
-
-separ 分离
-
-ate 形容词后缀具有...的
 
 
 
 ## 英文释义
 
 
-
+for part of the day or week in which people work;

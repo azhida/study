@@ -1,5 +1,7 @@
 # Windows 安装 Docker
 
+docker 版本 v4.21.1
+
 ## 官网下载安装包
 
 [官网](https://www.docker.com/)
@@ -26,3 +28,10 @@ mklink /j "C:\Program Files\Docker" "D:\Docker"
 ```
 mklink /j "C:\Program Files\Docker" "D:\Docker"
 ```
+
+## 更改 docker 镜像存储位置
+
+- 启动 docker
+- 打开设置 Resources/Advanced
+- 修改 `Disk image location` 的位置
+- 保存重启即可

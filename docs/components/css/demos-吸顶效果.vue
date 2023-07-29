@@ -10,7 +10,7 @@
                     ding - 透明背景
                 </div>
                 <div class="content">
-                    <div v-for="i in 10">content {{i}}</div>
+                    <div v-for="i in 10" :key="i">content {{i}}</div>
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
                     ding - 不透明背景
                 </div>
                 <div class="content">
-                    <div v-for="i in 10">content {{i}}</div>
+                    <div v-for="i in 10" :key="i">content {{i}}</div>
                 </div>
             </div>
         </div>

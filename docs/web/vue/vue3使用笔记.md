@@ -1,5 +1,12 @@
 # vue3 使用笔记
 
+## 创建项目
+```
+npm create vite@latest
+yarn create vite
+pnpm create vite
+```
+
 ## setup 中使用 watch
 
 ```js

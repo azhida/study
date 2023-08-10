@@ -2,7 +2,14 @@
 
 - 官网
 
-https://www.thosefree.com/driver-js
+https://kamranahmed.info/driver.js/
+
+## 下载
+
+https://github.com/kamranahmedse/driver.js
+
+https://gitee.com/wghzhida/driver.js
+
 
 ## 安装
 
@@ -28,3 +35,5 @@ driver.highlight('#create-post');
 
 
 [Driver.js - 开源无依赖的 web 新手交互引导工具库，功能强大、高度可定制](https://zhuanlan.zhihu.com/p/544404499)
+
+

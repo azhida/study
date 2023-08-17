@@ -23,19 +23,15 @@ https://vue-qrcode-reader.netlify.app/
 
 https://vue-qrcode-reader.netlify.app/
 
+- 示例代码
 
-<QRScanVue3QRReaderDemo />
-<script setup>
-import QRScanVue3QRReaderDemo from './QRScan-vue3-qr-reader-demo.vue'
-</script>
-
-::: details 示例代码
-/QRScan.vue
+::: details 封装 /QRScan.vue
 
 <<< @/web/vue/h5扫码/QRScan-vue3-qr-reader.vue
 
+:::
+
+调用
 ```vue
 <QRScan v-if="show" @success="onSuccess" @close="show = false" ></QRScan>
 ```
-:::
-

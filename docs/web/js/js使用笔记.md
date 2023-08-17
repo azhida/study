@@ -80,3 +80,18 @@ console.log(arr); // ["c", "a", "b"]
 arr.splice(2, 0, 'd');
 console.log(arr); // ["c", "a", "d", "b"]
 ```
+
+### 删除元素
+
+- shift() : 删除数组第一个元素
+- delete : 删除指定元素
+- splice() : 指定位置添加【该函数有更多的用法自行百度】
+
+```js
+var arr = ['a', 'b'];
+var res = arr.shift(); // a
+console.log(arr); // ["b"]
+delete arr[0];
+console.log(arr); // []
+arr.splice(0,1); // 从 第下标为 1 的元素开始取
+```

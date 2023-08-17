@@ -1,5 +1,18 @@
 # Express
 
+## 跨域处理
+
+```
+yarn add cors
+```
+
+```
+import * as cors from 'cors';
+
+const app = express()
+app.use(cors())
+```
+
 ## 热更新
 
 - ts

@@ -33,5 +33,5 @@ https://vue-qrcode-reader.netlify.app/
 
 调用
 ```vue
-<QRScan v-if="show" @success="onSuccess" @close="show = false" ></QRScan>
+<QRScan v-if="show" @success="onSuccess" @error="onError" @close="show = false" ></QRScan>
 ```

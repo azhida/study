@@ -30,6 +30,7 @@
     "echarts": "^5.4.2",
     "lodash-es": "^4.17.21",
     "lunchboxjs": "^0.2.1020",
-    "three": "^0.152.2"
+    "three": "^0.152.2",
+    "vue3-qr-reader": "^1.0.0"
   }
 }

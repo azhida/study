@@ -1,5 +1,5 @@
 <template>
-    <qr-stream class="qr-stream-box" @decode="onDecode" @init="onInit">
+    <qr-stream class="qr-stream-box" @decode="onDecode" @init="onInit" style="width: 100vw; height: 100vh;position: fixed;top: 0;left: 0;">
         <div class="frame"></div>
         <van-icon class="close" name="clear" color="#f7f8fa" size="8vw" @click="onClickClose" />
     </qr-stream>

@@ -35,3 +35,5 @@ https://vue-qrcode-reader.netlify.app/
 ```vue
 <QRScan v-if="show" @success="onSuccess" @error="onError" @close="show = false" ></QRScan>
 ```
+
+如果扫码页面 css 样式不生效，则将 css 样式 写到 内联样式中

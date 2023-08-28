@@ -1,5 +1,5 @@
-const path = require("path");
-const dirTree = require("directory-tree");
+import path from 'path';
+import dirTree from 'directory-tree';
 
 interface NavItem {
     text: string
@@ -14,9 +14,9 @@ interface SidebarItem {
 
 function toSidebarOption(tree = [], father_name = '') {
     if (!Array.isArray(tree)) return [];
-    let newArr:any = [];
-    let item:any = {};
-    const newTree = tree.map((v:any) => {
+    let newArr: any = [];
+    let item: any = {};
+    const newTree = tree.map((v: any) => {
         let isIndex = false;
         if (v.children !== undefined) {
             item = {
@@ -47,13 +47,13 @@ function toSidebarOption(tree = [], father_name = '') {
 }
 
 // 获取顶部导航 - 根据 dir 获取一级子目录
-function getNavItemsByDir(dir, prefix){
+function getNavItemsByDir(dir, prefix) {
     // 获取指定目录 /docs/web 下所有一级子目录，拿来做顶部导航
-    const srcDir = dirTree(dir, {
+    const srcDir: any = dirTree(dir, {
         extensions: /\.md$/,
         normalizePath: true,
     });
-    let navItems:NavItem[] = [];
+    let navItems: NavItem[] = [];
     srcDir.children.forEach(i => {
         navItems.push({
             text: i.name,
@@ -65,8 +65,8 @@ function getNavItemsByDir(dir, prefix){
 }
 
 // 获取左侧文章目录 - 根据 dir 获取所有子目录
-function getSidebarItemsByDir(dir, title:string|null = null){
-    const srcDir = dirTree(dir, {
+function getSidebarItemsByDir(dir, title: string | null = null) {
+    const srcDir: any = dirTree(dir, {
         exclude: /\/images$/, // 忽略 images 文件夹
         extensions: /\.md$/,
         normalizePath: true,
@@ -80,19 +80,19 @@ function getSidebarItemsByDir(dir, title:string|null = null){
 }
 
 // 获取 顶部导航 和 左侧文章目录
-function getNavAndSidebarByDir(dir, title?:string|null) {
+function getNavAndSidebarByDir(dir, title?: string | null) {
     const srcDir = dirTree(dir, {
         extensions: /\.md$/,
         normalizePath: true,
     });
-    
-    const navItems:NavItem[] = getNavItemsByDir(dir, '/' + srcDir.name + '/');
+
+    const navItems: NavItem[] = getNavItemsByDir(dir, '/' + srcDir.name + '/');
     // 按 text 的首字母排序
-    navItems.sort(function(a,b){
+    navItems.sort(function (a, b) {
         return (a.text + '').localeCompare(b.text + '')
     })
 
-    let sidebarItems:SidebarItem[] = [{
+    let sidebarItems: SidebarItem[] = [{
         text: title ? title : srcDir.name
     }];
     navItems.forEach((i) => {

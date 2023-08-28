@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "学习笔记",
   "main": "index.js",
+  "type": "module",
   "directories": {
     "test": "tests"
   },
@@ -23,7 +24,7 @@
     "directory-tree": "^3.5.1",
     "markdown-it-mathjax3": "^4.3.2",
     "sass": "^1.62.1",
-    "vitepress": "^1.0.0-alpha.64",
+    "vitepress": "1.0.0-alpha.64",
     "vue": "^3.2.47"
   },
   "dependencies": {

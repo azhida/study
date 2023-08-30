@@ -102,6 +102,7 @@ phone_text.send_keys("1234")
 - [appium自动化测试](https://www.jianshu.com/p/a80e1d35be10)
 - [自动化测试之路 —— Appium使用教程](https://blog.csdn.net/weixin_38306507/article/details/126464298)
 - [Appium自动化之adb常用命令及连接mumu模拟器](https://www.ngui.cc/el/3058312.html?action=onClick)
+- [python+Appium实现手机移动端自动化 - 模拟器 或 真机【有线】](https://blog.csdn.net/qq_21689457/article/details/129643574)
 
 
 ## 问题

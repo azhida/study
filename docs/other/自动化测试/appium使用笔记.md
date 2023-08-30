@@ -31,8 +31,12 @@
 appPackage和appActivity获取：
 
 首先在android手机或模拟器上打开App，输入下面的abd命令：
-```
+
+```sh
 adb shell dumpsys window windows | findstr mFocusedApp
+
+# 正在运行应用包名
+adb shell dumpsys window | findstr mCurrentFocus
 ```
 
 > 注意：要先在模拟器里打开APP，否则看不到相关信息
@@ -86,6 +90,7 @@ phone_text.send_keys("1234")
 - [appium连接夜神模拟器操作app](https://blog.51cto.com/u_15354476/5342062)
 - [appium自动化测试](https://www.jianshu.com/p/a80e1d35be10)
 - [自动化测试之路 —— Appium使用教程](https://blog.csdn.net/weixin_38306507/article/details/126464298)
+- [Appium自动化之adb常用命令及连接mumu模拟器](https://www.ngui.cc/el/3058312.html?action=onClick)
 
 
 ## 问题

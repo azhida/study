@@ -61,6 +61,22 @@ ll
 ls | grep PackageName
 ```
 
+- 列出所有包名
+
+```sh
+# 所有应用的包名列表
+adb shell pm list packages
+# 第三方应用包名列表
+adb shell pm list packages -3
+# 系统应用包名列表
+adb shell pm list packages -s 
+```
+
+- 正在运行应用包名
+```sh
+adb shell dumpsys window | findstr mCurrentFocus
+```
+
 - 卸载 app
 ```
 adb shell pm uninstall --user 0 <packages>

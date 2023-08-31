@@ -42,8 +42,9 @@ adb shell dumpsys window | findstr mCurrentFocus
 > 注意：要先在模拟器里打开APP，否则看不到相关信息
 
 
-## python 代码 登录微信的操作
+## python 代码 
 
+- 登录微信的操作
 
 ```sh
 pip install Appium-Python-Client Selenium
@@ -80,6 +81,20 @@ login_btn.click()
 phone_text = wait.until(EC.presence_of_element_located((By.ID,"com.tencent.mm:id/cd7")))
 # # 填写手机号文本框
 phone_text.send_keys("1234")
+```
+
+- 打开 豆果美食
+
+```py
+from appium import webdriver
+
+desired_caps = {}
+desired_caps['platformName'] = 'Android'
+# desired_caps['platformVersion'] = '8.0'
+desired_caps['deviceName'] = '127.0.0.1:5555'
+desired_caps['appPackage'] = 'com.douguo.recipe'
+desired_caps['appActivity'] = 'com.douguo.recipe.MainActivity'
+driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 ```
 
 

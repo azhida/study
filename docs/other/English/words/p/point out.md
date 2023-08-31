@@ -1,8 +1,8 @@
-# 示例
+# point out
 
 ## 释义
 
-- phr. ： 
+- phr. ： 指出
 - conj. ：   
 - pron. ：  
 - vt. ：   
@@ -25,19 +25,15 @@
 
 ## 例句
 
-English sentence.
+He points out a mistake in the book.
 
-中文句子。
+他指出书中的一个错误。
+
 
 ## 词根词缀
-
-separ 分离
-
-ate 形容词后缀具有...的
-
 
 
 ## 英文释义
 
-
+to mention something in order to give somebody information about it or make them notice it
 

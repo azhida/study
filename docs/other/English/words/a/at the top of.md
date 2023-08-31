@@ -1,8 +1,8 @@
-# 示例
+# at the top of
 
 ## 释义
 
-- phr. ： 
+- phr. ： 在……顶端
 - conj. ：   
 - pron. ：  
 - vt. ：   
@@ -25,16 +25,11 @@
 
 ## 例句
 
-English sentence.
+He always finishes at the top of his class.
 
-中文句子。
+他总是得全班第一。
 
 ## 词根词缀
-
-separ 分离
-
-ate 形容词后缀具有...的
-
 
 
 ## 英文释义

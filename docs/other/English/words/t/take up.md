@@ -1,8 +1,8 @@
-# 示例
+# take up
 
 ## 释义
 
-- phr. ： 
+- phr. ： 占据；占用；拿起；开始做；继续 
 - conj. ：   
 - pron. ：  
 - vt. ：   
@@ -25,15 +25,12 @@
 
 ## 例句
 
-English sentence.
+This car takes up two parking spaces.
 
-中文句子。
+这辆车占了两个停车位。
+
 
 ## 词根词缀
-
-separ 分离
-
-ate 形容词后缀具有...的
 
 
 

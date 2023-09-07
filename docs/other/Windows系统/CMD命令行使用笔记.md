@@ -1,5 +1,14 @@
 # CMD 命令行使用笔记
 
+## 打开资源管理器
+```sh
+# 定位当前文件夹
+start .
+
+# 指定打开路径
+start D:/www
+```
+
 ## 创建文件夹
 ```
 md ./a/b/c/d/
@@ -20,3 +29,5 @@ notepad hosts
 ```
 ipconfig /flushdns
 ```
+
+

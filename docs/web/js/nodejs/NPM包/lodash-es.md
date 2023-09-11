@@ -444,17 +444,25 @@ window.addEventListener('resize', fn)
 > 说明：一段时间只做一件事情，时间没到就不做。  
 > 实际应用：表单的提交（解决多次频繁点击提交表单的bug）、监听浏览器窗口发生变化做某些事情。
 
+#### `debounce` 防抖
+
+https://www.lodashjs.com/docs/lodash.debounce
+
 - debounce： `debounce(func, [wait=0], [options=])` 创建一个 debounced（防抖动）函数，该函数会从上一次被调用后，延迟 wait 毫秒后调用 func 方法。 debounced（防抖动）函数提供一个 cancel 方法取消延迟的函数调用以及 flush 方法立即调用。
 
-```
+```vue
+<template>
+  <el-input @input="onInput" />
+</template>
+
+<script lang="ts" setup>
 import { debounce } from 'lodash-es'
 
-const fn = debounce(() => {
-  console.log('防抖函数执行了')
+const onInput = _.debounce((e) => {
+  console.log('节流函数执行了', e)
+  // todo something
 }, 500)
-// 这个例子不太合适，仅供看效果
-window.addEventListener('resize', fn)
-
+</script>
 ```
 
 > 说明：当持续触发事件，一定时间内没有再触发事件，事件处理函数就会执行一次。如果设定的定时器延迟到来之前 又触发了事件，那么就会重新开始计时。  

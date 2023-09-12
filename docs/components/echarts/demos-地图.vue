@@ -7,24 +7,32 @@
 </template>
 
 <script>
+import axios from 'axios'
 	import * as echarts from 'echarts';
 	import * as _ from 'lodash-es';
-	import allData from '../../assets/json/echarts/中华人民共和国.json';
-
+	
 	export default {
 		data() {
 			return {
-				updateKey: 0
+				updateKey: 0,
+				allData: []
 			}
 		},
 		computed: {
 
 		},
 		mounted() {
-			this.createChart()
-			this.createChart1()
+			this.getAllData()
+		
 		},
 		methods: {
+			async getAllData(){
+				const response = await axios.get('https://qiniuyun.study.weilh.vip/jsons/echarts/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD.json')
+				this.allData = response.data
+  				console.log(response.data);  
+				this.createChart()
+				this.createChart1()
+			},
 			init() {
 				this.createChart()
 				this.createChart1()
@@ -40,7 +48,7 @@
 				const myChart = echarts.init(el);
 
 				// 注册地图，名字自己取：中国
-				echarts.registerMap('中国', allData)
+				echarts.registerMap('中国', this.allData)
 
 				const option = {
 					visualMap: {
@@ -70,8 +78,8 @@
 				var colors1 = ['#55ff00', '#ffff00', '#5500ff'];
 
 				const customSettings = [];
-				console.log(allData, 'allData')
-				allData.features.forEach(e => {
+				console.log(this.allData, 'allData')
+				this.allData.features.forEach(e => {
 					console.log(e, 'e');
 					var color = _.sample(colors);
 					customSettings.push({
@@ -88,7 +96,7 @@
 				const myChart = echarts.init(el);
 
 				// 注册地图，名字自己取：中国
-				echarts.registerMap('中国', allData)
+				echarts.registerMap('中国', this.allData)
 
 				const option = {
 

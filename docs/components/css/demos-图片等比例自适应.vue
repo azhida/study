@@ -2,11 +2,11 @@
 	<div class="main">
 
 		<div class="img-box-1">
-			<img src="../../assets/imgs/css/demo-0.jpg" alt="">
+			<img src="https://qiniuyun.study.weilh.vip/imgs/css/demo-0.jpg" alt="">
 		</div>
 
 		<div class="img-box-2">
-			<img src="../../assets/imgs/css/demo-0.jpg" alt="">
+			<img src="https://qiniuyun.study.weilh.vip/imgs/css/demo-0.jpg" alt="">
 		</div>
 
 		<h2>等比例</h2>
@@ -81,7 +81,7 @@
 				border: 1px solid red;
 				width: 100%;
 				padding-top: 50%;
-				background-image: url('../../assets/imgs/css/demo-0.jpg');
+				background-image: url('https://qiniuyun.study.weilh.vip/imgs/css/demo-0.jpg');
 				background-size: contain;
 				background-repeat: no-repeat;
 				background-position: center;
@@ -98,7 +98,7 @@
 				border: 1px solid red;
 				width: 50%;
 				padding-top: 100%;
-				background-image: url('../../assets/imgs/css/demo-0.jpg');
+				background-image: url('https://qiniuyun.study.weilh.vip/imgs/css/demo-0.jpg');
 				background-size: contain;
 				background-repeat: no-repeat;
 				background-position: center;

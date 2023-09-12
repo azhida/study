@@ -9,6 +9,7 @@ export default defineConfig({
   title: "English",
   description: "English study",
   base: '/study/English/',
+  outDir:'../gh-pages/English',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [

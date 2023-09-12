@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as a}from"./chunks/framework.aaef0e9b.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"other/第三方平台/短信服务/云之讯.md","lastUpdated":1690847136000}'),r={name:"other/第三方平台/短信服务/云之讯.md"};function o(s,c,n,_,p,d){return t(),a("div")}const f=e(r,[["render",o]]);export{m as __pageData,f as default};

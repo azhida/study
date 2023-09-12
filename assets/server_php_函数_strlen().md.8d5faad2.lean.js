@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as r}from"./chunks/framework.aaef0e9b.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/php/函数/strlen().md","lastUpdated":1680584985000}'),s={name:"server/php/函数/strlen().md"};function a(n,o,p,c,_,d){return t(),r("div")}const m=e(s,[["render",a]]);export{i as __pageData,m as default};

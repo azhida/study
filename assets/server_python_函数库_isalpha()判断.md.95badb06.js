@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as a}from"./chunks/framework.aaef0e9b.js";const l=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/python/函数库/isalpha()判断.md","lastUpdated":1680584985000}'),r={name:"server/python/函数库/isalpha()判断.md"};function s(o,n,p,c,_,i){return t(),a("div")}const h=e(r,[["render",s]]);export{l as __pageData,h as default};

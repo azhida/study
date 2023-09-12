@@ -1,0 +1,1 @@
+import{_ as e,o as r,c as t}from"./chunks/framework.aaef0e9b.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/python/函数库/rmdir()删除文件夹.md","lastUpdated":1680584985000}'),a={name:"server/python/函数库/rmdir()删除文件夹.md"};function o(s,_,n,c,d,p){return r(),t("div")}const f=e(a,[["render",o]]);export{m as __pageData,f as default};

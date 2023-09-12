@@ -1,0 +1,1 @@
+import{_ as t,o as e,c as r}from"./chunks/framework.aaef0e9b.js";const l=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/python/函数库/split()分割.md","lastUpdated":1680584985000}'),s={name:"server/python/函数库/split()分割.md"};function a(o,n,p,c,_,i){return e(),r("div")}const m=t(s,[["render",a]]);export{l as __pageData,m as default};

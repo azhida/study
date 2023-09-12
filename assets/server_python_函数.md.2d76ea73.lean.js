@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as t,Q as n}from"./chunks/framework.aaef0e9b.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/python/函数.md","lastUpdated":1680584985000}'),e={name:"server/python/函数.md"},o=n("",2),l=[o];function p(r,c,i,_,d,h){return a(),t("div",null,l)}const D=s(e,[["render",p]]);export{m as __pageData,D as default};

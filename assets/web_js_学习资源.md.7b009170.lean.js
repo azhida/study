@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as a,Q as r}from"./chunks/framework.aaef0e9b.js";const m=JSON.parse('{"title":"学习资源","description":"","frontmatter":{},"headers":[],"relativePath":"web/js/学习资源.md","lastUpdated":1680584985000}'),o={name:"web/js/学习资源.md"},l=r("",3),s=[l];function _(n,i,c,d,p,h){return t(),a("div",null,s)}const u=e(o,[["render",_]]);export{m as __pageData,u as default};

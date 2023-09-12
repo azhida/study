@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as s}from"./chunks/framework.aaef0e9b.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/python/函数库/isspace()判断.md","lastUpdated":1680584985000}'),a={name:"server/python/函数库/isspace()判断.md"};function r(o,c,n,p,_,i){return t(),s("div")}const f=e(a,[["render",r]]);export{m as __pageData,f as default};

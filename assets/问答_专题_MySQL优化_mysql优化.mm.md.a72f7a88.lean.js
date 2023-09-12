@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as a}from"./chunks/framework.aaef0e9b.js";const l=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"问答/专题/MySQL优化/mysql优化.mm.md","lastUpdated":1683280071000}'),s={name:"问答/专题/MySQL优化/mysql优化.mm.md"};function r(m,o,c,n,_,p){return t(),a("div")}const i=e(s,[["render",r]]);export{l as __pageData,i as default};

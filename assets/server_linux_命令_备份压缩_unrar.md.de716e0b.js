@@ -1,0 +1,9 @@
+import{_ as a,o as s,c as n,Q as e}from"./chunks/framework.aaef0e9b.js";const u=JSON.parse('{"title":".rar 解压","description":"","frontmatter":{},"headers":[],"relativePath":"server/linux/命令/备份压缩/unrar.md","lastUpdated":1680584985000}'),r={name:"server/linux/命令/备份压缩/unrar.md"},l=e(`<h1 id="rar-解压" tabindex="-1">.rar 解压 <a class="header-anchor" href="#rar-解压" aria-label="Permalink to &quot;.rar 解压&quot;">​</a></h1><h2 id="mac-安装" tabindex="-1">mac 安装 <a class="header-anchor" href="#mac-安装" aria-label="Permalink to &quot;mac 安装&quot;">​</a></h2><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#babed8;">brew install unrar</span></span>
+<span class="line"><span style="color:#babed8;"># 如不成功，用下面命令</span></span>
+<span class="line"><span style="color:#babed8;">brew install carlocab/personal/unrar</span></span>
+<span class="line"><span style="color:#babed8;"></span></span></code></pre></div><h2 id="解压命令" tabindex="-1">解压命令 <a class="header-anchor" href="#解压命令" aria-label="Permalink to &quot;解压命令&quot;">​</a></h2><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#babed8;"># unrar x 需解压的文件目录/文件.rar 解压后目录</span></span>
+<span class="line"><span style="color:#babed8;"># 确保目标目录存在</span></span>
+<span class="line"><span style="color:#babed8;">mkdir -p /var/www/aa</span></span>
+<span class="line"><span style="color:#babed8;"># 解压到指定目录</span></span>
+<span class="line"><span style="color:#babed8;">unrar x /var/www/aa.rar /var/www/aa</span></span>
+<span class="line"><span style="color:#babed8;"></span></span></code></pre></div>`,5),t=[l];function o(p,c,i,d,b,_){return s(),n("div",null,t)}const m=a(r,[["render",o]]);export{u as __pageData,m as default};

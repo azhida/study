@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as r}from"./chunks/framework.aaef0e9b.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/php/函数/var_dump().md","lastUpdated":1680584985000}'),a={name:"server/php/函数/var_dump().md"};function p(s,o,_,c,n,d){return t(),r("div")}const f=e(a,[["render",p]]);export{i as __pageData,f as default};

@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as a}from"./chunks/framework.aaef0e9b.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/消息中间件/RabbitMQ/使用笔记.md","lastUpdated":1680584985000}'),r={name:"server/消息中间件/RabbitMQ/使用笔记.md"};function s(o,c,n,_,p,d){return t(),a("div")}const f=e(r,[["render",s]]);export{m as __pageData,f as default};

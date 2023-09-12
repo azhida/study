@@ -1,0 +1,13 @@
+import{_ as s,o as a,c as e,Q as l}from"./chunks/framework.aaef0e9b.js";const m=JSON.parse('{"title":"vue-quill-editor 富文本编辑器","description":"","frontmatter":{},"headers":[],"relativePath":"web/js/nodejs/NPM包/vue-quill-editor.md","lastUpdated":1688520804000}'),n={name:"web/js/nodejs/NPM包/vue-quill-editor.md"},t=l(`<h1 id="vue-quill-editor-富文本编辑器" tabindex="-1">vue-quill-editor 富文本编辑器 <a class="header-anchor" href="#vue-quill-editor-富文本编辑器" aria-label="Permalink to &quot;vue-quill-editor 富文本编辑器&quot;">​</a></h1><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#babed8;">npm install vue-quill-editor --save</span></span>
+<span class="line"><span style="color:#babed8;"></span></span></code></pre></div><h2 id="vue-项目中-使用方法" tabindex="-1">Vue 项目中 使用方法 <a class="header-anchor" href="#vue-项目中-使用方法" aria-label="Permalink to &quot;Vue 项目中 使用方法&quot;">​</a></h2><ul><li>main.js 中导入</li></ul><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#babed8;"># 导入富文本编辑器</span></span>
+<span class="line"><span style="color:#babed8;">import VueQuillEditor from &#39;vue-quill-editor&#39;</span></span>
+<span class="line"><span style="color:#babed8;">import // 导入富文本编辑器的样式</span></span>
+<span class="line"><span style="color:#babed8;">import &#39;quill/dist/quill.core.css&#39;</span></span>
+<span class="line"><span style="color:#babed8;">import &#39;quill/dist/quill.snow.css&#39;</span></span>
+<span class="line"><span style="color:#babed8;">import &#39;quill/dist/quill.bubble.css&#39;</span></span>
+<span class="line"><span style="color:#babed8;"></span></span>
+<span class="line"><span style="color:#babed8;"># 注册为全局可用组件</span></span>
+<span class="line"><span style="color:#babed8;">Vue.use(VueQuillEditor)</span></span>
+<span class="line"><span style="color:#babed8;"></span></span></code></pre></div><ul><li>Home.vue 中使用</li></ul><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#babed8;"># content 双向绑定的数据</span></span>
+<span class="line"><span style="color:#babed8;">&lt;quill-editor v-model=&quot;content&quot;&gt;&lt;/quill-editor&gt;</span></span>
+<span class="line"><span style="color:#babed8;"></span></span></code></pre></div>`,7),o=[t];function i(p,c,r,d,u,b){return a(),e("div",null,o)}const h=s(n,[["render",i]]);export{m as __pageData,h as default};

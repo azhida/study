@@ -1,0 +1,1 @@
+import{_ as a,o as i,c as l,Q as e}from"./chunks/framework.c26cadaf.js";const m=JSON.parse('{"title":"示例","description":"","frontmatter":{},"headers":[],"relativePath":"words/示例.md","filePath":"words/示例.md"}'),t={name:"words/示例.md"},r=e("",10),o=[r];function n(s,d,h,c,_,p){return i(),l("div",null,o)}const f=a(t,[["render",n]]);export{m as __pageData,f as default};

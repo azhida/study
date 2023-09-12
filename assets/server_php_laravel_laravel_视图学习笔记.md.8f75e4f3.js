@@ -1,0 +1,6 @@
+import{_ as e,o as a,c as s,Q as t}from"./chunks/framework.aaef0e9b.js";const u=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/php/laravel/laravel_视图学习笔记.md","lastUpdated":1680584985000}'),l={name:"server/php/laravel/laravel_视图学习笔记.md"},n=t(`<h6 id="sweetalert-用法" tabindex="-1">sweetAlert 用法 <a class="header-anchor" href="#sweetalert-用法" aria-label="Permalink to &quot;sweetAlert 用法&quot;">​</a></h6><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#babed8;">sweetAlert(&#39;title&#39;, &#39;text&#39;, &#39;success&#39;);</span></span>
+<span class="line"><span style="color:#babed8;"># sweetAlert(title, text, type)</span></span>
+<span class="line"><span style="color:#babed8;"># title: 标题 String</span></span>
+<span class="line"><span style="color:#babed8;"># text: String</span></span>
+<span class="line"><span style="color:#babed8;"># type: 取值 error | success | ...</span></span>
+<span class="line"><span style="color:#babed8;"></span></span></code></pre></div>`,2),r=[n];function p(o,c,_,i,d,b){return a(),s("div",null,r)}const m=e(l,[["render",p]]);export{u as __pageData,m as default};

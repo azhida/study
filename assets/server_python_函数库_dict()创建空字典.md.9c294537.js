@@ -1,0 +1,1 @@
+import{_ as t,o as e,c as r}from"./chunks/framework.aaef0e9b.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/python/函数库/dict()创建空字典.md","lastUpdated":1680584985000}'),a={name:"server/python/函数库/dict()创建空字典.md"};function o(s,c,_,n,d,p){return e(),r("div")}const f=t(a,[["render",o]]);export{m as __pageData,f as default};

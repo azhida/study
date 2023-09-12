@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as r}from"./chunks/framework.aaef0e9b.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/python/函数库/remove()删除.md","lastUpdated":1680584985000}'),o={name:"server/python/函数库/remove()删除.md"};function a(s,n,c,_,p,d){return t(),r("div")}const f=e(o,[["render",a]]);export{i as __pageData,f as default};

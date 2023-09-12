@@ -1,0 +1,5 @@
+import{_ as a,o as s,c as e,Q as n}from"./chunks/framework.aaef0e9b.js";const S=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"other/计算机基础知识/BIOS/进入BIOS方法.md","lastUpdated":1683280622000}'),t={name:"other/计算机基础知识/BIOS/进入BIOS方法.md"},o=n(`<h2 id="机型-ideapad-s410" tabindex="-1">机型：ideapad S410 <a class="header-anchor" href="#机型-ideapad-s410" aria-label="Permalink to &quot;机型：ideapad S410&quot;">​</a></h2><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#babed8;"># 进入BIOS</span></span>
+<span class="line"><span style="color:#babed8;">Fn + F2</span></span>
+<span class="line"><span style="color:#babed8;"># 选择启动盘【u盘启动时会用到】</span></span>
+<span class="line"><span style="color:#babed8;">Fn + F8</span></span>
+<span class="line"><span style="color:#babed8;"></span></span></code></pre></div>`,2),p=[o];function l(c,d,r,i,_,h){return s(),e("div",null,p)}const m=a(t,[["render",l]]);export{S as __pageData,m as default};

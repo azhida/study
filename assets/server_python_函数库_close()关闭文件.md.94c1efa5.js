@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as o}from"./chunks/framework.aaef0e9b.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/python/函数库/close()关闭文件.md","lastUpdated":1680584985000}'),r={name:"server/python/函数库/close()关闭文件.md"};function s(a,c,n,_,p,d){return t(),o("div")}const m=e(r,[["render",s]]);export{i as __pageData,m as default};

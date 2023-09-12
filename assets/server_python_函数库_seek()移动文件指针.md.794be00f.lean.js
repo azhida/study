@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as r}from"./chunks/framework.aaef0e9b.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/python/函数库/seek()移动文件指针.md","lastUpdated":1680584985000}'),s={name:"server/python/函数库/seek()移动文件指针.md"};function a(o,_,n,c,p,d){return t(),r("div")}const f=e(s,[["render",a]]);export{m as __pageData,f as default};

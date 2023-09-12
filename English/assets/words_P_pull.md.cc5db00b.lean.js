@@ -1,0 +1,1 @@
+import{_ as l,o as e,c as a,Q as t}from"./chunks/framework.c26cadaf.js";const m=JSON.parse('{"title":"pull","description":"","frontmatter":{},"headers":[],"relativePath":"words/P/pull.md","filePath":"words/P/pull.md"}'),p={name:"words/P/pull.md"},o=t("",6),i=[o];function r(s,n,u,d,_,c){return e(),a("div",null,i)}const f=l(p,[["render",r]]);export{m as __pageData,f as default};

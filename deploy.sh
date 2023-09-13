@@ -16,23 +16,30 @@ fi
 
 cd ./gh-pages
 git checkout .
+git checkout gh-pages
 git pull
+
+rm -rf ../gh-pages-temp/English
+mv  English ../gh-pages-temp/English
 rm -rf *
 
 cd ../
 
 pnpm i
 pnpm run docs:build
-cd ./English
-pnpm i
-pnpm run build
 
-cd ../gh-pages
+mv ./gh-pages-temp/English ./gh-pages/English
+# cd ./English
+# pnpm i
+# pnpm run build
+
+cd ./gh-pages
 
 git add -A
 git commit -m 'deploy'
 git push git@gitee.com:wghzhida/study.git gh-pages:gh-pages
 git push git@github.com:azhida/study.git gh-pages:gh-pages
+
 
 # cd ../../../
 # rm -rf docs/.vitepress/dist  #删除dist文件夹

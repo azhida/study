@@ -218,7 +218,7 @@
 		initMesh() {
 			// this.addGLTFModel('motor03.gltf')
 			this.addGLTFModel(
-				'http://qiniuyun.study.weilh.vip/motor03.gltf?e=1688871319&token=qC25CW34IueoAxDrlAZjTkvoY2ihcSW3Kj6EpDPp:3aogZ6Rx6zRvjo5aoIS3OcBEiUo='
+				'https://qiniuyun.study.weilh.vip/motor03.gltf'
 			)
 		}
 

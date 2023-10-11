@@ -79,6 +79,18 @@
 <script type="module" src="/src/main.ts"></script>
 ```
 
+- package.json
+
+```json
+{
+  "scripts": {
+    "build": "vue-tsc --noEmit && vite build",
+  }
+}
+```
+
+`vue-tsc`: 编译前检测 TS
+
 - src/main.js -> src/main.ts
 - vite.config.js -> vite.config.ts
 - 其他 js 文件是否重命名为 ts 文件，则根据报错信息酌情操作
@@ -87,7 +99,7 @@
 ### 安装 TS
 
 ```sh
-yarn add -D typescript
+yarn add -D typescript vue-tsc
 ```
 
 ### 检测
@@ -95,6 +107,7 @@ yarn add -D typescript
 - 执行命令，如报错，则详细排查排查
 ```sh
 yarn dev
+yarn build
 yarn build:prod
 ```
 
@@ -102,7 +115,7 @@ yarn build:prod
 
 ### 说明
 
-如果 `yarn dev` 和 `yarn build:prod` 编译无问题，并且 浏览器访问项目也无报错，说明改造基本完成；
+如果 `yarn dev` 、`yarn build` 和 `yarn build:prod` 编译无问题，并且 浏览器访问项目也无报错，说明改造基本完成；
 
 如果有报错，则根据具体报错信息具体处理；
 

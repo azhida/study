@@ -15,10 +15,16 @@
 
 ### 新增必要文件
 
-- env.d.ts
+- src/env.d.ts
 
 ```ts
 /// <reference types="vite/client" />
+
+declare module '*.vue' {
+  import { DefineComponent } from 'vue'
+  const component: DefineComponent<{}, {}, any>
+  export default component
+}
 ```
 
 - tsconfig.json

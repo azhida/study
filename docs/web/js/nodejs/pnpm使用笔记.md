@@ -17,6 +17,8 @@ pnpm config get registry
 
 # 设置源
 pnpm config set registry https://registry.npm.taobao.org/
+pnpm config set registry https://registry.npmmirror.com
+pnpm config set registry https://registry.npmjs.org
 
 # 配置pnpm全局安装路径
 pnpm config set global-dir "E:\Env\Pnpm\global"

@@ -71,6 +71,7 @@ cd exe
 npm init
 npm i -D electron
 npm i -D @electron-forge/cli
+# 这个命令会改变 package.json 和生成 一些文件，按提示选择 Yes 就行了，具体看 electron 官网
 npx electron-forge import
 ```
 

@@ -1,6 +1,8 @@
-```
-# 安装nodejs — linux
+# NodeJS 使用笔记
 
+## 安装nodejs — linux
+
+```
 wget https://nodejs.org/dist/v14.19.2/node-v14.19.2-linux-x64.tar.xz
 tar xf node-v14.19.2-linux-x64.tar.xz
 # 建立软连接（注意一定要用绝对路径）
@@ -12,6 +14,7 @@ ln -s /root/node-v14.19.2-linux-x64/bin/npx /usr/bin/npx
 npm install npm@8.19.1 -g
 ```
 
+## npm 安装 yarn
 
 ```
 # windows 通过 npm安装yarn
@@ -20,12 +23,16 @@ npm install -g yarn
 yarn --version
 ```
 
+## 修改全局依赖包下载路径
+
 ```
 # 默认情况下，我们在执行npm install -g XXXX下载全局包时，这个包的默认存放路径位C:\Users\用户名\AppData\Roaming\npm\node_modules 下，可以通过CMD指令npm root -g查看
 # 修改全局依赖包下载路径
 npm config set prefix "D:\nodejs\node_global" 或 npm config set prefix "D:\nodejs\node_modules"
 npm config set cache "D:\nodejs\node_cache"
 ```
+
+## npm 镜像
 
 ```
 # npm 查询当前配置的镜像
@@ -47,6 +54,8 @@ yarn config get registry
 # yarn 设置成淘宝镜像
 yarn config set registry http://registry.npm.taobao.org/
 ```
+
+## Scss--版本的对应关系
 
 ```
 # Scss--版本的对应关系(sass, sass-loader, dart-sass, node-sass等）

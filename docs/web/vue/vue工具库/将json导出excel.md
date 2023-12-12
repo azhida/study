@@ -2,7 +2,15 @@
 
 ## vue2
 
+### `vue-json-excel`
+
+```sh
+pnpm i vue-json-excel
+```
+
 ```vue
+<!-- demo.vue -->
+
 <template>
   <JsonExcel :data="list" :fields="json_fields" type="xlsx" title="表名称" name="文件名称.xlsx">
     <el-button type="warning" plain icon="el-icon-download" size="mini">下载</el-button>

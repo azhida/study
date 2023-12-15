@@ -106,3 +106,16 @@ exit
 
 ## 配置 nginx 反向代理支持 域名访问
 看这里： [Docker搭建Nginx反向代理服务器](Docker搭建Nginx反向代理服务器.md)
+
+## 容器内的 laravel 项目访问宿主机 3306 端口
+
+- `.env`
+
+```
+DB_CONNECTION=mysql
+DB_HOST=host.docker.internal
+DB_PORT=3306
+DB_DATABASE=test
+DB_USERNAME=test
+DB_PASSWORD=test
+```

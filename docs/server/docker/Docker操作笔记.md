@@ -1,4 +1,18 @@
 # Docker 操作笔记
+
+## 将容器打包成镜像
+
+```sh
+# 将本地的容器打包成自命名的镜像
+docker commit -a "容器作者" -m "容器描述" 容器id new_image_name:version
+
+# 将镜像打包输出到tar文件
+docker save -o new_image_name.tar new_image_name:version
+
+# 在其他的机器上指定文件，通过该文件安装镜像
+docker load -i new_image_name.tar
+```
+
 - 容器重命名
 ```
 sudo docker rename old_name new_name
@@ -41,3 +55,4 @@ docker rm `docker ps -aq`
 ```
 docker rmi `docker images -aq`
 ```
+

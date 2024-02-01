@@ -50,7 +50,11 @@ export default defineConfig(({ mode, command }) => {
           assetFileNamesL: `[ext]/[name].${suffix}.[text]`,
         }
       }
-    }
+    },
+    esbuild: {
+      // 打包去掉 console.log 控制台打印 和 debugger 内容，更多方式参考 https://juejin.cn/post/7249913673216639034
+      drop: ["console", "debugger"],
+    },
   }
 })
 ```

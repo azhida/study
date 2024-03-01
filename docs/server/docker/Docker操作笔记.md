@@ -42,10 +42,25 @@ docker cp mycontainer:/opt/testnew/file.txt /opt/test/
 
 ## 容器操作
 
-- 批量删除容器
+### 批量删除容器
 
 ```
 docker rm `docker ps -aq`
+```
+
+### 容器日志操作
+
+```sh
+# 查看全部容器日志
+docker logs
+# 查看全部容器日志 - 最新 10 行
+docker logs --tail=10
+# 查看指定容器日志
+docker logs <container_id>
+# 查看指定容器日志 - 最新 10 行
+docker logs --tail=10 <container_id>
+# 将日志输出到文件
+docker logs -f <container_id> > log.txt
 ```
 
 ## 镜像操作

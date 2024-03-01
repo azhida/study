@@ -18,6 +18,8 @@ sudo docker run --name gitlab \
 -v /usr/local/docker/gitlab/config:/etc/gitlab \
 -v /usr/local/docker/gitlab/logs:/var/log/gitlab \
 -v /usr/local/docker/gitlab/data:/var/opt/gitlab \
+# 让容器获取宿主机root权限
+–-privileged=true \
 -d gitlab/gitlab-ce
 ```
 

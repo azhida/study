@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as n,Q as o}from"./chunks/framework.aaef0e9b.js";const F=JSON.parse('{"title":"报错记录","description":"","frontmatter":{},"headers":[],"relativePath":"web/ts/报错记录.md","lastUpdated":1696997103000}'),e={name:"web/ts/报错记录.md"},p=o("",4),l=[p];function t(c,r,i,_,d,D){return a(),n("div",null,l)}const u=s(e,[["render",t]]);export{F as __pageData,u as default};

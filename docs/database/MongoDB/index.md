@@ -88,4 +88,4 @@ root：只在admin数据库中可用。超级管理员用户，超级权限
 - 文档：https://www.mongodb.com/docs/drivers/php-drivers/
 - mongodb 扩展：https://www.php.net/manual/en/mongodb.installation.pecl.php
 - mongodb 扩展：https://github.com/mongodb/mongo-php-driver/releases
-- mongodb 扩展(windows php8.2)：https://github.com/mongodb/mongo-php-driver/releases/download/1.17.2/php_mongodb-1.17.2-8.2-ts-x64.zip
+- mongodb 扩展(windows php8.2)：https://github.com/mongodb/mongo-php-driver/releases/download/1.17.2/php_mongodb-1.17.2-8.2-nts-x64.zip

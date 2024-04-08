@@ -1,5 +1,9 @@
 # pnpm 使用笔记
 
+## 官网
+
+[pnpm 中文网](https://www.pnpm.cn/)
+
 ## 安装
 
 ```sh

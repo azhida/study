@@ -63,3 +63,42 @@ function onClickCopy() {
 }
 </script>
 ```
+
+## vue3 数据还原为初始状态
+
+```vue
+<template>
+  <div class="app-container">
+    <XForm ref="xFormRef" v-model="form" label-width="auto" @confirm="onConfirm">
+      <template #imgs>
+        <uploadVue v-model="form.imgs"></uploadVue>
+      </template>
+    </XForm>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref, toRaw } from 'vue';
+
+const xFormRef = ref();
+
+const form = ref({
+  imgs: [],
+  status: '1',
+});
+// 记录初始值
+const rowForm = toRaw(form.value);
+console.log(rowForm, 'rowForm');
+
+function handleAdd() {
+  console.log('添加');
+  // 传入 初始值
+  xFormRef.value.open(rowForm, 'add');
+}
+
+function handleUpdate(row: any) {
+  console.log(row, '更新');
+  xFormRef.value.open(row);
+}
+</script>
+```

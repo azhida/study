@@ -1,6 +1,8 @@
 # Cloudflare 实现内网穿透
 
-- 官网
+> 注意：域名自备，其他免费
+
+- cloudflare 官网
 
 https://dash.cloudflare.com
 

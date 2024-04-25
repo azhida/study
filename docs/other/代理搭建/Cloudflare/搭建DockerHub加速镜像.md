@@ -54,7 +54,7 @@ async function handleRequest(request) {
 - 回到 Worker 信息页面
 - 点击 `Setting/Triggers`
 - 点击 `Add route`，填上如下信息
-  - Route：`*.demo.cn/*`
+  - Route：`*.demo.cn/*` 或者 `*docker-hub.demo.cn/*`
   - Zone：`demo.cn`
   - 点击 `Add route` 确认保存
 

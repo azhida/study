@@ -4,6 +4,8 @@
 
 - 官网
 
+https://vant-ui.github.io/vant/#/zh-CN/home
+
 https://vant-contrib.gitee.io/vant/#/zh-CN
 
 ## 注意

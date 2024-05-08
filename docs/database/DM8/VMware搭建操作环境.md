@@ -87,7 +87,8 @@ ssh root@127.0.0.1 -p 9022
 
 按要求输入 vm-dm 的 root 密码就可以接上了。
 
-## 下载 DM8 安装包
+## 安装 DM8
+### 下载 DM8 安装包
 
 https://eco.dameng.com/download/
 
@@ -95,3 +96,39 @@ https://eco.dameng.com/download/
 
 这里我先用 `dm8_20231109_x86_kylin10_64.iso` 来操作。
 
+### 安装
+
+```sh
+# root
+cp /mnt/hgfs/vm-share/dm8_20231109_x86_kylin10_64.iso /opt/
+
+groupadd dinstall
+useradd -g dinstall -m -d /home/dmdba -s /bin/bash dmdba
+passwd dmdba
+# 按提示输入密码即可
+
+# 做安装目录
+mkdir /dm8
+ls -ld /dm8
+chown dmdba:dinstall /dm8
+ls -ld /dm8
+
+# 挂载 iso 镜像文件
+mkdir /mnt/dm
+mount /opt/dm8_20231109_x86_kylin10_64.iso /mnt/dm
+
+# 解决安装时报错 /tmp 空间不足的问题
+mkdir -p /opt/tmp
+chown dmdba:dinstall /opt/tmp
+# 或
+chmod 777 /opt/tmp
+
+su - dmdba
+
+# dmdba
+# 解决安装时报错 /tmp 空间不足的问题
+export DM_INSTALL_TMPDIR=/opt/tmp
+cd /mnt/dm
+ll
+./DMInstall.bin -i
+```

@@ -18,7 +18,28 @@
 
 ## 创建虚拟机 vm-dm
 
+### 配置宿主机和虚拟机的共享文件夹
 
+安装 `vmware tools` ，然后鼠标右键将 `/run/media/root/VMware Tools/VMwareTools-10.3.23-16594550.tar.gz` 加压缩到 `/home` 目录下，解压后得到文件夹 `/home/vmware-tools-distrib` 。
+
+执行安装命令：
+
+```sh
+cd /home/vmware-tools-distrib
+./vmware-install.pl
+# 一路默认即可
+```
+
+#### 设置 vm-dm 共享文件夹
+
+- 选中 vm-dm ，鼠标右键，点击 设置
+-  点击 选项
+-  点击 共享文件夹
+- 点击 总是启用
+- 点击 添加
+- 自行选择 共享的文件夹，我的是 `D:/vm-share` ，名称 `vm-share` , 然后点击 确认
+
+此时 vm-dm 虚拟机里面会多了一个文件夹 `/mnt/hgfs/vm-share` ，共享文件夹配置结束 。
 
 ## 在宿主机使用 ssh 连接 vm-dm 虚拟机
 
@@ -65,3 +86,12 @@ ssh root@127.0.0.1 -p 9022
 ```
 
 按要求输入 vm-dm 的 root 密码就可以接上了。
+
+## 下载 DM8 安装包
+
+https://eco.dameng.com/download/
+
+选择合适的版本。
+
+这里我先用 `dm8_20231109_x86_kylin10_64.iso` 来操作。
+

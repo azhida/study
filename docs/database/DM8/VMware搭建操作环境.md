@@ -132,3 +132,10 @@ cd /mnt/dm
 ll
 ./DMInstall.bin -i
 ```
+
+### 卸载 DM 数据库
+
+```sh
+# dmdba
+ /dm8/uninstall.sh -i
+```

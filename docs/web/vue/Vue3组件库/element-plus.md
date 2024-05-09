@@ -4,6 +4,8 @@
 
 - 官网
 
+https://element-plus.org/zh-CN/
+
 https://element-plus.gitee.io/zh-CN/
 
 ## 参考

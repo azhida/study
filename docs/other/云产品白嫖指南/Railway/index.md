@@ -12,3 +12,10 @@ https://github.com/azhida/railway.docs
 
 https://azhida.github.io/docs.railway
 
+## 注意
+
+网速还可以。
+可以用来当在线数据库。
+免费账户只能用来部署数据库，无法部署代码。
+
+

@@ -48,7 +48,10 @@ export default defineConfig(({ mode, command }) => {
           chunkFileNames: `js/[name].${suffix}.js`,
           entryFileNames: `js/[name].${suffix}.js`,
           assetFileNamesL: `[ext]/[name].${suffix}.[text]`,
-        }
+        },
+        plugins: [
+          myExample()
+        ]
       }
     },
     esbuild: {
@@ -57,5 +60,21 @@ export default defineConfig(({ mode, command }) => {
     },
   }
 })
+
+// 自定义插件文档： https://cn.rollupjs.org/plugin-development/#outputoptions
+function myExample () {
+  return {
+    name: 'my-example', // 此名称将出现在警告和错误中
+    buildStart() {
+      console.log('开始了');
+    },
+    buildEnd() {
+      console.log('结束了');
+    },
+    outputOptions(outputOptions: OutputOptions) {   
+      console.log(outputOptions， 'outputOptions');
+    },
+  };
+}
 ```
 

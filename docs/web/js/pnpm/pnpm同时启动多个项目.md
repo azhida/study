@@ -84,6 +84,6 @@ pnpm start:dev
 
 就会把 `app1` 、 `app2` 、 `app3` 在同一个窗口同时启动。
 
-访问： http://localhost:10001
-访问： http://localhost:10002
-访问： http://localhost:10003
+访问： `http://localhost:10001`
+访问： `http://localhost:10002`
+访问： `http://localhost:10003`

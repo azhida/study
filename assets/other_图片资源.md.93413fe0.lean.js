@@ -1,0 +1,1 @@
+import{_ as e,o as a,c as t,Q as r}from"./chunks/framework.aaef0e9b.js";const m=JSON.parse('{"title":"图片资源","description":"","frontmatter":{},"headers":[],"relativePath":"other/图片资源.md","lastUpdated":1712725122000}'),o={name:"other/图片资源.md"},s=r("",8),h=[s];function n(l,p,c,i,_,d){return a(),t("div",null,h)}const k=e(o,[["render",n]]);export{m as __pageData,k as default};

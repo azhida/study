@@ -1,0 +1,4 @@
+import{_ as a,o as s,c as e,Q as n}from"./chunks/framework.aaef0e9b.js";const u=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"server/nginx/配置重定向.md","lastUpdated":1717571146000}'),t={name:"server/nginx/配置重定向.md"},o=n(`<div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#babed8;">location / {</span></span>
+<span class="line"><span style="color:#babed8;">  return 301 /main/main-index;</span></span>
+<span class="line"><span style="color:#babed8;">}</span></span>
+<span class="line"><span style="color:#babed8;"></span></span></code></pre></div>`,1),c=[o];function l(p,r,_,i,d,m){return s(),e("div",null,c)}const h=a(t,[["render",l]]);export{u as __pageData,h as default};

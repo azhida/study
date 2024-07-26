@@ -12,3 +12,5 @@
 2 databases
 1 automatic backup/week
 Unlimited traffic
+
+亲测可以公网访问！

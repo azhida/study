@@ -4,15 +4,15 @@ layout: home
 
 hero:
   name: "服务端"
-  text: "服务端"
+  text: "服务端笔记"
   tagline: My great project tagline
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Docker
+      link: /docker/
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: PHP
+      link: /php/
 
 features:
   - title: Feature A

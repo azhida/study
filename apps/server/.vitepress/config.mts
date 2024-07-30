@@ -42,11 +42,16 @@ const navs = sidebarTree.map((e: any) => {
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "服务端",
-  description: "服务端",
+  description: "服务端笔记",
   srcDir: 'src',
   base: '/server/',
+  lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    // 本地搜索
+    // search: {
+    //   provider: 'local'
+    // },
     nav: [
       { text: 'Home', link: '/' },
       ...navs

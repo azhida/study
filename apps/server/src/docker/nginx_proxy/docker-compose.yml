@@ -1,0 +1,23 @@
+version: '3'
+services:
+  nginx_proxy:
+    image: 'nginx:alpine'
+    container_name: nginx_proxy
+    ports:
+      - 80:80
+      - 443:443
+    restart: unless-stopped
+    privileged: true
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+      - ./code:/usr/share/nginx/html
+      - ./log:/var/log/nginx
+      - ./ssl:/root/ssl
+    environment:
+      TZ: "Asia/Shanghai"
+    networks:
+      lnmp-network:
+
+networks:
+  lnmp-network: # 使用网络lnmp-network，目的是与该网络内其他服务互通
+    external: true

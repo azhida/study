@@ -1,0 +1,71 @@
+version: '3'
+
+services:
+
+  nginx:
+    container_name: "lnmp-nginx"
+    image: "nginx:alpine"
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/log:/var/log/nginx
+      - ./code:/var/www/html
+    environment:
+      TZ: "Asia/Shanghai"
+    networks:
+      - lnmp-network
+    links:
+      - php-80
+    restart: unless-stopped
+
+  mysql5.5:
+    container_name: 'lnmp-mysql5.5'
+    image: 'mysql:5.5'
+    ports:
+      - 33061:3306
+    volumes:
+      - ./mysql/conf.d:/etc/mysql/conf.d
+      - ./mysql/data:/var/lib/mysql
+    environment:
+      TZ: "Asia/Shanghai"
+      MYSQL_PREFIX: "demo_"
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "demo"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "password"
+    networks:
+      - lnmp-network
+    restart: unless-stopped
+
+  redis:
+    container_name: "lnmp-redis"
+    image: "redis:alpine"
+    ports:
+      - 63790:6379
+    environment:
+      TZ: "Asia/Shanghai"
+    networks:
+      - lnmp-network
+    restart: unless-stopped
+
+  php-80:
+    container_name: "lnmp-php-80"
+    image: "php:8.0-fpm"
+    shm_size: "1024m"
+    volumes:
+      - ./php:/usr/local/etc/php
+      - ./code:/var/www/html
+    environment:
+      TZ: "Asia/Shanghai"
+      LANG: "C.UTF-8"
+    networks:
+      - lnmp-network
+    depends_on:
+      - redis
+      - mysql5.5
+    restart: unless-stopped
+
+networks:
+  lnmp-network: # 网络名称
+    external: false # 外部网络：true 不存在则报错，false 不存在则创建 lnmp-network

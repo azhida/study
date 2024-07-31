@@ -1,0 +1,13 @@
+{
+  "name": "@study/utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build:lib": "tsc"
+  },  
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

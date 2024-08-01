@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as a}from"./chunks/framework.CFZOmcOm.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"php/函数/arsort().md","filePath":"php/函数/arsort().md","lastUpdated":1722327281000}'),r={name:"php/函数/arsort().md"};function o(s,p,c,n,_,d){return a(),e("div")}const f=t(r,[["render",o]]);export{m as __pageData,f as default};

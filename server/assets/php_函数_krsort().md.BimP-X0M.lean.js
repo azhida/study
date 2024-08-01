@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as r}from"./chunks/framework.CFZOmcOm.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"php/函数/krsort().md","filePath":"php/函数/krsort().md","lastUpdated":1722327281000}'),a={name:"php/函数/krsort().md"};function o(s,p,c,n,_,d){return r(),e("div")}const f=t(a,[["render",o]]);export{m as __pageData,f as default};

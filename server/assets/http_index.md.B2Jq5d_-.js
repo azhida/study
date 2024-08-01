@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as a}from"./chunks/framework.CFZOmcOm.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"http/index.md","filePath":"http/index.md","lastUpdated":1722327281000}'),n={name:"http/index.md"};function r(o,s,d,c,p,i){return a(),e("div")}const f=t(n,[["render",r]]);export{m as __pageData,f as default};

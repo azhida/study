@@ -2,12 +2,12 @@
   "hash": "9425674f",
   "configHash": "881dd7f4",
   "lockfileHash": "19475135",
-  "browserHash": "9704b2ac",
+  "browserHash": "79e604c2",
   "optimized": {
     "vue": {
       "src": "../../../../../node_modules/.pnpm/vue@3.4.34_typescript@5.4.5/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "09052f59",
+      "fileHash": "4b4514c5",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
@@ -19,7 +19,13 @@
     "vitepress > @vueuse/core": {
       "src": "../../../../../node_modules/.pnpm/@vueuse+core@10.11.0_vue@3.4.34_typescript@5.4.5_/node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "eda99547",
+      "fileHash": "e8dadeb0",
+      "needsInterop": false
+    },
+    "lodash-es": {
+      "src": "../../../../../node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/lodash.js",
+      "file": "lodash-es.js",
+      "fileHash": "e3f6d67e",
       "needsInterop": false
     }
   },

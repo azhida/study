@@ -27,7 +27,7 @@ https://vue-qrcode-reader.netlify.app/
 
 ::: details 封装 /QRScan.vue
 
-<<< @/web/vue/h5扫码/QRScan-vue3-qr-reader.vue
+<<< ./QRScan-vue3-qr-reader.vue
 
 :::
 

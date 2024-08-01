@@ -12,5 +12,5 @@ import CssDemo from './grid网格布局等宽自适应.vue'
 ## 示例代码
 
 
-<<< @/web/css/demos/grid网格布局等宽自适应.vue
+<<< ./grid网格布局等宽自适应.vue
 

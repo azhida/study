@@ -11,5 +11,5 @@
 
 ## 示例代码
 
-<<< @/web/css/demos/Form表单.vue
+<<< ./Form表单.vue
 

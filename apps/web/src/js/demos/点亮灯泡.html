@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<style>
+			.demo-item {
+				width: 200px;
+				border: 1px solid red;
+				margin: 10px;
+				text-align: center;
+			}
+
+			.demo-item-content {
+				width: 200px;
+				height: 200px;
+				border: 1px solid blue;
+				text-align: center;
+			}
+
+			img {
+				width: auto;
+				height: auto;
+				max-width: 100%;
+				max-height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="demo-item">
+			<div class="demo-item-content">
+				<img loading="lazy" id="myimage" onclick="changeImage()" src="https://www.runoob.com/images/pic_bulboff.gif">
+			</div>
+			<div class="demo-item-title">demo：点亮灯泡【JavaScript：改变 HTML 图像】</div>
+		</div>
+
+	</body>
+
+	<script>
+		function changeImage() {
+			element = document.getElementById('myimage')
+			if (element.src.match("bulbon")) {
+				element.src = "https://www.runoob.com/images/pic_bulboff.gif";
+			} else {
+				element.src = "https://www.runoob.com/images/pic_bulbon.gif";
+			}
+		}
+	</script>
+</html>

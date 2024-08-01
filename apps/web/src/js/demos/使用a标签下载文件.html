@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="../../../public/config/api.js"> </script>
+		<title>Title</title>
+		<style>
+			#initDom {
+				display: none;
+			}
+
+			.file-item {
+				margin-top: 20px;
+			}
+
+			.file-item img {
+				display: block;
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+
+			<div class="file-list">
+				<div class="file-item" id="initDom">
+					<img loading="lazy" src="">
+					<button fileName="" onclick="download1(this)">下载【返回文件流】</button>
+					<button fileName="" onclick="download2(this)">下载【返回 json 】</button>
+				</div>
+			</div>
+
+		</div>
+
+	</body>
+
+	<script>
+		$(function() {
+			console.log(api, 'api');
+			getFiles();
+		})
+
+		function getFiles() {
+			$.ajax({
+				url: api + '/api/getFiles',
+				success(res) {
+					console.log(res, 'res');
+
+					var initDom = $('#initDom').clone(true);
+					res.data.forEach(e => {
+						var node = initDom.removeAttr('id').clone(true);
+						node.find('img').attr('src', e.url);
+						node.find('button').attr('fileName', e.name);
+						$('.file-list').append(node);
+					})
+				}
+			})
+		}
+
+		// 注意：ajax 不支持文件流下载，所以使用 axios 下载文件流
+		function download1(obj) {
+			var url = api + '/api/file/download';
+			axios.get(url, {
+				params: {
+					'responseFormat': 'blob'
+				},
+				headers: {
+					'Authorization': 'token',
+				},
+				responseType: 'blob'
+			}).then(res => {
+				var fileName = $(obj).attr('fileName');
+				var a = document.createElement('a');
+				a.download = fileName;
+				a.href = URL.createObjectURL(res.data); // blob内容
+				a.click();
+				a.remove();
+			})
+		}
+
+		// 使用 blob 转为 json
+		function download2(obj) {
+			var url = api + '/api/file/download';
+			axios.get(url, {
+				params: {
+					'responseFormat': 'json', // 后端根据 json 返回 json 格式数据
+				},
+				headers: {
+					'Authorization': 'token',
+				},
+				responseType: 'blob'
+			}).then(err => {
+				console.log(err, 'err');
+				const fileReader = new FileReader();
+				fileReader.onload = function() {
+					try {
+						const jsonData = JSON.parse(fileReader.result); // 说明是普通对象数据，后台转换失败
+						console.log('后台返回的信息', jsonData);
+						alert(jsonData.msg)
+					} catch (err) { // 解析成对象失败，说明是正常的文件流
+						console.log('success...');
+					}
+				};
+				fileReader.readAsText(err.data);
+			})
+		}
+
+		function downPager(url, filename) {
+			const xhr = new XMLHttpRequest();
+			console.log(xhr)
+			xhr.open('GET', url, true);
+			xhr.responseType = "blob"; //web-portal
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState === 4) {
+					if (xhr.status === 200) {
+						const blod = this.response;
+						console.log(blod)
+						// var src = URL.createObjectURL(blod);
+						const eleLink = document.createElement("a");
+						eleLink.download = filename || new Date().getTime() + ".pdf";
+						eleLink.href = URL.createObjectURL(blod);
+						document.body.appendChild(eleLink);
+						eleLink.click();
+					}
+				}
+			};
+			xhr.send()
+		};
+	</script>
+</html>

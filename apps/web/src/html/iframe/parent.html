@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>IFrame - 父页面</title>
+		<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	</head>
+	<body>
+
+		<div id="main" style="font-size: 26px;text-align: center;">
+			我是父页面
+
+		</div>
+
+		<div style="height: 200px;border: 1px solid blue;">
+			<iframe src="./son.html" frameborder="0" style="width: 100%;height: 100%;"></iframe>
+		</div>
+
+	</body>
+</html>
+
+<script>
+	addEventListener('message', e => {
+		console.log(e, 'e');
+		if (e.data.action == 'update') {
+			$('#main').css('color', e.data.color);
+		}
+	})
+</script>

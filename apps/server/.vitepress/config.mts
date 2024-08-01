@@ -8,6 +8,7 @@ export default defineConfig({
   title: "服务端",
   description: "服务端笔记",
   srcDir: 'src',
+  outDir: '../../gh-pages/server',
   base: '/study/server/',
   cleanUrls: true,
   ignoreDeadLinks: true,

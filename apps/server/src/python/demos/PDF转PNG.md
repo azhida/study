@@ -2,4 +2,4 @@
 
 ## 示例代码
 
-<<< @/server/python/demos/PDF转PNG.py
+<<< ./PDF转PNG.py

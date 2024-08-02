@@ -17,9 +17,9 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     // 本地搜索
-    // search: {
-    //   provider: 'local'
-    // },
+    search: {
+      provider: 'local'
+    },
     nav: [
       { text: 'Home', link: '/' },
       ...nav

@@ -16,6 +16,7 @@ export default defineConfig({
   lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    outline: 'deep',
     // 本地搜索
     search: {
       provider: 'local'

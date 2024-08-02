@@ -1,0 +1,86 @@
+{
+  "type": "object",
+  "properties": {
+      "id": {
+          "type": "string",
+          "title": "ID",
+          "mock": {
+              "mock": "@integer(1000, 10000000)"
+          }
+      },
+      "name": {
+          "type": "string",
+          "title": "名称",
+          "mock": {
+              "mock": "@cname"
+          }
+      },
+      "age": {
+          "type": "string",
+          "title": "年龄",
+          "mock": {
+              "mock": "@integer(1, 100)"
+          }
+      },
+      "type": {
+          "type": "number",
+          "title": "类型",
+          "enum": [
+              1,
+              2,
+              3,
+              4,
+              5
+          ],
+          "x-apifox": {
+              "enumDescriptions": {
+                  "1": "市级",
+                  "2": "校级",
+                  "3": "教师",
+                  "4": "家长",
+                  "5": "学生"
+              }
+          }
+      },
+      "enable": {
+          "type": "boolean",
+          "default": "true",
+          "title": "是否可用",
+          "mock": {
+              "mock": "@boolean"
+          }
+      },
+      "enable1": {
+          "type": "string",
+          "enum": [
+              "a",
+              "b"
+          ],
+          "x-apifox": {
+              "enumDescriptions": {
+                  "a": "aa",
+                  "b": "bb"
+              }
+          },
+          "title": "是否可用"
+      }
+  },
+  "title": "示例",
+  "x-apifox-orders": [
+      "id",
+      "name",
+      "age",
+      "type",
+      "enable",
+      "enable1"
+  ],
+  "required": [
+      "id",
+      "name",
+      "age",
+      "enable",
+      "type",
+      "enable1"
+  ],
+  "description": "Demo"
+}

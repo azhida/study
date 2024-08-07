@@ -42,6 +42,8 @@ pnpm config set state-dir "E:\Env\Pnpm\store"
 # 下载安装依赖包(XXX)
 pnpm install XXX
 pnpm i XXX
+# 向所有应用添加 XXX 依赖包【包括全部子应用和根目录主应用】
+pnpm recursive i XXX
 # -S  默认写入dependencies
 pnpm add XXX -S
 # -D devDependencies

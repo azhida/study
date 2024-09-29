@@ -1,40 +1,42 @@
 <template>
-  <div class="box">
-    <div class="circle">
-      <div class="fan"></div>
-    </div>
-  </div>
+  <div class="box"></div>
 </template>
 
 <style scoped lang="scss">
 .box {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
+  background-color: #000;
+  border-radius: 50%;
   position: relative;
-  overflow: hidden;
+  background-color: red;
+  animation: rotate 20s linear infinite;
 
-  .circle {
+  &::before {
+    content: '';
     position: absolute;
-    right: 0;
     top: 0;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: blue;
-    overflow: hidden;
-    border: 0px solid blue;
-    animation: rotate 10s linear infinite;
+    bottom: 0;
+    width: 50%;
+    border: 0px solid red;
+    background-color: blue;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+  }
 
-    .fan {
-      transform: skewX(165deg);
-      transform-origin: 0 100%;
-      position: absolute;
-      right: 0;
-      top: 0;
-      background: red;
-      width: 100px;
-      height: 100px;
-    }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: 0;
+    border: 0px solid blue;
+    background-color: blue;
+    transform: rotate(200deg);
+    transform-origin: 0 50%;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
   }
 }
 

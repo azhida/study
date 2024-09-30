@@ -22,35 +22,38 @@
 
   .box {
     position: relative;
-    width: 150px;
-    height: 150px;
-    margin: 100px auto;
+    width: 100px;
+    height: 100px;
     overflow: hidden;
     border-radius: 4px;
+    &:last-of-type{
+      margin-left: 10px;
+    }
 
     .under {
       position: relative;
       width: 0px;
       height: 0px;
-      border-top: 200px solid yellow;
-      border-right: 200px solid green;
-      border-bottom: 200px solid red;
-      border-left: 200px solid blueviolet;
-      left: -125px;
-      top: -125px;
-      animation: rotate 2s linear infinite;
+      border-top: 100px solid yellow;
+      border-right: 100px solid green;
+      border-bottom: 100px solid red;
+      border-left: 100px solid blueviolet;
+      left: -50px;
+      top: -50px;
+      animation: rotate 10s linear infinite;
     }
 
     span {
       position: absolute;
-      top: 0px;
-      margin: 8px;
-      width: 134px;
-      height: 134px;
+      top: 8px;
+      bottom: 8px;
+      left: 8px;
+      right: 8px;
       border-radius: 4px;
       background-size: cover;
       background-image: url(https://img-blog.csdnimg.cn/20201011132854978.jpg);
       background-color: white;
+      border: 1px solid blue;
     }
   }
 }

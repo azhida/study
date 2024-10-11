@@ -47,6 +47,21 @@ https://dash.cloudflare.com
 - `Subdomain`：第一行配置的是公网访问的域名
 - `Service`：第二行配置的是本地内网的服务地址，要确保本地服务正常运行
 
+## CLI 相关命令
+
+```sh
+cloudflared -h
+cloudflared -v
+cloudflared update
+
+cloudflared tunnel login
+
+# cloudflared tunnel create <NAME>
+cloudflared tunnel create demo
+
+cloudflared tunnel list
+```
+
 ## 参考
 
 [最好用的Nas穿透—超详细Zero Trust Tunnel配置教程](https://t.cj.sina.com.cn/articles/view/1823348853/6cae1875020016401)

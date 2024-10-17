@@ -36,3 +36,28 @@ https://element-plus.gitee.io/zh-CN/
 }
 </style>
 ```
+
+
+### el-menu-item 设置选中后的样式
+
+```vue
+<template>
+  <el-menu :default-active="activeIndex" mode="horizontal">
+    <el-menu-item index="1">Processing Center</el-menu-item>
+    <el-sub-menu index="2">
+      <template #title>Workspace</template>
+      <el-menu-item index="2-1">item one</el-menu-item>
+      <el-menu-item index="2-2">item two</el-menu-item>      
+    </el-sub-menu>
+    <el-menu-item index="3" disabled>Info</el-menu-item>
+    <el-menu-item index="4">Orders</el-menu-item>
+  </el-menu>
+</template>
+
+<style scoped lang="scss">
+.el-menu-item.is-active {
+  color: green !important;
+  background-color: red !important;
+}
+</style>
+```

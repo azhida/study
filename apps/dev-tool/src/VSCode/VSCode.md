@@ -41,6 +41,7 @@
 | Draw.io Integration						| 绘图工具，如 流程图等，文件扩展 .drawio	|
 |Angular Files								| 快速创建 Angular 模板文件 html，css 和 ts	|
 | Remote Development						| 远程开发环境								|
+| Excel Viewer						| Excel 或 CSV 文件编辑器								|
 
 ### 怎样安装插件
 1. 进入『安装插件』选项卡里；

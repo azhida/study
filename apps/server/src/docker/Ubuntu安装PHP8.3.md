@@ -51,16 +51,16 @@ Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
 
 ```sh
 apt update
-apt install wget
+apt install -y wget vim 
 # 地区选 亚洲 5.Asia ，时区选 上海 69.Shanghai
 ```
 
 ### 安装 PHP8.3
 
 ```sh
-apt install php8.3 php8.3-cli php8.3-{bz2,curl,mbstring,intl}
+apt install -y php8.3 php8.3-cli php8.3-{bz2,curl,mbstring,intl}
 # php8.3-fpm 根据需要酌情安装
-# apt install php8.3-fpm 
+# apt install -y php8.3-fpm 
 
 php -v
 ```
@@ -68,7 +68,22 @@ php -v
 ### 安装 composer
 
 ```sh
-apt install -y composer
+apt install -y composer zip
 
 composer -v
+```
+
+## 将容器打包成镜像
+
+```sh
+# 将本地的容器打包成自命名的镜像
+# docker commit -a "容器作者" -m "容器描述" 容器名称 new_image_name:version
+docker commit -a "azhida" -m "基于Ubuntu24.04搭建PHP8.3运行环境" ubuntu-php8.3 ubuntu-php8.3:latest
+
+# 将镜像打包输出到tar文件
+# docker save -o new_image_name.tar new_image_name:version
+docker save -o ubuntu-php8.3.tar ubuntu-php8.3:latest
+
+# 在其他的机器上指定文件，通过该文件安装镜像
+docker load -i new_image_name.tar
 ```

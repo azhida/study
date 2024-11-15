@@ -1,5 +1,11 @@
 # Docker 操作笔记
 
+## 构建镜像
+
+```sh
+docker build -t myimage:latest .
+```
+
 ## 将容器打包成镜像
 
 ```sh

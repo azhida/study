@@ -36,6 +36,7 @@ sudo cp /etc/apt/sources.list.d/ubuntu.sources  /etc/apt/sources.list.d/ubuntu.s
 
 
 # 写入新源：
+
 echo '
 # 阿里云
 Types: deb
@@ -58,7 +59,8 @@ apt install -y wget vim
 ### 安装 PHP8.3
 
 ```sh
-apt install -y php8.3 php8.3-cli php8.3-{bz2,curl,mbstring,intl}
+apt install -y php8.3 php8.3-cli php8.3-{bz2,curl,mbstring,intl,xml,dom}
+apt install -y php8.3-{xml,dom}
 # php8.3-fpm 根据需要酌情安装
 # apt install -y php8.3-fpm 
 
@@ -83,6 +85,23 @@ docker commit -a "azhida" -m "基于Ubuntu24.04搭建PHP8.3运行环境" ubuntu-
 # 将镜像打包输出到tar文件
 # docker save -o new_image_name.tar new_image_name:version
 docker save -o ubuntu-php8.3.tar ubuntu-php8.3:latest
+
+# 在其他的机器上指定文件，通过该文件安装镜像
+docker load -i new_image_name.tar
+```
+
+## 将容器打包成 laravel 项目镜像
+
+### 安装配置 laravel
+
+```sh
+# 将本地的容器打包成自命名的镜像
+# docker commit -a "容器作者" -m "容器描述" 容器名称 new_image_name:version
+docker commit -a "azhida" -m "基于Ubuntu24.04搭建PHP8.3运行环境" ubuntu-php8.3 fn_laravel:latest
+
+# 将镜像打包输出到tar文件
+# docker save -o new_image_name.tar new_image_name:version
+docker save -o fn_laravel.tar fn_laravel:latest
 
 # 在其他的机器上指定文件，通过该文件安装镜像
 docker load -i new_image_name.tar

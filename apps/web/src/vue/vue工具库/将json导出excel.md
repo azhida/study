@@ -70,6 +70,8 @@ app.mount('#app')
 
 ### `exceljs`
 
+文档：https://gitee.com/mirrors/exceljs
+
 ```sh
 pnpm i exceljs file-saver
 ```

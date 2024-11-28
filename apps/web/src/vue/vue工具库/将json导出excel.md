@@ -67,3 +67,11 @@ app.mount('#app')
   <el-button type="warning" plain icon="Download">导出</el-button>
 </vue3-json-excel>
 ```
+
+### `exceljs`
+
+```sh
+pnpm i exceljs file-saver
+```
+
+<<< exportToExcel.ts

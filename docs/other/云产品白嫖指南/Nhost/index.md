@@ -28,3 +28,4 @@ Unlimited users
 OAuth providers
 Community support
 
+但是：7天后自动休眠，需要手动唤醒。

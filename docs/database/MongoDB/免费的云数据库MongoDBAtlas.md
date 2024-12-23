@@ -11,8 +11,25 @@ https://cloud.mongodb.com
 ## 创建数据库
 ## 添加用户
 ## 配置白名单
+
+官网操作：
+
+- 选择：`Network Access`
+- 选择：`IP Access List`
+- 点击：`Add IP Address`
+- Access List Entry 添加：`0.0.0.0/0` ，表示允许所有IP连接
+
 ## 设置连接方式
 ## 使用 Navicat 连接测试
+
+- 官网：查看连接方式，选择 `compass` ，复制连接字符串，自行替换 用户名密码；
+- Navicat：
+  - 新建连接，选择 `MongoDB Cloud Services / MongoDB Atlas`
+  - 弹窗左下角选择 `URL...` 
+  - 粘贴官网提供的连接字符串
+  - 确定即可 
+
+
 
 ## 参考
 

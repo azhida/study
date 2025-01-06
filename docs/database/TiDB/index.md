@@ -1,0 +1,19 @@
+# TiDB
+
+## 简介
+
+官网：https://tidbcloud.com/
+
+文档：https://docs.pingcap.com/tidbcloud
+
+## 注意
+
+免费方案：
+无需绑卡；
+5G 数据空间；
+
+navicat 连接或者 其他客户端连接，需要使用 CA 证书验证，否则报错 1105； 验证 CA 证书要选择 navicat 的 ssl 选项验证。
+
+使用 Navicat17 连接更直观， Navicat17 可以免费激活，详情联系我。
+
+连接的用户密码如果忘记，可以直接在官网重置。

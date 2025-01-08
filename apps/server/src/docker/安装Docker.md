@@ -20,10 +20,21 @@ sudo vim /etc/docker/daemon.json
     "registry-mirrors":[
         "https://docker.mirrors.ustc.edu.cn/",
         "https://hub-mirror.c.163.com/",
-        "https://reg-mirror.qiniu.com/"
+        "https://reg-mirror.qiniu.com/",
+
+        "https://docker.m.daocloud.io",
+        "https://noohub.ru",
+        "https://huecker.io",
+        "https://dockerhub.timeweb.cloud",
+        "https://alzgoonw.mirror.aliyuncs.com",
+        "https://hub-mirror.c.163.com", 
+        "https://registry.aliyuncs.com", 
+        "https://docker.mirrors.ustc.edu.cn"
     ],
     "dns": ["8.8.8.8", "114.114.114.114"]
 }
+
+
 ```
 - 重启 docker 服务
 ```

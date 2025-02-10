@@ -6,8 +6,6 @@
 
 https://vant-ui.github.io/vant/#/zh-CN/home
 
-https://vant-contrib.gitee.io/vant/#/zh-CN
-
 ## 注意
 
 ### Vant4 样式不显示问题

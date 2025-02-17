@@ -1,4 +1,11 @@
-###### [社区版下载地址（免费）](hhttps://www.jetbrains.com/pycharm/download/#section=windows)
+# PyCharm 使用笔记
+
+官网：https://www.jetbrains.com/zh-cn/pycharm/
+
+
+## 下载
+
+全部版本下载列表：https://www.jetbrains.com/zh-cn/pycharm/download/other.html
 
 ###### 汉化步骤
 ```

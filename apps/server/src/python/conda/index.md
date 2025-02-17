@@ -49,14 +49,32 @@ conda remove numpy
 
 ### 更换镜像源
 
+#### 查看源
+
 ```sh
 # 列出源
+conda config --show-sources
 conda config --show channels
 
+```
+
+#### 删除源
+
+```sh
 # 删除源
 conda config --remove channels https://repo.anaconda.com/pkgs/msys2
 conda config --remove channels all
+```
 
+#### 添加源
+
+```sh
+# 添加源
+conda config --add channels https://mirrors.tuna.edu.cn/anaconda/pkgs/main
+```
+
+#### 测试源
+```sh
 # 测试 conda 源， 如果能快速返回结果，说明换源成功！
 conda search numpy
 ```

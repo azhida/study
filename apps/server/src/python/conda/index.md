@@ -55,6 +55,7 @@ conda config --show channels
 
 # 删除源
 conda config --remove channels https://repo.anaconda.com/pkgs/msys2
+conda config --remove channels all
 
 # 测试 conda 源， 如果能快速返回结果，说明换源成功！
 conda search numpy

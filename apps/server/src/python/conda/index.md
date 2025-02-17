@@ -61,9 +61,14 @@ conda config --show channels
 #### 删除源
 
 ```sh
-# 删除源
+# 删除源[指定源]
 conda config --remove channels https://repo.anaconda.com/pkgs/msys2
-conda config --remove channels all
+
+
+# 移除所有自定义的channels（包括镜像源）
+conda config --remove-key channels
+
+
 ```
 
 #### 添加源
@@ -71,6 +76,9 @@ conda config --remove channels all
 ```sh
 # 添加源
 conda config --add channels https://mirrors.tuna.edu.cn/anaconda/pkgs/main
+
+# 使用默认的channels
+conda config --set channels default
 ```
 
 #### 测试源

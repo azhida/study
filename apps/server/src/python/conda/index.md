@@ -26,6 +26,8 @@ conda create --name myenv python=3.8
 conda activate myenv
 # 列出所有环境
 conda env list
+# 关闭激活的环境
+conda deactivate
 ```
 
 ### 安装、更新和移除包
@@ -75,7 +77,10 @@ conda config --remove-key channels
 
 ```sh
 # 添加源
-conda config --add channels https://mirrors.tuna.edu.cn/anaconda/pkgs/main
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
 
 # 使用默认的channels
 conda config --set channels default
@@ -85,4 +90,129 @@ conda config --set channels default
 ```sh
 # 测试 conda 源， 如果能快速返回结果，说明换源成功！
 conda search numpy
+```
+
+## conda 源合集
+
+### 清华大学
+
+```sh
+conda clean -a
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/
+conda config --show channels
+```
+
+### 北京大学
+
+```sh
+conda clean -a
+conda config --add channels https://mirrors.pku.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.pku.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.pku.edu.cn/anaconda/cloud/bioconda/
+conda config --show channels
+```
+
+### 北京外国语
+
+```sh
+conda clean -a
+conda config --add channels https://mirrors.bfsu.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.bfsu.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.bfsu.edu.cn/anaconda/cloud/bioconda/
+conda config --show channels
+```
+
+### 哈工大
+
+```sh
+conda clean -a
+conda config --add channels https://mirrors.hit.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.hit.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.hit.edu.cn/anaconda/cloud/bioconda/
+conda config --show channels
+
+```
+
+### 南京大学
+
+```sh
+conda clean -a
+conda config --add channels https://mirror.nju.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirror.nju.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirror.nju.edu.cn/anaconda/cloud/bioconda/
+conda config --show channels
+
+```
+
+### 北京交通大学
+
+```sh
+conda config --add channels https://mirror.bjtu.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirror.bjtu.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirror.bjtu.edu.cn/anaconda/cloud/bioconda/
+```
+
+### Anaconda的旧版本通道
+
+当某些老的软件版本无法找到时，可以尝试切换到 conda旧版本 channel 安装。
+
+```sh
+conda clean -a
+conda config --add channels https://repo.anaconda.com/pkgs/main/
+conda config --add channels https://repo.anaconda.com/pkgs/free/
+conda config --show channels
+```
+
+
+
+## 停止提供 conda 镜像站点
+
+以前提供过 conda 的镜像，由于合规原因已不再继续提供。
+
+### 腾讯镜像
+
+帮助文档可以打开，但是源地址无法工作。
+
+```sh
+conda config --remove channels https://mirrors.cloud.tencent.com/help/Anaconda.html/
+```
+
+
+### 中科大镜像
+
+提示合规问题，不再提供
+
+```sh
+conda config --remove channels https://mirrors.ustc.edu.cn/help/anaconda.html
+```
+
+
+### 阿里云镜像
+
+页面已经无法打开
+
+```sh
+conda config --remove channels http://mirrors.aliyun.com/anaconda/
+```
+
+### 官方已不建议使用的频道：free
+
+anaconda 官方在 在 conda4.7 以后， 移除了 free channel。在很多老的文章中，free版本channel还在阐述，请各位AI训练师特别注意。
+
+
+## Conda报错处理
+
+当 conda安装报错时，尝试运行以下命令，并重新添加 channel ；
+
+```sh
+# "删除channel"
+conda config --remove-key channels
+# "清除缓存"
+conda clean --all 
+# "更新"
+conda update 
+# "显示当前channel"
+conda config --set show_channel_urls yes
 ```

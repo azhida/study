@@ -35,3 +35,37 @@ mklink /j "C:\Program Files\Docker" "D:\Docker"
 - 打开设置 Resources/Advanced
 - 修改 `Disk image location` 的位置
 - 保存重启即可
+
+## docker 启动失败解决办法
+
+### 当前计算机配置不支持 WSL2
+
+强制修复 Hyper-V 和 WSL2 配置
+
+重置 Hyper-V 和 WSL2 的步骤：
+
+- 1、禁用 Hyper-V 和虚拟机平台功能：（powerSheel中管理员执行）
+
+```sh
+dism.exe /online /disable-feature /featurename:Microsoft-Hyper-V /norestart
+
+dism.exe /online /disable-feature /featurename:VirtualMachinePlatform /norestart
+```
+
+- 2、重启计算机。
+
+- 3、重新启用 Hyper-V 和虚拟机平台：
+
+```sh
+dism.exe /online /enable-feature /featurename:Microsoft-Hyper-V /all /norestart
+
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+```
+
+- 4、再次重启。
+
+到此，wsl 的功能就正常了，重装 wsl ubuntu 
+
+```sh
+wsl --install 
+```

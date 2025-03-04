@@ -9,7 +9,8 @@ sudo curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 sudo docker info
 ```
 - docker 镜像加速
-> 注：阿里云的 docker 镜像加速器看 [这里](https://gitee.com/link?target=https%3A%2F%2Fcr.console.aliyun.com%2Fcn-hangzhou%2Finstances%2Fmirrors)
+  - 华为云: https://console.huaweicloud.com/swr/?region=cn-south-1#/swr/mirror
+  - 阿里云：https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors
 
 ```
 sudo vim /etc/docker/daemon.json

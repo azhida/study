@@ -69,3 +69,5 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 ```sh
 wsl --install 
 ```
+
+参考：[docker启动失败之当前计算机配置不支持 WSL2](https://www.bilibili.com/opus/1019354674641240088)

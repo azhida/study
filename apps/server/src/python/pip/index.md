@@ -8,6 +8,9 @@ pip config list
 
 # 设置源
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
+# 安装依赖，临时指定镜像源
+pip install some-package -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 ## 常用镜像源

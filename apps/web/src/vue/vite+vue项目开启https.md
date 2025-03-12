@@ -82,3 +82,37 @@ https://blog.csdn.net/qq_42543548/article/details/128389216
     ```
 
 > 到此，证书生成安装结束了，项目跑起来就ok了，感谢各位看官看到了最后，文章虽然啰嗦，但是“细”啊。
+
+
+### @vitejs/plugin-basic-ssl
+
+```sh
+pnpm i @vitejs/plugin-basic-ssl
+```
+
+- vite.config.js
+
+```js
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import path from 'path'
+import basicSsl from '@vitejs/plugin-basic-ssl'
+ 
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [vue(), basicSsl()],
+  server: {
+    host: '0.0.0.0',
+    https: true
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    }
+  }
+})
+```
+
+## 参考
+
+[vite项目配置本地开发使用https访问，3分钟搞定](https://blog.csdn.net/weixin_44786530/article/details/135893697)

@@ -94,6 +94,13 @@ conda search numpy
 
 ## conda 源合集
 
+### 华为云
+
+```sh
+conda config --add channels https://repo.huaweicloud.com/repository/anaconda
+conda config --set show_channel_urls yes
+```
+
 ### 清华大学
 
 ```sh
@@ -135,7 +142,7 @@ conda config --show channels
 
 ```
 
-### 南京大学
+### 南京大学(亲测可用)
 
 ```sh
 conda clean -a

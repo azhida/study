@@ -30,6 +30,23 @@ conda env list
 conda deactivate
 ```
 
+#### 设置默认激活的conda环境
+
+如果没有安装 vi 或者 vim ，可以使用如下命令实现文件修改。
+
+```sh
+# 查看
+cat ~/.bashrc
+
+# 如果最后一行是 conda activate base ，则先删除 ~/.bashrc 最后一行
+# `-i` 选项表示直接修改文件内容，`$` 表示最后一行，`d` 表示删除。
+sed -i '$d' ~/.bashrc
+
+# 向 ~/.bashrc 文件最后面追加一行 conda activate myenv
+# -e 选项来实现换行
+echo -e "第一行文本\n第二行文本" >> 文件名.txt
+```
+
 ### 安装、更新和移除包
 
 ```sh

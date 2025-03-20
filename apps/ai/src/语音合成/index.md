@@ -1,5 +1,39 @@
 # 语音合成
 
+## 自己搭建服务
+
+### ‌Fish-Speech
+
+github: https://github.com/fishaudio/fish-speech
+
+需要 python conda 环境。
+需要安装 Anaconda。
+
+
+
+### node-edge-tts
+
+> 注意：需要在 nodejs 服务端使用，因为它并不直接支持浏览器使用！
+
+```js
+const fs = require('fs');
+const { EdgeTTS } = require('node-edge-tts')
+
+// edge_tts接口
+async function fnEdgeTTS() {
+  var speaker = 'zh-CN-XiaoxiaoNeural';
+  var text = '你好哟,这里是测试';
+  const tts = new EdgeTTS({
+    voice: speaker
+  })
+  await tts.ttsPromise(text, "output.wav");
+  var data = fs.readFileSync('output.wav');
+  let base64Audio  = Buffer.from(data).toString("base64");
+  return { audio: base64Audio }
+}
+```
+
+
 ## 免费在线工具
 
 ### TTSMaker
@@ -77,6 +111,8 @@ https://chattts.com/zh
 https://chattts.me/
 
 ChatTTS是专门为对话场景设计的文本转语音模型，例如LLM助手对话任务。它支持英文和中文两种语言。每次最多可以生成 30s的语音；生成的音色非常逼真，网上目前很火，可以玩玩。
+
+
 
 
 ## 参考

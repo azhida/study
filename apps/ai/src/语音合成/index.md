@@ -33,6 +33,9 @@ async function fnEdgeTTS() {
 }
 ```
 
+### edge-tts-openai-cf-worker
+
+github: https://github.com/dongwen88/edge-tts-openai-cf-worker
 
 ## 免费在线工具
 

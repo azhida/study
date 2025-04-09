@@ -1,0 +1,4 @@
+FROM ubuntu:latest
+ 
+# 更新包列表并安装unzip
+RUN apt-get update && apt-get install -y unzip

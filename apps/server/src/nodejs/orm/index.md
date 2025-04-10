@@ -67,6 +67,7 @@ prisma -> init -> schema -> migrate -> 使用 primsa 客户客户端操作数据
 ## Knex.js
 
 - [官网](https://link.juejin.cn/?target=https%3A%2F%2Fknexjs.org%2F)
+- [中文网](https://knex.nodejs.cn/guide/)
 
 ### Knex.js 特性
 - 定位是 基于 JavaScript 的 SQL 查询生成器。

@@ -10,6 +10,16 @@
 npm i -g pnpm
 ```
 
+## 项目内配置指定源
+
+- 新增文件 `.npmrc`
+- 文件内容如下
+
+```bash
+# .npmrc
+registry=https://registry.npmmirror.com
+```
+
 ## pnpm 常用命令
 
 ```sh
@@ -65,3 +75,4 @@ pnpm upgrade XXX
 # 更新全局包(XXX)
 pnpm upgrade XXX --global
 ```
+

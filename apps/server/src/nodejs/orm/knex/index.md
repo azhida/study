@@ -2,6 +2,7 @@
 
 - 官网：
 - 中文网：https://knex.nodejs.cn/
+- 中文网：https://www.knexjs.cn/
 
 ## 全局打印完整 sql
 

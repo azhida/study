@@ -69,7 +69,7 @@ import Hls from 'hls.js';
 
 const videoPlayer = ref(null);
 
-const videoSrc = 'http://10.0.1.22:8080/live/liuname/hls.m3u8';
+const videoSrc = 'http://IP:8080/live/流名称/hls.m3u8';
 
 onMounted(() => {
   if (Hls.isSupported()) {

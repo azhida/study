@@ -47,6 +47,16 @@ ffmpeg -re -i 视频文件.mp4 -c:v libx264 -c:a aac -f flv rtmp://服务器IP:1
 - `HLS` : `http://IP:8080/live/流名称/hls.m3u8`
 - `WebRTC` : `webrtc://IP:8080/live/流名称`
 
+#### 使用 VLC 媒体播放器测试拉流地址
+
+- 官网： https://www.videolan.org‌‌
+- 下载地址： https://get.videolan.org/vlc/3.0.21/win64/vlc-3.0.21-win64.exe
+
+安装后使用：
+- 媒体/打开网络串流
+- 网络/请输入网络 URL
+- 把 拉流相关地址输进来即可播放
+
 ## Vue3前端播放实现
 
 使用 `flv.js` 播放视频流。

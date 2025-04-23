@@ -85,7 +85,7 @@ console.log(arr); // ["c", "a", "d", "b"]
 
 - shift() : 删除数组第一个元素
 - delete : 删除指定元素
-- splice() : 指定位置添加【该函数有更多的用法自行百度】
+- splice() : 指定位置添加【该函数有更多的用法自行百度】,会改变
 
 ```js
 var arr = ['a', 'b'];
@@ -94,4 +94,10 @@ console.log(arr); // ["b"]
 delete arr[0];
 console.log(arr); // []
 arr.splice(0,1); // 从 第下标为 1 的元素开始取
+
+// 删除指定下标的数组元素
+var arr1 = ['a','b','c','d'];
+var arr2 = arr1.splice(2, 1); // 原数组删除 'c' ，并返回 ['c']
+console.log(arr1); // ['a','b', 'd']
+console.log(arr2); // ['c']
 ```

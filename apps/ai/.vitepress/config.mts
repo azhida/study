@@ -1,15 +1,23 @@
 import { defineConfig } from 'vitepress';
 import { getSidebarTree } from '@study/utils/fn';
+import { getEnvConfig } from '../.envs';
 
-const {nav, sidebar} = getSidebarTree('./src');
+const { nav, sidebar } = getSidebarTree('./src');
+
+// 拿环境信息 mode ： gh (github) 、 cf (cloudflare)
+const VITEPRESS_MODE = process.env.VITEPRESS_MODE || '';
+console.log(VITEPRESS_MODE, 'VITEPRESS_MODE');
+const config = getEnvConfig(VITEPRESS_MODE);
+console.log(config, 'config');
+
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "AI",
   description: "AI",
   srcDir: 'src',
-  outDir: '../../gh-pages/ai',
-  base: '/study/ai/',
+  outDir: config.outDir,
+  base: config.base,
   cleanUrls: true,
   ignoreDeadLinks: true,
   metaChunk: true,
@@ -33,5 +41,10 @@ export default defineConfig({
     socialLinks: [
       { icon: "github", link: 'https://azhida.github.io/study/' }
     ]
+  },
+  vite: {
+    server: {
+      host: '0.0.0.0'
+    }
   }
 })

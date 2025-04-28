@@ -4,7 +4,7 @@ import { UserConfig } from "vitepress"
 
 export const config:UserConfig = {
   base: '/',
-  outDir: '.vitepress/dist',
+  outDir: './dist',
 }
 
 export {

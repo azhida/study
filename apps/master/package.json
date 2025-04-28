@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
+    "cf:dev": "vitepress dev",
+    "cf:build": "vitepress build",
+    "cf:preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.3"
+  }
+}

@@ -1,15 +1,22 @@
 import { defineConfig } from 'vitepress';
 import { getSidebarTree } from '@study/utils/fn';
+import { getEnvConfig } from '../.envs';
 
 const {nav, sidebar} = getSidebarTree('./src');
+
+// 拿环境信息 mode ： gh (github) 、 cf (cloudflare)
+const VITEPRESS_MODE = process.env.VITEPRESS_MODE || '';
+console.log(VITEPRESS_MODE, 'VITEPRESS_MODE');
+const config = getEnvConfig(VITEPRESS_MODE);
+console.log(config, 'config');
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "开发工具",
   description: "开发工具",
   srcDir: 'src',
-  outDir: '../../gh-pages/dev-tool',
-  base: '/study/dev-tool/',
+  outDir: config.outDir,
+  base: config.base,
   cleanUrls: true,
   ignoreDeadLinks: true,
   metaChunk: true,

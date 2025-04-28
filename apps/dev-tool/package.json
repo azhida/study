@@ -7,7 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vitepress dev",
     "build": "vitepress build",
-    "preview": "vitepress preview"
+    "preview": "vitepress preview",
+    "cf:dev": "cross-env VITEPRESS_MODE=cf vitepress dev",
+    "cf:build": "cross-env VITEPRESS_MODE=cf vitepress build",
+    "cf:preview": "cross-env VITEPRESS_MODE=cf vitepress preview",
+    "cf:pages:deploy": "cross-env VITEPRESS_MODE=cf vitepress build && wrangler pages deploy ./dist --branch=master",
+    "cf:pages:deploy-only": "wrangler pages deploy ./dist --branch=master"
   },
   "keywords": [],
   "author": "",

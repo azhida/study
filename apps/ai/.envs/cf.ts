@@ -3,8 +3,8 @@
 import { UserConfig } from "vitepress"
 
 export const config:UserConfig = {
-  base: '/',
-  outDir: './dist',
+  base: '/ai/',
+  outDir: '../../cf-pages/ai',
 }
 
 export {

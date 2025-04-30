@@ -4,6 +4,8 @@ import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
 
+import CustomNavItem from '@study/components/CustomNavItem.vue'
+
 export default {
   extends: DefaultTheme,
   Layout: () => {
@@ -13,5 +15,6 @@ export default {
   },
   enhanceApp({ app, router, siteData }) {
     // ...
+    app.component('CustomNavItem', CustomNavItem);
   }
 } satisfies Theme

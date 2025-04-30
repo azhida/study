@@ -1,13 +1,17 @@
 {
+  "type": "module",
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview",
-    "cf:dev": "vitepress dev",
-    "cf:build": "vitepress build",
-    "cf:preview": "vitepress preview"
+    "cf:dev": "cross-env VITEPRESS_MODE=cf vitepress dev",
+    "cf:build": "cross-env VITEPRESS_MODE=cf vitepress build",
+    "cf:preview": "cross-env VITEPRESS_MODE=cf vitepress preview"
   },
   "devDependencies": {
+    "@study/components": "workspace:^",
+    "@study/utils": "workspace:^",
+    "rimraf": "^6.0.1",
     "vitepress": "^1.6.3"
   }
 }

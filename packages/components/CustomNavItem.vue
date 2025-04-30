@@ -1,5 +1,5 @@
 <template>
-  <a class="VPNavBarMenuLink" :class="{'active': route.path == link}" :href="link">{{ text }}</a>
+  <a class="VPNavBarMenuLink" :class="{'active': route.path == link}" :href="link" target="_self">{{ text }}</a>
 </template>
 
 <script setup>

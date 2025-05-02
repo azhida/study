@@ -1,15 +1,36 @@
 import { defineConfig } from 'vitepress';
 import { getSidebarTree } from '@study/utils/fn';
+import { getEnvConfig } from '../.envs';
+import { getNavs } from '@study/components/nav';
 
 const {nav, sidebar} = getSidebarTree('./src');
+
+// 拿环境信息 mode ： gh (github) 、 cf (cloudflare)
+const VITEPRESS_MODE = process.env.VITEPRESS_MODE || '';
+console.log(VITEPRESS_MODE, 'VITEPRESS_MODE');
+const config = getEnvConfig(VITEPRESS_MODE);
+console.log(config, 'config');
+
+let navs: any = [];
+getNavs().map(e => {
+  e.component = 'CustomNavItem';
+  e.props = { text: e.text, link: e.link };
+  const e1 = {
+    component: 'CustomNavItem',
+    props: { text: e.text, link: e.link },
+    text: e.text,
+    activeMatch: e.link
+  }
+  navs.push(e1)
+})
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "前端",
   description: "前端",
   srcDir: 'src',
-  outDir: '../../gh-pages/web',
-  base: '/study/web/',
+  outDir: config.outDir,
+  base: config.base,
   cleanUrls: true,
   ignoreDeadLinks: true,
   metaChunk: true,
@@ -22,8 +43,8 @@ export default defineConfig({
       provider: 'local'
     },
     nav: [
-      { text: 'Home', link: '/' },
-      ...nav
+      // { text: 'Home', link: '/' },
+      ...navs
     ],
 
     sidebar: [

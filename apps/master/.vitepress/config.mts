@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress';
+import { pagefindPlugin } from 'vitepress-plugin-pagefind'
 import { getEnvConfig } from '../.envs';
 import { getNavs } from '@study/components/nav';
 import { clearOutdirPlugin } from '../plugins/clearOutdir';
@@ -33,6 +34,10 @@ export default defineConfig({
   cleanUrls: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    // 本地搜索
+    search: {
+      provider: 'local'
+    },
     // nav: getNavs(),
     // nav: [
     //   { text: 'Home', link: '/' },
@@ -47,6 +52,7 @@ export default defineConfig({
     ]
   },
   vite: {
+    plugins: [pagefindPlugin()],
     build: {
       emptyOutDir: false,
       // outDir: config.outDir, // TODO：这里配置，打包会报错，原因未知

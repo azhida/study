@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress';
-import { pagefindPlugin } from 'vitepress-plugin-pagefind'
+import { chineseSearchOptimize, pagefindPlugin } from 'vitepress-plugin-pagefind';
 import { getEnvConfig } from '../.envs';
 import { getNavs } from '@study/components/nav';
 import { clearOutdirPlugin } from '../plugins/clearOutdir';
@@ -50,9 +50,18 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
     ]
   },
+  lang: 'zh-cn',
   vite: {
     plugins: [
-      pagefindPlugin(),
+      pagefindPlugin({
+        customSearchQuery: chineseSearchOptimize,
+        // btnPlaceholder: '搜索',
+        // placeholder: '搜索文档',
+        // emptyText: '空空如也',
+        heading: '共: {{searchResult}} 条结果',
+        excludeSelector: ['img', 'a.header-anchor'], // 生成文章检索时排除一些元素
+        forceLanguage: 'zh-cn', // 设置检索内容的语言
+      }), // 只有首页做全局搜索
     ],
     build: {
       emptyOutDir: false,

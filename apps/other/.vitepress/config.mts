@@ -58,10 +58,5 @@ export default defineConfig({
       { icon: "github", link: 'https://azhida.github.io/study/' }
     ],
     base: config.base, // 传给页面使用，判断当前页面的 base
-  },
-  vite: {
-    server: {
-      host: '0.0.0.0'
-    }
   }
 })

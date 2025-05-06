@@ -3,7 +3,7 @@ import { getSidebarTree } from '@study/utils/fn';
 import { getEnvConfig } from '../.envs';
 import { getNavs } from '@study/components/nav';
 
-const {nav, sidebar} = getSidebarTree('./src');
+const { nav, sidebar } = getSidebarTree('./src');
 
 // 拿环境信息 mode ： gh (github) 、 cf (cloudflare)
 const VITEPRESS_MODE = process.env.VITEPRESS_MODE || '';

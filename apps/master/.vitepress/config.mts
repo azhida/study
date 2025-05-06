@@ -4,7 +4,6 @@ import { getEnvConfig } from '../.envs';
 import { getNavs } from '@study/components/nav';
 import { clearOutdirPlugin } from '../plugins/clearOutdir';
 
-
 // 拿环境信息 mode ： gh (github) 、 cf (cloudflare)
 const VITEPRESS_MODE = process.env.VITEPRESS_MODE || '';
 console.log(VITEPRESS_MODE, 'VITEPRESS_MODE');
@@ -52,7 +51,9 @@ export default defineConfig({
     ]
   },
   vite: {
-    plugins: [pagefindPlugin()],
+    plugins: [
+      pagefindPlugin(),
+    ],
     build: {
       emptyOutDir: false,
       // outDir: config.outDir, // TODO：这里配置，打包会报错，原因未知
@@ -62,3 +63,15 @@ export default defineConfig({
     }
   }
 })
+
+// 判断是否开发环境
+function isDev() {
+  console.log(process.env.NODE_ENV, 'process.env.NODE_ENV');
+  if (process.env.NODE_ENV == 'development') {
+    console.log('开发环境');
+    return true;
+  } else {
+    console.log('生产环境');
+    return false;
+  }
+}

@@ -60,9 +60,23 @@ export default defineConfig({
     ]
   },
   vite: {
-    plugins: [pagefindPlugin()],
+    plugins: [
+      !isDev() && pagefindPlugin()
+    ],
     server: {
       host: '0.0.0.0'
     }
   }
 })
+
+// 判断是否开发环境
+function isDev() {
+  console.log(process.env.NODE_ENV, 'process.env.NODE_ENV');
+  if (process.env.NODE_ENV == 'development') {
+    console.log('开发环境');
+    return true;
+  } else {
+    console.log('生产环境');
+    return false;
+  }
+}

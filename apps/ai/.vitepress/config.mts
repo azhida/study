@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress';
+import { pagefindPlugin } from 'vitepress-plugin-pagefind'
 import { getSidebarTree } from '@study/utils/fn';
 import { getEnvConfig } from '../.envs';
 import { getNavs } from '@study/components/nav';
@@ -59,6 +60,7 @@ export default defineConfig({
     ]
   },
   vite: {
+    plugins: [pagefindPlugin()],
     server: {
       host: '0.0.0.0'
     }

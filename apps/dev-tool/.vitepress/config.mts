@@ -37,6 +37,7 @@ export default defineConfig({
   lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    base: config.base, // 方便页面读取 base
     outline: 'deep',
     // 本地搜索
     search: {

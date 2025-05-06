@@ -53,6 +53,7 @@ export default defineConfig({
 
     socialLinks: [
       { icon: "github", link: 'https://azhida.github.io/study/' }
-    ]
+    ],
+    base: config.base, // 传给页面使用，判断当前页面的 base
   }
 })

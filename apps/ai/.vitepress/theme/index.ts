@@ -5,6 +5,7 @@ import DefaultTheme from 'vitepress/theme'
 import './style.css'
 
 import CustomNavItem from '@study/components/CustomNavItem.vue'
+import { isNowBase } from '@study/utils/fn';
 
 export default {
   extends: DefaultTheme,
@@ -19,11 +20,7 @@ export default {
     app.component('CustomNavItem', CustomNavItem)
 
     router.onBeforeRouteChange = (to) => {
-      console.log(123, 'to', to);
-    }
-
-    router.onAfterRouteChanged = (to) => {
-      console.log(123, 'to', to);
+      isNowBase(to);
     }
   }
 } satisfies Theme

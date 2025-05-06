@@ -12,7 +12,8 @@
     "docs:dev": "vitepress dev docs --port 9999",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "cf-pages:deploy-only": "wrangler pages deploy ./cf-pages --branch=master"
+    "cf-pages:deploy-only": "wrangler pages deploy ./cf-pages --branch=master",
+    "all:cf:build": "pnpm -r --no-sort --workspace-concurrency=1 --no-bail --stream --report-summary run cf:build"
   },
   "repository": {
     "type": "git",

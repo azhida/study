@@ -56,6 +56,7 @@ export function isNowBase(to) {
     console.log(nowBase, 'nowBase');
     if (toBase != nowBase) {
       location.href = to;
+      return;
     }
   }
 }

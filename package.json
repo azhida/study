@@ -13,7 +13,8 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "cf-pages:deploy-only": "wrangler pages deploy ./cf-pages --branch=master",
-    "all:cf:build": "pnpm -r --no-sort --workspace-concurrency=1 --no-bail --stream --report-summary run cf:build"
+    "all:cf:build": "pnpm -r --no-sort --workspace-concurrency=1 --no-bail --stream --report-summary run cf:build",
+    "all:cf:preview": "cd apps/zzzzz-master && pnpm cf:preview"
   },
   "repository": {
     "type": "git",

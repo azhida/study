@@ -46,7 +46,7 @@ function makeTree(obj) {
 }
 
 //  是否是同一个 base
-export function isNowBase(to) {
+export function isNowBase(to, cb) {
   if (typeof window !== 'undefined') {
     console.log(to, 'to');
     console.log(location, 'location');
@@ -56,6 +56,7 @@ export function isNowBase(to) {
     console.log(nowBase, 'nowBase');
     if (toBase != nowBase) {
       location.href = to;
+      cb()
       return;
     }
   }

@@ -20,7 +20,9 @@ export default {
     app.component('CustomNavItem', CustomNavItem);
 
     router.onBeforeRouteChange = (to) => {
-      isNowBase(to);
+      isNowBase(to, ()=>{
+        return false;
+      });
     }
   }
 } satisfies Theme

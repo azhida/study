@@ -8,24 +8,30 @@ hero:
   tagline: 积硅步至千里，积小流成江海！学以致用！
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: 开启学习之旅
+      link: /web/
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: 案例展示
+      link: /demos/
 
+# icon地址
+# https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.json
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit    
+  - icon: 💃
+    title: 前端
+    details: Angular、APICloud、Bootstrap、CSS、HTML、JS、NodeJS、UniApp、VitePress、VUE ...
+    link: /web/
+  - title: 服务端
+    icon: 🏍️
+    details: Docker、HTTP、Linux、Nginx、PHP、Python、Shell、消息中间件...
+    link: /server/
+  - title: 数据库
+    icon: 🍎
+    details: ClickHouse、MySQL、Redis、SQLserver、TDengine ...
+    link: /database/
+  - title: 案例展示
+    details: 商城、任务管理、即时通讯、APP、小程序...
+    icon: 🚅
+    link: /demos/
 ---
 

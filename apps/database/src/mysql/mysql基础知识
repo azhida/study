@@ -1,0 +1,52 @@
+# 登录mysql服务器
+mysql -u root -p
+# win系统下使用 git bash 终端登录MySQL服务器【在使用git bash登录mysql时会卡死，加上winpty就好了】
+winpty mysql -uroot -p
+
+# 允许远程访问
+grant all privileges on *.* to root@"%" identified by 'mysql root用户的登录密码' with grant option;
+flush privileges;
+
+# 创建数据库
+create database testDB;
+
+# 删除用户的数据库
+drop database testDB;
+
+# 创建用户（创建了一个名为：test 密码为：1234 的用户。）
+insert into mysql.user(Host,User,Password) values("localhost,"test",password("1234"));
+# 注意：此处的"localhost"，是指该用户只能在本地登录，不能在另外一台机器上远程登录。如果想远程登录的话，将"localhost"改为"%"，表示在任何一台电脑上都可以登录。也可以指定某台机器可以远程登录。
+
+# 删除用户
+Delete FROM mysql.user Where User='test' and Host='localhost';
+flush privileges;
+
+# 为用户授权（授权格式：grant 权限 on 数据库.* to 用户名@登录主机 identified by "密码";）
+# 授权test用户拥有testDB数据库的所有权限
+grant all privileges on testDB.* to 'test'@'%' identified by '1234';
+# 部分授权
+grant select,create,delete on testDB.* to 'test'@'%' with grant option;
+flush privileges;
+# 格式：grant 权限 on 数据库.数据表 to 用户名@登录主机 identified by "密码";
+# 注意：
+# 如果用户不存在，则会创建用户 test@% ，用户密码 1234；
+# 如果用户已存在，则会修改密码为 1234；
+
+# 回收用户权限
+revoke all privileges on testDB.*  from 'test'@'%';
+
+# 删除账户及权限（drop user 用户名@'%';）
+drop user 'test'@'%';
+
+# 查询语句
+SELECT column_name,column_name
+FROM table_name
+[WHERE Clause]
+[LIMIT N][ OFFSET M]
+
+# 更新语句
+UPDATE table_name SET field1=new-value1, field2=new-value2
+[WHERE Clause]
+
+# 删除语句
+DELETE FROM table_name [WHERE Clause]

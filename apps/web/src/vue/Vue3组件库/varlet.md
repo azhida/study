@@ -4,6 +4,7 @@ Varlet 是一个基于 Vue3 开发的 Material 风格移动端组件库，全面
 
 - 官网
 
+https://varletjs.org/#/zh-CN/index
 https://varlet.gitee.io/varlet-ui/#/zh-CN/index
 
 - 文档

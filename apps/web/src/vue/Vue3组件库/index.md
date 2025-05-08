@@ -70,7 +70,9 @@ View UI Plus 是 View Design 设计体系中基于 Vue.js 3 的一套 UI 组件�
 
 有赞团队开源移动 UI 组件库，全面支持 Vue 3，针对移动端
 
-文档地址：https://vant-contrib.gitee.io/vant/#/zh-CN
+文档地址：
+https://vant-contrib.gitee.io/vant/#/zh-CN
+https://vant-ui.github.io/vant/#/zh-CN/toast
 
 2. nutui(移动端)
 
@@ -88,7 +90,9 @@ View UI Plus 是 View Design 设计体系中基于 Vue.js 3 的一套 UI 组件�
 
 Varlet 是一个基于 Vue3 开发的 Material 风格移动端组件库，全面拥抱 Vue3 生态，由社区建立起来的组件库团队进行维护。
 
-文档地址：https://varlet.gitee.io/varlet-ui/#/zh-CN/home
+文档地址：
+https://varletjs.org/#/zh-CN/index
+https://varlet.gitee.io/varlet-ui/#/zh-CN/home
 
 5. tdesign-mobile-vue(移动端)
 

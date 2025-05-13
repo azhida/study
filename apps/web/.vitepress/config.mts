@@ -28,6 +28,7 @@ getNavs().map(e => {
 export default defineConfig({
   title: "前端",
   description: "前端",
+  head: [['link', { rel: 'icon', href: '/baby.jpg' }]],
   srcDir: 'src',
   outDir: config.outDir,
   base: config.base,

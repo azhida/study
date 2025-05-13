@@ -30,6 +30,7 @@ getNavs().map(e => {
 export default defineConfig({
   title: "其他",
   description: "其他",
+  head: [['link', { rel: 'icon', href: '/baby.jpg' }]],
   srcDir: 'src',
   outDir: config.outDir,
   base: config.base,

@@ -19,11 +19,11 @@ export default {
     app.component('CustomNavItem', CustomNavItem)
 
     router.onBeforeRouteChange = (to) => {
-      console.log(123, 'to', to);
+      // console.log(123, 'to', to);
     }
 
     router.onAfterRouteChanged = (to) => {
-      console.log(123, 'to', to);
+      // console.log(123, 'to', to);
     }
   }
 } satisfies Theme

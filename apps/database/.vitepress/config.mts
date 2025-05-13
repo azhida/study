@@ -29,7 +29,8 @@ getNavs().map(e => {
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "数据库",
-  description: "数据库",
+  description: "数据库",  
+  head: [['link', { rel: 'icon', href: '/baby.jpg' }]],
   srcDir: 'src',
   outDir: config.outDir,
   base: config.base,

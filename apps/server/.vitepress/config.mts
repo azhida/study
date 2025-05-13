@@ -3,7 +3,7 @@ import { getSidebarTree } from '@study/utils/fn';
 import { getEnvConfig } from '../.envs';
 import { getNavs } from '@study/components/nav';
 
-const {nav, sidebar} = getSidebarTree('./src');
+const { nav, sidebar } = getSidebarTree('./src');
 
 // 拿环境信息 mode ： gh (github) 、 cf (cloudflare)
 const VITEPRESS_MODE = process.env.VITEPRESS_MODE || '';
@@ -28,6 +28,7 @@ getNavs().map(e => {
 export default defineConfig({
   title: "服务端",
   description: "服务端笔记",
+  head: [['link', { rel: 'icon', href: '/baby.jpg' }]],
   srcDir: 'src',
   outDir: config.outDir,
   base: config.base,

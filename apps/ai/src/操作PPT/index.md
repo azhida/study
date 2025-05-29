@@ -11,3 +11,6 @@ https://www.kimi.com/
 ### 参考
 
 ## 讲解 PPT
+
+### GUIJI.CN
+

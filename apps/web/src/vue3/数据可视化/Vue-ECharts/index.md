@@ -1,9 +1,3 @@
-<script setup>
-import DemoJczxt from './基础折线图.vue'
-import DemoJczzt from './基础柱状图.vue'
-import DemoHxt from './环形图.vue'
-</script>
-
 # Vue-ECharts
 
 这个库很好用！推荐！

@@ -8,3 +8,6 @@
 
 Vue Flow 是一个轻量级的 Vue 3 组件库，它允许开发者以简洁直观的方式创建动态流程图。
 
+## fly-barrage
+
+Fly Barrage：Vue React 高级弹幕功能插件库

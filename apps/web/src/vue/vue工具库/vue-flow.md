@@ -11,3 +11,19 @@ Nodes、Edges、Handles
 - Nodes 是流程图中的一个基本组件，可以在图表中可视化任何类型的数据，独立存在并通过edges互连从而创建数据映射
 - Edges 的渲染是通过给VueFlow组件的edges参数传入一个数组实现的，需要配合nodes一起确定节点之间的连线关系；
 - Handles 节点边缘上的小圆圈，使用拖拽的方式进行节点之间的连接
+
+## 使用
+
+```sh
+pnpm i @vue-flow/core
+
+```
+
+```js
+import { Panel, VueFlow, useVueFlow } from '@vue-flow/core'
+import { Background } from '@vue-flow/background'
+```
+
+## 参考
+
+[Vue Flow：动态交互式流程图工具框架](https://mp.weixin.qq.com/s/Cl3eg9FGGxSrvZcMw4wZ1Q)

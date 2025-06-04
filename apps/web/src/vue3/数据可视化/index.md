@@ -17,3 +17,8 @@ https://datav-vue3.jiaminghi.com/
 ## VUE DATA UI
 
 https://vue-data-ui.graphieros.com/
+
+## uCharts
+
+- https://www.ucharts.cn/v2#/
+

@@ -11,6 +11,9 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
 # 安装依赖，临时指定镜像源
 pip install some-package -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+# 提取依赖到 requirements.txt 文件
+pip freeze > requirements.txt
 ```
 
 ## 常用镜像源

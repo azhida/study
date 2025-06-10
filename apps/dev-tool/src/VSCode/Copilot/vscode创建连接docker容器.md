@@ -18,7 +18,8 @@ version: '3.8'
 
 services:
   python_app_pptx2video:
-    image: python:3.9
+    # image: python:3.9
+    image: python:3.9-slim
     container_name: python_app_pptx2video
     volumes:
       - .:/app

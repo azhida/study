@@ -13,6 +13,7 @@ services:
     working_dir: /app
     volumes:
       - .:/app  # 挂载当前目录到容器中的 /app 目录
+      - /app/test-dir  # 挂载时排除指定目录：test-dir
     restart: unless-stopped
     tty: true
 

@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+
+  node_latest:
+    image: node:latest
+    container_name: node_latest
+    volumes:
+      - .:/app
+      - /app/node_modules # 不予以挂载node_modules
+    working_dir: /app
+    ports:
+      - "5001:5000"
+    tty: true

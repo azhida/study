@@ -133,7 +133,7 @@ version: '3.8'
 
 services:
   python_app_pptx2video:
-    image: python:3.9
+    image: python:3.9-slim
     container_name: python_app_pptx2video
     volumes:
       - .:/app
@@ -200,6 +200,14 @@ networks:
 - python-pptx
 - LibreOffice
 - ImageMagick（convert）
+- pdftoppm
+
+### 安装依赖项
+在 Debian 系统上，可以使用以下命令安装 LibreOffice 和 pdftoppm：
+```bash
+sudo apt update
+sudo apt install -y libreoffice poppler-utils
+```
 
 ## 常见问题
 - 图片样式与 PPTX 不一致：请优先使用 PDF 中转方案，并确保系统已安装所需字体。
@@ -272,6 +280,13 @@ if __name__ == "__main__":
 
 ## 依赖项
 - ffmpeg
+
+### 安装 ffmpeg
+在 Debian 系统上，可以使用以下命令安装 ffmpeg：
+```bash
+sudo apt update
+sudo apt install -y ffmpeg
+```
 
 ## 示例
 假设当前目录下有 slide_01.png ~ slide_22.png，执行上述命令后会生成 output.mp4 视频。

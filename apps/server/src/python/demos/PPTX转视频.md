@@ -1,6 +1,6 @@
 # PPTX 转视频
 
-[AI 版 PPTX 转视频](/dev-tool/VSCode/Copilot/AI实现PPTX合成视频)
+[AI 版 PPTX 转视频](/dev-tool/VSCode/Copilot/AI实现PPTX合成视频){target="_blank"}
 
 
 ## 基本思路

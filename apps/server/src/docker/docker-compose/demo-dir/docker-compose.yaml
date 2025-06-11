@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+
+  ubuntu:
+    build:
+      dockerfile: ./Dockerfile.ubuntu # 指定 dockerfile
+    # image: ubuntu:latest # 指定镜像名称
+    container_name: my-ubuntu # 指定容器名称
+    working_dir: /var/www/
+    ports:
+      - "8080:3000"
+    restart: unless-stopped
+    tty: true
+    
+  # 注意：如果使用了 build 指令，则不需要指定 image，因为 build 会自动创建镜像
+  # 如果需要重新构建镜像，可以使用以下命令：  
+  # docker-compose up -d --build ubuntu
+
+  ubuntu_latest:
+    image: ubuntu:latest
+    container_name: ubuntu_latest
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - "5000:5000"
+    tty: true
+    
+
+  node_latest:
+    image: node:latest
+    container_name: node_latest
+    volumes:
+      - .:/app
+      - /app/node_modules # 不予以挂载node_modules
+    working_dir: /app
+    ports:
+      - "5001:5000"
+    tty: true
+
+  node_alpine:
+    image: node:alpine
+    container_name: node_alpine
+    volumes:
+      - .:/app
+      - /app/node_modules # 不予以挂载node_modules
+    working_dir: /app
+    # ports:
+    #   - "5002:5000"
+    tty: true    
+
+
+networks:
+  vue3-demo-network: # 网络名称
+    external: false # 外部网络：true 不存在则报错，false 不存在则创建 vue3-demo-network       

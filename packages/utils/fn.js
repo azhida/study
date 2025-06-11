@@ -2,7 +2,7 @@ import dirTree from 'directory-tree';
 
 export function getSidebarTree(dir) {
   const srcDir = dirTree(dir, {
-    exclude: [/src\/index.md/],
+    exclude: [/src\/index.md/, /demo-dir/], // 排除 index.md 和 demo-dir 目录
     extensions: /\.md$/,
     normalizePath: true,
   });

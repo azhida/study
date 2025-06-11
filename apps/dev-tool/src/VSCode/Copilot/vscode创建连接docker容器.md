@@ -63,3 +63,8 @@ cat /etc/apt/sources.list.d/debian.sources
 # 如果你不确定目录，可以 输入 /etc/apt/ , 然后按 tab 键来显示后再选择
 # 如果说不在当前目录无法写入之类的，就命令行 cd 到对应目录下，如 cd /etc/apt/sources.list.d/ 
 ```
+
+也可以直接手动换 apt 源：
+```sh
+sudo sed -i "s@http://deb.debian.org@http://mirrors.aliyun.com@g" /etc/apt/sources.list.d/debian.sources
+```

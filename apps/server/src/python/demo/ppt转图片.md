@@ -2,12 +2,12 @@
 
 ::: details 点击查看代码
 
-<<< ./ppt2png.py
+<<< ./ppt转图片.py
 
 :::
 
 ## 1. 文件概述
-`ppt2png.py` 是一个Python脚本，用于将PPTX文件转换为PNG图片。它依赖于`python-pptx`和`pillow`库进行图像处理，同时需要外部工具`unoconv`和`convert`（通常属于ImageMagick）进行文件格式转换。
+`ppt转图片.py` 是一个Python脚本，用于将PPTX文件转换为PNG图片。它依赖于`python-pptx`和`pillow`库进行图像处理，同时需要外部工具`unoconv`和`convert`（通常属于ImageMagick）进行文件格式转换。
 
 ## 2. 主要功能
 
@@ -121,3 +121,13 @@ import io
 | 外部工具   | convert    | 将PDF转换为PNG           | Ubuntu/Debian: `sudo apt-get install imagemagick` <br> CentOS/RHEL: `sudo yum install imagemagick` <br> macOS: `brew install imagemagick` <br> Windows: 从[ImageMagick官网](https://imagemagick.org/script/download.php)下载并安装 |
 
 请确保在运行`ppt2png.py`脚本之前，已经正确安装了上述所有依赖项。
+
+
+
+
+netsh interface portproxy add v4tov4 listenport=8000 connectaddress=10.0.1.201 connectport=8000
+
+New-NetFirewallRule -DisplayName "Allow Inbound TCP Port 5000" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 5000
+
+
+netsh interface portproxy add v4tov4 listenport=8000 connectaddress=10.0.1.201 connectport=8000 protocol=tcp

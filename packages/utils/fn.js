@@ -2,7 +2,7 @@ import dirTree from 'directory-tree';
 
 export function getSidebarTree(dir) {
   const srcDir = dirTree(dir, {
-    exclude: [/src\/index.md/, /demo-dir/, /\_\_pycache\_\_/], // 排除文件 index.md ，目录：['demo-dir', '__pycache__']
+    exclude: [/src\/index.md/, /demo-dir/, /test/, /\_\_pycache\_\_/], // 排除文件 index.md ，目录：['demo-dir', '__pycache__', 'test']
     extensions: /\.md$/,
     normalizePath: true,
   });

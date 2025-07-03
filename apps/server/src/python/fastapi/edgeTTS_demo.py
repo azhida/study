@@ -9,31 +9,47 @@ EdgeTTS 演示服务
 pip install fastapi uvicorn edge-tts
 
 启动服务:
-uvicorn edgeTTS.demo:app --reload --port 8000
+uvicorn edgeTTS.demo:app --reload --port 8003
 
 使用示例:
 1. WebSocket测试:
-   - 连接地址: ws://localhost:8000/ws/edge_tts
+   - 连接地址: ws://localhost:8003/ws/edge_tts
+   - 【或者】连接地址: ws://127.0.0.1:8003/ws/edge_tts
    - 发送任意文本消息测试连接
 
 2. HTTP接口测试:
-   - POST请求: http://localhost:8000/edge_tts
+   - POST请求: http://localhost:8003/edge_tts
    - 参数: {"text": "要转换的文本", "format": "stream"或"json"}
 """
 
-from fastapi import FastAPI, Response, WebSocket, WebSocketDisconnect
-from fastapi.responses import StreamingResponse, JSONResponse
-import edge_tts
-import os
+# 标准库导入
+import asyncio
 import base64
+import os
 import tempfile
 import uuid
-from typing import Dict
+from typing import Dict, List
+
+# 第三方库导入
+import edge_tts
+
+# FastAPI相关导入
+from fastapi import (
+    BackgroundTasks,
+    FastAPI,
+    Response,
+    WebSocket,
+    WebSocketDisconnect
+)
+from fastapi.responses import JSONResponse, StreamingResponse
 
 app = FastAPI()
 
 class ConnectionManager:
+    """WebSocket连接管理器"""
+    
     def __init__(self):
+        """初始化连接管理器"""
         self.active_connections: Dict[str, WebSocket] = {}
         self.client_user_map: Dict[str, str] = {}
 
@@ -69,8 +85,23 @@ class ConnectionManager:
 
 manager = ConnectionManager()
 
+@app.websocket("/ws")
+async def websocket_endpoint_test(websocket: WebSocket, user_id: str = None):
+    await websocket.accept()
+    print(f"WebSocket 连接建立，user_id: {user_id}")
+    try:
+        while True:
+            data = await websocket.receive_text()
+            # 这里可以处理接收到的消息
+            await websocket.send_text(data)
+    except WebSocketDisconnect:
+        print(f"Client  disconnected")
+    except Exception as e:
+        print(f"An error occurred for client : {str(e)}")
+
+
 @app.websocket("/ws/edge_tts")
-async def websocket_endpoint(websocket: WebSocket):
+async def websocket_endpoint(websocket: WebSocket, user_id: str = None):
     client_id = await manager.connect(websocket)
     try:
         while True:
@@ -81,11 +112,99 @@ async def websocket_endpoint(websocket: WebSocket):
         manager.disconnect(client_id)
         print(f"Client {client_id} disconnected")
 
+
+
+from pydantic import BaseModel
+import pathlib
+
+
+async def tts_batch(texts: List[str], output_dir: str, return_format: str = "path") -> List[str]:
+    """
+    批量将文本转换为语音
+    :param texts: 要转换的文本数组
+    :param output_dir: 输出目录路径
+    :param return_format: 返回格式，可选值: path(文件路径), stream(文件流), base64(base64编码)
+    :return: 根据return_format返回对应格式的数据列表
+    """
+
+    # 创建输出目录
+    print(f"000 output dir: {output_dir}")
+    pathlib.Path(output_dir).mkdir(parents=True, exist_ok=True)
+    print(f"output dir: {output_dir}")
+
+
+    results = []
+    for i, text in enumerate(texts):
+        try:
+            output_path = os.path.join(output_dir, f"tts_{i}.wav")
+            result = tts_one(text, output_path, return_format)
+            results.append({"status": "success", "result": result, "text": text})
+        except Exception as e:
+            results.append({"status": "error", "error": str(e), "text": text})
+    return results
+
+
+async def tts_one(text: str, output_path: str = None, return_format: str = "path"):
+    """
+    将文本转换为语音并返回指定格式
+    :param text: 要转换的文本
+    :param output_path: 可选的文件输出路径，如果为None则按日期时间生成路径
+    :param return_format: 返回格式，可选值: path(文件路径), stream(文件流), base64(base64编码)
+    :return: 根据return_format返回对应格式的数据
+    """
+    try:
+        print(f"output_path - 1: {output_path}")
+        communicate = edge_tts.Communicate(text, "zh-CN-XiaoxiaoNeural")
+
+        # 确保输出目录存在，如果不存在，则创建
+        if output_path is None:
+            import datetime
+            now = datetime.datetime.now()
+            date_str = now.strftime("%Y%m%d")
+            time_str = now.strftime("%H%M%S")
+            output_dir = os.path.join("test", date_str)            
+            output_path = os.path.join(output_dir, f"tts_{time_str}.wav")
+            
+        print(f"output_path - 2: {output_path}")
+        pathlib.Path(output_path).parent.mkdir(parents=True, exist_ok=True)
+        await communicate.save(str(output_path))
+
+        # 根据返回格式处理
+        if return_format == "path":
+            return output_path
+        elif return_format == "stream":
+            def iterfile():
+                with open(output_path, "rb") as f:
+                    while chunk := f.read(1024 * 1024):
+                        yield chunk
+            return StreamingResponse(iterfile(), media_type="audio/wav")
+        elif return_format == "base64":
+            with open(output_path, "rb") as f:
+                audio_data = f.read()
+            base64_data = base64.b64encode(audio_data).decode('utf-8')
+            return { "file_path": output_path, "audio": base64_data}
+        else:
+            raise ValueError(f"不支持的返回格式: {return_format}")
+        
+    except Exception as e:
+        return JSONResponse(
+            status_code=500,
+            content={"error": str(e)}
+        )
+    
+
+
 from pydantic import BaseModel
 
 class TextToSpeechRequest(BaseModel):
     text: str
     format: str = "stream"
+
+class AsyncTextToSpeechRequest(BaseModel):
+    user_id: str = None
+    texts: List[str]
+
+
 
 @app.post("/edge_tts")
 async def text_to_speech(request: TextToSpeechRequest):
@@ -95,42 +214,53 @@ async def text_to_speech(request: TextToSpeechRequest):
     :param format: 返回格式，stream(音频流)或json(base64编码)
     """
     try:
-        # 使用临时文件保存语音
-        with tempfile.NamedTemporaryFile(suffix='.wav', delete=False) as tmp_file:
-            tmp_path = tmp_file.name
-        
-        # 生成语音
-        communicate = edge_tts.Communicate(request.text, "zh-CN-XiaoxiaoNeural")
-        await communicate.save(tmp_path)
-        
-        if request.format == "json":
-            # 读取文件并转换为base64
-            with open(tmp_path, "rb") as f:
-                audio_data = f.read()
-            os.unlink(tmp_path)
-            base64_audio = base64.b64encode(audio_data).decode('utf-8')
-            return JSONResponse(content={"audio": base64_audio})
+        if request.format == "stream":
+            audio_stream = await tts_one(request.text, None, "stream")
+            return audio_stream
         else:
-            # 返回音频流
-            def iterfile():
-                with open(tmp_path, "rb") as f:
-                    while chunk := f.read(1024 * 1024):
-                        yield chunk
-                os.unlink(tmp_path)
-            
-            return StreamingResponse(
-                iterfile(), 
-                media_type="audio/wav"
-            )
+            res = await tts_one(request.text, None, request.format)
+            return JSONResponse(content=res)
     except Exception as e:
         return JSONResponse(
             status_code=500,
             content={"error": str(e)}
         )
 
+@app.post("/async_edge_tts")
+async def async_text_to_speech(request: AsyncTextToSpeechRequest, background_tasks: BackgroundTasks):
+    """
+    异步批量语音合成接口
+    :param request: 包含要转换的文本数组的请求体
+    :param user_id: 可选的用户ID，用于WebSocket通知
+    :return: 任务ID
+    """
+    background_tasks.add_task(tts_batch, request.texts, "./test")
+    
+    return JSONResponse({"code": 200, "msg": "任务处理中"})
+
+@app.get("/async_edge_tts/{task_id}")
+async def get_async_task_status(task_id: str):
+    """
+    获取异步任务状态
+    :param task_id: 任务ID
+    :return: 任务状态和结果
+    """
+    task = await task_manager.get_task(task_id)
+    if not task:
+        return JSONResponse(
+            status_code=404,
+            content={"error": "Task not found"}
+        )
+    
+    return {
+        "status": task["status"],
+        "progress": f"{len(task['results'])}/{len(task['texts'])}",
+        "results": task["results"]
+    }
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("edgeTTS_demo:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("edgeTTS_demo:app", host="0.0.0.0", port=8003, reload=True)
 
 # 也可以执行命令来启动
-# uvicorn edgeTTS_demo:app --reload --port 8000
+# uvicorn edgeTTS_demo:app --reload --port 8003

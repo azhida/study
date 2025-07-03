@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  edge-tts:
+    build:
+      context: .
+      dockerfile: Dockerfile.edgetts
+    ports:
+      - "8003:8003"
+    volumes:
+      - ./:/app
+      # - ./test:/app/test
+    environment:
+      - TZ=Asia/Shanghai
+    restart: unless-stopped

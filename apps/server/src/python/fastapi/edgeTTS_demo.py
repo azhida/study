@@ -29,6 +29,7 @@ import os
 import tempfile
 import uuid
 from typing import Dict, List
+import json
 
 # 第三方库导入
 import edge_tts
@@ -82,6 +83,14 @@ class ConnectionManager:
         for client_id, ws_user_id in self.client_user_map.items():
             if ws_user_id == user_id and client_id in self.active_connections:
                 await self.active_connections[client_id].send_text(message)
+                
+    async def broadcast_message(self, message: str):
+        """
+        向所有活跃连接广播消息
+        :param message: 要广播的消息内容
+        """
+        for client_id, websocket in self.active_connections.items():
+            await websocket.send_text(message)
 
 manager = ConnectionManager()
 
@@ -103,6 +112,7 @@ async def websocket_endpoint_test(websocket: WebSocket, user_id: str = None):
 @app.websocket("/ws/edge_tts")
 async def websocket_endpoint(websocket: WebSocket, user_id: str = None):
     client_id = await manager.connect(websocket)
+    manager.bind_user(client_id, user_id)
     try:
         while True:
             data = await websocket.receive_text()
@@ -118,27 +128,43 @@ from pydantic import BaseModel
 import pathlib
 
 
-async def tts_batch(texts: List[str], output_dir: str, return_format: str = "path") -> List[str]:
+async def tts_batch(user_id: str, texts: List[str],  output_dir: str = None, return_format: str = "path") -> List[str]:
     """
     批量将文本转换为语音
     :param texts: 要转换的文本数组
-    :param output_dir: 输出目录路径
+    :param output_dir: 可选输出目录路径，如果为None则按当前时分秒生成目录
     :param return_format: 返回格式，可选值: path(文件路径), stream(文件流), base64(base64编码)
     :return: 根据return_format返回对应格式的数据列表
     """
-
+    if output_dir is None:
+      # 生成批次号目录
+      import datetime
+      now = datetime.datetime.now()
+      date_str = now.strftime("%Y%m%d")
+      time_str = now.strftime("%H%M%S")
+      batch_dir = f"{date_str}/{time_str}"
+      output_dir = os.path.join(output_dir, batch_dir)
+      print(f"output_dir: {output_dir}")
+    
     # 创建输出目录
-    print(f"000 output dir: {output_dir}")
     pathlib.Path(output_dir).mkdir(parents=True, exist_ok=True)
-    print(f"output dir: {output_dir}")
-
+    print(f"输出目录: {output_dir}")
 
     results = []
     for i, text in enumerate(texts):
         try:
-            output_path = os.path.join(output_dir, f"tts_{i}.wav")
-            result = tts_one(text, output_path, return_format)
-            results.append({"status": "success", "result": result, "text": text})
+            output_path = os.path.join(output_dir, f"{i}.wav")
+            result = await tts_one(text, output_path, return_format)
+            res_json = {
+                'status': 'success',
+                'result': result,
+                'text': text
+            }
+            results.append(res_json)
+            
+            await manager.send_to_user(json.dumps(res_json), user_id)
+            await manager.broadcast_message('result')
+
         except Exception as e:
             results.append({"status": "error", "error": str(e), "text": text})
     return results
@@ -201,7 +227,7 @@ class TextToSpeechRequest(BaseModel):
     format: str = "stream"
 
 class AsyncTextToSpeechRequest(BaseModel):
-    user_id: str = None
+    user_id: str
     texts: List[str]
 
 
@@ -234,33 +260,24 @@ async def async_text_to_speech(request: AsyncTextToSpeechRequest, background_tas
     :param user_id: 可选的用户ID，用于WebSocket通知
     :return: 任务ID
     """
-    background_tasks.add_task(tts_batch, request.texts, "./test")
-    
-    return JSONResponse({"code": 200, "msg": "任务处理中"})
+    # 生成批次号目录
+    import datetime
+    now = datetime.datetime.now()
+    date_str = now.strftime("%Y%m%d")
+    time_str = now.strftime("%H%M%S")
+    batch_dir = f"{date_str}/{time_str}"
+    output_dir = os.path.join('./test', batch_dir)
+    print(f"output_dir: {output_dir}")
 
-@app.get("/async_edge_tts/{task_id}")
-async def get_async_task_status(task_id: str):
-    """
-    获取异步任务状态
-    :param task_id: 任务ID
-    :return: 任务状态和结果
-    """
-    task = await task_manager.get_task(task_id)
-    if not task:
-        return JSONResponse(
-            status_code=404,
-            content={"error": "Task not found"}
-        )
+    background_tasks.add_task(tts_batch, request.user_id, request.texts, output_dir)
     
-    return {
-        "status": task["status"],
-        "progress": f"{len(task['results'])}/{len(task['texts'])}",
-        "results": task["results"]
-    }
+    return JSONResponse({"code": 200, "msg": "任务处理中", "output_dir": output_dir})
+
+
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("edgeTTS_demo:app", host="0.0.0.0", port=8003, reload=True)
+    uvicorn.run("edgeTTS_demo:app", host="0.0.0.0", port=8003, reload=True, log_level='info')
 
 # 也可以执行命令来启动
 # uvicorn edgeTTS_demo:app --reload --port 8003

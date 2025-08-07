@@ -40,6 +40,32 @@ export default defineConfig(({ mode, command }) => {
 
 ```
 
+- index.html
+
+```html
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PPTX 转视频</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <!-- <script src="/config.js<%= configVersion %>"></script> -->
+  <script src="./config.js<%= configVersion %>"></script>
+  <!-- <script type="module" src="/src/main.js"></script> -->
+  <!-- 解决资源文件路径问题 -->
+  <script type="module" src="./src/main.js"></script>
+</body>
+
+</html>
+```
+
+
 ## nginx 配置
 
 - `nginx.htaccess`

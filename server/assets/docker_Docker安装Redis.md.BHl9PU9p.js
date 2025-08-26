@@ -1,0 +1,12 @@
+import{_ as s,c as a,o as e,a5 as n}from"./chunks/framework.CJNr4pYi.js";const _=JSON.parse('{"title":"Docker 安装 Redis","description":"","frontmatter":{},"headers":[],"relativePath":"docker/Docker安装Redis.md","filePath":"docker/Docker安装Redis.md","lastUpdated":1722327281000}'),i={name:"docker/Docker安装Redis.md"},p=n(`<h1 id="docker-安装-redis" tabindex="-1">Docker 安装 Redis <a class="header-anchor" href="#docker-安装-redis" aria-label="Permalink to &quot;Docker 安装 Redis&quot;">​</a></h1><blockquote><p>注意：前提条件是：docker 已经成功安装，可以使用 <code>sudo docker info</code> 来检测 docker 是否已安装。</p></blockquote><ul><li>拉取 redis 镜像</li></ul><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>sudo docker pull redis:latest</span></span>
+<span class="line"><span>docker images</span></span></code></pre></div><ul><li>创建容器 redis</li></ul><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>sudo docker run -itd \\</span></span>
+<span class="line"><span>-p 6379:6379 \\</span></span>
+<span class="line"><span>--name redis \\</span></span>
+<span class="line"><span>-v /etc/localtime:/etc/localtime:ro \\</span></span>
+<span class="line"><span>redis</span></span></code></pre></div><ul><li>查看容器列表</li></ul><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>sudo docker ps -a</span></span></code></pre></div><ul><li>进入容器 redis</li></ul><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>sudo docker exec -it redis /bin/bash</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># 进入 命令行</span></span>
+<span class="line"><span>redis-cli</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># 退出容器</span></span>
+<span class="line"><span>exit</span></span></code></pre></div>`,10),l=[p];function t(c,o,d,r,u,h){return e(),a("div",null,l)}const b=s(i,[["render",t]]);export{_ as __pageData,b as default};

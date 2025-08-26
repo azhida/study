@@ -1,0 +1,9 @@
+import{_ as s,c as a,o as i,a5 as n}from"./chunks/framework.CJNr4pYi.js";const g=JSON.parse('{"title":"wsl 常用命令","description":"","frontmatter":{},"headers":[],"relativePath":"linux/wsl/常用命令.md","filePath":"linux/wsl/常用命令.md","lastUpdated":1750553910000}'),e={name:"linux/wsl/常用命令.md"},l=n(`<h1 id="wsl-常用命令" tabindex="-1">wsl 常用命令 <a class="header-anchor" href="#wsl-常用命令" aria-label="Permalink to &quot;wsl 常用命令&quot;">​</a></h1><div class="language-sh vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 查看帮助</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">wsl</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --help</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 列出所有已安装的 WSL 发行版</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">wsl</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --list</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --verbose</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 删除一个特定的发行版</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># wsl --unregister DistroName</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">wsl</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --unregister</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> Ubuntu</span></span></code></pre></div>`,2),t=[l];function p(h,r,k,d,c,o){return i(),a("div",null,t)}const u=s(e,[["render",p]]);export{g as __pageData,u as default};

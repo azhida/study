@@ -1,0 +1,9 @@
+import{_ as a,c as s,o as t,a5 as e}from"./chunks/framework.CJNr4pYi.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"php/laravel/jwt使用笔记.md","filePath":"php/laravel/jwt使用笔记.md","lastUpdated":1722327281000}'),n={name:"php/laravel/jwt使用笔记.md"},l=e(`<h6 id="参考文章-jwt-完整使用详解" tabindex="-1">参考文章：<a href="https://learnku.com/articles/10885/full-use-of-jwt" target="_blank" rel="noreferrer">JWT 完整使用详解</a> <a class="header-anchor" href="#参考文章-jwt-完整使用详解" aria-label="Permalink to &quot;参考文章：[JWT 完整使用详解](https://learnku.com/articles/10885/full-use-of-jwt)&quot;">​</a></h6><h6 id="自定义字段" tabindex="-1">自定义字段 <a class="header-anchor" href="#自定义字段" aria-label="Permalink to &quot;自定义字段&quot;">​</a></h6><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>$customClaims = [&#39;foo&#39; =&gt; &#39;bar&#39;, &#39;baz&#39; =&gt; &#39;bob&#39;];</span></span>
+<span class="line"><span>// 辅助函数</span></span>
+<span class="line"><span>$token = auth()-&gt;claims($customClaims)-&gt;attempt($credentials);</span></span>
+<span class="line"><span>// Facade - 1</span></span>
+<span class="line"><span>$token = JWTAuth::claims($customClaims)-&gt;attempt($credentials);</span></span>
+<span class="line"><span>$token = \\Auth::guard(&#39;api&#39;)-&gt;claims($customClaims)-&gt;fromUser($user);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// 获取自定义字段的值</span></span>
+<span class="line"><span>$foo = JWTAuth::parseToken()-&gt;getClaim(&#39;is_kefu&#39;);</span></span></code></pre></div>`,3),p=[l];function o(i,c,r,d,h,_){return t(),s("div",null,p)}const f=a(n,[["render",o]]);export{m as __pageData,f as default};

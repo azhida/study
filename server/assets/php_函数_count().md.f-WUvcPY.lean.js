@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as a}from"./chunks/framework.CJNr4pYi.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"php/函数/count().md","filePath":"php/函数/count().md","lastUpdated":1722327281000}'),o={name:"php/函数/count().md"};function c(n,p,r,s,_,d){return a(),e("div")}const f=t(o,[["render",c]]);export{m as __pageData,f as default};

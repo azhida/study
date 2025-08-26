@@ -1,0 +1,1 @@
+import{ah as i,g as o,dy as s}from"./install.yZhh2bWT.js";function c(e,a,n){var r=e.get("borderRadius");if(r==null)return n?{cornerRadius:0}:null;i(r)||(r=[r,r,r,r]);var t=Math.abs(a.r||0-a.r0||0);return{cornerRadius:o(r,function(u){return s(u,t)})}}export{c as g};

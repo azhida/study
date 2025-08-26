@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as a}from"./chunks/framework.CJNr4pYi.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"php/函数/strlen().md","filePath":"php/函数/strlen().md","lastUpdated":1722327281000}'),r={name:"php/函数/strlen().md"};function s(n,p,o,c,_,d){return a(),t("div")}const m=e(r,[["render",s]]);export{i as __pageData,m as default};

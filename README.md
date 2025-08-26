@@ -20,6 +20,10 @@ git push
 
 # 提交编译包到独立分支
 git subtree push --prefix=cf-pages origin cf-pages
+# 提交到 github 仓库的 cf-pages 分支
+git subtree push --prefix=cf-pages github cf-pages
+# 提交到 gitee 仓库的 cf-pages 分支
+git subtree push --prefix=cf-pages gitee cf-pages
 ```
 
 

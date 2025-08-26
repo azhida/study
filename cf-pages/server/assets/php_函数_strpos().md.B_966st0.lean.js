@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as s}from"./chunks/framework.CJNr4pYi.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"php/函数/strpos().md","filePath":"php/函数/strpos().md","lastUpdated":1722327281000}'),a={name:"php/函数/strpos().md"};function p(r,o,c,n,_,d){return s(),e("div")}const f=t(a,[["render",p]]);export{m as __pageData,f as default};

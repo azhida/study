@@ -1,0 +1,30 @@
+import{_ as s,c as n,o as a,a5 as p}from"./chunks/framework.CJNr4pYi.js";const f=JSON.parse('{"title":"Nginx 反向代理配置","description":"","frontmatter":{},"headers":[],"relativePath":"nginx/反向代理配置.md","filePath":"nginx/反向代理配置.md","lastUpdated":1722327281000}'),e={name:"nginx/反向代理配置.md"},l=p(`<h1 id="nginx-反向代理配置" tabindex="-1">Nginx 反向代理配置 <a class="header-anchor" href="#nginx-反向代理配置" aria-label="Permalink to &quot;Nginx 反向代理配置&quot;">​</a></h1><ul><li>nginx.conf</li></ul><div class="language-conf vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">conf</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span></span></span>
+<span class="line"><span>server {</span></span>
+<span class="line"><span>  listen       80;</span></span>
+<span class="line"><span>  server_name  demo.test;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  location /mock/api/ {</span></span>
+<span class="line"><span>    proxy_redirect off;</span></span>
+<span class="line"><span>    proxy_set_header Host $host;</span></span>
+<span class="line"><span>    proxy_set_header X-Real-IP $remote_addr;</span></span>
+<span class="line"><span>    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span></span>
+<span class="line"><span>    proxy_pass http://127.0.0.1:9997/mock/api/;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  location /api/ {</span></span>
+<span class="line"><span>    proxy_redirect off;</span></span>
+<span class="line"><span>    proxy_set_header Host $host;</span></span>
+<span class="line"><span>    proxy_set_header X-Real-IP $remote_addr;</span></span>
+<span class="line"><span>    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span></span>
+<span class="line"><span>    # proxy_pass http://[IP地址]:9996;</span></span>
+<span class="line"><span>    # 实际请求不会带上 /api/</span></span>
+<span class="line"><span>    proxy_pass http://127.0.0.1:9996/;</span></span>
+<span class="line"><span>    # 主动带上 /api/</span></span>
+<span class="line"><span>    ; proxy_pass http://127.0.0.1:9996/api/;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  location / {</span></span>
+<span class="line"><span>    root   &quot;D:/Code/demo/dist&quot;;</span></span>
+<span class="line"><span>    try_files $uri $uri/ /index.html;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span></code></pre></div>`,3),i=[l];function t(o,r,c,_,d,h){return a(),n("div",null,i)}const m=s(e,[["render",t]]);export{f as __pageData,m as default};

@@ -1,0 +1,12 @@
+import{_ as s,c as e,o as l,a3 as n}from"./chunks/framework.Bf7f-acG.js";const _=JSON.parse('{"title":"设置 VMware 中的 Mac OS 虚拟机进入 Recovery 模式","description":"","frontmatter":{},"headers":[],"relativePath":"MacOS系统/设置 VMware 中的 Mac OS 虚拟机进入 Recovery 模式.md","filePath":"MacOS系统/设置 VMware 中的 Mac OS 虚拟机进入 Recovery 模式.md","lastUpdated":1746496452000}'),o={name:"MacOS系统/设置 VMware 中的 Mac OS 虚拟机进入 Recovery 模式.md"};function t(r,a,i,p,c,d){return l(),e("div",null,a[0]||(a[0]=[n(`<h1 id="设置-vmware-中的-mac-os-虚拟机进入-recovery-模式" tabindex="-1">设置 VMware 中的 Mac OS 虚拟机进入 Recovery 模式 <a class="header-anchor" href="#设置-vmware-中的-mac-os-虚拟机进入-recovery-模式" aria-label="Permalink to &quot;设置 VMware 中的 Mac OS 虚拟机进入 Recovery 模式&quot;">​</a></h1><p>参考：<br><a href="https://www.shuzhiduo.com/A/D854PZRY5E/" target="_blank" rel="noreferrer">设置 VMware 中的 Mac OS 虚拟机进入 Recovery 模式</a><br><a href="http://t.zoukankan.com/qyf404-p-modify_permitted_in_mac.html" target="_blank" rel="noreferrer">解决MAC下修改系统文件没权限的问题</a></p><p>VMware 中的 Mac OS 虚拟机进入 Recovery 模式：</p><ul><li><ol><li>选择 Mac OS 虚拟机，点击“打开电源是进入固件”</li></ol></li><li><ol start="2"><li>选择&quot;Enter setup&quot;</li></ol></li><li><ol start="3"><li>选择&quot;Boot from a file&quot;</li></ol></li><li><ol start="4"><li>选择&quot;Recovery&quot;</li></ol></li><li><ol start="5"><li>选择 boot, 如图：</li></ol></li><li><ol start="6"><li>选择&quot;boot.efi&quot;</li></ol></li><li><ol start="7"><li>运行效果 - 到这里就可以看见界面：<code>macOS 实用工具</code> 了</li></ol></li></ul><p>然后在顶部菜单栏找到 终端工具，执行：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span># 这个命令执行后，才可以修改 macos 的系统文件 ，修改 macos 的版本号需要用</span></span>
+<span class="line"><span># 执行命令csrutil disable, 关闭这个Rootless策略</span></span>
+<span class="line"><span>csrutil disable</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># reboot 重启电脑</span></span>
+<span class="line"><span>reboot</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># 正常开机后执行命令 sudo chown -R $(whoami) /usr/local 赋权.</span></span>
+<span class="line"><span>sudo chown -R $(whoami) /usr/local</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># 修改相关的 系统文件 后， 按照第一步进入恢复模式, 执行命令csrutil enable来开启Rootless策略</span></span>
+<span class="line"><span>csrutil enable</span></span></code></pre></div>`,6)]))}const m=s(o,[["render",t]]);export{_ as __pageData,m as default};

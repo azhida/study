@@ -1,0 +1,4 @@
+import{_ as a,c as s,o as n,a5 as t}from"./chunks/framework.CJNr4pYi.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"nginx/配置下载目录.md","filePath":"nginx/配置下载目录.md","lastUpdated":1722327281000}'),e={name:"nginx/配置下载目录.md"},p=t(`<div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>location /download/ {</span></span>
+<span class="line"><span>    types        { }</span></span>
+<span class="line"><span>    add_header Content-Type &quot;application/octet-stream;charset=utf-8&quot;;</span></span>
+<span class="line"><span>}</span></span></code></pre></div>`,1),o=[p];function c(i,_,d,l,r,h){return n(),s("div",null,o)}const g=a(e,[["render",c]]);export{m as __pageData,g as default};

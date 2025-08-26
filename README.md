@@ -9,6 +9,20 @@
 pnpm all:cf:build
 ```
 
+## 提交编译包到独立分支
+
+### `cf-pages` 分支
+
+```sh
+git add cf-pages
+git commit -m 'feat: 提交 cf-pages 分支'
+git push
+
+# 提交编译包到独立分支
+git subtree push --prefix=cf-pages origin cf-pages
+```
+
+
 ## 预览
 
 ```sh
